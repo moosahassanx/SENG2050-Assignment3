@@ -101,11 +101,11 @@
 	top: 50%;
 	left: 0%;
 	z-index: 1;
-	width: 50%;
-	max-width: 80%;
-    padding-left: 25%;
+	width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
-    float: left;
+    padding-left: 35%;
+    padding-right: 35%;
 }
 
 .teacher h1{
@@ -118,7 +118,6 @@
 
 .teacher p{
 	color: #FFF;
-	margin-bottom: 20px;
 	text-align: center;
 }
 
@@ -141,9 +140,35 @@
 	transition: 0.2s;
 }
 
+#input{
+    color: #FFF;
+	margin-bottom: 20px;
+    text-align: center;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 400px;
+    height: 30px;
+}
+
 .teacher a:hover{
 	color: #000000;
 	background: #ffffff;
+}
+
+.left{
+    float: left;
+    width: 50%;
+}
+
+.left p{
+    text-align: right;
+    padding-right: 5px;
+}
+
+.right p{
+    text-align: left;
+    padding-left: 5px;
 }
 
 /*STUDENT*/
@@ -222,7 +247,7 @@
 }
 
 
-@media all and (max-width: 1300px) {
+@media all and (max-width: 1345px) {
     .box-img{
         border-radius: 50%;
         width: 100px;
@@ -449,5 +474,16 @@
 
     .student p{
         font-size: 7px;
+    }
+
+    #input{
+        color: #FFF;
+        margin-bottom: 20px;
+        text-align: center;
+        border: 0;
+        outline: none;
+        background-color:rgba(255, 255, 255, 0.2);
+        width: 80%;
+        height: 30px;
     }
 }

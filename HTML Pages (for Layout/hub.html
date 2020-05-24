@@ -4,26 +4,46 @@
 	<title>University of Newcastle - Hub</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" type="text/css" href="css/indexstyle.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/hubstyle.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>Newcastle Student</h1>
-    <h2>Group management system.</h2>
-    <h3>Home</h3>
+    <section class="landing-page-main">
+        <div class="top-bar">
+            <div id="bar-left">
+                <img src="https://www.newcastle.edu.au/__data/assets/image/0011/246881/uon-logo-square.png" alt="" class="box-img">
+            </div>
+            <div id="bar-middle">
+                <h1 id="newcastle-portal">Newcastle Portal</h1>
+                <h2 id="bar-text">Group management system.</h2>
+                <h3 id="bar-text">Hub</h3>
+            </div>
+            <div id="bar-right">
+                <h2 id="bar-text">[Student Name]</h2>
+                <h2 id="bar-text">[Group Name]</h2>
+            </div>
+            <hr>            
+        </div>
 
-    <button onclick="window.location.href='groups.html'">Groups</button>
-    <button onclick="window.location.href='appointments.html'">Appointments</button>
-    <button onclick="window.location.href='addmilestone.html'">Milestones</button>
-    <button onclick="window.location.href='files.html'">Files</button>
-    <button onclick="window.location.href='discussions.html'">Discussions</button>
+        <div class="content-left">
+            <h1 id="content-heading">Menu</h1>
+            <p><a href="groups.html" address="true">Groups</a></p>
+            <p><a href="appointments.html" address="true">Appointments</a></p>
+            <p><a href="addmilestone.html" address="true">Milestones</a></p>
+            <p><a href="files.html" address="true">Files</a></p>
+            <p><a href="discussions.html" address="true">Discussions</a></p>
+        </div>
 
-    <h3>[Group Name] Milestones</h3>
-    <ul>
-        <li>get woman</li>
-        <li>get consent</li>
-        <li>lose virginity (josh)</li>
-    </ul>
+        <div class="content-right">
+            <h1 id="content-heading">Milestone List</h1>
+            <ul>
+                <li>[Student Name]: Eat a chef</li>
+                <li>[Student Name]: Sell fathers day cards to the orphanage</li>
+                <li>[Student Name]: Smash that bitch off lazy town</li>
+            </ul>
+        </div>
+    </section>
+    
 </body>
 </html>

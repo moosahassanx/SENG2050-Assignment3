@@ -18,8 +18,9 @@
         </div>
 
         <div class="teacher">
-            <p><input type="text" placeholder="Username" id="input"><br>
-                <input type="password" placeholder="Password" id="input">
+        <!--Make a form, so we can pass through username and passwords through, change to one button, pass data through. -->
+            <p><input type="text" placeholder="Username" id="username"><br> <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
+                <input type="password" placeholder="Password" id="password">
             </p><br><br>
 
             <div class="left">

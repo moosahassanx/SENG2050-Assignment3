@@ -1,12 +1,12 @@
-package WEB-INF.classes;
+//package WEB-INF.classes;
 
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import users.User;
-import users.Student;
-import users.Teacher;
+import userpackage.User;
+import userpackage.Student;
+import userpackage.Teacher;
 
 import javax.servlet.annotation.WebServlet;
 import java.util.Scanner;
@@ -24,11 +24,11 @@ public class Login extends HttpServlet
         String loginID = request.getParameter("username"); //Grabs the parameter of name passed through
         String password = request.getParameter("password");
         //pass in user name and password up here somewhere? 
-        if (loginID.charAt(0).equals("T"))
+        if (loginID.charAt(0) == 'T')
         {
             //if Login already exists in the db
             User teacher = new Teacher();
-            teacher.setName(userName);
+            teacher.setName(loginID);
             teacher.setPassword(password);
 
             HttpSession session = request.getSession(); //gets the session
@@ -36,12 +36,11 @@ public class Login extends HttpServlet
             
             RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
             rd.forward(request, response);
-
         }
         else
         {
             User student = new Student();
-            student.setName(userName);
+            student.setName(loginID);
             student.setPassword(password);
 
             HttpSession session = request.getSession(); //gets the session

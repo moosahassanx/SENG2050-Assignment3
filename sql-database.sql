@@ -1,14 +1,14 @@
 CREATE DATABASE collabDB;
-USE collabDB;
 
-CREATE LOGIN seng2050-ass3
-WITH PASSWORD = "Passw0rd123!";
 
-CREATE USER seng2050-ass3
-for LOGIN seng2050-ass3;
+CREATE LOGIN seng2050Ass3
+WITH PASSWORD = 'Passw0rd123!';
+
+CREATE USER seng2050Ass3
+for LOGIN seng2050Ass3;
 
 GRANT SELECT, INSERT, UPDATE, DELETE
-to seng2050-ass3;
+to seng2050Ass3;
 
 CREATE TABLE website_users	(
 	username varchar(30) NOT NULL PRIMARY KEY,
@@ -30,7 +30,7 @@ CREATE TABLE website_user_roles (
 )
 
 CREATE TABLE groups	(
-	group_name VARCHAR(30) NOT NULL
+	group_name VARCHAR(30) NOT NULL PRIMARY KEY
 )
 
 CREATE TABLE user_groups	(
@@ -50,6 +50,7 @@ CREATE TABLE group_folders	(
 )
 
 CREATE TABLE files	(
+	fileID varchar(30) NOT NULL PRIMARY KEY,
 	binary_file VARBINARY(MAX) NOT NULL,
 	uploaded_name varchar(30) NOT NULL,
 	
@@ -58,8 +59,8 @@ CREATE TABLE files	(
 
 CREATE TABLE group_folder_files	(
 	folder_name varchar(30) NOT NULL,
-	binary_file VARBINARY(MAX) NOT NULL,
+	fileID varchar(30) NOT NULL,
 	
-	FOREIGN KEY(folder_name) REFERENCES group_folders(folder_name)
-	FOREIGN KEY(binary_file) REFERENCES files(binary_file)
+	FOREIGN KEY(folder_name) REFERENCES group_folders(folder_name),
+	FOREIGN KEY(fileID) REFERENCES files(fileID)
 )

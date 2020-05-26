@@ -7,7 +7,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name> Teachers hub </web-resource-name>
-			<url-pattern>/teacherhub.jsp</url-pattern>
+			<url-pattern>/teacherhub.jsp</url-pattern> <!-- Needs to map to the teachers hub jsp -->
 		<web-resource-collection>
 		<auth-constraint>
 			<role-name>teacher</role-name>

@@ -5,31 +5,47 @@
     <title>University of Newcastle - Discussions</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" type="text/css" href="css/indexstyle.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/viewdiscussion.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>Newcastle Student</h1>
-    <h2>Group management system.</h2>
-    <h3>[Discussion Name]</h3>
+    <section class="landing-page-main">
+        <!--TOP BAR-->
+        <div class="top-bar">
+            <div id="bar-left">
+                <img src="https://www.newcastle.edu.au/__data/assets/image/0011/246881/uon-logo-square.png" alt="" class="box-img">
+            </div>
+            <div id="bar-middle">
+                <h1 id="newcastle-portal">Newcastle Portal</h1>
+                <h2 id="bar-text">Group management system.</h2>
+                <h3 id="bar-text">[Discussion Title]</h3>
+            </div>
+            <div id="bar-right">
+                <h2 id="bar-text">[Student Name]</h2>
+                <h2 id="bar-text">[Group Name]</h2>
+            </div>
+            <hr>
+        </div>
 
-    <h4>[Josh]</h4>
-    <p>how do you eat a rat?</p>
-    <h4>[Humeey]</h4>
-    <p>Have you tried boiling it?</p>
-    <h4>[Moosa]</h4>
-    <p>Just eat it raw bro.</p>
-    <hr>
+        <!-- MESSAGES -->
+        <div class="discussions-list">
+            <p id="username">[Josh]</p>
+            <p id="message">how do you eat a rat?</p>
 
-    <form action="viewdiscussion.html">
-        <label for="">Reply to this thread</label><br>
-        <input type="text"><br>
-        <input type="submit" value="reply">
-    </form>
+            <p id="username">[Humeey]</p>
+            <p id="message">Have you tried boiling it?</p>
 
-    <button onclick="window.location.href='hub.html'">Hub</button>
-    <button onclick="window.location.href='discussions.html'">Back</button>
+            <p id="username">[Moosa]</p>
+            <p id="message">Just eat it raw bro.</p>
+        </div>
+        
+        <!-- REPLY -->
+        <div class="create-discussion">
+            <input type="text">
+            <p><a href="viewdiscussion.jsp" address="true">Reply</a></p>
+        </div>
+    </section>
 </body>
 
 </html>

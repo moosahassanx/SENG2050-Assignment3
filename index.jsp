@@ -27,7 +27,7 @@
                 <p><a href="#" address="true">Login as Teacher</a></p>
             </div>
             <div class="right">
-                <p><a href="#" address="true">Login as Student</a></p>
+                <p><a href="hub.jsp" address="true">Login as Student</a></p>
             </div>
         </div>
 

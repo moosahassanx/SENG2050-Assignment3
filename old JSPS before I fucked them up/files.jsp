@@ -21,15 +21,8 @@
                 <h3 id="bar-text">Create Discussion</h3>
             </div>
             <div id="bar-right">
-                <h2 id="bar-text">${user.getName()}</h2>
-                <c:choose>
-                    <c:when test = "${user.hasGroup()}">
-                        <h2 id="bar-text">${user.getGroup()}</h2>
-                    </c:when>
-                    <c:otherwise>
-                        <h2 id="bar-text">N/A</h2>
-                    </c:otherwise>
-                </c:choose>
+                <h2 id="bar-text">[Student Name]</h2>
+                <h2 id="bar-text">[Group Name]</h2>
             </div>
             <hr>
         </div>

@@ -64,3 +64,23 @@ CREATE TABLE group_folder_files	(
 	FOREIGN KEY(folder_name) REFERENCES group_folders(folder_name),
 	FOREIGN KEY(fileID) REFERENCES files(fileID)
 )
+
+CREATE TABLE discussions(
+	discussionID varChar(10) NOT NULL PRIMARY KEY, 
+	title varChar(100) NOT NULL, 
+	username varchar(30) NOT NULL, 
+	description varChar(1000) NOT NULL,
+
+	FOREIGN KEY(username) REFERENCES website_users(username)
+)
+
+CREATE TABLE discussionsThread(
+	threadID varChar(10) NOT NULL PRIMARY KEY, 
+	discussionID varChar(10) NOT NULL, 
+	username varChar(30) NOT NULL, 
+	description varChar(1000) NOT NULL, 
+
+
+	FOREIGN KEY(discussionID) REFERENCES discussions(discussionID),
+	FOREIGN KEY(username) REFERENCES website_users(username)
+)

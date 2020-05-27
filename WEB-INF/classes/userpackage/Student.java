@@ -100,12 +100,15 @@ public class Student extends User
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
         PreparedStatement ps = null;
-            query = "SELECT * from initial_login WHERE username = ?";
+		
+            String query = "SELECT * from initial_login WHERE username = ?";
             ps = conn.prepareStatement(query);
             ps.setObject(1, username);
+			ResultSet rs = stmt.executeQuery(query);
+			
                 while(rs.next()){
                     int initialLogin = rs.getInt("LoginTimes");
-                    if(user.equalsIgnoreCase(username) && initialLogin == 0){
+                    if(username.equalsIgnoreCase(username) && initialLogin == 0){
                         //Students first login
                         rs.close();
                         conn.close();

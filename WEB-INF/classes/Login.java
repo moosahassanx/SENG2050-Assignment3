@@ -28,6 +28,7 @@ public class Login extends HttpServlet
         {
             //if Login already exists in the db
             User teacher = new Teacher();
+            
             teacher.setName(loginID);
             teacher.setPassword(password);
 
@@ -40,14 +41,31 @@ public class Login extends HttpServlet
         else
         {
             User student = new Student();
-            student.setName(loginID);
-            student.setPassword(password);
+            if(student.getStudentUser(loginID,password)){
 
-            HttpSession session = request.getSession(); //gets the session
-            session.setAttribute("student", student); //sets the bean into the session
-            
-            RequestDispatcher rd = request.getRequestDispatcher("minesweeperGame.jsp"); //Redirects to the next page. 
-            rd.forward(request, response);
+                student.setName(loginID);
+                student.setPassword(password);
+                student.setRole("student");
+
+                if(student.getStudentInitialLogin(loginID)){
+                    //Students first login - Re-load the hub page with dynamic taglibs to show a form to fill their details in
+                    // StudentID, PhoneNo, name...
+
+                }else{
+
+                    HttpSession session = request.getSession(); //gets the session
+                    session.setAttribute("student", student); //sets the bean into the session
+                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
+                    rd.forward(request, response);
+                    
+                }
+            }
+            // Kinda cheating probs not the best way to do it
+            PrintWriter out = response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Password is incorrect');");
+			out.println("location='Login.jsp';");
+			out.println("</script>");
         }
     }
 }

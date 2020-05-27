@@ -17,3 +17,5 @@
 			userRoleTable="website_user_roles"
 			roleNameCol="user_roles"/>
 </Context>
+	
+	<!-- Above need to match the sql tables and have a DB connection-->

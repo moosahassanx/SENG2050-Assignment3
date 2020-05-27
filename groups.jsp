@@ -36,36 +36,16 @@
 
         <!-- LIST OF DISCUSSIONS -->
         <div class="discussions-list">
-            <p><a href="hub.jsp" address="true">Group1: [Student Name], [Student Name], [Student Name]</a></p>
-            <p><a href="hub.jsp" address="true">Group2: [Student Name], [Student Name], [Student Name]</a></p>
-            <p><a href="hub.jsp" address="true">Group3: [Student Name], [Student Name], [Student Name]</a></p>
-            <p><a href="hub.jsp" address="true">Group4: [Student Name], [Student Name], [Student Name]</a></p>
+            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group1: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group2: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group3: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group4: [Student Name], [Student Name], [Student Name]</button></p>
         </div>
         
         <!-- CREATE GROUP BUTTON -->
         <div class="create-discussion">
-            <p><a href="creategroup.jsp" address="true">Create Group</a></p>
+            <p><button id="newgroup-btn" onclick="location.href='creategroup.jsp';">Create Group</button></p>
         </div>
     </section>
-
-    <!--
-    <h1>Newcastle Student</h1>
-    <h2>Group management system.</h2>
-    <h3>Groups</h3>
-
-    <ul>
-        <li>Group1: member1, member2, member3, ... <button onclick="window.location.href='groups.html'">Join Group</button></li>
-        <li>Group2: member1, member2, member3, ... <button onclick="window.location.href='groups.html'">Join Group</button></li>
-        <li>Group3: member1, member2, member3, ... <button onclick="window.location.href='groups.html'">Join Group</button></li>
-        <li>Group4: member1, member2, member3, ... <button onclick="window.location.href='groups.html'">Join Group</button></li>
-    </ul>
-
-    <button onclick="window.location.href='creategroup.html'">Create Group</button>
-    <br>
-
-    <form action="hub.html">
-        <input type="submit" value="Hub">
-    </form>
-    -->
 </body>
 </html>

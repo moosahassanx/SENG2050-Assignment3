@@ -21,14 +21,14 @@ CREATE TABLE website_roles (
 
 CREATE TABLE user_information	(
 	username varchar(30) NOT NULL PRIMARY KEY,
-	studentId int(15) NOT NULL,
-	phoneNo	int(15),
+	studentId int NOT NULL,
+	phoneNo	int,
 
 )
 
 CREATE TABLE initial_login	(
 	username varchar(30) NOT NULL PRIMARY KEY,
-	loginTimes int(5),
+	loginTimes int,
 
 	FOREIGN KEY(username) REFERENCES website_users(username)
 )

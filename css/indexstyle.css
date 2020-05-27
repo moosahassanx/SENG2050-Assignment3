@@ -1,10 +1,10 @@
-*{
-	margin: 0;
-	padding: 0;
-	font-family: "montserrat", sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat", sans-serif;
 }
 
-.box-img{
+.box-img {
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -13,251 +13,259 @@
     margin-bottom: 10px;
 }
 
-.div1{
-	display: inline-block;
-	width: 50%;
-}
-.div2{
-	display: inline-block;
+.div1 {
+    display: inline-block;
+    width: 50%;
 }
 
-.landing-page-main{
-	width: 100%;
-	height: 100vh;
-	background: #000;
-	position: relative;
-	overflow: hidden;
+.div2 {
+    display: inline-block;
 }
+
+.landing-page-main {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
 
 /* https://images2.alphacoders.com/635/635934.jpg */
-.landing-page-main::after{
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: url(https://images2.alphacoders.com/635/635934.jpg);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	opacity: 0.3;
-	animation: anim 200s linear infinite;
+
+.landing-page-main::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://images2.alphacoders.com/635/635934.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.3;
+    animation: anim 200s linear infinite;
 }
 
-.landing-page-about{
-	width: 100%;
-	height: 70rem;
-	background: #111111;
-	position: relative;
-	overflow: hidden;
+.landing-page-about {
+    width: 100%;
+    height: 70rem;
+    background: #111111;
+    position: relative;
+    overflow: hidden;
 }
+
 
 /*MAIN DIV*/
-.main-content{
-	position: absolute;
-	top: 25%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
-	width: 100%;
-	max-width: 800px;
-	text-align: center;
-	padding: 0 40px;
-	box-sizing: border-box;
+
+.main-content {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 40px;
+    box-sizing: border-box;
 }
 
-.main-content h1{
-	color: white;
-	text-transform: uppercase;
-	font-size: 35px;
-	margin-bottom: 20px;
+.main-content h1 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 35px;
+    margin-bottom: 20px;
 }
 
-.main-content p{
-	color: #FFF;
-	margin-bottom: 20px;
+.main-content p {
+    color: #FFF;
+    margin-bottom: 20px;
 }
 
-.main-content a{
-	display: inline-block;
-	text-decoration: none;
-	color: #ffffff;
-	border: 2px solid #ff7979;
-	text-transform: uppercase;
-	padding: 10px 20px;
-	transform: 0.4s linear;
-	transition: 0.2s;
+.main-content a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    border: 2px solid #ff7979;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transform: 0.4s linear;
+    transition: 0.2s;
 }
 
-.main-content a:hover{
-	color: #fff;
-	background: #ff7979;
+.main-content a:hover {
+    color: #fff;
+    background: #ff7979;
 }
+
 
 /*TEACHER*/
-.teacher{
-	position: absolute;
-	top: 50%;
-	left: 0%;
-	z-index: 1;
-	width: 100%;
+
+.teacher {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    z-index: 1;
+    width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     padding-left: 35%;
     padding-right: 35%;
 }
 
-.teacher h1{
-	color: #ff7979;
-	text-transform: uppercase;
-	font-size: 35px;
+.teacher h1 {
+    color: #ff7979;
+    text-transform: uppercase;
+    font-size: 35px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.teacher p{
-	color: #FFF;
-	text-align: center;
+.teacher p {
+    color: #FFF;
+    text-align: center;
 }
 
-.teacher ul, li{
-	color: #FFF;
-	margin-bottom: 20px;
-	text-align: center;
-	padding-left: 20px;
+.teacher ul,
+li {
+    color: #FFF;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-left: 20px;
 }
 
-.teacher a{
+.teacher a {
     margin-left: auto;
     text-align: center;
-	text-decoration: none;
-	color: #fff;
-	border: 2px solid #ffffff;
-	text-transform: uppercase;
-	padding: 10px 20px;
-	transform: 0.4s linear;
-	transition: 0.2s;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid #ffffff;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transform: 0.4s linear;
+    transition: 0.2s;
 }
 
-#input{
+#input {
     color: #FFF;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
     text-align: center;
     border: 0;
     outline: none;
-    background-color:rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     width: 400px;
     height: 30px;
 }
 
-.teacher a:hover{
-	color: #000000;
-	background: #ffffff;
+.teacher a:hover {
+    color: #000000;
+    background: #ffffff;
 }
 
-.left{
+.left {
     float: left;
     width: 50%;
 }
 
-.left p{
+.left p {
     text-align: right;
     padding-right: 5px;
 }
 
-.right p{
+.right p {
     text-align: left;
     padding-left: 5px;
 }
 
+
 /*STUDENT*/
-.student{
-	position: absolute;
-	top: 48%;
-	left: 50%;
-	z-index: 1;
-	width: 50%;
-	max-width: 80%;
+
+.student {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    z-index: 1;
+    width: 50%;
+    max-width: 80%;
     padding-right: 25%;
     box-sizing: border-box;
 }
 
-.student h1{
-	color: #ff7979;
-	text-transform: uppercase;
-	font-size: 35px;
+.student h1 {
+    color: #ff7979;
+    text-transform: uppercase;
+    font-size: 35px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.student p{
-	color: #FFF;
-	margin-bottom: 20px;
-	text-align: center;
+.student p {
+    color: #FFF;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.student ul, li{
-	color: #FFF;
-	margin-bottom: 20px;
-	text-align: left;
-	padding-left: 20px;
+.student ul,
+li {
+    color: #FFF;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 20px;
 }
 
-.student a{
-	display: inline-block;
-	text-decoration: none;
-	color: #ffffff;
-	border: 2px solid #fff;
-	text-transform: uppercase;
-	padding: 10px 20px;
-	transform: 0.4s linear;
-	transition: 0.2s;
+.student a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transform: 0.4s linear;
+    transition: 0.2s;
 }
 
-.student a:hover{
-	color: #000000;
-	background: #ffffff;
+.student a:hover {
+    color: #000000;
+    background: #ffffff;
 }
 
-
-.text{
-	padding: 10px;
-	text-align: justify;
+.text {
+    padding: 10px;
+    text-align: justify;
 }
 
-.text div{
-	margin-bottom: 6px;
+.text div {
+    margin-bottom: 6px;
 }
 
-#main-footer{
-	position: absolute;
-	bottom: 0%;
-	padding-bottom: 25px;
-	width: 100%;
-	color: #fff;
-	text-align: center;
+#main-footer {
+    position: absolute;
+    bottom: 0%;
+    padding-bottom: 25px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
 }
 
-#main-footer-text{
-	padding-top: 20px;
+#main-footer-text {
+    padding-top: 20px;
     margin-right: 0;
     margin-left: 30px;
-	text-align: center;
+    text-align: center;
 }
 
-
 @media all and (max-width: 1345px) {
-    .box-img{
+    .box-img {
         border-radius: 50%;
         width: 100px;
         height: 100px;
         padding-bottom: 15px;
         padding-top: 15px;
     }
-
     /*MAIN DIV*/
-    .main-content{
+    .main-content {
         position: absolute;
         top: 20%;
         left: 50%;
@@ -269,9 +277,8 @@
         padding: 0 40px;
         box-sizing: border-box;
     }
-
     /*teacher*/
-    .teacher{
+    .teacher {
         position: absolute;
         top: 40%;
         left: 0%;
@@ -283,13 +290,11 @@
         padding: 0 0 0 0;
         box-sizing: border-box;
     }
-
-    .teacher h1{
+    .teacher h1 {
         font-size: 25px;
     }
-
     /*STUDENT*/
-    .student{
+    .student {
         position: absolute;
         top: 60%;
         left: 0%;
@@ -301,14 +306,13 @@
         padding: 0 0 0 0;
         box-sizing: border-box;
     }
-
-    .student h1{
+    .student h1 {
         font-size: 25px;
     }
 }
 
 @media all and (max-width: 565px) {
-    #main-footer{
+    #main-footer {
         position: absolute;
         bottom: 0%;
         padding-bottom: 25px;
@@ -316,8 +320,7 @@
         color: #fff;
         text-align: center;
     }
-    
-    #main-footer-text{
+    #main-footer-text {
         padding-top: 20px;
         margin-right: 30px;
         font-size: 14px;
@@ -326,16 +329,15 @@
 }
 
 @media all and (max-width: 410px) {
-    .box-img{
+    .box-img {
         border-radius: 50%;
         width: 100px;
         height: 100px;
         padding-bottom: 15px;
         padding-top: 15px;
     }
-
     /*MAIN DIV*/
-    .main-content{
+    .main-content {
         position: absolute;
         top: 20%;
         left: 50%;
@@ -347,9 +349,8 @@
         padding: 0 40px;
         box-sizing: border-box;
     }
-
     /*TEACHER*/
-    .teacher{
+    .teacher {
         position: absolute;
         top: 45%;
         left: 0%;
@@ -361,17 +362,14 @@
         padding: 0 0 0 0;
         box-sizing: border-box;
     }
-
-    .teacher h1{
+    .teacher h1 {
         font-size: 25px;
     }
-
-    .teacher p{
+    .teacher p {
         font-size: 12px;
     }
-
     /*STUDENT*/
-    .student{
+    .student {
         position: absolute;
         top: 65%;
         left: 0%;
@@ -383,16 +381,13 @@
         padding: 0 0 0 0;
         box-sizing: border-box;
     }
-
-    .student h1{
+    .student h1 {
         font-size: 25px;
     }
-
-    .student p{
+    .student p {
         font-size: 12px;
     }
-
-    #main-footer{
+    #main-footer {
         position: absolute;
         bottom: 0%;
         padding-bottom: 25px;
@@ -400,8 +395,7 @@
         color: #fff;
         text-align: center;
     }
-    
-    #main-footer-text{
+    #main-footer-text {
         padding-top: 20px;
         margin-right: 30px;
         font-size: 12px;
@@ -410,16 +404,15 @@
 }
 
 @media all and (max-width: 360px) {
-    .box-img{
+    .box-img {
         border-radius: 50%;
         width: 100px;
         height: 100px;
         padding-bottom: 15px;
         padding-top: 15px;
     }
-
     /*MAIN DIV*/
-    .main-content{
+    .main-content {
         position: absolute;
         top: 20%;
         left: 50%;
@@ -431,9 +424,8 @@
         padding: 0 40px;
         box-sizing: border-box;
     }
-
     /*TEACHER*/
-    .teacher{
+    .teacher {
         position: absolute;
         top: 45%;
         left: 0%;
@@ -445,17 +437,14 @@
         padding: 0 0 0 0;
         box-sizing: border-box;
     }
-
-    .teacher h1{
+    .teacher h1 {
         font-size: 20px;
     }
-
-    .teacher p{
+    .teacher p {
         font-size: 7px;
     }
-
     /*STUDENT*/
-    .student{
+    .student {
         position: absolute;
         top: 65%;
         left: 0%;
@@ -467,22 +456,19 @@
         padding: 0 0 0 0;
         box-sizing: border-box;
     }
-
-    .student h1{
+    .student h1 {
         font-size: 20px;
     }
-
-    .student p{
+    .student p {
         font-size: 7px;
     }
-
-    #input{
+    #input {
         color: #FFF;
         margin-bottom: 20px;
         text-align: center;
         border: 0;
         outline: none;
-        background-color:rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         width: 80%;
         height: 30px;
     }

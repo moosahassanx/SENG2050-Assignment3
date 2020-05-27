@@ -17,6 +17,10 @@
             <hr>
         </div>
 
+        <form action="hub.jsp"></form>
+        
+
+
         <div class="teacher">
         <!--Make a form, so we can pass through username and passwords through, change to one button, pass data through. -->
             <p><input type="text" placeholder="Username" id="username"><br> <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
@@ -24,6 +28,8 @@
             </p><br><br>
 
             <div class="left">
+                <button id="form-btn" onclick="location.href='hub.jsp';"></button>
+
                 <p><a href="#" address="true">Login as Teacher</a></p>
             </div>
             <div class="right">

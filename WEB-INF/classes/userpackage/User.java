@@ -1,3 +1,5 @@
+package userpackage;
+
 public class User
 {
     public User()
@@ -5,6 +7,7 @@ public class User
         name = "";
         phoneNumber = 0;
         role = "";
+        password = "";
     }
 
     public User(String name, int phoneNumber, String role)
@@ -44,8 +47,13 @@ public class User
         return role;
     }
 
+    public void setPassword(String p){
+        this.password = p;
+    }
+
 
     protected String name;
     protected int phoneNumber;
     protected String role;
+    protected String password;
 }

@@ -1,0 +1,230 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "montserrat", sans-serif;
+}
+
+.box-img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    display: block;
+}
+
+/* https://images2.alphacoders.com/635/635934.jpg */
+.landing-page-main{
+	width: 100%;
+	height: 100vh;
+	background: #000;
+	position: relative;
+	overflow: hidden;
+}
+.landing-page-main::after{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url(https://images2.alphacoders.com/635/635934.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	opacity: 0.3;
+	animation: anim 200s linear infinite;
+}
+
+/*TOP BAR*/
+.top-bar{
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	z-index: 1;
+	width: 100%;
+	text-align: left;
+	padding: 0 40px;
+	box-sizing: border-box;
+}
+
+#newcastle-portal{
+	color: white;
+	text-transform: uppercase;
+	font-size: 35px;
+}
+
+#bar-text{
+    color: white;
+	text-transform: uppercase;
+    font-size: 20px;
+}
+
+.top-bar a{
+	display: inline-block;
+	text-decoration: none;
+	color: #ffffff;
+	border: 2px solid #ff7979;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	transform: 0.4s linear;
+    transition: 0.2s;
+}
+
+.top-bar a:hover{
+	color: #fff;
+	background: #ff7979;
+}
+
+#bar-left{
+    width: auto;
+    float: left;
+}
+
+#bar-middle{
+    display: inline-block;
+    margin:0 auto;
+    width: auto;
+    margin-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 40px;
+}
+
+#bar-right{
+    float: right;
+    text-align: right;
+    margin-left: 20px;
+    padding-top: 60px;
+}
+
+.content-left{
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	z-index: 1;
+	width: 35%;
+	text-align: left;
+    box-sizing: border-box;
+    padding-top: 200px;
+    padding-left: 40px;
+}
+
+.content-left p{
+    text-align: center;
+}
+
+#content-heading{
+	color: white;
+	text-transform: uppercase;
+    font-size: 35px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.content-left ul, li{
+	color: #FFF;
+	margin-bottom: 20px;
+	text-align: left;
+	padding-left: 20px;
+}
+
+.content-left a{
+	display: inline-block;
+	text-decoration: none;
+	color: #ffffff;
+	border: 2px solid #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	transform: 0.4s linear;
+    transition: 0.2s;
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content-left a:hover{
+	color: #000000;
+	background: #ffffff;
+}
+
+.content-right{
+	position: absolute;
+	top: 0%;
+	left: 35%;
+	z-index: 1;
+	width: 65%;
+	text-align: center;
+    box-sizing: border-box;
+    padding-top: 200px;
+    padding-right: 40px;
+}
+
+#label{
+    color: white;
+	text-transform: uppercase;
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+#submit{
+    margin-top: 30px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 400px;
+    height: 40px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+}
+
+#submit:hover{
+    color: #000000;
+	background: #ffffff;
+}
+
+@media all and (max-width: 950px) {
+    .box-img{
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        margin-bottom: 10px;
+        text-align: left;
+        display: block;
+    }
+
+    #bar-left{
+        width: auto;
+        float: left;
+    }
+
+    #newcastle-portal{
+        color: white;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+
+    #bar-text{
+        color: white;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+
+    #bar-right{
+        float: right;
+        text-align: right;
+        margin-left: 20px;
+        padding-top: 40px;
+    }
+}

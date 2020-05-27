@@ -1,3 +1,5 @@
+package userpackage;
+
 public class Student extends User
 {
     public Student()
@@ -37,6 +39,17 @@ public class Student extends User
     {
         return averageMark;
     }
+
+    public void setGroup(String groupName)
+    {
+        this.groupName = groupName;
+    }
+
+    public String getGroup()
+    {
+        return groupName;
+    }
+    private String groupName;
     private String studentNumber;
     private float averageMark;
 }

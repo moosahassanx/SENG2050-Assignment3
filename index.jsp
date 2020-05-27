@@ -17,20 +17,23 @@
             <hr>
         </div>
 
-        <div class = "teacher">
         <form action = "login" method="POST">
-        <!--Make a form, so we can pass through username and passwords through, change to one button, pass data through. -->
-            <input type="text" placeholder="Username" id="username" /> <br>
-            <input type="password" placeholder="Password" id="password"> <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
-            <br><br>
-        </div>
-        <div class = "left">
-            <input type="submit" value = "Login" />
-        </div>
-        <div class = "right">
-            <input type = "reset" value ="Reset" />
+        <div class = "teacher">
+            <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
+            <p><input type="text" placeholder="Username" id="username" /></p>
+            <p><input type="password" placeholder="Password" id="password"></p>
+
+            <div class="left">
+                <p><input id="btn" type="submit" value = "Login"/></p>
+            </div>
+    
+            <div class="right">
+                <p><input id="btn" type = "reset" value ="Reset"/></p>
+            </div>
         </div>
         </form>
+        
+
 		<footer id="main-footer">
 			<p id="main-footer-text">2020 &copy; University of Newcastle</p>
 		</footer>

@@ -102,7 +102,6 @@
 
 
 /*TEACHER*/
-
 .teacher {
     position: absolute;
     top: 50%;
@@ -128,8 +127,7 @@
     text-align: center;
 }
 
-.teacher ul,
-li {
+.teacher ul, li {
     color: #FFF;
     margin-bottom: 20px;
     text-align: center;
@@ -164,6 +162,7 @@ li {
     background: #ffffff;
 }
 
+/* LEFT DIV */
 .left {
     float: left;
     width: 50%;
@@ -174,61 +173,63 @@ li {
     padding-right: 5px;
 }
 
+/* RIGHT DIV */
+.right{
+    float: right;
+    width: 50%;
+}
+
 .right p {
     text-align: left;
     padding-left: 5px;
 }
 
-
-/*STUDENT*/
-
-.student {
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    z-index: 1;
-    width: 50%;
-    max-width: 80%;
-    padding-right: 25%;
-    box-sizing: border-box;
-}
-
-.student h1 {
-    color: #ff7979;
-    text-transform: uppercase;
-    font-size: 35px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.student p {
+/* INPUT BUTTONS */
+#btn{
+    margin-top: 30px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 200px;
+    height: 40px;
     color: #FFF;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.student ul,
-li {
-    color: #FFF;
-    margin-bottom: 20px;
-    text-align: left;
-    padding-left: 20px;
-}
-
-.student a {
-    display: inline-block;
-    text-decoration: none;
-    color: #ffffff;
-    border: 2px solid #fff;
+    font-family: "montserrat", sans-serif;
     text-transform: uppercase;
-    padding: 10px 20px;
-    transform: 0.4s linear;
     transition: 0.2s;
+    font-size: 17px;
 }
 
-.student a:hover {
+#btn:hover{
     color: #000000;
-    background: #ffffff;
+	background: #ffffff;
+}
+
+/* FORM INPUTS */
+#username {
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 400px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+#password {
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 400px;
+    height: 30px;
+    margin-bottom: 10px;
 }
 
 .text {

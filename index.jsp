@@ -8,9 +8,8 @@
 
     <script>
         function myFunction(){
-        document.getElementById("popUp").style.display="block";
-
-}
+            document.getElementById("popUp").style.display="block";
+        }
     </script>
 </head>
 
@@ -24,8 +23,8 @@
             <p><button id="btn" value="register" onclick="myFunction()">Register</button></p>
         </div>
 
-        <form action = "login" method="POST">
         <div class = "teacher">
+            <form action = "login" method="POST"></form>
             <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
             <p><input type="text" placeholder="Username" id="username" name = "username" /></p>
             <p><input type="password" placeholder="Password" id="password" name = "password"></p>
@@ -38,27 +37,22 @@
                 <p><input id="btn" type="reset" value ="Reset"/></p>
             </div>
             </form>
-            <div class="bottom">
-                <p><button id="btn" value="register" onclick="registerForm()">Register</button></p>
+
+            <div class="loginPopup">
+                <div style="display:none;"class="registrationForm" id="popUp">
+                    <form action ="register" method="POST" class="formContainer">
+                        <p><input type="text" placeholder="Username" id="username"/><br></p>
+                        <p><input type="password" placeholder="Password" id="password"><br></p>
+                        <p><input type="text" placeholder="First Name" id="FirstName"/><br></p>
+                        <p><input type="text" placeholder="Last Name" id="LastName"/><br></p>
+                        <p><input type="text" placeholder="Phone Number" id="PhoneNo"/><br></p>
+                        <p><input id="submit" type="submit" value="SUBMIT"></p>
+                    </form>
+                </div>
             </div>
         </div>
         
-        <div class="loginPopup">
-            <div style="display:none;"class="registrationForm" id="popUp">
-                <form action ="register" method="POST" class="formContainer">
-                    <label>Username</label><br>
-                    <input type="text" placeholder="Username" id="username"/><br>
-                    <label>Password</label><br>
-                    <input type="password" placeholder="Password" id="password"><br>
-                    <label>First Name</label><br>
-                    <input type="text" placeholder="FirstName" id="FirstName"/><br>
-                    <label>Last Name</label><br>
-                    <input type="text" placeholder="LastName" id="LastName"/><br>
-                    <label>Phone No</label>
-                    <input type="text" placeholder="PhoneNo" id="PhoneNo"/><br>
-                </form>
-            </div>
-        </div>
+        
 
 		<footer id="main-footer">
 			<p id="main-footer-text">2020 &copy; University of Newcastle</p>

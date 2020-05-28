@@ -120,7 +120,8 @@
 
 /* INPUT BUTTONS */
 #btn{
-    margin-top: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 2px solid #FFF;
     background-color: Transparent;
     border: 1;
@@ -142,6 +143,31 @@
 	background: #ffffff;
 }
 
+#submit{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 200px;
+    height: 40px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+}
+
+#submit:hover{
+    color: #000000;
+	background: #ffffff;
+}
+
+
 /* FORM INPUTS */
 #username {
     color: #FFF;
@@ -155,6 +181,39 @@
     margin-bottom: 10px;
 }
 #password {
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 400px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+#FirstName {
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 400px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+#LastName {
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 400px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+#PhoneNo{
     color: #FFF;
     text-align: left;
     padding-left: 10px;
@@ -187,223 +246,7 @@
     text-align: center;
 }
 
-@media all and (max-width: 1345px) {
-    .box-img {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        padding-bottom: 15px;
-        padding-top: 15px;
-    }
-    /*MAIN DIV*/
-    .main-content {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1;
-        width: 100%;
-        max-width: 800px;
-        text-align: center;
-        padding: 0 40px;
-        box-sizing: border-box;
-    }
-    /*teacher*/
-    .teacher {
-        position: absolute;
-        top: 40%;
-        left: 0%;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 0 0;
-        box-sizing: border-box;
-    }
-    .teacher h1 {
-        font-size: 25px;
-    }
-    /*STUDENT*/
-    .student {
-        position: absolute;
-        top: 60%;
-        left: 0%;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 0 0;
-        box-sizing: border-box;
-    }
-    .student h1 {
-        font-size: 25px;
-    }
-}
-
-@media all and (max-width: 565px) {
-    #main-footer {
-        position: absolute;
-        bottom: 0%;
-        padding-bottom: 25px;
-        width: 100%;
-        color: #fff;
-        text-align: center;
-    }
-    #main-footer-text {
-        padding-top: 20px;
-        margin-right: 30px;
-        font-size: 14px;
-        text-align: center;
-    }
-}
-
-@media all and (max-width: 410px) {
-    .box-img {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        padding-bottom: 15px;
-        padding-top: 15px;
-    }
-    /*MAIN DIV*/
-    .main-content {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1;
-        width: 100%;
-        max-width: 800px;
-        text-align: center;
-        padding: 0 40px;
-        box-sizing: border-box;
-    }
-    /*TEACHER*/
-    .teacher {
-        position: absolute;
-        top: 45%;
-        left: 0%;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 0 0;
-        box-sizing: border-box;
-    }
-    .teacher h1 {
-        font-size: 25px;
-    }
-    .teacher p {
-        font-size: 12px;
-    }
-    /*STUDENT*/
-    .student {
-        position: absolute;
-        top: 65%;
-        left: 0%;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 0 0;
-        box-sizing: border-box;
-    }
-    .student h1 {
-        font-size: 25px;
-    }
-    .student p {
-        font-size: 12px;
-    }
-    #main-footer {
-        position: absolute;
-        bottom: 0%;
-        padding-bottom: 25px;
-        width: 100%;
-        color: #fff;
-        text-align: center;
-    }
-    #main-footer-text {
-        padding-top: 20px;
-        margin-right: 30px;
-        font-size: 12px;
-        text-align: center;
-    }
-}
-
 @media all and (max-width: 360px) {
-    .box-img {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        padding-bottom: 15px;
-        padding-top: 15px;
-    }
-    /*MAIN DIV*/
-    .main-content {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1;
-        width: 100%;
-        max-width: 800px;
-        text-align: center;
-        padding: 0 40px;
-        box-sizing: border-box;
-    }
-    /*TEACHER*/
-    .teacher {
-        position: absolute;
-        top: 45%;
-        left: 0%;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 0 0;
-        box-sizing: border-box;
-    }
-    .teacher h1 {
-        font-size: 20px;
-    }
-    .teacher p {
-        font-size: 7px;
-    }
-    /*STUDENT*/
-    .student {
-        position: absolute;
-        top: 65%;
-        left: 0%;
-        z-index: 1;
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 0 0 0;
-        box-sizing: border-box;
-    }
-    .student h1 {
-        font-size: 20px;
-    }
-    .student p {
-        font-size: 7px;
-    }
-    #input {
-        color: #FFF;
-        margin-bottom: 20px;
-        text-align: center;
-        border: 0;
-        outline: none;
-        background-color: rgba(255, 255, 255, 0.2);
-        width: 80%;
-        height: 30px;
-    }
-
     .formContainer{
         display:none;
         width:300px;
@@ -415,8 +258,5 @@
         position: relative;
         text-align: center;
         width: 100%;
-        }
-
-
-
+    }
 }

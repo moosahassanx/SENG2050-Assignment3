@@ -35,16 +35,24 @@
         </div>
 
         <!-- LIST OF DISCUSSIONS -->
+        <form action="viewdiscussion.jsp"></form>
         <div class="discussions-list"> <!--Another form that leads to a servlet that checks DB to find the right discussion thread. -->
-            <p><a href="viewdiscussion.jsp" address="true">Discussion Title1</a></p>
-            <p><a href="viewdiscussion.jsp" address="true">Discussion Title2</a></p>
-            <p><a href="viewdiscussion.jsp" address="true">Discussion Title3</a></p>
-            <p><a href="viewdiscussion.jsp" address="true">Discussion Title4</a></p>
+            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title1</button></p>
+            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title2</button></p>
+            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title3</button></p>
+            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title4</button></p>
+
+            <!--
+            <p><input id="submit" type="submit" value="DISCUSSION TITLE1"></p>
+            <p><input id="submit" type="submit" value="DISCUSSION TITLE2"></p>
+            <p><input id="submit" type="submit" value="DISCUSSION TITLE3"></p>
+            <p><input id="submit" type="submit" value="DISCUSSION TITLE4"></p>
+            -->
         </div>
         
         <!-- CREATE DISCUSSION BUTTON -->
         <div class="create-discussion">
-            <p><a href="creatediscussion.jsp" address="true">Create Discussion</a></p>
+            <p><button id="create-btn" onclick="location.href='creatediscussion.jsp';">Create Discussion</button></p>
         </div>
     </section>
 </body>

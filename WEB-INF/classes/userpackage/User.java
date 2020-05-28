@@ -15,7 +15,6 @@ public class User
         phoneNumber = 0;
         role = "";
         password = "";
-        student = false;
     }
 
     public User(String name, int phoneNumber, String role, boolean student)

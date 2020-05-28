@@ -5,8 +5,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
-import userpackage.Student;
-import userpackage.Teacher;
 
 import javax.servlet.annotation.WebServlet;
 import java.util.Scanner;
@@ -22,12 +20,13 @@ public class Login extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String loginID = request.getParameter("username"); //Grabs the parameter of name passed through
+        System.out.println(loginID);
         String password = request.getParameter("password");
         //pass in user name and password up here somewhere? 
         if (loginID.charAt(0) == 'T')
         {
             //if Login already exists in the db
-            User teacher = new Teacher();
+            User teacher = new User();
             
             teacher.setName(loginID);
             teacher.setPassword(password);
@@ -40,7 +39,7 @@ public class Login extends HttpServlet
         }
         else
         {
-            User student = new Student();
+            User student = new User();
               try{
                     if(student.getStudentUser(loginID,password)){
 

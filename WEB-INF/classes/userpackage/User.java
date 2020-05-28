@@ -15,13 +15,15 @@ public class User
         phoneNumber = 0;
         role = "";
         password = "";
+        student = false;
     }
 
-    public User(String name, int phoneNumber, String role)
+    public User(String name, int phoneNumber, String role, boolean student)
     {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.role = role;
+        this.student = student;
     }
 
     public void setName(String name)
@@ -58,11 +60,22 @@ public class User
         this.password = p;
     }
 
+    public void setStudent(boolean student)
+    {
+        this.student = student;
+    }
+
+    public boolean isStudent()
+    {
+        return student;
+    }
+
 
     protected String name;
     protected int phoneNumber;
     protected String role;
     protected String password;
+    private boolean student;
 
 
     // NOTE - Will need to comment this out until fixing the database connection or wont compile

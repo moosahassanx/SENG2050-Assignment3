@@ -1,5 +1,5 @@
-CREATE DATABASE collabDB;
-
+--CREATE DATABASE collabDB;
+USE DATABASE collabDB;
 
 CREATE LOGIN seng2050Ass3
 WITH PASSWORD = 'Passw0rd123!';
@@ -98,3 +98,8 @@ CREATE TABLE discussionsThread(
 	FOREIGN KEY(discussionID) REFERENCES discussions(discussionID),
 	FOREIGN KEY(username) REFERENCES website_users(username)
 )
+
+INSERT INTO website_users VALUES('c3324541', 'lol')
+INSERT INTO website_roles VALUES('student')
+INSERT INTO website_user_roles VALUES('c3324541', 'student')
+

@@ -6,7 +6,7 @@
 		password="Passw0rd123!"
 		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 		url="jdbc:sqlserver://localhost\SQLEXPRESS;databaseName=collabDB"/>
-
+<!--
 	<Realm className="org.apache.catalina.realm.LockOutRealm">
 		<Realm className="org.apache.catalina.realm.DataSourceRealm"
 			dataSourceName="jdbc/collabDB"
@@ -16,6 +16,7 @@
 			userCredCol="user_password"
 			userRoleTable="website_user_roles"
 			roleNameCol="user_roles"/>
+			-->
 </Context>
 	
 	<!-- Above need to match the sql tables and have a DB connection-->

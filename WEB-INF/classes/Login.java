@@ -41,25 +41,30 @@ public class Login extends HttpServlet
         else
         {
             User student = new Student();
-            if(student.getStudentUser(loginID,password)){
+              try{
+                    if(student.getStudentUser(loginID,password)){
 
-                student.setName(loginID);
-                student.setPassword(password);
-                student.setRole("student");
+                        student.setName(loginID);
+                        student.setPassword(password);
+                        student.setRole("student");
 
-                if(student.getStudentInitialLogin(loginID)){
-                    //Students first login - Re-load the hub page with dynamic taglibs to show a form to fill their details in
-                    // StudentID, PhoneNo, name...
+                        if(student.getStudentInitialLogin(loginID)){
+                            //Students first login - Re-load the hub page with dynamic taglibs to show a form to fill their details in
+                            // StudentID, PhoneNo, name...
 
-                }else{
+                        }else{
 
-                    HttpSession session = request.getSession(); //gets the session
-                    session.setAttribute("student", student); //sets the bean into the session
-                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
-                    rd.forward(request, response);
-                    
+                            HttpSession session = request.getSession(); //gets the session
+                            session.setAttribute("student", student); //sets the bean into the session
+                            RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
+                            rd.forward(request, response);
+                            
+                        }
+                    }
                 }
-            }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
             // Kinda cheating probs not the best way to do it
             PrintWriter out = response.getWriter();
 			out.println("<script type=\"text/javascript\">");

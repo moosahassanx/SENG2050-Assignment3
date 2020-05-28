@@ -1,7 +1,5 @@
 package userpackage;
 
-
-
 import java.sql.*;
 import java.io.IOException;
 import javax.naming.InitialContext;

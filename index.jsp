@@ -7,18 +7,10 @@
     <link rel="stylesheet" type="text/css" href="css/indexstyle.css">
 
     <script>
-        $(document).ready(function(){
-
-        function registrationForm(){
+        function myFunction(){
         document.getElementById("popUp").style.display="block";
 
-        }
-
-        })
-
-        function myFunction() {
-            alert("I am an alert box!");
-        }
+}
     </script>
 </head>
 
@@ -51,22 +43,22 @@
             </div>
         </div>
         
-
-        <div style="display:none;"class="registrationForm" id="popUp">
-            <form action ="register" method="POST" class="formContainer">
-                <label>Username</label><br>
-                <input type="text" placeholder="Username" id="username"/><br>
-                <label>Password</label><br>
-                <input type="password" placeholder="Password" id="password"><br>
-                <label>First Name</label><br>
-                <input type="text" placeholder="FirstName" id="FirstName"/><br>
-                <label>Last Name</label><br>
-                <input type="text" placeholder="LastName" id="LastName"/><br>
-                <label>Phone No</label>
-                <input type="text" placeholder="PhoneNo" id="PhoneNo"/><br>
-            </form>
+        <div class="loginPopup">
+            <div style="display:none;"class="registrationForm" id="popUp">
+                <form action ="register" method="POST" class="formContainer">
+                    <label>Username</label><br>
+                    <input type="text" placeholder="Username" id="username"/><br>
+                    <label>Password</label><br>
+                    <input type="password" placeholder="Password" id="password"><br>
+                    <label>First Name</label><br>
+                    <input type="text" placeholder="FirstName" id="FirstName"/><br>
+                    <label>Last Name</label><br>
+                    <input type="text" placeholder="LastName" id="LastName"/><br>
+                    <label>Phone No</label>
+                    <input type="text" placeholder="PhoneNo" id="PhoneNo"/><br>
+                </form>
+            </div>
         </div>
-        
 
 		<footer id="main-footer">
 			<p id="main-footer-text">2020 &copy; University of Newcastle</p>

@@ -409,9 +409,14 @@
         width:300px;
         padding:30px;
         background-color: #fff;
-
-
     }
+
+    .loginPopup {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        }
+
 
 
 }

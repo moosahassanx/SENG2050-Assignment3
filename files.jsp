@@ -39,6 +39,10 @@
 
         <!-- LIST OF FILES -->
         <div class="content-left">
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
+            </div>
+            
             <h1 id="content-heading">Files</h1>
             <p><button id="files-btn" onclick="location.href='files.jsp';">File Name1</button></p>
             <p><button id="files-btn" onclick="location.href='files.jsp';">File Name2</button></p>

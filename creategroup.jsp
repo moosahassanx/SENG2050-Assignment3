@@ -39,6 +39,10 @@
 
         <!-- CREATE GROUP FORM -->
         <div class="main-content">
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='groups.jsp';">Back</button>
+            </div>
+
             <p id="label">Group Name</p>
             <p><input id="input-title" type="text"></p>
 

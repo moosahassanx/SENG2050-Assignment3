@@ -39,6 +39,10 @@
 
         <!-- BOOK APPOINTMENTS -->
         <div class="content-left">
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
+            </div>
+
             <h1 id="content-heading">Book Appointment</h1>
             <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher1 (bdsm coordinator)</button></p>
             <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher2 (rat conductor)</button></p>

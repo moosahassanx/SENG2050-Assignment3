@@ -39,6 +39,10 @@
 
         <!-- LIST OF DISCUSSIONS -->
         <div class="discussions-list">
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
+            </div>
+
             <p><button id="group-btn" onclick="location.href='hub.jsp';">Group1: [Student Name], [Student Name], [Student Name]</button></p>
             <p><button id="group-btn" onclick="location.href='hub.jsp';">Group2: [Student Name], [Student Name], [Student Name]</button></p>
             <p><button id="group-btn" onclick="location.href='hub.jsp';">Group3: [Student Name], [Student Name], [Student Name]</button></p>

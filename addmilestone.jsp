@@ -41,6 +41,10 @@
             <!-- LIST OF DISCUSSIONS -->
             <form action="hub.jsp">
             <div class="main-content">
+                <div class="back-div">
+                    <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
+                </div>
+
                 <p id="label">Milestone Title</p>
                 <p><input id="input-title" type="text"></p>
 

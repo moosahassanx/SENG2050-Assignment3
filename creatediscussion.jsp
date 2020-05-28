@@ -40,6 +40,9 @@
         <!-- CREATE DISCUSSION FORM -->
         <form action="discussions.jsp">
         <div class="main-content">
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
+            </div>
             <p id="label">Title</p>
             <p><input id="input-title" type="text"></p>
 

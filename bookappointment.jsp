@@ -40,6 +40,10 @@
         <!-- CREATE GROUP FORM -->
         <form action="appointments.jsp">
         <div class="main-content">
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
+            </div>
+            
             <p id="label">Date</p>
             <p><input id="input-title" type="date"></p>
 

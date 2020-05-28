@@ -30,7 +30,13 @@
             <div class="right">
                 <p><input id="btn" type = "reset" value ="Reset"/></p>
             </div>
+
+            <div class="bottom">
+                <p><button id = "btn" type="submit" value="register">Register</button></p>
+            </div>
         </div>
+
+
         </form>
         
 

@@ -13,15 +13,6 @@
     margin-bottom: 10px;
 }
 
-.div1 {
-    display: inline-block;
-    width: 50%;
-}
-
-.div2 {
-    display: inline-block;
-}
-
 .landing-page-main {
     width: 100%;
     height: 100vh;
@@ -32,7 +23,6 @@
 
 
 /* https://images2.alphacoders.com/635/635934.jpg */
-
 .landing-page-main::after {
     content: "";
     position: absolute;
@@ -48,17 +38,7 @@
     animation: anim 200s linear infinite;
 }
 
-.landing-page-about {
-    width: 100%;
-    height: 70rem;
-    background: #111111;
-    position: relative;
-    overflow: hidden;
-}
-
-
 /*MAIN DIV*/
-
 .main-content {
     position: absolute;
     top: 25%;
@@ -83,23 +63,6 @@
     color: #FFF;
     margin-bottom: 20px;
 }
-
-.main-content a {
-    display: inline-block;
-    text-decoration: none;
-    color: #ffffff;
-    border: 2px solid #ff7979;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    transform: 0.4s linear;
-    transition: 0.2s;
-}
-
-.main-content a:hover {
-    color: #fff;
-    background: #ff7979;
-}
-
 
 /*TEACHER*/
 .teacher {
@@ -127,41 +90,6 @@
     text-align: center;
 }
 
-.teacher ul, li {
-    color: #FFF;
-    margin-bottom: 20px;
-    text-align: center;
-    padding-left: 20px;
-}
-
-.teacher a {
-    margin-left: auto;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    border: 2px solid #ffffff;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    transform: 0.4s linear;
-    transition: 0.2s;
-}
-
-#input {
-    color: #FFF;
-    margin-bottom: 20px;
-    text-align: center;
-    border: 0;
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 400px;
-    height: 30px;
-}
-
-.teacher a:hover {
-    color: #000000;
-    background: #ffffff;
-}
-
 /* LEFT DIV */
 .left {
     float: left;
@@ -180,9 +108,16 @@
 }
 
 .right p {
-    text-align: left;
+    text-align: center;
     padding-left: 5px;
 }
+
+/* Bottom button div */
+.bottom{
+   margin-bottom: 50%;
+  
+}
+
 
 /* INPUT BUTTONS */
 #btn{
@@ -235,10 +170,6 @@
 .text {
     padding: 10px;
     text-align: justify;
-}
-
-.text div {
-    margin-bottom: 6px;
 }
 
 #main-footer {

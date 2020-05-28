@@ -35,6 +35,7 @@
         </div>
 
         <!-- CREATE DISCUSSION FORM -->
+        <form action="discussions.jsp">
         <div class="main-content">
             <p id="label">Title</p>
             <p><input id="input-title" type="text"></p>
@@ -42,29 +43,9 @@
             <p id="label">Message</p>
             <p><input id="input-message" type="text"></p>
 
-            <p><a href="discussions.jsp" address="true">Create Discussion</a></p>
+            <p><input id="submit" type="submit" value="Create Discussion"></p>
         </div>
-    </section>
-
-    <!--
-        <h1>Newcastle Student</h1>
-        <h2>Group management system.</h2>
-        <h3>Create Discussion</h3>
-
-        <form action="discussions.html">
-            <label for="">Title</label><br>
-            <input type="text"><br>
-            
-
-            <label for="">Message (optional)</label><br>
-            <input type="text"><br>
-
-            <input type="submit" value="Create Post"><br><br>
         </form>
-
-        <button onclick="window.location.href='hub.html'">Hub</button>
-        <button onclick="window.location.href='discussions.html'">Back</button>
-    -->
-    
+    </section>    
 </body>
 </html>

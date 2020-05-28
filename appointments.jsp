@@ -37,11 +37,11 @@
         <!-- BOOK APPOINTMENTS -->
         <div class="content-left">
             <h1 id="content-heading">Book Appointment</h1>
-            <p><a href="bookappointment.jsp" address="true">Teacher1 (bdsm coordinator)</a></p>
-            <p><a href="bookappointment.jsp" address="true">Teacher2 (rat conductor)</a></p>
-            <p><a href="bookappointment.jsp" address="true">Teacher3 (chef supporter)</a></p>
-            <p><a href="bookappointment.jsp" address="true">Teacher4 (drain pipe)</a></p>
-            <p><a href="bookappointment.jsp" address="true">Teacher5 (the feminist)</a></p>
+            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher1 (bdsm coordinator)</button></p>
+            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher2 (rat conductor)</button></p>
+            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher3 (chef supporter)</button></p>
+            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher4 (drain pipe)</button></p>
+            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher5 (the feminist)</button></p>
         </div>
 
         <!-- UPCOMING APPOINTMENTS -->
@@ -54,32 +54,5 @@
             </ul>
         </div>
     </section>
-
-
-    <!--
-    <h1>Newcastle Student</h1>
-    <h2>Group management system.</h2>
-    <h3>Appointments</h3>
-
-    <h4>Your Appointments</h4>
-    <ul>
-        <li>Teacher1 at hh:mm dd/mm/yyyy</li>
-        <li>Teacher2 at hh:mm dd/mm/yyyy</li>
-        <li>Teacher3 at hh:mm dd/mm/yyyy</li>
-        <li>Teacher4 at hh:mm dd/mm/yyyy</li>
-    </ul>
-
-    <h4>Teachers</h4>
-    <ul>
-        <li>Teacher1 (Role) <button onclick="window.location.href='bookappointment.html'">Book Appointment</button></li>
-        <li>Teacher2 (Role) <button>Book Appointment</button></li>
-        <li>Teacher3 (Role) <button>Book Appointment</button></li>
-        <li>Teacher4 (Role) <button>Book Appointment</button></li>
-    </ul>
-
-    <form action="hub.html">
-        <input type="submit">
-    </form>
-    -->
 </body>
 </html>

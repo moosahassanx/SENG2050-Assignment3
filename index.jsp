@@ -24,13 +24,13 @@
         </div>
 
         <div class = "teacher">
-            <form action = "login" method="POST"></form>
+            <form action = "login" method="POST">
             <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
             <p><input type="text" placeholder="Username" id="username" name = "username" /></p>
             <p><input type="password" placeholder="Password" id="password" name = "password"></p>
 
             <div class="left">
-                <p><input id="btn" type="submit" value = "Login"/></p>
+                <p><input id="btn" type="submit" value = "Login" name="button"/></p>
             </div>
     
             <div class="right">
@@ -40,13 +40,13 @@
 
             <div class="loginPopup">
                 <div style="display:none;"class="registrationForm" id="popUp">
-                    <form action ="register" method="POST" class="formContainer">
-                        <p><input type="text" placeholder="Username" id="username"/><br></p>
-                        <p><input type="password" placeholder="Password" id="password"><br></p>
+                    <form action ="login" method="POST" class="formContainer">
+                        <p><input type="text" placeholder="Username" id="username" value="username" name="username2"/><br></p>
+                        <p><input type="password" placeholder="Password" id="password" value="password" name="password2"><br></p>
                         <p><input type="text" placeholder="First Name" id="FirstName"/><br></p>
                         <p><input type="text" placeholder="Last Name" id="LastName"/><br></p>
                         <p><input type="text" placeholder="Phone Number" id="PhoneNo"/><br></p>
-                        <p><input id="submit" type="submit" value="SUBMIT"></p>
+                        <p><input id="submit" type="submit" value="register" name="button"></p>
                     </form>
                 </div>
             </div>

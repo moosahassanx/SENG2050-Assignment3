@@ -19,57 +19,80 @@ public class Login extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String loginID = request.getParameter("username"); //Grabs the parameter of name passed through
-        System.out.println(loginID);
-        String password = request.getParameter("password");
-        //pass in user name and password up here somewhere? 
-        if (loginID.charAt(0) == 'T')
-        {
-            //if Login already exists in the db
-            User teacher = new User();
-            
-            teacher.setName(loginID);
-            teacher.setPassword(password);
+        
+        String buttonClicked = request.getParameter("button");
+        System.out.println(buttonClicked);
+        //User has done the login form
 
-            HttpSession session = request.getSession(); //gets the session
-            session.setAttribute("teacher", teacher); //sets the bean into the session
-            
-            RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
-            rd.forward(request, response);
-        }
-        else
-        {
-            User student = new User();
-              try{
-                    if(student.getStudentUser(loginID,password)){
 
-                        student.setName(loginID);
-                        student.setPassword(password);
-                        student.setRole("student");
 
-                        if(student.getStudentInitialLogin(loginID)){
-                            //Students first login - Re-load the hub page with dynamic taglibs to show a form to fill their details in
-                            // StudentID, PhoneNo, name...
+        if(buttonClicked.equals("Login")){
 
-                        }else{
+            String loginID = request.getParameter("username"); //Grabs the parameter of name passed through
+            String password = request.getParameter("password");
 
-                            HttpSession session = request.getSession(); //gets the session
-                            session.setAttribute("student", student); //sets the bean into the session
-                            RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
-                            rd.forward(request, response);
-                            
-                        }
-                    }
+
+            System.out.println(loginID);
+            System.out.println(password);
+            User user = new User();
+            try{
+            // Checking if credentials exist
+
+                int test = user.getStudentUser(loginID, password);
+
+                if(test == 1){
+
+                    System.out.println("database = student");
+
+                    user.setName(loginID);
+                    user.setPassword(password);
+                    user.setRole("Student");
+
+                    HttpSession session = request.getSession(); //gets the session
+                    session.setAttribute("Student", user); //sets the bean into the session
+                    
+                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
+                    rd.forward(request, response);
                 }
-                catch (Exception e){
-                    e.printStackTrace();
+                else if(test == 2){
+
+                    user.setName(loginID);
+                    user.setPassword(password);
+                    user.setRole("Teacher");
+
+                    HttpSession session = request.getSession(); //gets the session
+                    session.setAttribute("teacher", user); //sets the bean into the session
+                    
+                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
+                    rd.forward(request, response);
                 }
-            // Kinda cheating probs not the best way to do it
-            PrintWriter out = response.getWriter();
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Password is incorrect');");
-			out.println("location='Login.jsp';");
-			out.println("</script>");
+                else{
+                    // Kinda cheating probs not the best way to do it
+                    PrintWriter out = response.getWriter();
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Password is incorrect');");
+                    out.println("location='Login.jsp';");
+                    out.println("</script>");
+                }
+            }
+            catch (Exception e){
+
+            }
+
+        }else{ // The user has filled out the registration form
+            String loginID = request.getParameter("username2");
+            String password = request.getParameter("password2");
+
+
+
+
+
+
+
+
         }
+
+        System.out.println("outside");
     }
+
 }

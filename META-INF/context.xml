@@ -1,22 +1,11 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <Context>
-	<Resource name="jdbc/collabDB"
-		type="javax.sql.Datasource"
+	<Resource name="SENG2050-Assignment3/collabDB"
+		type="javax.sql.DataSource"
 		username="seng2050Ass3"
 		password="Passw0rd123!"
 		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 		url="jdbc:sqlserver://localhost\SQLEXPRESS;databaseName=collabDB"/>
-<!--
-	<Realm className="org.apache.catalina.realm.LockOutRealm">
-		<Realm className="org.apache.catalina.realm.DataSourceRealm"
-			dataSourceName="jdbc/collabDB"
-			localDataSource="true"
-			userTable="website_users"
-			userNameCol="user_names"
-			userCredCol="user_password"
-			userRoleTable="website_user_roles"
-			roleNameCol="user_roles"/>
-			-->
 </Context>
 	
 	<!-- Above need to match the sql tables and have a DB connection-->

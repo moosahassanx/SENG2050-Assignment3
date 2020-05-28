@@ -1,2 +1,2 @@
-javac *.java
+javac *.java userpackage\*.java
 pause

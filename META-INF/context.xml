@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <Context>
-	<Resource name="jdbc/collabDB"
+	<Resource name="SENG2050-Assignment3/collabDB"
 		type="javax.sql.Datasource"
 		username="seng2050Ass3"
 		password="Passw0rd123!"

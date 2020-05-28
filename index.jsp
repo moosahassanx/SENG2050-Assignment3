@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/indexstyle.css">
 
-    <script type="text/javascript" src="js/javascript.js"></script>
+    <script type="text/javascript" src="js/javascript.js">
+        $(document).ready(function(){
+
+        function registrationForm(){
+        document.getElementById("popUp").style.display="block";
+
+        }
+
+        })
+    </script>
 </head>
 
 <body>
@@ -29,16 +38,14 @@
             </div>
     
             <div class="right">
-                <p><input id="btn" type = "reset" value ="Reset"/></p>
+                <p><input id="btn" type="reset" value ="Reset"/></p>
             </div>
-        </div>
-        </form>
-
-        <div class ="RegisterDiv">
+            </form>
             <div class="bottom">
-                <p><button id = "btn" value="register" onclick="registerForm()">Register</button></p>
+                <p><button id="btn" value="register" onclick="registerForm()">Register</button></p>
             </div>
         </div>
+        
 
         <div style="display:none;"class="registrationForm" id="popUp">
             <form action ="register" method="POST" class="formContainer">

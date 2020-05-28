@@ -84,6 +84,9 @@ public class User
 
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        try{
+
+        
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         System.out.println("Inside db method2");
         Connection conn = ds.getConnection();
@@ -123,6 +126,12 @@ public class User
     rs.close();
     conn.close();
     return 0;
+    
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return 7;
     }
     
     public boolean getStudentInitialLogin(String username) throws NamingException, SQLException {

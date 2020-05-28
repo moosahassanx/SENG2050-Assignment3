@@ -166,6 +166,30 @@
     margin-bottom: 40px;
 }
 
+#submit{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 250px;
+    height: 40px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+}
+
+#submit:hover{
+    color: #000000;
+	background: #ffffff;
+}
+
 @media all and (max-width: 950px) {
     .box-img{
         border-radius: 50%;

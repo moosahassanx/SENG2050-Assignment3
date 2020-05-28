@@ -36,6 +36,7 @@
             </div>
 
             <!-- LIST OF DISCUSSIONS -->
+            <form action="hub.jsp">
             <div class="main-content">
                 <p id="label">Milestone Title</p>
                 <p><input id="input-title" type="text"></p>
@@ -46,29 +47,10 @@
                 <p id="label">Date</p>
                 <p><input id="input-title" type="date"></p>
 
-                <p><a href="hub.jsp" address="true">Add Milestone</a></p>
+                <p><input id="submit" type="submit" VALUE="ADD MILESTONE"></p>
             </div>
+            </form>
         </section>
-
-        <!--
-        <label for="">Milestone Title</label>
-        <input type="text" placeholder="Enter Title Here">
-        <br>
-
-        <label for="">Milestone Summary</label>
-        <input type="textarea">
-        <br>
-
-        <label for="">Date</label>
-        <input type="date">
-        <br>
-
-        <label for="">Time</label>
-        <input type="time">
-        <br>
-
-        <input type="submit">
-        -->
     </form>
 </body>
 </html>

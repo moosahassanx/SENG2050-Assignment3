@@ -37,11 +37,11 @@
         <!-- LIST OF FILES -->
         <div class="content-left">
             <h1 id="content-heading">Files</h1>
-            <p><a href="files.jsp" address="true">File Name1</a></p>
-            <p><a href="files.jsp" address="true">File Name2</a></p>
-            <p><a href="files.jsp" address="true">File Name3</a></p>
-            <p><a href="files.jsp" address="true">File Name4</a></p>
-            <p><a href="files.jsp" address="true">File Name5</a></p>
+            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name1</button></p>
+            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name2</button></p>
+            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name3</button></p>
+            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name4</button></p>
+            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name5</button></p>
         </div>
 
         <!-- UPLOAD FILES -->
@@ -54,17 +54,5 @@
             </form>
         </div>
     </section>
-
-    <!--
-    <h1>Newcastle Student</h1>
-    <h2>Group management system.</h2>
-    <h3>Files</h3>
-
-    <p>*google drive embedding (idk how ima do this so ima come back to this)*</p>
-
-    <form action="hub.html">
-        <input type="submit">
-    </form>
-    -->
 </body>
 </html>

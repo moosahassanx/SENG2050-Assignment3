@@ -169,6 +169,29 @@
     margin-bottom: 10px;
 }
 
+#files-btn{
+    margin-top: 10px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 250px;
+    height: 40px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+}
+
+#files-btn:hover{
+    color: #000000;
+	background: #ffffff;
+}
+
 #submit{
     margin-top: 30px;
     border: 2px solid #FFF;

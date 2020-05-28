@@ -21,8 +21,8 @@
         <form action = "login" method="POST">
         <div class = "teacher">
             <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
-            <p><input type="text" placeholder="Username" id="username" /></p>
-            <p><input type="password" placeholder="Password" id="password"></p>
+            <p><input type="text" placeholder="Username" id="username" name = "username" /></p>
+            <p><input type="password" placeholder="Password" id="password" name = "password"></p>
 
             <div class="left">
                 <p><input id="btn" type="submit" value = "Login"/></p>

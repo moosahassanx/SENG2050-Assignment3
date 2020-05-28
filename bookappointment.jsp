@@ -35,6 +35,7 @@
         </div>
 
         <!-- CREATE GROUP FORM -->
+        <form action="appointments.jsp">
         <div class="main-content">
             <p id="label">Date</p>
             <p><input id="input-title" type="date"></p>
@@ -45,8 +46,9 @@
             <p id="label">Message</p>
             <p><input id="input-message" type="text"></p>
 
-            <p><a href="appointments.jsp" address="true">Book Appointment</a></p>
+            <p><input id="submit" type="submit" value="BOOK APPOINTMENT"></p>
         </div>
+        </form>
     </section>
 
 

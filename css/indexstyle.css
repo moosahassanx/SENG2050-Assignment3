@@ -108,9 +108,16 @@
 }
 
 .right p {
-    text-align: left;
+    text-align: center;
     padding-left: 5px;
 }
+
+/* Bottom button div */
+.bottom{
+   margin-bottom: 50%;
+  
+}
+
 
 /* INPUT BUTTONS */
 #btn{

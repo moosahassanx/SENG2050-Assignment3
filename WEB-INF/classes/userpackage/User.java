@@ -72,7 +72,7 @@ public class User
 
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG_Assignment3/collabDB");
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
             // Selecting all data from the website_user table ** Note - only gives username/passwords
@@ -100,7 +100,7 @@ public class User
 
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG_Assignment3/collabDB");
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
         PreparedStatement ps = null;

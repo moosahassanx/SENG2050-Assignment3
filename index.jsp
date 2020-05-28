@@ -5,7 +5,8 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/indexstyle.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -30,14 +31,29 @@
             <div class="right">
                 <p><input id="btn" type = "reset" value ="Reset"/></p>
             </div>
+        </div>
+        </form>
 
+        <div class ="RegisterDiv">
             <div class="bottom">
-                <p><button id = "btn" type="submit" value="register">Register</button></p>
+                <p><button id = "btn" value="register" onclick="registerForm()">Register</button></p>
             </div>
         </div>
 
-
-        </form>
+        <div style="display:none;"class="registrationForm" id="popUp">
+            <form action ="register" method="POST" class="formContainer">
+                <label>Username</label><br>
+                <input type="text" placeholder="Username" id="username"/><br>
+                <label>Password</label><br>
+                <input type="password" placeholder="Password" id="password"><br>
+                <label>First Name</label><br>
+                <input type="text" placeholder="FirstName" id="FirstName"/><br>
+                <label>Last Name</label><br>
+                <input type="text" placeholder="LastName" id="LastName"/><br>
+                <label>Phone No</label>
+                <input type="text" placeholder="PhoneNo" id="PhoneNo"/><br>
+            </form>
+        </div>
         
 
 		<footer id="main-footer">

@@ -114,7 +114,11 @@
 
 /* Bottom button div */
 .bottom{
-   margin-bottom: 50%;
+    position: fixed;
+
+    top:65%;
+    margin-left:auto;
+    margin-right:auto;
   
 }
 
@@ -404,4 +408,15 @@
         width: 80%;
         height: 30px;
     }
+
+    .formContainer{
+        display:none;
+        width:300px;
+        padding:30px;
+        background-color: #fff;
+
+
+    }
+
+
 }

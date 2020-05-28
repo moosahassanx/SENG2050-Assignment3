@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 
 //This is just a template login, we will still need to change this a bit and still need to make it better
 
-@WebServlet(urlPatterns = { "/discussions" })
+@WebServlet(urlPatterns = { "/discussionsThread" })
 public class LoadDiscussions extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {

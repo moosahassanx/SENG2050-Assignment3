@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/indexstyle.css">
 
-    <script type="text/javascript" src="js/javascript.js">
+    <script>
         $(document).ready(function(){
 
         function registrationForm(){
@@ -15,6 +15,10 @@
         }
 
         })
+
+        function myFunction() {
+            alert("I am an alert box!");
+        }
     </script>
 </head>
 
@@ -25,6 +29,7 @@
             <h1>Newcastle Portal</h1>
             <p>Group management system.</p>
             <hr>
+            <p><button id="btn" value="register" onclick="myFunction()">Register</button></p>
         </div>
 
         <form action = "login" method="POST">

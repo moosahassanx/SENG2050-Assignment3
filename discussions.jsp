@@ -40,16 +40,20 @@
         <!-- LIST OF DISCUSSIONS -->
         <form action="viewdiscussion.jsp"></form>
         <div class="discussions-list"> <!--Another form that leads to a servlet that checks DB to find the right discussion thread. -->
-            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title1</button></p>
-            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title2</button></p>
-            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title3</button></p>
-            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title4</button></p>
-
-            <!--
+            <c:forEach begin = "0" end = "${discussionTitles.size()}" var = "DT">
+                <p><button id="submit" onclick="location.href='viewdiscussion?DIT=${discussionID.get(DT)}';">${discussionTitles.get(DT)}</button></p>
+            </c:forEach>
+            
+            <!-- REMINDER: MAKE A SERVLET FOR THE THREAD PAGE OKAY THANK YOU ANY ONE WHO READS THIS
             <p><input id="submit" type="submit" value="DISCUSSION TITLE1"></p>
             <p><input id="submit" type="submit" value="DISCUSSION TITLE2"></p>
             <p><input id="submit" type="submit" value="DISCUSSION TITLE3"></p>
             <p><input id="submit" type="submit" value="DISCUSSION TITLE4"></p>
+
+            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title2</button></p>
+            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title3</button></p>
+            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title4</button></p>
+
             -->
         </div>
         

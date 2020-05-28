@@ -47,9 +47,10 @@ public class Login extends HttpServlet
                     user.setName(loginID);
                     user.setPassword(password);
                     user.setRole("Student");
+                    user.setGroup("YS Clan");
 
                     HttpSession session = request.getSession(); //gets the session
-                    session.setAttribute("Student", user); //sets the bean into the session
+                    session.setAttribute("user", user); //sets the bean into the session
                     
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
                     rd.forward(request, response);
@@ -61,7 +62,7 @@ public class Login extends HttpServlet
                     user.setRole("Teacher");
 
                     HttpSession session = request.getSession(); //gets the session
-                    session.setAttribute("teacher", user); //sets the bean into the session
+                    session.setAttribute("user", user); //sets the bean into the session
                     
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
                     rd.forward(request, response);

@@ -69,7 +69,29 @@ public class User
         return student;
     }
 
+    public boolean hasGroup()
+    {
+        if (group == "")
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
+    public void setGroup(String group)
+    {
+        this.group = group;
+    }
+
+    public String getGroup()
+    {
+        return group;
+    }
+    
+    private String group;
     protected String name;
     protected int phoneNumber;
     protected String role;
@@ -103,14 +125,22 @@ public class User
                     System.out.println(user);
                     if(user.equalsIgnoreCase(username)){
                         String userPass = rs.getString("password");
+                        System.out.println(userPass);
                         if(userPass.equals(password)){
+                            System.out.println("im in lol");
                             // Credentials correct now check what role they are
                             query = "SELECT * from website_user_roles WHERE username = ?";
+                            System.out.println("2");
                             ps = conn.prepareStatement(query);
+                            System.out.println("3");
                             ps.setObject(1, user);
+                            System.out.println("4");
+                            rs = ps.executeQuery();
                                 // Checks what role the user has
                                 while(rs.next()){
-                                    if(rs.getString("role").equals("Student")){
+                                    System.out.println("kek");
+                                    System.out.println(rs.getString("role"));
+                                    if(rs.getString("role").equalsIgnoreCase("Student")){
                                         rs.close();
                                         conn.close();
                                         return 1;

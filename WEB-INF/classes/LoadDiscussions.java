@@ -48,8 +48,10 @@ public class LoadDiscussions extends HttpServlet {
         ps = conn.prepareStatement(query);
         ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
+        rs.next();
         String discussionTitle = rs.getString("title");
         String discussionDesc = rs.getString("description");
+        String discussionUsername = rs.getString("username");
 
         query = "Select * from discussionsThread WHERE discussionID = ?";
         ps = conn.prepareStatement(query);
@@ -66,6 +68,7 @@ public class LoadDiscussions extends HttpServlet {
             threadDesc.add(rs.getString("description"));
         }
 
+        session.setAttribute("discussionUsername", discussionUsername);
         session.setAttribute("discussionTitle", discussionTitle);
         session.setAttribute("discussionDesc", discussionDesc);
         session.setAttribute("threadIDs", threadIDs);

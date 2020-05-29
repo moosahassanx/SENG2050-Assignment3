@@ -22,7 +22,7 @@ public class LoadDiscussions extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
-        String id = request.getParameter("DID");
+        String id = request.getParameter("DIT");
         try 
         {
             getDiscussionsThread(session, id);
@@ -32,31 +32,44 @@ public class LoadDiscussions extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        RequestDispatcher rd = request.getRequestDispatcher("discussions.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("viewdiscussion.jsp");
         rd.forward(request,response);
         return;
     }
     public void getDiscussionsThread(HttpSession session, String id) throws SQLException, NamingException
     {
-        /*InitialContext ctx = new InitialContext();
+        InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
-        String query = "SELECT * from discussionsThread";
-        ResultSet rs = stmt.executeQuery(query);
-        ArrayList<String> discussionTitles = new ArrayList<String>();
-        ArrayList<String> discussionID = new ArrayList<String>();
+        PreparedStatement ps = null;
+        String query = "SELECT * from discussions WHERE discussionID = ?";
+        ps = conn.prepareStatement(query);
+        ps.setString(1, id);
+        ResultSet rs = ps.executeQuery();
+        String discussionTitle = rs.getString("title");
+        String discussionDesc = rs.getString("description");
+
+        query = "Select * from discussionsThread WHERE discussionID = ?";
+        ps = conn.prepareStatement(query);
+        ps.setString(1, id);
+        rs = ps.executeQuery();
+        ArrayList<String> threadIDs = new ArrayList<String>();
+        ArrayList<String> threadUsernames = new ArrayList<String>();
+        ArrayList<String> threadDesc = new ArrayList<String>();
 
         while(rs.next())
         {
-            String discussionTitle = rs.getString("title");
-            String discussID = rs.getString("discussionID");
-            discussionTitles.add(discussionTitle);
-            discussionID.add(discussID);
+            threadIDs.add(rs.getString("threadID"));
+            threadUsernames.add(rs.getString("username"));
+            threadDesc.add(rs.getString("description"));
         }
-        session.setAttribute("discussionTitles", discussionTitles);
-        session.setAttribute("discussionID", discussionID);*/
+
+        session.setAttribute("discussionTitle", discussionTitle);
+        session.setAttribute("discussionDesc", discussionDesc);
+        session.setAttribute("threadIDs", threadIDs);
+        session.setAttribute("threadUsernames", threadUsernames);
+        session.setAttribute("threadDesc",threadDesc);
     }
 }

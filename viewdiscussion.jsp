@@ -22,7 +22,7 @@
             <div id="bar-middle">
                 <h1 id="newcastle-portal">Newcastle Portal</h1>
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">[Discussion Title]</h3>
+                <h3 id="bar-text">${discussionTitle}</h3>
             </div>
             <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>
@@ -40,16 +40,18 @@
 
         <!-- MESSAGES -->
         <div class="discussions-list">
-            <p id="username">[Josh]</p>
-            <p id="message">how do you eat a rat?</p>
-
-            <p id="username">[Humeey]</p>
-            <p id="message">Have you tried boiling it?</p>
-
-            <p id="username">[Moosa]</p>
-            <p id="message">Just eat it raw bro.</p>
+        <p id = "username">${discussionUsername}</p>
+        <p id = "message">${discussionDesc}</p>
+        <c:forEach begin = "1" end = "${threadIDs.size()}" var = "TID">
+            <p id="username">${threadUsernames.get(TID-1)}</p>
+            <p id="message">${threadDesc.get(TID-1)}</p>
+        </c:forEach>
         </div>
-        
+        <!--<p id="username">[Humeey]</p>
+        <p id="message">Have you tried boiling it?</p>
+
+        <p id="username">[Moosa]</p>
+        <p id="message">Just eat it raw bro.</p> -->
         <!-- REPLY -->
         <div class="create-discussion">
             <input type="text">

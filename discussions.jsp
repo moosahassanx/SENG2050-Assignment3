@@ -46,7 +46,7 @@
             </div>
 
             <c:forEach begin = "1" end = "${discussionTitles.size()}" var = "DT">
-                <p><button id="submit" onclick="location.href='viewdiscussion?DIT=${discussionID.get(DT-1)}';">${discussionTitles.get(DT-1)}</button></p>
+                <p><button id="submit" onclick="location.href='LoadDiscussions?DIT=${discussionID.get(DT-1)}';">${discussionTitles.get(DT-1)}</button></p>
             </c:forEach>
             
             <!-- REMINDER: MAKE A SERVLET FOR THE THREAD PAGE OKAY THANK YOU ANY ONE WHO READS THIS

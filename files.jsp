@@ -54,8 +54,9 @@
         <!-- UPLOAD FILES -->
         <div class="content-right">
             <h1 id="content-heading">Upload Files</h1>
-            <form action="files.jsp">
+            <form action="upload" method="post" enctype="multipart/form-data">
                 <p id="label">Select a file: </p>
+                <p><input type="text" name="description"/></p>
                 <p><input type="file" name="myfile" class="custom-file-input"></p>
                 <p><input type="submit" id="submit"></p>
             </form>

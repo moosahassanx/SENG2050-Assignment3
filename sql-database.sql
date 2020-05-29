@@ -104,3 +104,6 @@ INSERT INTO website_roles VALUES('student')
 INSERT INTO website_user_roles VALUES('c3324541', 'student')
 INSERT into website_users (username, password) VALUES ('Humey', '123');
 INSERT INTO website_user_roles VALUES ('Humey', 'student')
+INSERT INTO discussions VALUES ('D000001','How do I use Java?','c3324541','I am having alot of issues understanding Java. For some reason, everytime I write I hate Moosa, it does not send 3 robots to his house to teach him about Minecraf!!! pls help!!s')
+INSERT INTO discussions VALUES ('D000002','My group member is not responding and is calling me bad words','Humey','He is not responding to me and is actually being a total asshole. He said I was a racist, I cannot believe this, smh. Pls ban. ')
+SELECT * from discussions

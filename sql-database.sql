@@ -43,24 +43,33 @@ CREATE TABLE website_user_roles (
 	FOREIGN KEY(role) REFERENCES website_roles(role)
 )
 
+-------- TABLE FOR GROUPS ---------------------------------------
 CREATE TABLE groups	(
 	group_name VARCHAR(30) NOT NULL PRIMARY KEY
 )
-
 CREATE TABLE user_groups	(
 	username varchar(30) NOT NULL,
 	group_name varchar(30) NOT NULL,
 	
 	FOREIGN KEY(username) REFERENCES website_users(username),
 	FOREIGN KEY(group_name) REFERENCES groups(group_name)
-	
 )
-
 CREATE TABLE group_folders	(
 	folder_name varchar(30) NOT NULL PRIMARY KEY,
 	group_name varchar(30) NOT NULL,
 	
 	FOREIGN KEY(group_name) REFERENCES groups(group_name)
+)
+SELECT * FROM groups;
+SELECT * FROM user_groups;
+------------------------------------------------------------------
+
+CREATE TABLE group_folder_files	(
+	folder_name varchar(30) NOT NULL,
+	fileID varchar(30) NOT NULL,
+	
+	FOREIGN KEY(folder_name) REFERENCES group_folders(folder_name),
+	FOREIGN KEY(fileID) REFERENCES files(fileID)
 )
 
 CREATE TABLE files	(
@@ -69,14 +78,6 @@ CREATE TABLE files	(
 	uploaded_name varchar(30) NOT NULL,
 	
 	FOREIGN KEY(uploaded_name) REFERENCES website_users(username)
-)
-
-CREATE TABLE group_folder_files	(
-	folder_name varchar(30) NOT NULL,
-	fileID varchar(30) NOT NULL,
-	
-	FOREIGN KEY(folder_name) REFERENCES group_folders(folder_name),
-	FOREIGN KEY(fileID) REFERENCES files(fileID)
 )
 
 CREATE TABLE discussions(

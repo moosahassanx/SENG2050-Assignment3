@@ -38,20 +38,20 @@
         </div>
 
         <!-- CREATE DISCUSSION FORM -->
-        <form action="discussions.jsp">
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-            <p id="label">Title</p>
-            <p><input id="input-title" type="text"></p>
+            <form action="createDiscussion" method = "POST">
+                <p id="label">Title</p>
+                <p><input id="input-title" type="text" name = "title"></p>
 
-            <p id="label">Message</p>
-            <p><input id="input-message" type="text"></p>
+                <p id="label">Message</p>
+                <p><input id="input-message" type="text" name = "description"></p>
 
-            <p><input id="submit" type="submit" value="Create Discussion"></p>
+                <p><input id="submit" type="submit" value="Create Discussion"></p>
+            </form>
         </div>
-        </form>
     </section>    
 </body>
 </html>

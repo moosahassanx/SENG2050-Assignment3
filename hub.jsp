@@ -44,7 +44,7 @@
             <p><a href="appointments.jsp" address="true">Appointments</a></p>
             <p><a href="addmilestone.jsp" address="true">Milestones</a></p>
             <p><a href="files.jsp" address="true">Files</a></p>
-            <p><a href="discussions.jsp" address="true">Discussions</a></p>
+            <p><a href="discussions" address="true">Discussions</a></p>
         </div>
 
         <div class="content-right">

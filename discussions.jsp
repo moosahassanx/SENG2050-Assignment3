@@ -38,15 +38,15 @@
         </div>
 
         <!-- LIST OF DISCUSSIONS -->
-        <form action="viewdiscussion.jsp"></form>
+        <!--<form action="viewdiscussion.jsp"></form>-->
         <div class="discussions-list"> <!--Another form that leads to a servlet that checks DB to find the right discussion thread. -->
             <!-- BACK BUTTON -->
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
 
-            <c:forEach begin = "0" end = "${discussionTitles.size()}" var = "DT">
-                <p><button id="submit" onclick="location.href='viewdiscussion?DIT=${discussionID.get(DT)}';">${discussionTitles.get(DT)}</button></p>
+            <c:forEach begin = "1" end = "${discussionTitles.size()}" var = "DT">
+                <p><button id="submit" onclick="location.href='discussionsThread?DIT=${discussionID.get(DT-1)}';">${discussionTitles.get(DT-1)}</button></p>
             </c:forEach>
             
             <!-- REMINDER: MAKE A SERVLET FOR THE THREAD PAGE OKAY THANK YOU ANY ONE WHO READS THIS

@@ -50,8 +50,8 @@ public class Discussions extends HttpServlet {
 
         while(rs.next())
         {
-            String discussionTitle = rs.getString("title");
             String discussID = rs.getString("discussionID");
+            String discussionTitle = rs.getString("title");
             discussionTitles.add(discussionTitle);
             discussionID.add(discussID);
         }

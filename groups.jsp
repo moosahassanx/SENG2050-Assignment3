@@ -61,10 +61,10 @@
             -->
 
             <!-- FAKE OUTPUT-->
-            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group1: [Student Name], [Student Name], [Student Name]</button></p>
-            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group2: [Student Name], [Student Name], [Student Name]</button></p>
-            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group3: [Student Name], [Student Name], [Student Name]</button></p>
-            <p><button id="group-btn" onclick="location.href='hub.jsp';">Group4: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='joingroup';">Group1: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='joingroup';">Group2: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='joingroup';">Group3: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='joingroup';">Group4: [Student Name], [Student Name], [Student Name]</button></p>
             
         </div>
         </form>

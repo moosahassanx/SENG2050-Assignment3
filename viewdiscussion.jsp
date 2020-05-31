@@ -54,8 +54,17 @@
         <p id="message">Just eat it raw bro.</p> -->
         <!-- REPLY -->
         <div class="create-discussion">
-            <input type="text">
-            <p><a href="viewdiscussion.jsp" address="true">Reply</a></p>
+            <form action = "createDiscussionThread" method = "POST">
+
+                <p id="label">Reply</p>
+                <p><input id="input-message" type="text" name = "description"></p>
+
+                <br>
+                
+                <p><input id="submit" type="submit" value="Create Discussion"></p>
+            </form>
+
+            </form>
         </div>
     </section>
 </body>

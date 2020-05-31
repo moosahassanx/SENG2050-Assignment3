@@ -23,7 +23,7 @@ public class CreateDiscussionThread extends HttpServlet {
     {
         HttpSession session = request.getSession();
         String desc = request.getParameter("description");
-        int id = Integer.parseInt(request.getParameter("TID"));
+        int id = (int)session.getAttribute("DIT");
         User theUser =((User)session.getAttribute("user"));
         try 
         {

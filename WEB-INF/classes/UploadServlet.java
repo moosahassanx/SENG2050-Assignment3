@@ -17,7 +17,7 @@ public class UploadServlet extends HttpServlet {
         Part filePart = request.getPart("file");
         //String fileName = getSubmittedFileName(filePart); 
 
-        String fileName = part.getSubmittedFileName();
+        String fileName = filePart.getSubmittedFileName();                          // OLD CODE: String fileName = file.getSubmittedFileName();
 
         // Should turn file into byte stream, upload onto db
         InputStream fileBytes = filePart.getInputStream();

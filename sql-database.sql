@@ -111,3 +111,4 @@ INSERT INTO discussions VALUES ('My group member is not responding and is callin
 INSERT INTO discussionsThread VALUES ('1', 'Moosa','How do I eat a rat bro?')
 INSERT INTO discussionsThread VALUES ('2', 'Humey','Moosa Hassan, this is not the language I want on these discussion forums. Never speak again. ')
 SELECT * from discussions
+SELECT * from discussionsThread

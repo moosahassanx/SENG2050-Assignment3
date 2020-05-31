@@ -22,7 +22,8 @@ public class LoadDiscussions extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
-        String id = request.getParameter("DIT");
+        int id = Integer.parseInt(request.getParameter("DIT"));
+        session.setAttribute("DIT", id);
         try 
         {
             getDiscussionsThread(session, id);
@@ -36,7 +37,7 @@ public class LoadDiscussions extends HttpServlet {
         rd.forward(request,response);
         return;
     }
-    public void getDiscussionsThread(HttpSession session, String id) throws SQLException, NamingException
+    public void getDiscussionsThread(HttpSession session, int id) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -46,7 +47,7 @@ public class LoadDiscussions extends HttpServlet {
         PreparedStatement ps = null;
         String query = "SELECT * from discussions WHERE discussionID = ?";
         ps = conn.prepareStatement(query);
-        ps.setString(1, id);
+        ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
         rs.next();
         String discussionTitle = rs.getString("title");
@@ -55,7 +56,7 @@ public class LoadDiscussions extends HttpServlet {
 
         query = "Select * from discussionsThread WHERE discussionID = ?";
         ps = conn.prepareStatement(query);
-        ps.setString(1, id);
+        ps.setInt(1, id);
         rs = ps.executeQuery();
         ArrayList<String> threadIDs = new ArrayList<String>();
         ArrayList<String> threadUsernames = new ArrayList<String>();

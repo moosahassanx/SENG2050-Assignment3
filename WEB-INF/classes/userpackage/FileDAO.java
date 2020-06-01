@@ -20,9 +20,9 @@ public class FileDAO{
 
     public FileDAO(){
         
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
+        //InitialContext ctx = new InitialContext();
+        //DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        //Connection conn = ds.getConnection();
 
     }
 
@@ -31,7 +31,10 @@ public class FileDAO{
         
     }
 
-    public boolean uploadFile()
+    public boolean uploadFile(){
+
+        return false;
+    }
 
 
 

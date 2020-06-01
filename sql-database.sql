@@ -47,22 +47,20 @@ CREATE TABLE website_user_roles (
 CREATE TABLE groups	(
 	group_name VARCHAR(30) NOT NULL PRIMARY KEY
 )
-CREATE TABLE user_groups	(
+CREATE TABLE user_groups (
 	username varchar(30) NOT NULL,
 	group_name varchar(30) NOT NULL,
 	
 	FOREIGN KEY(username) REFERENCES website_users(username),
 	FOREIGN KEY(group_name) REFERENCES groups(group_name)
 )
+
 CREATE TABLE group_folders	(
 	folder_name varchar(30) NOT NULL PRIMARY KEY,
 	group_name varchar(30) NOT NULL,
 	
 	FOREIGN KEY(group_name) REFERENCES groups(group_name)
 )
-SELECT * FROM groups;
-SELECT * FROM user_groups;
-------------------------------------------------------------------
 
 CREATE TABLE group_folder_files	(
 	folder_name varchar(30) NOT NULL,
@@ -112,3 +110,14 @@ INSERT INTO discussionsThread VALUES ('1', 'Moosa','How do I eat a rat bro?')
 INSERT INTO discussionsThread VALUES ('2', 'Humey','Moosa Hassan, this is not the language I want on these discussion forums. Never speak again. ')
 SELECT * from discussions
 SELECT * from discussionsThread
+
+-- groups testing
+INSERT INTO groups VALUES('FaZe Clan')
+INSERT INTO groups VALUES('Chef Gang')
+INSERT INTO groups VALUES('Virginity Club')
+SELECT * FROM groups;
+
+INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan')
+INSERT INTO user_groups VALUES('Humey', 'FaZe Clan')
+SELECT * FROM user_groups;
+SELECT * FROM website_users;

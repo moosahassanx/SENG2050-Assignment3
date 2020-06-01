@@ -53,23 +53,23 @@ public class Groups extends HttpServlet {
         ArrayList<String> GroupNames = new ArrayList<String>();
 
         // build list of group names
-        int counter = 0;
+        //int counter = 0;
         while(rs.next()) {
             String GroupName = rs.getString("group_name");
-            System.out.println("GroupName: " + GroupNames);
+            //System.out.println("GroupName: " + GroupNames);
             GroupNames.add(GroupName);
             
-            counter++;
-            System.out.println("inloop Counter: " + counter);
+            //counter++;
+            //System.out.println("inloop Counter: " + counter);
         }
-        System.out.println("Counter: " + counter);
+        /*System.out.println("Counter: " + counter);
 
         // testing array indexing
         System.out.println("GroupNames.size(): " + GroupNames.size());
 
         for(int i = 0; i < GroupNames.size(); i++){
             System.out.println("Group Name " + i + ": " + GroupNames.get(i));
-        }
+        }*/
 
         session.setAttribute("GroupNames", GroupNames);
     }

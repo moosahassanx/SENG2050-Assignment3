@@ -61,15 +61,14 @@
             -->
 
             <c:forEach begin = "1" end = "${GroupNames.size()}" var = "i">
-                <p>yo testing</p>
                 <p><button id="group-btn" onclick="location.href='joingroup';">${GroupNames.get(i-1)}</button></p>
             </c:forEach>
 
             <!-- FAKE OUTPUT-->
-            <p><button id="group-btn" onclick="location.href='joingroup';">Group1: [Student Name], [Student Name], [Student Name]</button></p>
+            <!--<p><button id="group-btn" onclick="location.href='joingroup';">Group1: [Student Name], [Student Name], [Student Name]</button></p>
             <p><button id="group-btn" onclick="location.href='joingroup';">Group2: [Student Name], [Student Name], [Student Name]</button></p>
             <p><button id="group-btn" onclick="location.href='joingroup';">Group3: [Student Name], [Student Name], [Student Name]</button></p>
-            <p><button id="group-btn" onclick="location.href='joingroup';">Group4: [Student Name], [Student Name], [Student Name]</button></p>
+            <p><button id="group-btn" onclick="location.href='joingroup';">Group4: [Student Name], [Student Name], [Student Name]</button></p> -->
             
         </div>
         </form>

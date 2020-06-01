@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 public class Groups extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // checking servlet initializing
-        System.out.println("Testing Groups.java servlet.");
+        System.out.println("*****Groups Servlet Loaded.*****");
 
         // attempt to run method
         HttpSession session = request.getSession();
@@ -46,26 +46,30 @@ public class Groups extends HttpServlet {
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
-        System.out.println("// connection COMPLETE");
 
         // get data from groups table in db
-        String query = "SELECT * from groups";
+        String query = "SELECT * FROM groups";
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<String> GroupNames = new ArrayList<String>();
-        System.out.println("// get data from groups table in db COMPLETE");
 
         // build list of group names
+        int counter = 0;
         while(rs.next()) {
             String GroupName = rs.getString("group_name");
+            System.out.println("GroupName: " + GroupNames);
             GroupNames.add(GroupName);
+            
+            counter++;
+            System.out.println("inloop Counter: " + counter);
         }
-        System.out.println("// build list of group names COMPLETE");
+        System.out.println("Counter: " + counter);
 
         // testing array indexing
+        System.out.println("GroupNames.size(): " + GroupNames.size());
+
         for(int i = 0; i < GroupNames.size(); i++){
             System.out.println("Group Name " + i + ": " + GroupNames.get(i));
         }
-        System.out.println("// testing array indexing COMPLETE");
 
         session.setAttribute("GroupNames", GroupNames);
     }

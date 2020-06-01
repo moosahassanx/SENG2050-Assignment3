@@ -112,12 +112,12 @@ SELECT * from discussions
 SELECT * from discussionsThread
 
 -- groups testing
-INSERT INTO groups VALUES('FaZe Clan')
-INSERT INTO groups VALUES('Chef Gang')
-INSERT INTO groups VALUES('Virginity Club')
+INSERT INTO groups VALUES('FaZe Clan');
+INSERT INTO groups VALUES('Chef Gang');
+INSERT INTO groups VALUES('Virginity Club');
 SELECT * FROM groups;
 
-INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan')
-INSERT INTO user_groups VALUES('Humey', 'FaZe Clan')
+INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
+INSERT INTO user_groups VALUES('Humey', 'FaZe Clan');
 SELECT * FROM user_groups;
 SELECT * FROM website_users;

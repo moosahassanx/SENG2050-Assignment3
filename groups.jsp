@@ -62,7 +62,7 @@
 
             <c:forEach begin = "1" end = "${GroupNames.size()}" var = "i">
                 <p>yo testing</p>
-                <p><button id="group-btn" onclick="location.href='joingroup';">${GroupNames.get(1)}</button></p>
+                <p><button id="group-btn" onclick="location.href='joingroup';">${GroupNames.get(i-1)}</button></p>
             </c:forEach>
 
             <!-- FAKE OUTPUT-->

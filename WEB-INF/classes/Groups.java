@@ -21,42 +21,52 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/groups" })
 public class Groups extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // checking servlet initializing
         System.out.println("Testing Groups.java servlet.");
 
+        // attempt to run method
         HttpSession session = request.getSession();
         try {
             getGroups(session);
         } 
         catch (SQLException | NamingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
+        // redirect user to groups.jsp page
         RequestDispatcher rd = request.getRequestDispatcher("groups.jsp");
         rd.forward(request,response);
         return;
     }
 
+    // method to get all the group names
     public void getGroups(HttpSession session) throws SQLException, NamingException {
+        // connection
         InitialContext ctx = new InitialContext();
-        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
-        // Selecting all data from the website_user table ** Note - only gives username/passwords
-        String query = "SELECT * from groups";          // get data from groups
+        System.out.println("// connection COMPLETE");
+
+        // get data from groups table in db
+        String query = "SELECT * from groups";
         ResultSet rs = stmt.executeQuery(query);
-        ArrayList<String> GroupsTitles = new ArrayList<String>();
-        ArrayList<String> GroupsID = new ArrayList<String>();
+        ArrayList<String> GroupNames = new ArrayList<String>();
+        System.out.println("// get data from groups table in db COMPLETE");
 
+        // build list of group names
         while(rs.next()) {
-            String discussID = rs.getString("GroupsID");
-            String GroupsTitle = rs.getString("title");
-            GroupsTitles.add(GroupsTitle);
-            GroupsID.add(discussID);
+            String GroupName = rs.getString("group_name");
+            GroupNames.add(GroupName);
         }
+        System.out.println("// build list of group names COMPLETE");
 
-        session.setAttribute("GroupsTitles", GroupsTitles);
-        session.setAttribute("GroupsID", GroupsID);
+        // testing array indexing
+        for(int i = 0; i < GroupNames.size(); i++){
+            System.out.println("Group Name " + i + ": " + GroupNames.get(i));
+        }
+        System.out.println("// testing array indexing COMPLETE");
+
+        session.setAttribute("GroupNames", GroupNames);
     }
 }

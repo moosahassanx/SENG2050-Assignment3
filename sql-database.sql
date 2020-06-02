@@ -127,6 +127,9 @@ INSERT INTO groups VALUES('Chef Gang');
 INSERT INTO groups VALUES('Virginity Club');
 SELECT * FROM groups;
 
+-- use this for deleting groups after
+-- DELETE FROM groups WHERE group_name='nwa';
+
 INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
 INSERT INTO user_groups VALUES('Humey', 'FaZe Clan');
 SELECT * FROM user_groups;

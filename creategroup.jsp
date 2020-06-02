@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>University of Newcastle - Files</title>
+	<title>University of Newcastle - Create Group</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/creategroup.css">
@@ -38,18 +38,21 @@
         </div>
 
         <!-- CREATE GROUP FORM -->
+        
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='groups.jsp';">Back</button>
             </div>
 
+            <form action="createGroup" method="POST">
             <p id="label">Group Name</p>
-            <p><input id="input-title" type="text"></p>
+            <p><input id="input-title" type="text" name="groupNameInput" required></p>
 
             <p id="label">Subject</p>
-            <p><input id="input-title" type="text"></p>
+            <p><input id="input-title" type="text" name="subjectInput"></p>
 
-            <p><button id="newgroup-btn" onclick="location.href='groups.jsp';">Create Group</button></p>
+            <p><input id="submit" type="submit" value="Create Group"></p>
+            </form>
         </div>
     </section>
 </body>

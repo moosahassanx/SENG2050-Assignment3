@@ -1,11 +1,15 @@
---CREATE DATABASE collabDB;
---USE collabDB;
+CREATE DATABASE collabDB
 
 CREATE LOGIN seng2050Ass3
 WITH PASSWORD = 'Passw0rd123!';
 
 CREATE USER seng2050Ass3
 for LOGIN seng2050Ass3;
+
+drop USER seng2050Ass3
+
+ALTER ROLE db_datareader ADD member seng2050Ass3
+ALTER ROLE db_datawriter ADD member seng2050Ass3
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 to seng2050Ass3;
@@ -18,6 +22,8 @@ CREATE TABLE website_users	(
 CREATE TABLE website_roles (
 	role varchar(30) NOT NULL PRIMARY KEY
 )
+
+
 
 CREATE TABLE user_information	(
 	username varchar(30) NOT NULL PRIMARY KEY,
@@ -62,20 +68,22 @@ CREATE TABLE group_folders	(
 	FOREIGN KEY(group_name) REFERENCES groups(group_name)
 )
 
+CREATE TABLE files	(
+	fileID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	binary_file VARBINARY(MAX) NOT NULL,
+	file_name VARCHAR(30) NOT NULL,
+	uploaded_name varchar(30) NOT NULL,
+	file_description varchar(1000) NOT NULL,
+	
+	FOREIGN KEY(uploaded_name) REFERENCES website_users(username)
+)
+
 CREATE TABLE group_folder_files	(
 	folder_name varchar(30) NOT NULL,
-	fileID varchar(30) NOT NULL,
+	fileID int IDENTITY(1,1) NOT NULL,
 	
 	FOREIGN KEY(folder_name) REFERENCES group_folders(folder_name),
 	FOREIGN KEY(fileID) REFERENCES files(fileID)
-)
-
-CREATE TABLE files	(
-	fileID varchar(30) NOT NULL PRIMARY KEY,
-	binary_file VARBINARY(MAX) NOT NULL,
-	uploaded_name varchar(30) NOT NULL,
-	
-	FOREIGN KEY(uploaded_name) REFERENCES website_users(username)
 )
 
 CREATE TABLE discussions(
@@ -93,20 +101,20 @@ CREATE TABLE discussionsThread(
 	username varChar(30) NOT NULL, 
 	description varChar(1000) NOT NULL, 
 
-
 	FOREIGN KEY(discussionID) REFERENCES discussions(discussionID),
 	FOREIGN KEY(username) REFERENCES website_users(username)
 )
 
-CREATE TABLE milestones(
-	milestoneID int NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	description varChar(1000) NOT NULL,
-	username varChar(30) NOT NULL,
-	groupName varChar(30) NOT NULL, 
+select * from files
+select * from user_groups
 
-	FOREIGN KEY(username) REFERENCES website_users(username),
-	FOREIGN KEY(groupName) REFERENCES groups(group_name)
-)
+delete from files where fileID = 9
+
+DROP table discussionsThread
+DROP table discussions
+drop table group_folder_files
+drop table files
+drop table
 
 INSERT INTO website_users VALUES('c3324541', '	')
 INSERT INTO website_users VALUES('Moosa', 'kek')
@@ -126,9 +134,6 @@ INSERT INTO groups VALUES('FaZe Clan');
 INSERT INTO groups VALUES('Chef Gang');
 INSERT INTO groups VALUES('Virginity Club');
 SELECT * FROM groups;
-
--- use this for deleting groups after
--- DELETE FROM groups WHERE group_name='nwa';
 
 INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
 INSERT INTO user_groups VALUES('Humey', 'FaZe Clan');

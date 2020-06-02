@@ -61,6 +61,8 @@ public class Groups extends HttpServlet {
             System.out.println("Group Name " + i + ": " + GroupNames.get(i));
         }
 
+        // closing
         session.setAttribute("GroupNames", GroupNames);
+        conn.close();
     }
 }

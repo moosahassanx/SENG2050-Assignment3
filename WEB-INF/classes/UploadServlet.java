@@ -1,5 +1,5 @@
 import java.io.*;
-
+import java.util.List;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -8,23 +8,42 @@ import userpackage.User;
 import userpackage.File;
 
 import javax.servlet.annotation.WebServlet;
-
+import javax.servlet.annotation.MultipartConfig;
 
 @WebServlet("/upload")
-//@MultipartConfig
+@MultipartConfig(maxFileSize = 10485760)
 public class UploadServlet extends HttpServlet {
     
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String buttonPressed = request.getParameter("list");
+        System.out.println(buttonPressed);
+        if(buttonPressed.equals("list")){
 
+            File uploadFile = new File();
+            List<File> file = uploadFile.getAllFiles(uploadFile);
+
+            HttpSession session = request.getSession();
+            session.setAttribute("list", file);
+                    
+            RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
+            rd.forward(request, response);
+
+
+        }else{
         // Extracting file data from the submitted form / file picked
         String fileDescription = request.getParameter("description");
         String groupName = request.getParameter("groupName");
         String userUploaded = request.getParameter("userUploaded");
-        Part filePart = request.getPart("file");
+        Part filePart = request.getPart("myfile");
         String fileName = filePart.getSubmittedFileName();                          
         InputStream fileBytes = filePart.getInputStream();
         byte[] bytes = fileBytes.readAllBytes(); 
+
+        System.out.println(fileDescription);
+        System.out.println(groupName);
+        System.out.println(userUploaded);
+        System.out.println(fileName);
 
         // Creating the file object
         File uploadFile = new File(); 
@@ -36,14 +55,21 @@ public class UploadServlet extends HttpServlet {
         // Sending file to upload method
         try{
 
-            uploadFile.uploadFile(uploadFile);
+            uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName);
 
 
         }catch (Exception e){
             e.printStackTrace();
         }
-        
     }
+    }
+
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    // Handle the download of files
+
+    }
+
 
 
 

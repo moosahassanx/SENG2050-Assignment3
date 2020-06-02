@@ -1,6 +1,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 
+<%@ page import="userpackage.File"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="css/files.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
+
+<jsp:useBean id="file" scope="session" class="userpackage.File"/>
+
 
 <body>
     <section class="landing-page-main">
@@ -38,7 +42,7 @@
         </div>
 
         <!-- LIST OF FILES -->
-        <div class="content-left">
+       <!-- <div class="content-left">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
@@ -49,7 +53,7 @@
             <p><button id="files-btn" onclick="location.href='files.jsp';">File Name3</button></p>
             <p><button id="files-btn" onclick="location.href='files.jsp';">File Name4</button></p>
             <p><button id="files-btn" onclick="location.href='files.jsp';">File Name5</button></p>
-        </div>
+        </div> -->
 
         <!-- UPLOAD FILES -->
         <div class="content-right">
@@ -60,9 +64,29 @@
                 <p><input type="file" name="myfile" class="custom-file-input"></p>
                 <input type="hidden" name="userUploaded" value="${user.getName()}"/>
                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
-                <p><input type="submit" id="submit"></p>
+                <p><input type="submit" id="submit" name="list"></p> <p><input type="submit" id="submit" name="list" value="list"></p>
             </form>
         </div>
+    
+        <div class = "files-list">
+        <table border ="1" width ="90%">
+
+            <tr>
+                <th>File Name</th>
+                <th>File Description</th>
+                <th>Download</th>
+            </tr>
+
+            <c:forEach items="${list}" var="l">
+                <tr>
+                    <td>${l.getFileName()}</td>
+                    <td>${l.getDescription()}</td>
+                    <td><a href="files.jsp?id=oihjm">Download me</a></td>
+                </tr>
+            </c:forEach>
+        </table>
+        </div>
+    
     </section>
 </body>
 </html>

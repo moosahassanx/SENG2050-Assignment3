@@ -75,5 +75,6 @@ public class LoadDiscussions extends HttpServlet {
         session.setAttribute("threadIDs", threadIDs);
         session.setAttribute("threadUsernames", threadUsernames);
         session.setAttribute("threadDesc",threadDesc);
+        conn.close();
     }
 }

@@ -1,5 +1,3 @@
-// COPIED OFF JOSH LMAO BUT I JUST NEEDED A START TO MY SERVLET
-
 //package WEB-INF.classes;
 
 import java.io.*;
@@ -53,24 +51,18 @@ public class Groups extends HttpServlet {
         ArrayList<String> GroupNames = new ArrayList<String>();
 
         // build list of group names
-        //int counter = 0;
         while(rs.next()) {
             String GroupName = rs.getString("group_name");
-            //System.out.println("GroupName: " + GroupNames);
             GroupNames.add(GroupName);
-            
-            //counter++;
-            //System.out.println("inloop Counter: " + counter);
         }
-        /*System.out.println("Counter: " + counter);
 
-        // testing array indexing
-        System.out.println("GroupNames.size(): " + GroupNames.size());
-
+        // displaying group names in terminal
         for(int i = 0; i < GroupNames.size(); i++){
             System.out.println("Group Name " + i + ": " + GroupNames.get(i));
-        }*/
+        }
 
+        // closing
         session.setAttribute("GroupNames", GroupNames);
+        conn.close();
     }
 }

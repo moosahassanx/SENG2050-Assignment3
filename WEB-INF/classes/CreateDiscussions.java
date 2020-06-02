@@ -54,5 +54,7 @@ public class CreateDiscussions extends HttpServlet {
         ps.setString(2, user.getName());
         ps.setString(3,desc);
         ps.executeUpdate();
+
+        conn.close();
     }
 }

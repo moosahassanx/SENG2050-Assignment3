@@ -4,8 +4,6 @@ import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.sql.*;
 
 import javax.naming.InitialContext;
@@ -71,58 +69,30 @@ public class File {
         this.fileData = fileData;
     }
 
-    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName) throws NamingException, SQLException {
+    public boolean uploadFile(File file) throws NamingException, SQLException {
+
 
         InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
-        java.sql.Statement stmt = conn.createStatement();
+        Statement stmt = (Statement) conn.createStatement();
         PreparedStatement ps = null;
 
-            String query = "INSERT into files VALUES (?,?,?,?)";
-            ps = conn.prepareStatement(query);
-            ps.setObject(1,bytes);
-            ps.setString(2, fileName );
-            ps.setString(3, uploadedName);
-            ps.setString(4, description);
-            System.out.println(query);
-            ps.executeUpdate();
 
-            // Add the file to the group the useruploaded belongs too
+
+
+
+
+
+
+
         return false;
     }
 
 
-    public List<File> getAllFiles(File uploadFile){
-        // Storing all the files in an arraylist from the database
-        List<File> list = new ArrayList<File>();
-        System.out.println("In all files");
-        // Establishing the jdbc connection
-        try{
-            InitialContext ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            Connection conn = ds.getConnection();
-            java.sql.Statement stmt = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("Select * from files");
-            ResultSet rs = ps.executeQuery();
 
-            // Running through the files table
-            while(rs.next()){
-                //File file = new File();
-                uploadFile.setFileName(rs.getString("file_name"));
-                uploadFile.setUserUploaded(rs.getString("uploaded_name"));
-                uploadFile.setDescription(rs.getString("file_description"));
-                byte[] fileData = (rs.getBytes("binary_file"));
-                uploadFile.setFileData(fileData);
-                list.add(uploadFile);
-            }
-        
-        }catch(Exception e){
-            e.printStackTrace();
-        }
 
-        return list;
-    }
 
 
 }

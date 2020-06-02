@@ -151,26 +151,13 @@
 
 .content-right{
 	position: absolute;
-	top: -10%;
-	left: 18%;
+	top: 0%;
+	left: 35%;
 	z-index: 1;
 	width: 65%;
 	text-align: center;
     box-sizing: border-box;
     padding-top: 260px;
-    padding-right: 40px;
-}
-
-.files-list{
-    position: absolute;
-    color: #fff;
-	top: 65%;
-	left: 20%;
-	z-index: 1;
-	width: 65%;
-	text-align: center;
-    box-sizing: border-box;
-    padding-top: 10px;
     padding-right: 40px;
 }
 

@@ -37,7 +37,7 @@ public class JoinGroups extends HttpServlet {
         return;
     }
 
-    // definetely not needed cos im lazy and fat i just want this to compile so im not gay
+    // !definetely not needed cos im lazy and fat i just want this to compile so im not gay
     public void getGroups(HttpSession session) throws SQLException, NamingException {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name

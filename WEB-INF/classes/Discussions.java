@@ -57,5 +57,6 @@ public class Discussions extends HttpServlet {
         }
         session.setAttribute("discussionTitles", discussionTitles);
         session.setAttribute("discussionID", discussionID);
+        conn.close();
     }
 }

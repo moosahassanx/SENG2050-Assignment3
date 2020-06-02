@@ -98,6 +98,16 @@ CREATE TABLE discussionsThread(
 	FOREIGN KEY(username) REFERENCES website_users(username)
 )
 
+CREATE TABLE milestones(
+	milestoneID int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	description varChar(1000) NOT NULL,
+	username varChar(30) NOT NULL,
+	groupName varChar(30) NOT NULL, 
+
+	FOREIGN KEY(username) REFERENCES website_users(username),
+	FOREIGN KEY(groupName) REFERENCES groups(group_name)
+)
+
 INSERT INTO website_users VALUES('c3324541', '	')
 INSERT INTO website_users VALUES('Moosa', 'kek')
 INSERT INTO website_roles VALUES('student')

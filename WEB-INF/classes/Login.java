@@ -3,6 +3,7 @@
 import java.io.*;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -109,14 +110,16 @@ public class Login extends HttpServlet
 
     public void getMilestoneList(User user, HttpSession session)
     {
-        /*InitialContext ctx = new InitialContext();
+        InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
-        String query = "SELECT * from milestones WHERE groupName = ?";
-        ResultSet rs = stmt.executeQuery(query);
+        PreparedStatement ps = null;
+        String query = "SELECT * from discussions WHERE groupName = ?";
+        ps = conn.prepareStatement(query);
+        ps.setString(1, user.getGroup());
+        ResultSet rs = ps.executeQuery(query);
         ArrayList<String> milestoneStudentNames = new ArrayList<String>();
         ArrayList<String> milestoneDescriptions = new ArrayList<String>();
         ArrayList<Date> milestoneDates = new ArrayList<Date>();
@@ -132,6 +135,6 @@ public class Login extends HttpServlet
         }
         session.setAttribute("milestoneStudentNames", milestoneStudentNames);
         session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
-        session.setAttribute("milestoneDates", milestoneDates); */
+        session.setAttribute("milestoneDates", milestoneDates); 
     }
 }

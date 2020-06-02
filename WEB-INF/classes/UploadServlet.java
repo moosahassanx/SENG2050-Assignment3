@@ -1,8 +1,12 @@
 import java.io.*;
+
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
+import userpackage.File;
+
 import javax.servlet.annotation.WebServlet;
 
 
@@ -13,30 +17,35 @@ public class UploadServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Extracting file data from the submitted form / file picked
         String fileDescription = request.getParameter("description");
+        String groupName = request.getParameter("groupName");
+        String userUploaded = request.getParameter("userUploaded");
         Part filePart = request.getPart("file");
-        //String fileName = getSubmittedFileName(filePart); 
-
-        String fileName = filePart.getSubmittedFileName();                          // OLD CODE: String fileName = file.getSubmittedFileName();
-
-        // Should turn file into byte stream, upload onto db
+        String fileName = filePart.getSubmittedFileName();                          
         InputStream fileBytes = filePart.getInputStream();
         byte[] bytes = fileBytes.readAllBytes(); 
-    }
+
+        // Creating the file object
+        File uploadFile = new File(); 
+        // Setting files parameters, loaded constructor wouldnt work?
+        uploadFile.setUserUploaded(userUploaded);
+        uploadFile.setDescription(fileDescription);
+        uploadFile.setFileName(fileName);
+        uploadFile.setFileData(bytes);
+        // Sending file to upload method
+        try{
+
+            uploadFile.uploadFile(uploadFile);
 
 
-
-
-    // Legit copied straight from stack, we aren't on servlet 3.1 so getting the file name is iffy, unsure if it workds
-    // but it compiles
-    private static String getSubmittedFileName(Part part) {
-        for (String cd : part.getHeader("content-disposition").split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-                return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); 
-            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return null;
+        
     }
+
+
+
 
 }

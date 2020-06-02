@@ -58,6 +58,8 @@
                 <p id="label">Select a file: </p>
                 <p><input type="text" name="description"/></p>
                 <p><input type="file" name="myfile" class="custom-file-input"></p>
+                <input type="hidden" name="userUploaded" value="${user.getName()}"/>
+                <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
                 <p><input type="submit" id="submit"></p>
             </form>
         </div>

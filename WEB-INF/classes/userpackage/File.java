@@ -71,7 +71,7 @@ public class File {
         this.fileData = fileData;
     }
 
-    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName) throws NamingException, SQLException {
+    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws NamingException, SQLException {
 
         InitialContext ctx = new InitialContext();
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
@@ -79,12 +79,13 @@ public class File {
         java.sql.Statement stmt = conn.createStatement();
         PreparedStatement ps = null;
 
-            String query = "INSERT into files VALUES (?,?,?,?)";
+            String query = "INSERT into files VALUES (?,?,?,?,?)";
             ps = conn.prepareStatement(query);
             ps.setObject(1,bytes);
             ps.setString(2, fileName );
             ps.setString(3, uploadedName);
             ps.setString(4, description);
+            ps.setString(5, groupName);
             System.out.println(query);
             ps.executeUpdate();
 
@@ -92,23 +93,21 @@ public class File {
         return false;
     }
 
-
-    public List<File> getAllFiles(File uploadFile){
+    public List<File> getAllFiles(File uploadFile, String groupName){
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
-        System.out.println("In all files");
-        // Establishing the jdbc connection
+
         try{
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
             Connection conn = ds.getConnection();
             java.sql.Statement stmt = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("Select * from files");
+            PreparedStatement ps = conn.prepareStatement("Select * from files where group_name = ?"); // WHERE group_name = ? ** user.getGroup
+            ps.setString(1, groupName);
             ResultSet rs = ps.executeQuery();
 
             // Running through the files table
             while(rs.next()){
-                //File file = new File();
                 uploadFile.setFileName(rs.getString("file_name"));
                 uploadFile.setUserUploaded(rs.getString("uploaded_name"));
                 uploadFile.setDescription(rs.getString("file_description"));

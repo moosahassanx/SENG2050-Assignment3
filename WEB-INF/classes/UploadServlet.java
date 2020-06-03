@@ -19,22 +19,23 @@ public class UploadServlet extends HttpServlet {
         String buttonPressed = request.getParameter("list");
         System.out.println(buttonPressed);
         if(buttonPressed.equals("list")){
-
-            File uploadFile = new File();
-            List<File> file = uploadFile.getAllFiles(uploadFile);
-
             HttpSession session = request.getSession();
+
+            User user = (User) session.getAttribute("user");
+            File uploadFile = new File();
+
+            List<File> file = uploadFile.getAllFiles(uploadFile, user.getGroup());
+
             session.setAttribute("list", file);
-                    
+
             RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
             rd.forward(request, response);
 
-
         }else{
-        // Extracting file data from the submitted form / file picked
+
         String fileDescription = request.getParameter("description");
-        String groupName = request.getParameter("groupName");
         String userUploaded = request.getParameter("userUploaded");
+        String groupName = request.getParameter("userGroup");
         Part filePart = request.getPart("myfile");
         String fileName = filePart.getSubmittedFileName();                          
         InputStream fileBytes = filePart.getInputStream();
@@ -53,15 +54,15 @@ public class UploadServlet extends HttpServlet {
         uploadFile.setFileName(fileName);
         uploadFile.setFileData(bytes);
         // Sending file to upload method
-        try{
+            try{
 
-            uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName);
+                uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
 
 
-        }catch (Exception e){
-            e.printStackTrace();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
-    }
     }
 
 

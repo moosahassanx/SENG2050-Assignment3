@@ -1,4 +1,5 @@
 CREATE DATABASE collabDB
+USE collabDB
 
 CREATE LOGIN seng2050Ass3
 WITH PASSWORD = 'Passw0rd123!';
@@ -54,8 +55,8 @@ CREATE TABLE groups	(
 	group_name VARCHAR(30) NOT NULL PRIMARY KEY
 )
 CREATE TABLE user_groups (
-	username varchar(30) NOT NULL,
-	group_name varchar(30) NOT NULL,
+	username VARCHAR(30) NOT NULL,
+	group_name VARCHAR(30) NOT NULL,
 	
 	FOREIGN KEY(username) REFERENCES website_users(username),
 	FOREIGN KEY(group_name) REFERENCES groups(group_name)

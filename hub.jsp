@@ -11,6 +11,8 @@
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
+
+
 <body>
     <section class="landing-page-main">
         <div class="top-bar">
@@ -50,9 +52,9 @@
         <div class="content-right">
             <h1 id="content-heading">Milestone List</h1>
             <ul>
-                <li>[Student Name]: Eat a chef</li>
-                <li>[Student Name]: Sell fathers day cards to the orphanage</li>
-                <li>[Student Name]: Smash that bitch off lazy town</li>
+            <c:forEach begin = "1" end = "${milestoneDescriptions.size()}" var = "MD">
+                <li>${milestoneStudentNames.get(MD-1)}: ${milestoneDescriptions.get(MD-1)}</li>
+            </c:forEach>
             </ul>
         </div>
     </section>

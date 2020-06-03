@@ -38,40 +38,17 @@
         </div>
 
         <!-- LIST OF GROUPS -->
-        <form action="hub.jsp">
         <div class="discussions-list">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
 
-            <!-- DISPLAYING GROUPS PSEUDOCODE
-            // case: no groups made
-            if(groupItems == 0){
-                <p>No groups made</p>
-            }
-            
-            // output groups using for loop
-            else{
-                for(int i = 0; i < groupItems; i++){
-                    <button id="group-btn" onclick="location.href='<c:out value="${group[i].getTitle()}"></c:out>.jsp';">
-                        <c:out value="${group[i].getTitle()}"></c:out>
-                    </button>
-                }
-            }
-            -->
-
+            <form action="joinGroup">
             <c:forEach begin = "1" end = "${GroupNames.size()}" var = "i">
-                <p><button id="group-btn" onclick="location.href='joingroup';">${GroupNames.get(i-1)}</button></p>
+                <p><button id="group-btn" onclick="location.href='joingroup';" value="${GroupNames.get(i-1)}" name="groupName">${GroupNames.get(i-1)}</button></p>
             </c:forEach>
-
-            <!-- FAKE OUTPUT-->
-            <!--<p><button id="group-btn" onclick="location.href='joingroup';">Group1: [Student Name], [Student Name], [Student Name]</button></p>
-            <p><button id="group-btn" onclick="location.href='joingroup';">Group2: [Student Name], [Student Name], [Student Name]</button></p>
-            <p><button id="group-btn" onclick="location.href='joingroup';">Group3: [Student Name], [Student Name], [Student Name]</button></p>
-            <p><button id="group-btn" onclick="location.href='joingroup';">Group4: [Student Name], [Student Name], [Student Name]</button></p> -->
-            
+            </form>
         </div>
-        </form>
         
         <!-- CREATE GROUP BUTTON -->
         <div class="create-discussion">

@@ -3,7 +3,9 @@
 import java.io.*;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.naming.*;
@@ -30,19 +32,20 @@ public class Login extends HttpServlet
     {
         
         String buttonClicked = request.getParameter("button");
+        
         System.out.println(buttonClicked);
-        //User has done the login form
 
 
 
         if(buttonClicked.equals("Login")){
 
-            String loginID = request.getParameter("username"); //Grabs the parameter of name passed through
+            //Grabs the parameter of name passed through
+            String loginID = request.getParameter("username"); 
             String password = request.getParameter("password");
 
 
-            System.out.println(loginID);
-            System.out.println(password);
+            System.out.println("LoginID: " + loginID);
+            System.out.println("Password" + password);
             User user = new User();
             try{
             // Checking if credentials exist
@@ -56,13 +59,13 @@ public class Login extends HttpServlet
                     user.setName(loginID);
                     user.setPassword(password);
                     user.setRole("Student");
-                    user.setGroup("YS Clan");
+                    user.setGroup("FaZe Clan");
 
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
 
-                    getMilestoneList(user, session);
-                    
+                    //getMilestoneList(user, session);
+
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
                     rd.forward(request, response);
                 }
@@ -85,10 +88,12 @@ public class Login extends HttpServlet
                     out.println("alert('Password is incorrect');");
                     out.println("location='Login.jsp';");
                     out.println("</script>");
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //Redirects to the next page. 
+                    rd.forward(request, response);
                 }
             }
             catch (Exception e){
-
+                e.printStackTrace();
             }
 
         }else{ // The user has filled out the registration form
@@ -107,31 +112,39 @@ public class Login extends HttpServlet
         System.out.println("outside");
     }
 
-    public void getMilestoneList(User user, HttpSession session)
+    public void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException
     {
-        /*InitialContext ctx = new InitialContext();
+        try{
+        InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
+        PreparedStatement ps = null;
         String query = "SELECT * from milestones WHERE groupName = ?";
-        ResultSet rs = stmt.executeQuery(query);
+        ps = conn.prepareStatement(query);
+        ps.setString(1, user.getGroup());
+        ResultSet rs = ps.executeQuery();
         ArrayList<String> milestoneStudentNames = new ArrayList<String>();
         ArrayList<String> milestoneDescriptions = new ArrayList<String>();
-        ArrayList<Date> milestoneDates = new ArrayList<Date>();
+        //ArrayList<Date> milestoneDates = new ArrayList<Date>();
 
         while(rs.next())
         {
             String milestoneStudent = rs.getString("username");
-            String milestoneDescription = rs.getString("descriptions");
-            Date date = rs.getDate("date");
+            String milestoneDescription = rs.getString("description");
+            //Date date = rs.getDate("date");
             milestoneStudentNames.add(milestoneStudent);
             milestoneDescriptions.add(milestoneDescription);
-            milestoneDates.add(date);
+            //milestoneDates.add(date);
         }
         session.setAttribute("milestoneStudentNames", milestoneStudentNames);
         session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
-        session.setAttribute("milestoneDates", milestoneDates); */
+        //session.setAttribute("milestoneDates", milestoneDates); 
+    }
+    catch(Exception e)
+    {
+        e.printStackTrace();
+    }
     }
 }

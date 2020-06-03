@@ -57,7 +57,8 @@ public class UploadServlet extends HttpServlet {
             try{
 
                 uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
-
+                RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
+                rd.forward(request, response);
 
             }catch (Exception e){
                 e.printStackTrace();

@@ -64,7 +64,7 @@ public class Login extends HttpServlet
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
 
-                    getMilestoneList(user, session);
+                    //getMilestoneList(user, session);
 
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
                     rd.forward(request, response);
@@ -88,6 +88,8 @@ public class Login extends HttpServlet
                     out.println("alert('Password is incorrect');");
                     out.println("location='Login.jsp';");
                     out.println("</script>");
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //Redirects to the next page. 
+                    rd.forward(request, response);
                 }
             }
             catch (Exception e){

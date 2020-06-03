@@ -43,8 +43,8 @@ public class Login extends HttpServlet
             String password = request.getParameter("password");
 
 
-            System.out.println(loginID);
-            System.out.println(password);
+            System.out.println("LoginID: " + loginID);
+            System.out.println("Password" + password);
             User user = new User();
             try{
             // Checking if credentials exist

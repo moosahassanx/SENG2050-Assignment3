@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.naming.*;
@@ -63,7 +64,7 @@ public class Login extends HttpServlet
                     session.setAttribute("user", user); //sets the bean into the session
 
                     getMilestoneList(user, session);
-                    
+
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
                     rd.forward(request, response);
                 }
@@ -108,7 +109,7 @@ public class Login extends HttpServlet
         System.out.println("outside");
     }
 
-    public void getMilestoneList(User user, HttpSession session)
+    public void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name

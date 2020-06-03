@@ -32,14 +32,15 @@ public class Login extends HttpServlet
     {
         
         String buttonClicked = request.getParameter("button");
+        
         System.out.println(buttonClicked);
-        //User has done the login form
 
 
 
         if(buttonClicked.equals("Login")){
 
-            String loginID = request.getParameter("username"); //Grabs the parameter of name passed through
+            //Grabs the parameter of name passed through
+            String loginID = request.getParameter("username"); 
             String password = request.getParameter("password");
 
 

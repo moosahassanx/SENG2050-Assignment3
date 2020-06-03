@@ -38,17 +38,17 @@
         </div>
 
         <!-- LIST OF GROUPS -->
-        <form action="hub.jsp">
         <div class="discussions-list">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
 
+            <form action="joinGroup">
             <c:forEach begin = "1" end = "${GroupNames.size()}" var = "i">
-                <p><button id="group-btn" onclick="location.href='joingroup';">${GroupNames.get(i-1)}</button></p>
-            </c:forEach>            
+                <p><button id="group-btn" onclick="location.href='joingroup';" value="${GroupNames.get(i-1)}" name="groupName">${GroupNames.get(i-1)}</button></p>
+            </c:forEach>
+            </form>
         </div>
-        </form>
         
         <!-- CREATE GROUP BUTTON -->
         <div class="create-discussion">

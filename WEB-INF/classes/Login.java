@@ -58,7 +58,7 @@ public class Login extends HttpServlet
                     user.setName(loginID);
                     user.setPassword(password);
                     user.setRole("Student");
-                    user.setGroup("YS Clan");
+                    user.setGroup("FaZe Clan");
 
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
@@ -90,7 +90,7 @@ public class Login extends HttpServlet
                 }
             }
             catch (Exception e){
-
+                e.printStackTrace();
             }
 
         }else{ // The user has filled out the registration form
@@ -111,31 +111,37 @@ public class Login extends HttpServlet
 
     public void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException
     {
+        try{
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
         PreparedStatement ps = null;
-        String query = "SELECT * from discussions WHERE groupName = ?";
+        String query = "SELECT * from milestones WHERE groupName = ?";
         ps = conn.prepareStatement(query);
         ps.setString(1, user.getGroup());
-        ResultSet rs = ps.executeQuery(query);
+        ResultSet rs = ps.executeQuery();
         ArrayList<String> milestoneStudentNames = new ArrayList<String>();
         ArrayList<String> milestoneDescriptions = new ArrayList<String>();
-        ArrayList<Date> milestoneDates = new ArrayList<Date>();
+        //ArrayList<Date> milestoneDates = new ArrayList<Date>();
 
         while(rs.next())
         {
             String milestoneStudent = rs.getString("username");
-            String milestoneDescription = rs.getString("descriptions");
-            Date date = rs.getDate("date");
+            String milestoneDescription = rs.getString("description");
+            //Date date = rs.getDate("date");
             milestoneStudentNames.add(milestoneStudent);
             milestoneDescriptions.add(milestoneDescription);
-            milestoneDates.add(date);
+            //milestoneDates.add(date);
         }
         session.setAttribute("milestoneStudentNames", milestoneStudentNames);
         session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
-        session.setAttribute("milestoneDates", milestoneDates); 
+        //session.setAttribute("milestoneDates", milestoneDates); 
+    }
+    catch(Exception e)
+    {
+        e.printStackTrace();
+    }
     }
 }

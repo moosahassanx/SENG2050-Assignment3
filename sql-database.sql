@@ -127,8 +127,11 @@ DROP table discussionsThread
 DROP table discussions
 drop table group_folder_files
 drop table files
-drop table
+--drop table
 
+INSERT INTO milestones VALUES ('Teach Moosa how to be competent','c3324541','FaZe Clan')
+INSERT INTO milestones VALUES ('Finish Assignment ayy lmao','Moosa','FaZe Clan')
+INSERT INTO milestones VALUES ('Kick Moosa out of the group because lol','Humey','FaZe Clan')
 INSERT INTO website_users VALUES('c3324541', '	')
 INSERT INTO website_users VALUES('Moosa', 'kek')
 INSERT INTO website_roles VALUES('student')
@@ -152,3 +155,4 @@ INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
 INSERT INTO user_groups VALUES('Humey', 'FaZe Clan');
 SELECT * FROM user_groups;
 SELECT * FROM website_users;
+SELECT * FROM milestones WHERE groupName = 'FaZe Clan'

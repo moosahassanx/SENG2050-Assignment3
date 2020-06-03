@@ -98,7 +98,6 @@ public class User
     protected String password;
     private boolean student;
 
-
     // NOTE - Will need to comment this out until fixing the database connection or wont compile
     // Need to fix to be generic for either Student and a Teacher
 

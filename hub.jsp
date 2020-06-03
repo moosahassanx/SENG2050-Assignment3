@@ -52,7 +52,7 @@
         <div class="content-right">
             <h1 id="content-heading">Milestone List</h1>
             <ul>
-            <c:forEach begin = "0" end = "${milestoneDescriptions.size()}" var = "MD">
+            <c:forEach begin = "1" end = "${milestoneDescriptions.size()}" var = "MD">
                 <li>${milestoneStudentNames.get(MD-1)}: ${milestoneDescriptions.get(MD-1)}</li>
             </c:forEach>
             </ul>

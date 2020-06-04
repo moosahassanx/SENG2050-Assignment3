@@ -112,12 +112,21 @@ CREATE TABLE milestones(
 	description varChar(1000) NOT NULL,
 	username varChar(30) NOT NULL,
 	groupName varChar(30) NOT NULL, 
+	--dateDue date not null,  
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 	FOREIGN KEY(groupName) REFERENCES groups(group_name)
 )
 
+CREATE TABLE appointments(
+	appointmentID int not null identity(1,1) primary key,
+	teacher varChar(30) not null,
+	username varChar(30) not null,
+	description varChar(1000) not null,
+	--date required still
 
+	FOREIGN KEY(username) REFERENCES website_users(username),
+)
 
 select * from files
 select * from user_groups
@@ -143,6 +152,9 @@ INSERT INTO discussions VALUES ('How do I use Java?','c3324541','I am having alo
 INSERT INTO discussions VALUES ('My group member is not responding and is calling me bad words','Humey','He is not responding to me and is actually being a total asshole. He said I was a racist, I cannot believe this, smh. Pls ban. ')
 INSERT INTO discussionsThread VALUES ('1', 'Moosa','How do I eat a rat bro?')
 INSERT INTO discussionsThread VALUES ('2', 'Humey','Moosa Hassan, this is not the language I want on these discussion forums. Never speak again. ')
+INSERT INTO appointments VALUES ('Mr Smooth','Humey','Get feedback on A3 and how to code a car')
+INSERT INTO appointments values ('Mr Roworth','Moosa','Just be bros together yknow')
+INSERT INTO appointments values ('Mrs Sooooooks','Humey','Hell yeah')
 SELECT * from discussions
 SELECT * from discussionsThread
 

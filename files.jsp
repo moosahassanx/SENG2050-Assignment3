@@ -1,3 +1,10 @@
+<!--
+    Assignment 3: Files.jsp
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: This is where all the files will be stored. This is where students can
+    upload various files and also download them. 
+-->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 

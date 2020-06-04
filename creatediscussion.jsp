@@ -1,3 +1,9 @@
+<!--
+    Assignment 3: Discussions.jsp
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: 
+-->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 

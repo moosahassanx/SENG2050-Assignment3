@@ -1,3 +1,10 @@
+<!--
+    Assignment 3: CreateGroup.jsp
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: This will be the page where a user will be able to create a new group. 
+    They are able to create the group and also make it apart of a specific subject. 
+-->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 

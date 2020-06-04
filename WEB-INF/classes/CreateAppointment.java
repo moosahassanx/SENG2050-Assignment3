@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 
 import userpackage.User;
 import userpackage.AppointmentsDB;
+
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,10 +23,11 @@ public class CreateAppointment extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
+        User user = (User)request.getAttribute("user");
         AppointmentsDB APB = new AppointmentsDB();
         APB.setUsername(user.getName());
         APB.setSession(session);
-        try 
+        /*try 
         {
             APB.writeAppointments();
         } 
@@ -33,7 +35,7 @@ public class CreateAppointment extends HttpServlet
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        } */
         session = APB.getSession();
         RequestDispatcher rd = request.getRequestDispatcher("appointments.jsp");
         rd.forward(request,response);

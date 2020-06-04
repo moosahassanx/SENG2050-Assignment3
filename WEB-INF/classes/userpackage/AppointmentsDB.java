@@ -1,3 +1,6 @@
+package userpackage;
+
+import userpackage.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +12,7 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-package classes.userpackage;
+
 
 public class AppointmentsDB 
 {

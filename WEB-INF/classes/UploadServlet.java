@@ -21,10 +21,10 @@ public class UploadServlet extends HttpServlet {
         if(buttonPressed.equals("list")){
             HttpSession session = request.getSession();
 
-            User user = (User) session.getAttribute("user");
+            //User user = (User) session.getAttribute("user");
             File uploadFile = new File();
 
-            List<File> file = uploadFile.getAllFiles(uploadFile, user.getGroup());
+            List<File> file = uploadFile.getAllFiles(uploadFile);
 
             session.setAttribute("list", file);
 
@@ -56,7 +56,7 @@ public class UploadServlet extends HttpServlet {
         // Sending file to upload method
             try{
 
-                uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
+                uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName);
                 RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
                 rd.forward(request, response);
 

@@ -67,7 +67,7 @@
             <h1 id="content-heading">Upload Files</h1>
             <form action="upload" method="post" enctype="multipart/form-data">
                 <p id="label">Select a file: </p>
-                <p><input type="text" name="description"/></p>
+                <p><input type="text" name="description" required/></p>
                 <p><input type="file" name="myfile" class="custom-file-input"></p>
                 <input type="hidden" name="userUploaded" value="${user.getName()}"/>
                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>

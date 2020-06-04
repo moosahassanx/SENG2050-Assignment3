@@ -72,83 +72,67 @@ public class File {
         this.fileData = fileData;
     }
 
-    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName) throws NamingException, SQLException {
+    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws NamingException, SQLException {
 
         InitialContext ctx = new InitialContext();
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
-        java.sql.Statement stmt = conn.createStatement();
         PreparedStatement ps = null;
 
-            String query = "INSERT into files VALUES (?,?,?,?)";
+            String query = "INSERT into files VALUES (?,?,?,?,?)";
             ps = conn.prepareStatement(query);
             ps.setObject(1,bytes);
             ps.setString(2, fileName );
             ps.setString(3, uploadedName);
             ps.setString(4, description);
+            ps.setString(5, groupName);
             ps.executeUpdate();
 
-            // Add the file to the group the useruploaded belongs too
         return true;
     }
 
     public List<File> getAllFiles(){
+
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
 
-        try{
-            InitialContext ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            Connection conn = ds.getConnection();
-           // java.sql.Statement stmt = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("Select * from files");
-            ResultSet rs = ps.executeQuery();
+            try{
+                InitialContext ctx = new InitialContext();
+                DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+                Connection conn = ds.getConnection();
+                PreparedStatement ps = conn.prepareStatement("Select * from files where group_name = ?");
+                ResultSet rs = ps.executeQuery();
 
-            // Running through the files table
-            while(rs.next()){
-            String fileName = rs.getString("file_name");
-            String userUploaded = rs.getString("uploaded_name");
-            String description = rs.getString("file_description");
-            byte[] fileData = rs.getBytes("binary_file");
-            File file = new File(userUploaded, fileName, description,fileData);
-            list.add(file);
+                // Running through the files table and populating the list
+                while(rs.next()){
+                String fileName = rs.getString("file_name");
+                String userUploaded = rs.getString("uploaded_name");
+                String description = rs.getString("file_description");
+                byte[] fileData = rs.getBytes("binary_file");
+                File file = new File(userUploaded, fileName, description,fileData);
+                list.add(file);
+                }
+            
+            }catch(Exception e){
+                e.printStackTrace();
             }
-        
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
         return list;
     }
 
 
-    public byte[] downloadFile(String fileName) throws SQLException, NamingException {
+    public Blob downloadFile(String fileName) throws SQLException, NamingException {
+        Blob data = null;
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("Select * from files where file_name = ?");
 
-
-        try{
-            System.out.println("Not Null");
-            InitialContext ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            Connection conn = ds.getConnection();
-          //  java.sql.Statement stmt = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("Select * from files where file_name = ?");
-            ps.setString(1, fileName);
-            System.out.println("Not Null");
-
-            ResultSet rs = ps.executeQuery();
-            System.out.println("after query");
-
+        ps.setString(1, fileName);
+        ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                
-                byte [] fileData = rs.getBytes("binary_file");
-
-            }
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        System.out.println("returning bytes");
-        return fileData;
+                data = rs.getBlob("binary_file");
+            }      
+        return data;
     }
 
 }

@@ -81,7 +81,7 @@
                 <tr>
                     <td>${l.getFileName()}</td>
                     <td>${l.getDescription()}</td>
-                    <td><a href="files.jsp?id=oihjm">Download me</a></td>
+                    <td><a href="${pageContext.request.contextPath}/upload?id=${l.getFileName()}">Download me</a></td>
                 </tr>
             </c:forEach>
         </table>

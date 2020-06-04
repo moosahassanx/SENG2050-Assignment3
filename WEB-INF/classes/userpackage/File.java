@@ -100,9 +100,8 @@ public class File {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
             Connection conn = ds.getConnection();
-            java.sql.Statement stmt = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("Select * from files"); // WHERE group_name = ? ** user.getGroup
-           // ps.setString(1, groupName);
+           // java.sql.Statement stmt = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("Select * from files");
             ResultSet rs = ps.executeQuery();
 
             // Running through the files table
@@ -121,4 +120,35 @@ public class File {
 
         return list;
     }
+
+
+    public byte[] downloadFile(String fileName) throws SQLException, NamingException {
+
+
+        try{
+            System.out.println("Not Null");
+            InitialContext ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+          //  java.sql.Statement stmt = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("Select * from files where file_name = ?");
+            ps.setString(1, fileName);
+            System.out.println("Not Null");
+
+            ResultSet rs = ps.executeQuery();
+            System.out.println("after query");
+
+            while(rs.next()){
+                
+                byte [] fileData = rs.getBytes("binary_file");
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("returning bytes");
+        return fileData;
+    }
+
 }

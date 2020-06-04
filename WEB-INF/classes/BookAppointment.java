@@ -17,31 +17,26 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 
-@WebServlet(urlPatterns = { "/CreateAppointment" })
-public class CreateAppointment extends HttpServlet 
+@WebServlet(urlPatterns = { "/BookAppointment" })
+public class BookAppointment extends HttpServlet 
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
         User user = (User)request.getAttribute("user");
-        int teachID = (int)request.getAttribute("teachID");
-        String desc = request.getParameter("description");
-        ArrayList<String> teacherNames = (ArrayList<String>)request.getAttribute("appointmentTeacher");
-        String teachName = teacherNames.get(teachID);
-        AppointmentsDB APB = new AppointmentsDB();
-        APB.setUsername(user.getName());
-        APB.setSession(session);
-        try
+        int teachID = Integer.parseInt("teachID");
+        session.setAttribute("teachID", teachID);
+        /*try 
         {
-            APB.writeAppointments(desc, teachName, user);
-        }
+            APB.writeAppointments();
+        } 
         catch (SQLException | NamingException e) 
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } 
-        session = APB.getSession();
-        RequestDispatcher rd = request.getRequestDispatcher("appointments.jsp");
+        } */
+        //session = APB.getSession();
+        RequestDispatcher rd = request.getRequestDispatcher("bookappointment.jsp");
         rd.forward(request,response);
         return;
     }

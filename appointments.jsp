@@ -51,7 +51,7 @@
 
             <h1 id="content-heading">Book Appointment</h1>
             <c:forEach begin = "1" end = "${teacherName.size()}" var = "TN">
-                <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">${teacherName.get(TN-1)}</button></p>
+                <p><button id="book-btn" onclick="location.href='BookAppointment?TeachID='TN;">${teacherName.get(TN-1)}</button></p>
             </c:forEach>
             <!--<p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher2 (rat conductor)</button></p>
             <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher3 (chef supporter)</button></p>
@@ -63,7 +63,7 @@
         <div class="content-right">
             <h1 id="content-heading">Upcoming Appointments</h1>
             <ul>
-            <c:forEach begin = "1" end = "${appointmentDesc}" var = "AD">
+            <c:forEach begin = "1" end = "${appointmentDesc.size()}" var = "AD">
                 <li>${appointmentTeacher.get(AD-1)} at mm:hh dd/mm/yyy: ${appointmentDesc.get(AD-1)}</li>
                 <!--<li>Teacher2 at mm:hh dd/mm/yyy: discuss rat seasoning options</li>
                 <li>Teacher1 at mm:hh dd/mm/yyy: show the chef you ate</li> -->

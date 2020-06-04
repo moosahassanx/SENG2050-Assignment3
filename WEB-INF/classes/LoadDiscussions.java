@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
+import userpackage.DiscussionsDB;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -26,7 +27,7 @@ public class LoadDiscussions extends HttpServlet {
         session.setAttribute("DIT", id);
         try 
         {
-            getDiscussionsThread(session, id);
+            DDB.getDiscussionsThread(session, id);
         } 
         catch (SQLException | NamingException e) 
         {
@@ -77,4 +78,5 @@ public class LoadDiscussions extends HttpServlet {
         session.setAttribute("threadDesc",threadDesc);
         conn.close();
     }
+    private DiscussionsDB DDB;
 }

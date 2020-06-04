@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.naming.InitialContext;
@@ -68,7 +69,7 @@ public class AppointmentsDB
         session.setAttribute("appointmentIDs", appointmentIDs);
         session.setAttribute("appointmentDesc", appointmentDesc);
         session.setAttribute("appointmentTeacher", appointmentTeacher);
-
+        System.out.println("lol");
         query = "SELECT * FROM website_user_roles WHERE role = ?";
         ps = conn.prepareStatement(query);
         ps.setString(1, "teacher");
@@ -78,6 +79,7 @@ public class AppointmentsDB
 
         while(rs.next())
         {
+            System.out.println("xd");
             teacherNames.add(rs.getString("username"));
         }
 
@@ -85,8 +87,24 @@ public class AppointmentsDB
 
     }
 
-    public void writeAppointments(String desc, String teacher) throws SQLException, NamingException
+    public void writeAppointments(String desc, String teacher, User user) throws SQLException, NamingException
     {
+        InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        // Selecting all data from the website_user table ** Note - only gives username/passwords
+        //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
+        String query = "INSERT INTO appointments VALUES(?,?,?)";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1, teacher);
+        ps.setString(2, user.getName());
+        ps.setString(3,desc);
+        ps.executeUpdate();
+
+        conn.close();
 
     }
     private String username;

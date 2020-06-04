@@ -1,3 +1,5 @@
+
+package userpackage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,18 +12,13 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 import javax.sql.*;
 
-//package WEB-INF.classes.userpackage;
 
 public class DiscussionsDB {
 
     //private String title;
     //private 
-    public DiscussionsDB()
-    {
 
-    }
-
-    public void getDiscussions(HttpSession session) throws SQLException, NamingException
+    public static void getDiscussions(HttpSession session) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -46,7 +43,7 @@ public class DiscussionsDB {
         conn.close();
     }
 
-    public void getDiscussionsThread(HttpSession session, int id) throws SQLException, NamingException
+    public static void getDiscussionsThread(HttpSession session, int id) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -87,7 +84,7 @@ public class DiscussionsDB {
         conn.close();
     }
 
-    public void createDiscussions(HttpSession session, String title, String desc, User user) throws SQLException, NamingException
+    public static void createDiscussions(HttpSession session, String title, String desc, User user) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -107,7 +104,7 @@ public class DiscussionsDB {
         conn.close();
     }
 
-    public void createDiscussionsThread(HttpSession session, String desc, User user, int id) throws SQLException, NamingException
+    public static void createDiscussionsThread(HttpSession session, String desc, User user, int id) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name

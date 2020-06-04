@@ -1,16 +1,10 @@
-
 import java.io.*;
 import java.sql.Blob;
 import java.util.List;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
-
-
 import userpackage.File;
 import userpackage.User;
-
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.annotation.MultipartConfig;
 
@@ -93,11 +87,5 @@ public class UploadServlet extends HttpServlet {
             catch(Exception e){
                 e.printStackTrace();
             }
-
-       
-
     }
-
-
-
 }

@@ -88,7 +88,6 @@ public class File {
             ps.setString(5, groupName);
             ps.executeUpdate();
 
-            // Add the file to the group the useruploaded belongs too
         return true;
     }
 
@@ -97,48 +96,42 @@ public class File {
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
 
-        try{
-            InitialContext ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            Connection conn = ds.getConnection();
-            PreparedStatement ps = conn.prepareStatement("Select * from files where group_name = ?");
-            ResultSet rs = ps.executeQuery();
+            try{
+                InitialContext ctx = new InitialContext();
+                DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+                Connection conn = ds.getConnection();
+                PreparedStatement ps = conn.prepareStatement("Select * from files where group_name = ?");
+                ResultSet rs = ps.executeQuery();
 
-            // Running through the files table and populating the list
-            while(rs.next()){
-            String fileName = rs.getString("file_name");
-            String userUploaded = rs.getString("uploaded_name");
-            String description = rs.getString("file_description");
-            byte[] fileData = rs.getBytes("binary_file");
-            File file = new File(userUploaded, fileName, description,fileData);
-            list.add(file);
+                // Running through the files table and populating the list
+                while(rs.next()){
+                String fileName = rs.getString("file_name");
+                String userUploaded = rs.getString("uploaded_name");
+                String description = rs.getString("file_description");
+                byte[] fileData = rs.getBytes("binary_file");
+                File file = new File(userUploaded, fileName, description,fileData);
+                list.add(file);
+                }
+            
+            }catch(Exception e){
+                e.printStackTrace();
             }
-        
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
         return list;
     }
 
 
     public Blob downloadFile(String fileName) throws SQLException, NamingException {
-
         Blob data = null;
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("Select * from files where file_name = ?");
 
-            InitialContext ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            Connection conn = ds.getConnection();
-            PreparedStatement ps = conn.prepareStatement("Select * from files where file_name = ?");
-
-            ps.setString(1, fileName);
-            ResultSet rs = ps.executeQuery();
- 
-
+        ps.setString(1, fileName);
+        ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 data = rs.getBlob("binary_file");
             }      
-              
         return data;
     }
 

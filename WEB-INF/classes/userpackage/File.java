@@ -1,5 +1,6 @@
 package userpackage;
 
+
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -71,7 +72,7 @@ public class File {
         this.fileData = fileData;
     }
 
-    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws NamingException, SQLException {
+    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName) throws NamingException, SQLException {
 
         InitialContext ctx = new InitialContext();
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
@@ -79,21 +80,19 @@ public class File {
         java.sql.Statement stmt = conn.createStatement();
         PreparedStatement ps = null;
 
-            String query = "INSERT into files VALUES (?,?,?,?,?)";
+            String query = "INSERT into files VALUES (?,?,?,?)";
             ps = conn.prepareStatement(query);
             ps.setObject(1,bytes);
             ps.setString(2, fileName );
             ps.setString(3, uploadedName);
             ps.setString(4, description);
-            ps.setString(5, groupName);
-            System.out.println(query);
             ps.executeUpdate();
 
             // Add the file to the group the useruploaded belongs too
         return false;
     }
 
-    public List<File> getAllFiles(File uploadFile, String groupName){
+    public List<File> getAllFiles(){
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
 
@@ -101,19 +100,18 @@ public class File {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
             Connection conn = ds.getConnection();
-            java.sql.Statement stmt = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("Select * from files where group_name = ?"); // WHERE group_name = ? ** user.getGroup
-            ps.setString(1, groupName);
+           // java.sql.Statement stmt = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("Select * from files");
             ResultSet rs = ps.executeQuery();
 
             // Running through the files table
             while(rs.next()){
-                uploadFile.setFileName(rs.getString("file_name"));
-                uploadFile.setUserUploaded(rs.getString("uploaded_name"));
-                uploadFile.setDescription(rs.getString("file_description"));
-                byte[] fileData = (rs.getBytes("binary_file"));
-                uploadFile.setFileData(fileData);
-                list.add(uploadFile);
+            String fileName = rs.getString("file_name");
+            String userUploaded = rs.getString("uploaded_name");
+            String description = rs.getString("file_description");
+            byte[] fileData = rs.getBytes("binary_file");
+            File file = new File(userUploaded, fileName, description,fileData);
+            list.add(file);
             }
         
         }catch(Exception e){
@@ -123,5 +121,34 @@ public class File {
         return list;
     }
 
+
+    public byte[] downloadFile(String fileName) throws SQLException, NamingException {
+
+
+        try{
+            System.out.println("Not Null");
+            InitialContext ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+          //  java.sql.Statement stmt = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement("Select * from files where file_name = ?");
+            ps.setString(1, fileName);
+            System.out.println("Not Null");
+
+            ResultSet rs = ps.executeQuery();
+            System.out.println("after query");
+
+            while(rs.next()){
+                
+                byte [] fileData = rs.getBytes("binary_file");
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("returning bytes");
+        return fileData;
+    }
 
 }

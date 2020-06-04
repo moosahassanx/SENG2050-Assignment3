@@ -75,6 +75,7 @@ CREATE TABLE files	(
 	file_name VARCHAR(30) NOT NULL,
 	uploaded_name varchar(30) NOT NULL,
 	file_description varchar(1000) NOT NULL,
+	groupName varchar(30) NOT NULL,
 	
 	FOREIGN KEY(uploaded_name) REFERENCES website_users(username)
 )

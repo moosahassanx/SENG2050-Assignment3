@@ -123,7 +123,4 @@ public class File {
 
         return list;
     }
-
-
->>>>>>> 6aea0caec7c89457adf9d52e4cd1eb8a664394be
 }

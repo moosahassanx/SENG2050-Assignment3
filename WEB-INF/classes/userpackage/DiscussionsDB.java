@@ -12,11 +12,11 @@ import javax.sql.*;
 
 //package WEB-INF.classes.userpackage;
 
-public class Discussions {
+public class DiscussionsDB {
 
     //private String title;
     //private 
-    public Discussions()
+    public DiscussionsDB()
     {
 
     }

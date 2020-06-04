@@ -8,7 +8,7 @@ import userpackage.File;
 
 import userpackage.User;
 import javax.servlet.annotation.WebServlet;
-
+import javax.servlet.annotation.MultipartConfig;
 
 @WebServlet("/upload")
 @MultipartConfig
@@ -50,12 +50,4 @@ public class UploadServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-    }
-
-
-
-    }
-
-
-
 }

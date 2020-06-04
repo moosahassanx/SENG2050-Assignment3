@@ -1,5 +1,6 @@
 package userpackage;
 
+
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -71,7 +72,7 @@ public class File {
         this.fileData = fileData;
     }
 
-    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws NamingException, SQLException {
+    public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName) throws NamingException, SQLException {
 
         InitialContext ctx = new InitialContext();
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
@@ -79,13 +80,13 @@ public class File {
         java.sql.Statement stmt = conn.createStatement();
         PreparedStatement ps = null;
 
-            String query = "INSERT into files VALUES (?,?,?,?,?)";
+            String query = "INSERT into files VALUES (?,?,?,?)";
             ps = conn.prepareStatement(query);
             ps.setObject(1,bytes);
             ps.setString(2, fileName );
             ps.setString(3, uploadedName);
             ps.setString(4, description);
-            ps.setString(5, groupName);
+           // ps.setString(5, groupName);
             System.out.println(query);
             ps.executeUpdate();
 
@@ -93,7 +94,7 @@ public class File {
         return false;
     }
 
-    public List<File> getAllFiles(File uploadFile, String groupName){
+    public List<File> getAllFiles(File uploadFile){
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
 
@@ -102,8 +103,8 @@ public class File {
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
             Connection conn = ds.getConnection();
             java.sql.Statement stmt = conn.createStatement();
-            PreparedStatement ps = conn.prepareStatement("Select * from files where group_name = ?"); // WHERE group_name = ? ** user.getGroup
-            ps.setString(1, groupName);
+            PreparedStatement ps = conn.prepareStatement("Select * from files"); // WHERE group_name = ? ** user.getGroup
+           // ps.setString(1, groupName);
             ResultSet rs = ps.executeQuery();
 
             // Running through the files table
@@ -124,4 +125,5 @@ public class File {
     }
 
 
+>>>>>>> 6aea0caec7c89457adf9d52e4cd1eb8a664394be
 }

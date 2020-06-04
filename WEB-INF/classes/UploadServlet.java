@@ -1,47 +1,53 @@
-import java.io.*;
-import java.util.List;
-import java.nio.*;
 
+import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import userpackage.User;
-import userpackage.File;
+import userpackage.*;
 
+
+import userpackage.User;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.annotation.MultipartConfig;
+
 
 @WebServlet("/upload")
-@MultipartConfig(maxFileSize = 10485760)
+//@MultipartConfig
 public class UploadServlet extends HttpServlet {
-    
+    //private FileDAO fileDao;                 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String buttonPressed = request.getParameter("list");
-        System.out.println(buttonPressed);
-        if(buttonPressed.equals("list")){
-            HttpSession session = request.getSession();
 
-            User user = (User) session.getAttribute("user");
+
+  //  public void init(){
+    //    fileDao = new FileDAO();    //Opening a Database object conneection
+    //}
+
+<<<<<<< HEAD
+            //User user = (User) session.getAttribute("user");
             File uploadFile = new File();
 
-            List<File> file = uploadFile.getAllFiles(uploadFile, user.getGroup());
+            List<File> file = uploadFile.getAllFiles(uploadFile);
+=======
 
-            session.setAttribute("list", file);
+>>>>>>> 0e349f706dad87619926e02c2cbaaa923e98730a
 
-            RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
-            rd.forward(request, response);
 
-        }else{
 
+
+
+
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String userUploaded = request.getParameter("");
         String fileDescription = request.getParameter("description");
-        String userUploaded = request.getParameter("userUploaded");
-        String groupName = request.getParameter("userGroup");
-        Part filePart = request.getPart("myfile");
+        Part filePart = request.getPart("file");
         String fileName = filePart.getSubmittedFileName();                          
+
+        // Should turn file into byte stream, upload onto db
         InputStream fileBytes = filePart.getInputStream();
         byte[] bytes = fileBytes.readAllBytes(); 
 
+<<<<<<< HEAD
         System.out.println(fileDescription);
         System.out.println(groupName);
         System.out.println(userUploaded);
@@ -57,7 +63,7 @@ public class UploadServlet extends HttpServlet {
         // Sending file to upload method
             try{
 
-                uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
+                uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName);
                 RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
                 rd.forward(request, response);
 
@@ -66,14 +72,12 @@ public class UploadServlet extends HttpServlet {
             }
         }
     }
+=======
+>>>>>>> 0e349f706dad87619926e02c2cbaaa923e98730a
 
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // Handle the download of files
 
     }
-
-
 
 
 

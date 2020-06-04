@@ -169,3 +169,5 @@ SELECT * FROM user_groups;
 
 SELECT * FROM website_users;
 SELECT * FROM milestones WHERE groupName = 'FaZe Clan'
+
+select * from appointments

@@ -1,3 +1,10 @@
+<!--
+    Assignment 3: Groups.jsp
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: This page will show all groups that are currently apart of the page. They will also allow
+    users to join the group if they would like to. 
+-->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
 

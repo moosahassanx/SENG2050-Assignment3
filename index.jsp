@@ -1,3 +1,10 @@
+<!--
+    Assignment 3: Index.jsp
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: This will be the main portal page that any user will use to login
+    or register an account with. 
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +32,7 @@
 
         <div class = "teacher">
             <form action = "login" method="POST">
-            <!--Use those IDS in order to transfer across to the servlet, will we need to make it a form?-->
+            <!--These will be passed into the Servlet so it can be queried in the DB-->
             <p><input type="text" placeholder="Username" id="username" name = "username" /></p>
             <p><input type="password" placeholder="Password" id="password" name = "password"></p>
 
@@ -37,7 +44,7 @@
                 <p><input id="btn" type="reset" value ="Reset"/></p>
             </div>
             </form>
-
+            <!--This popup is used in order to allow new users to register an account on the website. -->
             <div class="loginPopup">
                 <div style="display:none;"class="registrationForm" id="popUp">
                     <form action ="login" method="POST" class="formContainer">

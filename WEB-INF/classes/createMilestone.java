@@ -16,7 +16,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 @WebServlet(urlPatterns = { "/createMilestone" })
-public class CreateMilestone extends HttpServlet {
+public class CreateMilestone extends HttpServlet 
+{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();

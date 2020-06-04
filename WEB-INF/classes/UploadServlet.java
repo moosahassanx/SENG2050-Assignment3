@@ -1,9 +1,11 @@
 
 import java.io.*;
+import java.sql.Blob;
 import java.util.List;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+
 
 import userpackage.File;
 import userpackage.User;
@@ -16,6 +18,7 @@ import javax.servlet.annotation.MultipartConfig;
 @MultipartConfig(maxFileSize = 10485760)
 public class UploadServlet extends HttpServlet {
 
+    private final int BUFFER_SIZE = 4096; // Buffer for downloading file
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String buttonPressed = request.getParameter("list");
@@ -39,7 +42,6 @@ public class UploadServlet extends HttpServlet {
                 Part filePart = request.getPart("myfile");
                 String fileName = filePart.getSubmittedFileName();                          
 
-                // Should turn file into byte stream, upload onto db
                 InputStream fileBytes = filePart.getInputStream();
                 byte[] bytes = fileBytes.readAllBytes(); 
 
@@ -51,10 +53,11 @@ public class UploadServlet extends HttpServlet {
                 uploadFile.setDescription(fileDescription);
                 uploadFile.setFileName(fileName);
                 uploadFile.setFileData(bytes);
+                uploadFile.addGroupName(groupName);
                 // Sending file to upload method
 
                     try{
-                        uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName);
+                        uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
                         RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
                         rd.forward(request, response);
                     }
@@ -64,29 +67,28 @@ public class UploadServlet extends HttpServlet {
             }
     }
 
-    // doGet method to handle the file downloads
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         File downloadFile = new File();
         String fileName = request.getParameter("id");
 
             try{
-                byte [] fileData = downloadFile.downloadFile(fileName);
-                //InputStream is = new ByteArrayInputStream(fileData);
-               // int bytesRead;
-               //ObjectInputStream fs = new ObjectInputStream(fileData);
+                Blob fileData = downloadFile.downloadFile(fileName);
+                InputStream inputStream = fileData.getBinaryStream();
 
                 response.setContentType("application/force-download");
                 response.setHeader("Content-Transfer-Encoding", "binary");
-    
                 response.setHeader("Content-Disposition","attachment; filename=\"" + fileName + "\"");
 
-                ServletOutputStream out = response.getOutputStream();
+                OutputStream os = response.getOutputStream();
+                byte [] buffer = new byte[BUFFER_SIZE];
+                int bytesread = -1;
+                
+                // Outputs the bytes until inputstream sends back -1 indicating theres no more
+                while((bytesread = inputStream.read(buffer)) != -1){
+                    os.write(buffer, 0, bytesread);
+                }
 
-                    //while((bytesRead = is.read(fileData)) != -1){
-                        out.write(fileData);
-                        out.close();
-                   // }//
             }
             catch(Exception e){
                 e.printStackTrace();

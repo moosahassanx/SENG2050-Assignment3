@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.annotation.MultipartConfig;
 
 @WebServlet(urlPatterns = { "/upload"})
-@MultipartConfig
+@MultipartConfig(maxFileSize = 10485760)
 public class UploadServlet extends HttpServlet {
 
 
@@ -36,7 +36,7 @@ public class UploadServlet extends HttpServlet {
                 String userUploaded = request.getParameter("userUploaded");
                 String groupName = request.getParameter("userGroup");
                 String fileDescription = request.getParameter("description");
-                Part filePart = request.getPart("file");
+                Part filePart = request.getPart("myfile");
                 String fileName = filePart.getSubmittedFileName();                          
 
                 // Should turn file into byte stream, upload onto db

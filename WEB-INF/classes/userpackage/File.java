@@ -89,7 +89,7 @@ public class File {
             ps.executeUpdate();
 
             // Add the file to the group the useruploaded belongs too
-        return false;
+        return true;
     }
 
     public List<File> getAllFiles(){

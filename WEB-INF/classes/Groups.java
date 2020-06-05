@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
+import userpackage.DiscussionsDB;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -25,7 +26,7 @@ public class Groups extends HttpServlet {
         // attempt to run method
         HttpSession session = request.getSession();
         try {
-            getGroups(session);
+            DDB.getGroups(session);
         } 
         catch (SQLException | NamingException e) {
             e.printStackTrace();
@@ -37,6 +38,7 @@ public class Groups extends HttpServlet {
         return;
     }
 
+    /*
     // method to get all the group names
     public void getGroups(HttpSession session) throws SQLException, NamingException {
         // connection
@@ -65,4 +67,8 @@ public class Groups extends HttpServlet {
         session.setAttribute("GroupNames", GroupNames);
         conn.close();
     }
+    */
+    
+    // controller
+    private DiscussionsDB DDB;
 }

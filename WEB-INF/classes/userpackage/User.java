@@ -142,11 +142,15 @@ public class User
                                 while(rs.next()){
                                     System.out.println("kek");
                                     System.out.println(rs.getString("role"));
+
+                                    // user is a student
                                     if(rs.getString("role").equalsIgnoreCase("Student")){
                                         rs.close();
                                         conn.close();
                                         return 1;
-                                    }else{
+                                    }
+                                    // user is a teacher
+                                    else{
                                         rs.close();
                                         conn.close();
                                         return 2;

@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
+import userpackage.DiscussionsDB;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -33,7 +34,7 @@ public class CreateGroup extends HttpServlet {
 
         // running method
         try {
-            newGroup(session, groupName, subject, theUser);
+            DDB.newGroup(session, groupName, subject, theUser);
         }
         catch (SQLException | NamingException e) {
             e.printStackTrace();
@@ -44,7 +45,8 @@ public class CreateGroup extends HttpServlet {
         rd.forward(request,response);
         return;
     }
-
+    
+    /*
     public void newGroup(HttpSession session, String groupName, String subject, User user) throws SQLException, NamingException {
         // setting up connection
         InitialContext ctx = new InitialContext();
@@ -62,4 +64,8 @@ public class CreateGroup extends HttpServlet {
         // closing connection
         conn.close();
     }
+    */
+
+    // controller
+    private DiscussionsDB DDB;
 }

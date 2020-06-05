@@ -153,7 +153,6 @@ SELECT * FROM user_groups
 
 -- milestones doesnt work for some reason
 
-
 INSERT INTO website_users VALUES('c3324541', '	');
 INSERT INTO website_users VALUES('Moosa', 'kek');
 INSERT INTO website_users VALUES('Mr Roworth','lol');
@@ -191,8 +190,3 @@ INSERT INTO user_groups VALUES('Humey', 'Virginity Club');
 
 SELECT * FROM user_groups WHERE username='Humey';
 SELECT * FROM user_groups;
-
--- 1
-DELETE FROM user_groups WHERE username='Humey';
--- 2
-INSERT INTO user_groups VALUES('Humey', 'Virginity Club');

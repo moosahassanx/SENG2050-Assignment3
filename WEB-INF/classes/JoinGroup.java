@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
+import userpackage.DiscussionsDB;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -30,7 +31,7 @@ public class JoinGroup extends HttpServlet {
         if(theUser.hasGroup()){
             // running method
             try {
-                showJoinedGroup(session, groupName, theUser);
+                DDB.showJoinedGroup(session, groupName, theUser);
             }
             catch (SQLException | NamingException e) {
                 e.printStackTrace();
@@ -43,7 +44,7 @@ public class JoinGroup extends HttpServlet {
         else{
             // running method
             try {
-                joinGroup(session, groupName, theUser);
+                DDB.joinGroup(session, groupName, theUser);
             }
             catch (SQLException | NamingException e) {
                 e.printStackTrace();
@@ -56,6 +57,7 @@ public class JoinGroup extends HttpServlet {
         return;
     }
 
+    /*
     public void joinGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
         // setting up connection
         InitialContext ctx = new InitialContext();
@@ -78,7 +80,9 @@ public class JoinGroup extends HttpServlet {
         // closing connection
         conn.close();
     }
+    */
 
+    /*
     public void showJoinedGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
         System.out.println("theUser.hasGroup() = true");
 
@@ -103,4 +107,8 @@ public class JoinGroup extends HttpServlet {
         // closing connection
         conn.close();
     }
+    */
+
+    // controller
+    private DiscussionsDB DDB;
 }

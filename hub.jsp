@@ -18,8 +18,6 @@
         <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     </head>
 
-
-
     <body>
         <section class="landing-page-main">
             <div class="top-bar">

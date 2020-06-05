@@ -47,7 +47,7 @@ public class Login extends HttpServlet
             // Checking if credentials exist
 
                 int test = user.getStudentUser(loginID, password);
-
+                // student login
                 if(test == 1){
 
                     System.out.println("database = student");
@@ -59,7 +59,6 @@ public class Login extends HttpServlet
                     // running method
                     try {
                         joinGroup(user);
-                        //user.setGroup("FaZe Clan");
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();
@@ -73,8 +72,9 @@ public class Login extends HttpServlet
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
                     rd.forward(request, response);
                 }
-                else if(test == 2){
 
+                // teacher login
+                else if(test == 2){
                     user.setName(loginID);
                     user.setPassword(password);
                     user.setRole("Teacher");
@@ -103,14 +103,6 @@ public class Login extends HttpServlet
         }else{ // The user has filled out the registration form
             String loginID = request.getParameter("username2");
             String password = request.getParameter("password2");
-
-
-
-
-
-
-
-
         }
 
         System.out.println("outside");

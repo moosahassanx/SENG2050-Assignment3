@@ -124,4 +124,98 @@ public class DiscussionsDB {
         conn.close();
     }
 
+    public static void newGroup(HttpSession session, String groupName, String subject, User user) throws SQLException, NamingException {
+        // setting up connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // database inserting
+        String query = "INSERT INTO groups VALUES(?)";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1,groupName);
+        ps.executeUpdate();
+
+        // closing connection
+        conn.close();
+    }
+
+    // method to get all the group names
+    public static void getGroups(HttpSession session) throws SQLException, NamingException {
+        // connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // get data from groups table in db
+        String query = "SELECT * FROM groups";
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<String> GroupNames = new ArrayList<String>();
+
+        // build list of group names
+        while(rs.next()) {
+            String GroupName = rs.getString("group_name");
+            GroupNames.add(GroupName);
+        }
+
+        // displaying group names in terminal
+        for(int i = 0; i < GroupNames.size(); i++){
+            System.out.println("Group Name " + i + ": " + GroupNames.get(i));
+        }
+
+        // closing
+        session.setAttribute("GroupNames", GroupNames);
+        conn.close();
+    }
+
+    public static void showJoinedGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
+        System.out.println("theUser.hasGroup() = true");
+
+        // setting up connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // get data from groups table in db
+        String query = "SELECT * FROM user_groups WHERE username=";
+        query += "'" + user.getName() + "'";
+        System.out.println("Querying: " + query);
+        ResultSet rs = stmt.executeQuery(query);
+
+        // build list of group names
+        if(rs.next()) {
+            String GroupName = rs.getString("group_name");
+            System.out.println("SQL VERSION:\t User " + user.getName() + " has already joined the group: " + GroupName);
+        }
+
+        // closing connection
+        conn.close();
+    }
+
+    public static void joinGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
+        // setting up connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // database inserting
+        String query = "INSERT INTO user_groups VALUES(?, ?)";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1, user.getName());
+        ps.setString(2, groupName);
+        ps.executeUpdate();
+
+        user.setGroup(groupName);
+
+        System.out.println("User " + user.getName() + " has joined the group: " + user.getGroup());
+
+        // closing connection
+        conn.close();
+    }
 }

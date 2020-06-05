@@ -92,7 +92,7 @@ public class User
         return group;
     }
     
-    private String group = "";
+    private String group;
     protected String name;
     protected int phoneNumber;
     protected String role;

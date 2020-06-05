@@ -55,18 +55,6 @@
             <c:forEach begin = "1" end = "${discussionTitles.size()}" var = "DT">
                 <p><button id="submit" onclick="location.href='discussionsThread?DIT=${discussionID.get(DT-1)}';">${discussionTitles.get(DT-1)}</button></p>
             </c:forEach>
-            
-            <!-- REMINDER: MAKE A SERVLET FOR THE THREAD PAGE OKAY THANK YOU ANY ONE WHO READS THIS
-            <p><input id="submit" type="submit" value="DISCUSSION TITLE1"></p>
-            <p><input id="submit" type="submit" value="DISCUSSION TITLE2"></p>
-            <p><input id="submit" type="submit" value="DISCUSSION TITLE3"></p>
-            <p><input id="submit" type="submit" value="DISCUSSION TITLE4"></p>
-
-            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title2</button></p>
-            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title3</button></p>
-            <p><button id="submit" onclick="location.href='viewdiscussion.jsp';">Discussion Title4</button></p>
-
-            -->
         </div>
         
         <!-- CREATE DISCUSSION BUTTON -->

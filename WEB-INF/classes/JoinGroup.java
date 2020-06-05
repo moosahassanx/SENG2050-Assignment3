@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/joinGroup" })
 public class JoinGroup extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("\n*****Join Group Servlet Loaded.*****");
+        System.out.println("\n*****Join Group Servlet Initialized.*****");
 
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
@@ -36,7 +36,7 @@ public class JoinGroup extends HttpServlet {
                 e.printStackTrace();
             }
 
-            System.out.println("JAVA VERSION: User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
+            System.out.println("JAVA VERSION:\t User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
         }
         
         // case: user has not joined a group yet, assign to group
@@ -73,7 +73,7 @@ public class JoinGroup extends HttpServlet {
 
         user.setGroup(groupName);
 
-        System.out.println("USER " + user.getName() + " JOINED " + user.getGroup());
+        System.out.println("User " + user.getName() + " has joined the group: " + user.getGroup());
 
         // closing connection
         conn.close();
@@ -97,7 +97,7 @@ public class JoinGroup extends HttpServlet {
         // build list of group names
         if(rs.next()) {
             String GroupName = rs.getString("group_name");
-            System.out.println("SQL VERSION: User " + user.getName() + " has already joined the group: " + GroupName);
+            System.out.println("SQL VERSION:\t User " + user.getName() + " has already joined the group: " + GroupName);
         }
 
         // closing connection

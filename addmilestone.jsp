@@ -44,26 +44,26 @@
         </div>
 
         <!-- LIST OF DISCUSSIONS -->
-        
-        
-            <div class="main-content">
-                <div class="back-div">
-                    <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
-                </div>
-            <form action="CreateMilestone" method = "POST">
-                <p id="label">Milestone Title</p>
-                <p><input id="input-title" type="text" name = "milestoneTitle"></p>
-
-                <p id="label">Summary</p>
-                <p><input id="input-message" type="text" name = "description"></p>
-
-                <p id="label">Date</p>
-                <p><input id="input-title" type="date" name = "date"></p>
-
-                <p><input id="submit" type="submit" VALUE="ADD MILESTONE"></p>
-            </form>
+        <div class="main-content">
+            <!-- BACK BUTTON -->
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-        
+
+            <!-- MILESTONE FORM -->
+            <form action="CreateMilestone" method = "POST">
+            <p id="label">Milestone Title</p>
+            <p><input id="input-title" type="text" name = "milestoneTitle"></p>
+
+            <p id="label">Summary</p>
+            <p><input id="input-message" type="text" name = "description"></p>
+
+            <p id="label">Date</p>
+            <p><input id="input-title" type="date" name = "date"></p>
+
+            <p><input id="submit" type="submit" VALUE="ADD MILESTONE"></p>
+            </form>
+        </div>
     </section>
 </body>
 </html>

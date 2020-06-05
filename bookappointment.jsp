@@ -51,13 +51,13 @@
             </div>
             
             <p id="label">Date</p>
-            <p><input id="input-title" type="date"></p>
+            <p><input id="input-title" type="date" name = "date"></p>
 
             <p id="label">Time</p>
-            <p><input id="input-title" type="time"></p>
+            <p><input id="input-title" type="time" name = "time"></p>
 
             <p id="label">Message</p>
-            <p><input id="input-message" type="text"></p>
+            <p><input id="input-message" type="text" name = "description"></p>
 
             <p><input id="submit" type="submit" value="BOOK APPOINTMENT"></p>
         </div>

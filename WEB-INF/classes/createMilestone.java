@@ -34,7 +34,7 @@ public class CreateMilestone extends HttpServlet
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        RequestDispatcher rd = request.getRequestDispatcher("discussions.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("login");
         rd.forward(request,response);
         return;
     }
@@ -47,11 +47,11 @@ public class CreateMilestone extends HttpServlet
         Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
         //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
-        String query = "INSERT INTO milestone VALUES(?,?,?)";
+        String query = "INSERT INTO milestones VALUES(?,?,?)";
         PreparedStatement ps = null;
         ps = conn.prepareStatement(query);
         ps.setString(1,desc);
-        ps.setString(2, user.getName());
+        ps.setString(2,user.getName());
         ps.setString(3,user.getGroup());
         ps.executeUpdate();
 

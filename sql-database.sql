@@ -179,6 +179,8 @@ SELECT * FROM website_users_roles;
 SELECT * FROM milestones WHERE groupName = 'FaZe Clan';
 
 -- groups testing
+SELECT * FROM website_users;
+
 INSERT INTO groups VALUES('FaZe Clan');
 INSERT INTO groups VALUES('Chef Gang');
 INSERT INTO groups VALUES('Virginity Club');
@@ -187,6 +189,10 @@ SELECT * FROM groups;
 INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
 INSERT INTO user_groups VALUES('Humey', 'Virginity Club');
 
+SELECT * FROM user_groups WHERE username='Humey';
 SELECT * FROM user_groups;
 
+-- 1
 DELETE FROM user_groups WHERE username='Humey';
+-- 2
+INSERT INTO user_groups VALUES('Humey', 'Virginity Club');

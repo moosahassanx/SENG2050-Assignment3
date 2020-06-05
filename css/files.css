@@ -254,6 +254,10 @@
 	background: #ffffff;
 }
 
+.back-div p{
+    text-align: left;
+}
+
 @media all and (max-width: 950px) {
     .box-img{
         border-radius: 50%;

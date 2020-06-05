@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(urlPatterns = { "/createMilestone" })
+@WebServlet(urlPatterns = { "/CreateMilestone" })
 public class CreateMilestone extends HttpServlet 
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

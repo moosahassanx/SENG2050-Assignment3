@@ -16,11 +16,15 @@ public class UploadServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String buttonPressed = request.getParameter("list");
+        String userUploaded = request.getParameter("userUploaded");
+        String groupName = request.getParameter("userGroup");
+        String fileDescription = request.getParameter("description");
+
             if(buttonPressed.equals("list")){
                 
                 // Redundant make a random file here to access the file methods - Could maybe use an interface instead?
                 File uploadFile = new File();
-                List<File> file = uploadFile.getAllFiles();
+                List<File> file = uploadFile.getAllFiles(groupName);
 
                 HttpSession session = request.getSession();
                 session.setAttribute("list",file);
@@ -30,9 +34,7 @@ public class UploadServlet extends HttpServlet {
 
             }
             else{
-                String userUploaded = request.getParameter("userUploaded");
-                String groupName = request.getParameter("userGroup");
-                String fileDescription = request.getParameter("description");
+                
                 Part filePart = request.getPart("myfile");
                 String fileName = filePart.getSubmittedFileName();                          
 

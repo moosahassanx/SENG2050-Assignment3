@@ -49,24 +49,24 @@ public class AppointmentsDB
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
-        // Selecting all data from the website_user table ** Note - only gives username/passwords
+        
         PreparedStatement ps = null;
-        String query = "SELECT * FROM appointments WHERE username = ?";
+        String query = "SELECT * FROM appointments WHERE username = ?"; //getting the data from the ongoing appointments
         ps = conn.prepareStatement(query);
         ps.setString(1, username);
-        ResultSet rs = ps.executeQuery();
+        ResultSet rs = ps.executeQuery(); //Sets strings that are required and creates arraylists to hold the returned values
         ArrayList<String> appointmentIDs = new ArrayList<String>();
         ArrayList<String> appointmentDesc = new ArrayList<String>();
         ArrayList<String> appointmentTeacher = new ArrayList<String>();
 
-        while(rs.next())
+        while(rs.next()) //Will run through and appoint all the rows into the array lists.
         {
             appointmentIDs.add(rs.getString("appointmentID"));
             appointmentDesc.add(rs.getString("description"));
             appointmentTeacher.add(rs.getString("teacher"));
         }
 
-        session.setAttribute("appointmentIDs", appointmentIDs);
+        session.setAttribute("appointmentIDs", appointmentIDs); //Sets them as attributes to be accessible in a JSP/other files
         session.setAttribute("appointmentDesc", appointmentDesc);
         session.setAttribute("appointmentTeacher", appointmentTeacher);
         System.out.println("lol");

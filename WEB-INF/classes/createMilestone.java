@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(urlPatterns = { "/createMilestone" })
+@WebServlet(urlPatterns = { "/CreateMilestone" })
 public class CreateMilestone extends HttpServlet 
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -23,11 +23,10 @@ public class CreateMilestone extends HttpServlet
         HttpSession session = request.getSession();
         String title = request.getParameter("milestoneTitle");
         String desc = request.getParameter("description");
-        int id = (int)session.getAttribute("DIT");
         User theUser =((User)session.getAttribute("user"));
         try 
         {
-            createMilestoneInDB(session, desc, theUser, id);
+            createMilestoneInDB(session, desc, theUser);
         } 
         catch (SQLException | NamingException e) 
         {
@@ -38,8 +37,9 @@ public class CreateMilestone extends HttpServlet
         rd.forward(request,response);
         return;
     }
-    public void createMilestoneInDB(HttpSession session, String desc, User user, int id) throws SQLException, NamingException
+    public void createMilestoneInDB(HttpSession session, String desc, User user) throws SQLException, NamingException
     {
+        try{
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
@@ -54,7 +54,12 @@ public class CreateMilestone extends HttpServlet
         ps.setString(2,user.getName());
         ps.setString(3,user.getGroup());
         ps.executeUpdate();
-
         conn.close(); 
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
     }
 }

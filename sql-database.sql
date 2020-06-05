@@ -1,48 +1,60 @@
-CREATE DATABASE collabDB
-USE collabDB
+DROP TABLE appointments;	
+DROP TABLE milestones;
+DROP TABLE discussionsThread;
+DROP TABLE discussions;
+DROP TABLE group_folder_files;
+DROP TABLE files;
+DROP TABLE group_folders;
+DROP TABLE user_groups;
+DROP TABLE groups;
+DROP TABLE website_user_roles;
+DROP TABLE initial_login;
+DROP TABLE user_information;
+DROP TABLE website_roles;
+DROP TABLE website_users;
+
+CREATE DATABASE collabDB;
+USE collabDB;
+
+DROP LOGIN seng2050Ass3;
 
 CREATE LOGIN seng2050Ass3
 WITH PASSWORD = 'Passw0rd123!';
 
 CREATE USER seng2050Ass3
-for LOGIN seng2050Ass3;
+FOR LOGIN seng2050Ass3;
 
-drop USER seng2050Ass3
-
-ALTER ROLE db_datareader ADD member seng2050Ass3
-ALTER ROLE db_datawriter ADD member seng2050Ass3
+ALTER ROLE db_datareader ADD member seng2050Ass3;
+ALTER ROLE db_datawriter ADD member seng2050Ass3;
 
 GRANT SELECT, INSERT, UPDATE, DELETE
-to seng2050Ass3;
+TO seng2050Ass3;
 
 CREATE TABLE website_users	(
-	username varchar(30) NOT NULL PRIMARY KEY,
-	password varchar(30) NOT NULL
+	username VARCHAR(30) NOT NULL PRIMARY KEY,
+	password VARCHAR(30) NOT NULL
 )
 
 CREATE TABLE website_roles (
-	role varchar(30) NOT NULL PRIMARY KEY
+	role VARCHAR(30) NOT NULL PRIMARY KEY
 )
 
-
-
 CREATE TABLE user_information	(
-	username varchar(30) NOT NULL PRIMARY KEY,
-	studentId int NOT NULL,
-	phoneNo	int,
-
+	username VARCHAR(30) NOT NULL PRIMARY KEY,
+	studentId INT NOT NULL,
+	phoneNo	INT,
 )
 
 CREATE TABLE initial_login	(
-	username varchar(30) NOT NULL PRIMARY KEY,
-	loginTimes int,
+	username VARCHAR(30) NOT NULL PRIMARY KEY,
+	loginTimes INT,
 
 	FOREIGN KEY(username) REFERENCES website_users(username)
 )
 
 CREATE TABLE website_user_roles (
-	username varchar(30) NOT NULL,
-	role varchar(30) NOT NULL,
+	username VARCHAR(30) NOT NULL,
+	role VARCHAR(30) NOT NULL,
 	
 	PRIMARY KEY (username, role),
 	
@@ -63,8 +75,8 @@ CREATE TABLE user_groups (
 )
 
 CREATE TABLE group_folders	(
-	folder_name varchar(30) NOT NULL PRIMARY KEY,
-	group_name varchar(30) NOT NULL,
+	folder_name VARCHAR(30) NOT NULL PRIMARY KEY,
+	group_name VARCHAR(30) NOT NULL,
 	
 	FOREIGN KEY(group_name) REFERENCES groups(group_name)
 )
@@ -73,45 +85,45 @@ CREATE TABLE files	(
 	fileID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	binary_file VARBINARY(MAX) NOT NULL,
 	file_name VARCHAR(30) NOT NULL,
-	uploaded_name varchar(30) NOT NULL,
-	file_description varchar(1000) NOT NULL,
-	groupName varchar(30) NOT NULL,
+	uploaded_name VARCHAR(30) NOT NULL,
+	file_description VARCHAR(1000) NOT NULL,
+	groupName VARCHAR(30) NOT NULL,
 	
 	FOREIGN KEY(uploaded_name) REFERENCES website_users(username)
 )
 
 CREATE TABLE group_folder_files	(
-	folder_name varchar(30) NOT NULL,
-	fileID int IDENTITY(1,1) NOT NULL,
+	folder_name VARCHAR(30) NOT NULL,
+	fileID INT IDENTITY(1,1) NOT NULL,
 	
 	FOREIGN KEY(folder_name) REFERENCES group_folders(folder_name),
 	FOREIGN KEY(fileID) REFERENCES files(fileID)
 )
 
 CREATE TABLE discussions(
-	discussionID int NOT NULL Identity(1,1) PRIMARY KEY, 
-	title varChar(100) NOT NULL, 
-	username varchar(30) NOT NULL, 
-	description varChar(1000) NOT NULL,
+	discussionID INT NOT NULL Identity(1,1) PRIMARY KEY, 
+	title VARCHAR(100) NOT NULL, 
+	username VARCHAR(30) NOT NULL, 
+	description VARCHAR(1000) NOT NULL,
 
 	FOREIGN KEY(username) REFERENCES website_users(username)
 )
 
 CREATE TABLE discussionsThread(
-	threadID int  NOT NULL Identity(1,1) PRIMARY KEY, 
-	discussionID int NOT NULL, 
-	username varChar(30) NOT NULL, 
-	description varChar(1000) NOT NULL, 
+	threadID INT  NOT NULL Identity(1,1) PRIMARY KEY, 
+	discussionID INT NOT NULL, 
+	username VARCHAR(30) NOT NULL, 
+	description VARCHAR(1000) NOT NULL, 
 
 	FOREIGN KEY(discussionID) REFERENCES discussions(discussionID),
 	FOREIGN KEY(username) REFERENCES website_users(username)
 )
 
 CREATE TABLE milestones(
-	milestoneID int NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	description varChar(1000) NOT NULL,
-	username varChar(30) NOT NULL,
-	groupName varChar(30) NOT NULL, 
+	milestoneID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	description VARCHAR(1000) NOT NULL,
+	username VARCHAR(30) NOT NULL,
+	groupName VARCHAR(30) NOT NULL, 
 	--dateDue date not null,  
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
@@ -119,47 +131,52 @@ CREATE TABLE milestones(
 )
 
 CREATE TABLE appointments(
-	appointmentID int not null identity(1,1) primary key,
-	teacher varChar(30) not null,
-	username varChar(30) not null,
-	description varChar(1000) not null,
+	appointmentID INT not null identity(1,1) primary key,
+	teacher VARCHAR(30) not null,
+	username VARCHAR(30) not null,
+	description VARCHAR(1000) not null,
 	--date required still
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 )
 
-select * from files
-select * from user_groups
+SELECT * FROM files
+SELECT * FROM user_groups
 
-delete from files where fileID = 9
+--delete from files where fileID = 9
 
-DROP table discussionsThread
-DROP table discussions
-drop table group_folder_files
-drop table files
+--DROP table discussionsThread
+--DROP table discussions
+--drop table group_folder_files
+--drop table files
 --drop table
 
-INSERT INTO milestones VALUES ('Teach Moosa how to be competent','c3324541','FaZe Clan')
-INSERT INTO milestones VALUES ('Finish Assignment ayy lmao','Moosa','FaZe Clan')
-INSERT INTO milestones VALUES ('Kick Moosa out of the group because lol','Humey','FaZe Clan')
-INSERT INTO website_users VALUES('c3324541', '	')
-INSERT INTO website_users VALUES('Moosa', 'kek')
-INSERT INTO website_users VALUES('Mr Roworth','lol')
-INSERT INTO website_roles VALUES('student')
-INSERT INTO website_roles VALUES ('teacher')
-INSERT INTO website_user_roles VALUES('c3324541', 'student')
-INSERT INTO website_user_roles VALUES ('Mr Roworth','teacher')
+-- milestones doesnt work for some reason
+INSERT INTO milestones VALUES ('Teach Moosa how to be competent','c3324541','FaZe Clan');
+INSERT INTO milestones VALUES ('Finish Assignment ayy lmao','Moosa','FaZe Clan');
+INSERT INTO milestones VALUES ('Kick Moosa out of the group because lol','Humey','FaZe Clan');
+
+INSERT INTO website_users VALUES('c3324541', '	');
+INSERT INTO website_users VALUES('Moosa', 'kek');
+INSERT INTO website_users VALUES('Mr Roworth','lol');
+INSERT INTO website_roles VALUES('student');
+INSERT INTO website_roles VALUES ('teacher');
+INSERT INTO website_user_roles VALUES('c3324541', 'student');
+INSERT INTO website_user_roles VALUES ('Mr Roworth','teacher');
 INSERT INTO website_users (username, password) VALUES ('Humey', '123');
-INSERT INTO website_user_roles VALUES ('Humey', 'student')
-INSERT INTO discussions VALUES ('How do I use Java?','c3324541','I am having alot of issues understanding Java. For some reason, everytime I write I hate Moosa, it does not send 3 robots to his house to teach him about Minecraf!!! pls help!!s')
-INSERT INTO discussions VALUES ('My group member is not responding and is calling me bad words','Humey','He is not responding to me and is actually being a total asshole. He said I was a racist, I cannot believe this, smh. Pls ban. ')
-INSERT INTO discussionsThread VALUES ('1', 'Moosa','How do I eat a rat bro?')
-INSERT INTO discussionsThread VALUES ('2', 'Humey','Moosa Hassan, this is not the language I want on these discussion forums. Never speak again. ')
-INSERT INTO appointments VALUES ('Mr Smooth','Humey','Get feedback on A3 and how to code a car')
-INSERT INTO appointments values ('Mr Roworth','Moosa','Just be bros together yknow')
-INSERT INTO appointments values ('Mrs Sooooooks','Humey','Hell yeah')
-SELECT * from discussions
-SELECT * from discussionsThread
+INSERT INTO website_user_roles VALUES ('Humey', 'student');
+INSERT INTO discussions VALUES ('How do I use Java?','c3324541','I am having alot of issues understanding Java. For some reason, everytime I write I hate Moosa, it does not send 3 robots to his house to teach him about Minecraf!!! pls help!!s');
+INSERT INTO discussions VALUES ('My group member is not responding and is calling me bad words','Humey','He is not responding to me and is actually being a total asshole. He said I was a racist, I cannot believe this, smh. Pls ban. ');
+INSERT INTO discussionsThread VALUES ('1', 'Moosa','How do I eat a rat bro?');
+INSERT INTO discussionsThread VALUES ('2', 'Humey','Moosa Hassan, this is not the language I want on these discussion forums. Never speak again. ');
+INSERT INTO appointments VALUES ('Mr Smooth','Humey','Get feedback on A3 and how to code a car');
+INSERT INTO appointments values ('Mr Roworth','Moosa','Just be bros together yknow');
+INSERT INTO appointments values ('Mrs Sooooooks','Humey','Hell yeah');
+SELECT * FROM discussions;
+SELECT * FROM discussionsThread;
+
+SELECT * FROM website_users_roles;
+SELECT * FROM milestones WHERE groupName = 'FaZe Clan';
 
 -- groups testing
 INSERT INTO groups VALUES('FaZe Clan');
@@ -168,13 +185,8 @@ INSERT INTO groups VALUES('Virginity Club');
 SELECT * FROM groups;
 
 INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
-INSERT INTO user_groups VALUES('Humey', 'FaZe Clan');
+INSERT INTO user_groups VALUES('Humey', 'Virginity Club');
+
 SELECT * FROM user_groups;
 
-SELECT * FROM website_users_roles
-SELECT * FROM milestones WHERE groupName = 'FaZe Clan'
-
-select * from appointments
-
-
-drop table appointments
+DELETE FROM user_groups WHERE username='Humey';

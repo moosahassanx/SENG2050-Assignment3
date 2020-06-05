@@ -28,6 +28,33 @@ public class JoinGroup extends HttpServlet {
 
         // case: user has already joined a group
         if(theUser.hasGroup()){
+            // connection
+            InitialContext ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+            Statement stmt = conn.createStatement();
+
+            // get data from groups table in db
+            String query = "SELECT * FROM groups";
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<String> GroupNames = new ArrayList<String>();
+
+            // build list of group names
+            while(rs.next()) {
+                String GroupName = rs.getString("group_name");
+                GroupNames.add(GroupName);
+            }
+
+            // displaying group names in terminal
+            for(int i = 0; i < GroupNames.size(); i++){
+                System.out.println("Group Name " + i + ": " + GroupNames.get(i));
+            }
+
+            // closing
+            session.setAttribute("GroupNames", GroupNames);
+            conn.close();
+
+
             System.out.println("User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
         }
         

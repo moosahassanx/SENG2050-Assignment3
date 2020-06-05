@@ -1,6 +1,8 @@
 package userpackage;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -191,4 +193,43 @@ public class User
     conn.close();
     return false;
     }
+
+    // Populates a List of usernames currently in the group passed in
+    public static List<String> getUserList(String groupName) throws NamingException, SQLException {
+
+
+        List<String> list = new ArrayList<String>();
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("Select * from user_groups where group_name = ?");
+        ps.setString(1, groupName);
+
+        ResultSet rs = ps.executeQuery();
+
+         while(rs.next()){
+            String username = rs.getString("username");
+            list.add(username);
+        }
+
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i));
+        }
+
+        return list;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

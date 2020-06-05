@@ -63,7 +63,7 @@ public class UploadServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        // Need to make static method
         File downloadFile = new File();
         String fileName = request.getParameter("id");
 

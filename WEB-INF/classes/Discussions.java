@@ -38,6 +38,9 @@ public class Discussions extends HttpServlet {
     }
     public void getDiscussions(HttpSession session) throws SQLException, NamingException
     {
+
+        // Move into DB bean as a static method 
+
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");

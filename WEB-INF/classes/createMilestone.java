@@ -24,7 +24,7 @@ public class CreateMilestone extends HttpServlet
         String title = request.getParameter("milestoneTitle");
         String desc = request.getParameter("description");
         int id = (int)session.getAttribute("DIT");
-        User theUser =((User)session.getAttribute("user"));
+        User theUser =((User)session.getAttribute("user")); // Dont need to cast to user - Just pass the users name
         try 
         {
             createMilestoneInDB(session, desc, theUser, id);

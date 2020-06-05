@@ -22,9 +22,8 @@ import java.util.Scanner;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-//This is just a template login, we will still need to change this a bit and still need to make it better
-//T = Teacher, S = Student when logging in.
 
+// Need to hash password - & dont pull password from the DB, just check its correct with query
 @WebServlet(urlPatterns = { "/login"})
 public class Login extends HttpServlet 
 {

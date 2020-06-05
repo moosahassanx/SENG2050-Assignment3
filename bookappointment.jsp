@@ -1,8 +1,9 @@
 <!--
-    Assignment 3: Discussions.jsp
+    Assignment 3: BookAppointments.jsp
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: 
+    Purpose: This JSP allows users to input information relating to Appointments.
+    Users are able to select the date, time and reason as to why they want this appointment. 
 -->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
@@ -27,7 +28,7 @@
             <div id="bar-middle">
                 <h1 id="newcastle-portal">Newcastle Portal</h1>
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">Send Appointment to [Teacher Name]</h3>
+                <h3 id="bar-text">Send Appointment to ${teachName}</h3> 
             </div>
             <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>
@@ -43,14 +44,14 @@
             <hr>
         </div>
 
-        <!-- CREATE GROUP FORM -->
-        <form action="appointments.jsp">
+        <!-- CREATE Appointment FORM -->
+        <form action="CreateAppointments">
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
             
-            <p id="label">Date</p>
+            <p id="label">Date</p> <!--Users are able to select a date, time and leave a message in regards to the appointment that they want. -->
             <p><input id="input-title" type="date" name = "date"></p>
 
             <p id="label">Time</p>

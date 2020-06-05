@@ -17,7 +17,7 @@ DROP TABLE website_users;
 --USE collabDB;
 
 DROP LOGIN seng2050Ass3;
-
+----------------------LOGIN INFORMATION-----------------------
 CREATE LOGIN seng2050Ass3
 WITH PASSWORD = 'Passw0rd123!';
 
@@ -30,6 +30,8 @@ ALTER ROLE db_datawriter ADD member seng2050Ass3;
 GRANT SELECT, INSERT, UPDATE, DELETE
 TO seng2050Ass3;
 
+---------------------TABLE INFORMATION-------------------------
+-----------------------USER RELATED---------------------------
 CREATE TABLE website_users	(
 	username VARCHAR(30) NOT NULL PRIMARY KEY,
 	password VARCHAR(30) NOT NULL
@@ -62,7 +64,7 @@ CREATE TABLE website_user_roles (
 	FOREIGN KEY(role) REFERENCES website_roles(role)
 )
 
--------- TABLE FOR GROUPS ---------------------------------------
+-------- TABLE FOR GROUPS (files, appointments, milestones, etc) ---------------------------------------
 CREATE TABLE groups	(
 	group_name VARCHAR(30) NOT NULL PRIMARY KEY
 )
@@ -135,7 +137,7 @@ CREATE TABLE appointments(
 	teacher VARCHAR(30) not null,
 	username VARCHAR(30) not null,
 	description VARCHAR(1000) not null,
-	--date required still
+	appointDate date not null,
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 )
@@ -153,7 +155,7 @@ SELECT * FROM user_groups
 
 -- milestones doesnt work for some reason
 
-
+------------------VARIOUS TESTING--------------------------------------
 INSERT INTO website_users VALUES('c3324541', '	');
 INSERT INTO website_users VALUES('Moosa', 'kek');
 INSERT INTO website_users VALUES('Mr Roworth','lol');

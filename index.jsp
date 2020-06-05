@@ -8,26 +8,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>University of Newcastle - Portal</title>
+	<title>University of Newcastle - Portal</title> <!--Title of the page and includes the Stylesheet that will be used. -->
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/indexstyle.css">
 
     <script>
-        function myFunction(){
+        function myFunction(){ //Javascript function to display registering a user
             document.getElementById("popUp").style.display="block";
         }
     </script>
 </head>
 
 <body>
-	<section class="landing-page-main">
+	<section class="landing-page-main"> <!--Split into a section to have everything dedicated to the index in one block-->
 		<div class="main-content">
             <img src="https://www.newcastle.edu.au/__data/assets/image/0011/246881/uon-logo-square.png" alt="" class="box-img">
-            <h1>Newcastle Portal</h1>
+            <h1>Newcastle Portal</h1> 
             <p>Group management system.</p>
             <hr>
-            <p><button id="btn" value="register" onclick="myFunction()">Register</button></p>
+            <p><button id="btn" value="register" onclick="myFunction()">Register</button></p> <!--This allows users to register. -->
         </div>
 
         <div class = "teacher">

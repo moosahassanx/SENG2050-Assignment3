@@ -135,7 +135,7 @@ CREATE TABLE appointments(
 	teacher VARCHAR(30) not null,
 	username VARCHAR(30) not null,
 	description VARCHAR(1000) not null,
-	--date required still
+	dateDue date not null, 
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 )
@@ -186,6 +186,8 @@ INSERT INTO groups VALUES('FaZe Clan');
 INSERT INTO groups VALUES('Chef Gang');
 INSERT INTO groups VALUES('Virginity Club');
 SELECT * FROM groups;
+
+SELECT * from appointments;
 
 INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
 INSERT INTO user_groups VALUES('Humey', 'Virginity Club');

@@ -23,9 +23,9 @@ public class CreateAppointment extends HttpServlet
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
-        int teachID = (int)request.getAttribute("teachID");
-        ArrayList<String> TN = (ArrayList<String>)request.getAttribute("teacherNames");
-        String teachName = TN.get(teachID);
+        int teachID = Integer.parseInt(request.getParameter("teachID"));
+        ArrayList<String> TN = (ArrayList<String>)session.getAttribute("teacherNames");
+        String teachName = TN.get(teachID-1);
         session.setAttribute("teachName", teachName);
         RequestDispatcher rd = request.getRequestDispatcher("bookappointment.jsp");
         rd.forward(request,response);
@@ -34,11 +34,9 @@ public class CreateAppointment extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
-        User user = (User)request.getAttribute("user");
-        int teachID = (int)request.getAttribute("teachID");
+        User user = (User)session.getAttribute("user");
         String desc = request.getParameter("description");
-        ArrayList<String> teacherNames = (ArrayList<String>)request.getAttribute("appointmentTeacher");
-        String teachName = teacherNames.get(teachID);
+        String teachName = (String)session.getAttribute("teachName");
         AppointmentsDB APB = new AppointmentsDB();
         APB.setUsername(user.getName());
         APB.setSession(session);

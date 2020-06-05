@@ -51,8 +51,8 @@
             </div>
 
             <h1 id="content-heading">Book Appointment</h1>
-            <c:forEach begin = "1" end = "${teacherName.size()}" var = "TN"> <!--Displays all of the teachers you can book appointments with. -->
-                <p><button id="book-btn" onclick="location.href='BookAppointment?TeachID='TN;">${teacherName.get(TN-1)}</button></p>
+            <c:forEach begin = "1" end = "${teacherNames.size()}" var = "TN"> <!--Displays all of the teachers you can book appointments with. -->
+                <p><button id="book-btn" onclick="location.href='CreateAppointment?teachID=${TN}';">${teacherNames.get(TN-1)}</button></p>
             </c:forEach>
         </div>
 

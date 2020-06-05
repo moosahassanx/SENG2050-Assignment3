@@ -27,34 +27,45 @@ public class JoinGroup extends HttpServlet {
         String groupName = request.getParameter("groupName");
         User theUser =((User)session.getAttribute("user"));
 
-        // case: user has already joined a group
-        if(theUser.hasGroup()){
-            // running method
-            try {
-                DDB.showJoinedGroup(session, groupName, theUser);
-            }
-            catch (SQLException | NamingException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("JAVA VERSION:\t User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
+        // the user is a teacher
+        if(theUser.isStudent() == false){
+            // redirect user
+            RequestDispatcher rd = request.getRequestDispatcher("overviewgroup.jsp");
+            rd.forward(request,response);
+            return;
         }
         
-        // case: user has not joined a group yet, assign to group
+        // the user is a student
         else{
-            // running method
-            try {
-                DDB.joinGroup(session, groupName, theUser);
-            }
-            catch (SQLException | NamingException e) {
-                e.printStackTrace();
-            }
-        }
+            // case: user has already joined a group
+            if(theUser.hasGroup()){
+                // running method
+                try {
+                    DDB.showJoinedGroup(session, groupName, theUser);
+                }
+                catch (SQLException | NamingException e) {
+                    e.printStackTrace();
+                }
 
-        // redirect user
-        RequestDispatcher rd = request.getRequestDispatcher("hub.jsp");
-        rd.forward(request,response);
-        return;
+                System.out.println("JAVA VERSION:\t User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
+            }
+            
+            // case: user has not joined a group yet, assign to group
+            else{
+                // running method
+                try {
+                    DDB.joinGroup(session, groupName, theUser);
+                }
+                catch (SQLException | NamingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // redirect user
+            RequestDispatcher rd = request.getRequestDispatcher("hub.jsp");
+            rd.forward(request,response);
+            return;
+        }
     }
 
     /*

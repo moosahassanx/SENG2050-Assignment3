@@ -28,34 +28,15 @@ public class JoinGroup extends HttpServlet {
 
         // case: user has already joined a group
         if(theUser.hasGroup()){
-            // connection
-            InitialContext ctx = new InitialContext();
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            Connection conn = ds.getConnection();
-            Statement stmt = conn.createStatement();
-
-            // get data from groups table in db
-            String query = "SELECT * FROM groups";
-            ResultSet rs = stmt.executeQuery(query);
-            ArrayList<String> GroupNames = new ArrayList<String>();
-
-            // build list of group names
-            while(rs.next()) {
-                String GroupName = rs.getString("group_name");
-                GroupNames.add(GroupName);
+            // running method
+            try {
+                showJoinedGroup(session, groupName, theUser);
+            }
+            catch (SQLException | NamingException e) {
+                e.printStackTrace();
             }
 
-            // displaying group names in terminal
-            for(int i = 0; i < GroupNames.size(); i++){
-                System.out.println("Group Name " + i + ": " + GroupNames.get(i));
-            }
-
-            // closing
-            session.setAttribute("GroupNames", GroupNames);
-            conn.close();
-
-
-            System.out.println("User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
+            System.out.println("JAVA VERSION: User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
         }
         
         // case: user has not joined a group yet, assign to group
@@ -91,6 +72,31 @@ public class JoinGroup extends HttpServlet {
         ps.executeUpdate();
 
         System.out.println("USER " + user.getName() + " JOINED " + groupName);
+
+        // closing connection
+        conn.close();
+    }
+
+    public void showJoinedGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
+        System.out.println("theUser.hasGroup() = true");
+
+        // setting up connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // get data from groups table in db
+        String query = "SELECT * FROM user_groups WHERE username=";
+        query += "'" + user.getName() + "'";
+        System.out.println("Querying: " + query);
+        ResultSet rs = stmt.executeQuery(query);
+
+        // build list of group names
+        if(rs.next()) {
+            String GroupName = rs.getString("group_name");
+            System.out.println("SQL VERSION: user's SQL assigned group: " + GroupName);
+        }
 
         // closing connection
         conn.close();

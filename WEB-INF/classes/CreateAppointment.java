@@ -24,7 +24,7 @@ public class CreateAppointment extends HttpServlet
     {
         HttpSession session = request.getSession();
         int teachID = (int)request.getAttribute("teachID");
-        ArrayList<String> TN = (ArrayList<String>)request.getAttribute("teacherNames")
+        ArrayList<String> TN = (ArrayList<String>)request.getAttribute("teacherNames");
         String teachName = TN.get(teachID);
         session.setAttribute("teachName", teachName);
         RequestDispatcher rd = request.getRequestDispatcher("bookappointment.jsp");

@@ -47,7 +47,7 @@
         <!-- LIST OF GROUPS -->
         <div class="discussions-list">
             <div class="back-div">
-                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
+                <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
             <form action="joinGroup">

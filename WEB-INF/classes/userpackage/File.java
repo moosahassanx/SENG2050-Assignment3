@@ -91,7 +91,7 @@ public class File {
         return true;
     }
 
-    public List<File> getAllFiles(){
+    public List<File> getAllFiles(String groupName){
 
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
@@ -100,7 +100,8 @@ public class File {
                 InitialContext ctx = new InitialContext();
                 DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
                 Connection conn = ds.getConnection();
-                PreparedStatement ps = conn.prepareStatement("Select * from files where group_name = ?");
+                PreparedStatement ps = conn.prepareStatement("Select * from files where groupName = ?");
+                ps.setString(1, groupName);
                 ResultSet rs = ps.executeQuery();
 
                 // Running through the files table and populating the list

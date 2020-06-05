@@ -179,6 +179,8 @@ SELECT * FROM milestones WHERE groupName = 'FaZe Clan';
 
 -- groups testing
 SELECT * FROM website_users;
+SELECT * FROM website_roles;
+SELECT * FROM website_user_roles;
 
 INSERT INTO groups VALUES('FaZe Clan');
 INSERT INTO groups VALUES('Chef Gang');

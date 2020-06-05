@@ -31,7 +31,6 @@ public class UploadServlet extends HttpServlet {
 
                 RequestDispatcher rd = request.getRequestDispatcher("files.jsp");
                 rd.forward(request,response);
-
             }
             else{
                 
@@ -52,14 +51,14 @@ public class UploadServlet extends HttpServlet {
                 uploadFile.addGroupName(groupName);
                 // Sending file to upload method
 
-                    try{
-                        uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
-                        RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
-                        rd.forward(request, response);
-                    }
-                    catch (Exception e){
-                        e.printStackTrace();
-                    }
+                try{
+                    uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
+                    RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
+                    rd.forward(request, response);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
             }
     }
 

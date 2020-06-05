@@ -19,9 +19,6 @@
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
-<jsp:useBean id="file" scope="session" class="userpackage.File"/>
-
-
 <body>
     <section class="landing-page-main">
         <!--TOP BAR-->

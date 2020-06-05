@@ -38,6 +38,8 @@ public class CreateMilestone extends HttpServlet
         rd.forward(request,response);
         return;
     }
+
+    // Gotta take this out of the servlet
     public void createMilestoneInDB(HttpSession session, String desc, User user, int id) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();

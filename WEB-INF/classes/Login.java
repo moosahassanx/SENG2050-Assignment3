@@ -35,14 +35,11 @@ public class Login extends HttpServlet
         
         System.out.println(buttonClicked);
 
-
-
         if(buttonClicked.equals("Login")){
 
             //Grabs the parameter of name passed through
-            String loginID = request.getParameter("username"); 
+            String loginID = request.getParameter("username");
             String password = request.getParameter("password");
-
 
             System.out.println("LoginID: " + loginID);
             System.out.println("Password" + password);
@@ -59,7 +56,15 @@ public class Login extends HttpServlet
                     user.setName(loginID);
                     user.setPassword(password);
                     user.setRole("Student");
-                    user.setGroup("FaZe Clan");
+                    
+                    // running method
+                    try {
+                        joinGroup(user);
+                        //user.setGroup("FaZe Clan");
+                    }
+                    catch (SQLException | NamingException e) {
+                        e.printStackTrace();
+                    }                    
 
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
@@ -115,36 +120,57 @@ public class Login extends HttpServlet
     public void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException
     {
         try{
+            InitialContext ctx = new InitialContext();
+            // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+            // Selecting all data from the website_user table ** Note - only gives username/passwords
+            PreparedStatement ps = null;
+            String query = "SELECT * from milestones WHERE groupName = ?";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user.getGroup());
+            ResultSet rs = ps.executeQuery();
+            ArrayList<String> milestoneStudentNames = new ArrayList<String>();
+            ArrayList<String> milestoneDescriptions = new ArrayList<String>();
+            //ArrayList<Date> milestoneDates = new ArrayList<Date>();
+
+            while(rs.next())
+            {
+                String milestoneStudent = rs.getString("username");
+                String milestoneDescription = rs.getString("description");
+                //Date date = rs.getDate("date");
+                milestoneStudentNames.add(milestoneStudent);
+                milestoneDescriptions.add(milestoneDescription);
+                //milestoneDates.add(date);
+            }
+            session.setAttribute("milestoneStudentNames", milestoneStudentNames);
+            session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
+            //session.setAttribute("milestoneDates", milestoneDates); 
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void joinGroup(User user) throws SQLException, NamingException{
         InitialContext ctx = new InitialContext();
-        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
+        
         // Selecting all data from the website_user table ** Note - only gives username/passwords
         PreparedStatement ps = null;
-        String query = "SELECT * from milestones WHERE groupName = ?";
+        String query = "SELECT * FROM user_groups WHERE username = ?";
         ps = conn.prepareStatement(query);
-        ps.setString(1, user.getGroup());
+        ps.setString(1, user.getName());
         ResultSet rs = ps.executeQuery();
-        ArrayList<String> milestoneStudentNames = new ArrayList<String>();
-        ArrayList<String> milestoneDescriptions = new ArrayList<String>();
-        //ArrayList<Date> milestoneDates = new ArrayList<Date>();
 
-        while(rs.next())
-        {
-            String milestoneStudent = rs.getString("username");
-            String milestoneDescription = rs.getString("description");
-            //Date date = rs.getDate("date");
-            milestoneStudentNames.add(milestoneStudent);
-            milestoneDescriptions.add(milestoneDescription);
-            //milestoneDates.add(date);
+        if(rs.next()){
+            String groupName = rs.getString("group_name");
+            user.setGroup(groupName);
         }
-        session.setAttribute("milestoneStudentNames", milestoneStudentNames);
-        session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
-        //session.setAttribute("milestoneDates", milestoneDates); 
-    }
-    catch(Exception e)
-    {
-        e.printStackTrace();
-    }
+        else{
+            user.setGroup("");
+        }
     }
 }

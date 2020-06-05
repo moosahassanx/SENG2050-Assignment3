@@ -71,6 +71,7 @@ public class User
         return student;
     }
 
+    // groups control - FOR MOOSA
     public boolean hasGroup()
     {
         if (group == "")
@@ -93,7 +94,7 @@ public class User
         return group;
     }
     
-    private String group;
+    private String group = "";
     protected String name;
     protected int phoneNumber;
     protected String role;

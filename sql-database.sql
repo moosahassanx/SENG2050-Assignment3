@@ -13,8 +13,8 @@ DROP TABLE user_information;
 DROP TABLE website_roles;
 DROP TABLE website_users;
 
-CREATE DATABASE collabDB;
-USE collabDB;
+--CREATE DATABASE collabDB;
+--USE collabDB;
 
 DROP LOGIN seng2050Ass3;
 
@@ -152,9 +152,7 @@ SELECT * FROM user_groups
 --drop table
 
 -- milestones doesnt work for some reason
-INSERT INTO milestones VALUES ('Teach Moosa how to be competent','c3324541','FaZe Clan');
-INSERT INTO milestones VALUES ('Finish Assignment ayy lmao','Moosa','FaZe Clan');
-INSERT INTO milestones VALUES ('Kick Moosa out of the group because lol','Humey','FaZe Clan');
+
 
 INSERT INTO website_users VALUES('c3324541', '	');
 INSERT INTO website_users VALUES('Moosa', 'kek');
@@ -174,11 +172,15 @@ INSERT INTO appointments values ('Mr Roworth','Moosa','Just be bros together ykn
 INSERT INTO appointments values ('Mrs Sooooooks','Humey','Hell yeah');
 SELECT * FROM discussions;
 SELECT * FROM discussionsThread;
-
-SELECT * FROM website_users_roles;
+INSERT INTO milestones VALUES ('Teach Moosa how to be competent','c3324541','FaZe Clan');
+INSERT INTO milestones VALUES ('Finish Assignment ayy lmao','Moosa','FaZe Clan');
+INSERT INTO milestones VALUES ('Kick Moosa out of the group because lol','Humey','FaZe Clan');
+SELECT * FROM website_user_roles;
 SELECT * FROM milestones WHERE groupName = 'FaZe Clan';
 
 -- groups testing
+SELECT * FROM website_users;
+
 INSERT INTO groups VALUES('FaZe Clan');
 INSERT INTO groups VALUES('Chef Gang');
 INSERT INTO groups VALUES('Virginity Club');
@@ -187,6 +189,10 @@ SELECT * FROM groups;
 INSERT INTO user_groups VALUES('Moosa', 'FaZe Clan');
 INSERT INTO user_groups VALUES('Humey', 'Virginity Club');
 
+SELECT * FROM user_groups WHERE username='Humey';
 SELECT * FROM user_groups;
 
+-- 1
 DELETE FROM user_groups WHERE username='Humey';
+-- 2
+INSERT INTO user_groups VALUES('Humey', 'Virginity Club');

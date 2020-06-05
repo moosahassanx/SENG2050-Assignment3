@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/joinGroup" })
 public class JoinGroup extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("*****Join Group Servlet Loaded.*****");
+        System.out.println("\n*****Join Group Servlet Loaded.*****");
 
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
@@ -67,11 +67,13 @@ public class JoinGroup extends HttpServlet {
         String query = "INSERT INTO user_groups VALUES(?, ?)";
         PreparedStatement ps = null;
         ps = conn.prepareStatement(query);
-        ps.setString(1,user.getName());
-        ps.setString(2,groupName);
+        ps.setString(1, user.getName());
+        ps.setString(2, groupName);
         ps.executeUpdate();
 
-        System.out.println("USER " + user.getName() + " JOINED " + groupName);
+        user.setGroup(groupName);
+
+        System.out.println("USER " + user.getName() + " JOINED " + user.getGroup());
 
         // closing connection
         conn.close();
@@ -95,7 +97,7 @@ public class JoinGroup extends HttpServlet {
         // build list of group names
         if(rs.next()) {
             String GroupName = rs.getString("group_name");
-            System.out.println("SQL VERSION: user's SQL assigned group: " + GroupName);
+            System.out.println("SQL VERSION: User " + user.getName() + " has already joined the group: " + GroupName);
         }
 
         // closing connection

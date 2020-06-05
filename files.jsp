@@ -29,7 +29,7 @@
             <div id="bar-middle">
                 <h1 id="newcastle-portal">Newcastle Portal</h1>
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">Create Discussion</h3>
+                <h3 id="bar-text">Files</h3>
             </div>
             <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>
@@ -45,22 +45,12 @@
             <hr>
         </div>
 
-        <!-- LIST OF FILES -->
-       <!-- <div class="content-left">
-            <div class="back-div">
-                <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
-            </div>
-            
-            <h1 id="content-heading">Files</h1>
-            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name1</button></p>
-            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name2</button></p>
-            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name3</button></p>
-            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name4</button></p>
-            <p><button id="files-btn" onclick="location.href='files.jsp';">File Name5</button></p>
-        </div> -->
-
         <!-- UPLOAD FILES -->
         <div class="content-right">
+            <div class="back-div">
+                <p><button id="back-btn" onclick="location.href='hub.jsp';">Back</button></p>
+            </div>
+
             <h1 id="content-heading">Upload Files</h1>
             <form action="upload" method="post" enctype="multipart/form-data">
                 <p id="label">Select a file: </p>

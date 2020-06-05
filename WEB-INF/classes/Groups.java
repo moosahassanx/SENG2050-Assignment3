@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 public class Groups extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // checking servlet initializing
-        System.out.println("*****Groups Servlet Loaded.*****");
+        System.out.println("\n*****Groups Servlet Loaded.*****");
 
         // attempt to run method
         HttpSession session = request.getSession();

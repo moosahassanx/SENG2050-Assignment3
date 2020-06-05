@@ -26,9 +26,9 @@
                 <img src="https://www.newcastle.edu.au/__data/assets/image/0011/246881/uon-logo-square.png" alt="" class="box-img">
             </div>
             <div id="bar-middle">
-                <h1 id="newcastle-portal">Newcastle Portal</h1>
+                <h1 id="newcastle-portal">Newcastle Portal</h1> <!--Showing information about the server that is being used-->
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">Create Group</h3>
+                <h3 id="bar-text">Create Group</h3> <!--Indicates the page that is currently featured. -->
             </div>
             <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>
@@ -45,13 +45,13 @@
         </div>
 
         <!-- CREATE GROUP FORM -->
-        
+        <!--BACK BUTTON-->
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='groups.jsp';">Back</button>
             </div>
 
-            <form action="createGroup" method="POST">
+            <form action="createGroup" method="POST"> <!--Allows a group to consist of a name and a subject that it is apart of. -->
             <p id="label">Group Name</p>
             <p><input id="input-title" type="text" name="groupNameInput" required></p>
 

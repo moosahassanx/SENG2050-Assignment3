@@ -1,5 +1,5 @@
 <!--
-    Assignment 3: Discussions.jsp
+    Assignment 3: AddMilestones.jsp
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
     Purpose: 
@@ -30,7 +30,7 @@
                 <h3 id="bar-text">Add Milestone</h3>
             </div>
             <div id="bar-right">
-            <h2 id="bar-text">${user.getName()}</h2>
+            <h2 id="bar-text">${user.getName()}</h2> 
             <c:choose>
                 <c:when test = "${user.hasGroup()}">
                     <h2 id="bar-text">${user.getGroup()}</h2>
@@ -43,7 +43,7 @@
             <hr>
         </div>
 
-        <!-- LIST OF DISCUSSIONS -->
+        <!-- CREATOR FOR MILESTONES -->
         <div class="main-content">
             <!-- BACK BUTTON -->
             <div class="back-div">
@@ -53,7 +53,7 @@
             <!-- MILESTONE FORM -->
             <form action="CreateMilestone" method = "POST">
             <p id="label">Milestone Title</p>
-            <p><input id="input-title" type="text" name = "milestoneTitle"></p>
+            <p><input id="input-title" type="text" name = "milestoneTitle"></p> <!--Milestones have a title, summary and a due date, this is what is featured below. -->
 
             <p id="label">Summary</p>
             <p><input id="input-message" type="text" name = "description"></p>

@@ -20,6 +20,17 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/CreateAppointment" })
 public class CreateAppointment extends HttpServlet 
 {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        HttpSession session = request.getSession();
+        int teachID = (int)request.getAttribute("teachID");
+        ArrayList<String> TN = (ArrayList<String>)request.getAttribute("teacherNames")
+        String teachName = TN.get(teachID);
+        session.setAttribute("teachName", teachName);
+        RequestDispatcher rd = request.getRequestDispatcher("bookappointment.jsp");
+        rd.forward(request,response);
+        return;
+    }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();

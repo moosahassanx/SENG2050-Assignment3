@@ -1,8 +1,9 @@
 <!--
-    Assignment 3: Discussions.jsp
+    Assignment 3: Appointments.jsp
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: 
+    Purpose: Shows all the current teachers that are available for appointments and shows
+    all the current appointments that have been made. 
 -->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
@@ -50,20 +51,16 @@
             </div>
 
             <h1 id="content-heading">Book Appointment</h1>
-            <c:forEach begin = "1" end = "${teacherName.size()}" var = "TN">
+            <c:forEach begin = "1" end = "${teacherName.size()}" var = "TN"> <!--Displays all of the teachers you can book appointments with. -->
                 <p><button id="book-btn" onclick="location.href='BookAppointment?TeachID='TN;">${teacherName.get(TN-1)}</button></p>
             </c:forEach>
-            <!--<p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher2 (rat conductor)</button></p>
-            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher3 (chef supporter)</button></p>
-            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher4 (drain pipe)</button></p>
-            <p><button id="book-btn" onclick="location.href='bookappointment.jsp';">Teacher5 (the feminist)</button></p> -->
         </div>
 
         <!-- UPCOMING APPOINTMENTS -->
         <div class="content-right">
-            <h1 id="content-heading">Upcoming Appointments</h1>
+            <h1 id="content-heading">Upcoming Appointments</h1> 
             <ul>
-            <c:forEach begin = "1" end = "${appointmentDesc.size()}" var = "AD">
+            <c:forEach begin = "1" end = "${appointmentDesc.size()}" var = "AD"> <!--Displays all the current appointments that are within the DB for that user-->
                 <li>${appointmentTeacher.get(AD-1)} at mm:hh dd/mm/yyy: ${appointmentDesc.get(AD-1)}</li>
                 <!--<li>Teacher2 at mm:hh dd/mm/yyy: discuss rat seasoning options</li>
                 <li>Teacher1 at mm:hh dd/mm/yyy: show the chef you ate</li> -->

@@ -1,8 +1,9 @@
 <!--
-    Assignment 3: Discussions.jsp
+    Assignment 3: viewdiscussions.jsp
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: 
+    Purpose: To allow users of the page to view the various discussions that have been 
+    made on the page. 
 -->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
@@ -11,15 +12,15 @@
 <html>
 
 <head>
-    <title>University of Newcastle - Discussions</title>
+    <title>University of Newcastle - Discussions</title> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/viewdiscussion.css">
+    <link rel="stylesheet" type="text/css" href="css/viewdiscussion.css"> <!--Links to an external stylesheet to control the looks of the page-->
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <section class="landing-page-main">
+    <section class="landing-page-main"> <!--Split into a section to allow everything on page to be organised. -->
         <!--TOP BAR-->
         <div class="top-bar">
             <div id="bar-left">
@@ -28,12 +29,12 @@
             <div id="bar-middle">
                 <h1 id="newcastle-portal">Newcastle Portal</h1>
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">${discussionTitle}</h3>
+                <h3 id="bar-text">${discussionTitle}</h3> <!--Displays the discussion title that the user has decided-->
             </div>
             <div id="bar-right">
-                <h2 id="bar-text">${user.getName()}</h2>
+                <h2 id="bar-text">${user.getName()}</h2> <!--Grabs the user's name from login-->
                 <c:choose>
-                    <c:when test = "${user.hasGroup()}">
+                    <c:when test = "${user.hasGroup()}"> <!--Checks to see if the user has a group, if they do it will display, if not, N/A will display-->
                         <h2 id="bar-text">${user.getGroup()}</h2>
                     </c:when>
                     <c:otherwise>
@@ -46,28 +47,24 @@
 
         <!-- MESSAGES -->
         <div class="discussions-list">
-        <p id = "username">${discussionUsername}</p>
+        <p id = "username">${discussionUsername}</p> <!--Shows the original discussion's username and their description-->
         <p id = "message">${discussionDesc}</p>
-        <c:forEach begin = "1" end = "${threadIDs.size()}" var = "TID">
-            <p id="username">${threadUsernames.get(TID-1)}</p>
+        <c:forEach begin = "1" end = "${threadIDs.size()}" var = "TID"><!--Will loop through showing the various users and their replies to the thread.-->
+            <p id="username">${threadUsernames.get(TID-1)}</p> 
             <p id="message">${threadDesc.get(TID-1)}</p>
         </c:forEach>
         </div>
-        <!--<p id="username">[Humeey]</p>
-        <p id="message">Have you tried boiling it?</p>
 
-        <p id="username">[Moosa]</p>
-        <p id="message">Just eat it raw bro.</p> -->
         <!-- REPLY -->
         <div class="create-discussion">
-            <form action = "createDiscussionThread" method = "POST">
+            <form action = "createDiscussionThread" method = "POST"> <!--Will go to its own servlet to pass data into the DB-->
 
                 <p id="label">Reply</p>
-                <p><input id="input-message" type="text" name = "description"></p>
+                <p><input id="input-message" type="text" name = "description"></p> <!--The user writes their own reply to the discussions-->
 
                 <br>
                 
-                <p><input id="submit" type="submit" value="Create Discussion"></p>
+                <p><input id="submit" type="submit" value="Create Discussion"></p> 
             </form>
 
             </form>

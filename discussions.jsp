@@ -51,7 +51,7 @@
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-
+            <!--This is where the list of discussion titles will be shown, will loop through the list of titles that were found in the DB-->
             <c:forEach begin = "1" end = "${discussionTitles.size()}" var = "DT">
                 <p><button id="submit" onclick="location.href='discussionsThread?DIT=${discussionID.get(DT-1)}';">${discussionTitles.get(DT-1)}</button></p>
             </c:forEach>

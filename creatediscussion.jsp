@@ -1,8 +1,9 @@
 <!--
-    Assignment 3: Discussions.jsp
+    Assignment 3: CreateDiscussions.jsp
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: 
+    Purpose: This is the page that relates to creating the new discussions on the server. 
+    This is to ensure users can create new discussions when they are required to. 
 -->
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
@@ -27,7 +28,7 @@
             <div id="bar-middle">
                 <h1 id="newcastle-portal">Newcastle Portal</h1>
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">Create Discussion</h3>
+                <h3 id="bar-text">Create Discussion</h3> <!--Indicates what the page is-->
             </div>
             <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>
@@ -48,8 +49,8 @@
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-            <form action="createDiscussion" method = "POST">
-                <p id="label">Title</p>
+            <form action="createDiscussion" method = "POST"> <!--The discussion post will go to this servlet-->
+                <p id="label">Title</p> <!--Discussions consist of a title and a message-->
                 <p><input id="input-title" type="text" name = "title"></p>
 
                 <p id="label">Message</p>

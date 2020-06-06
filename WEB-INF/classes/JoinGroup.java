@@ -30,6 +30,16 @@ public class JoinGroup extends HttpServlet {
         // the user is a teacher
         if(theUser.isStudent() == false){
             // redirect user
+            System.out.println("Group Name: " + groupName);
+
+            // running method
+            try {
+                DDB.groupDetails(session, groupName);               // NEEDS DDB THING
+            }
+            catch (SQLException | NamingException e) {
+                e.printStackTrace();
+            }
+
             RequestDispatcher rd = request.getRequestDispatcher("overviewgroup.jsp");
             rd.forward(request,response);
             return;
@@ -67,6 +77,37 @@ public class JoinGroup extends HttpServlet {
             return;
         }
     }
+
+    /*
+    public void groupDetails(HttpSession session, String groupName) throws SQLException, NamingException {
+        // connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // get data from groups table in db
+        String query = "SELECT * FROM user_groups WHERE group_name = ";
+        query += "'" + groupName + "'";
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<String> groupMembers = new ArrayList<String>();
+
+        // build list of group members
+        while(rs.next()) {
+            String groupMember = rs.getString("username");
+            groupMembers.add(groupMember);
+        }
+
+        for(int i = 0; i < groupMembers.size(); i++){
+            System.out.println("Group member " + i + ": " + groupMembers.get(i));
+        }
+
+        // closing
+        session.setAttribute("groupName", groupName);
+        session.setAttribute("groupMembers", groupMembers);
+        conn.close();
+    }
+    */
 
     /*
     public void joinGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {

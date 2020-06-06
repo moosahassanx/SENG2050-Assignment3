@@ -55,6 +55,7 @@ public class Login extends HttpServlet
                     user.setName(loginID);
                     user.setPassword(password);
                     user.setRole("Student");
+                    user.setStudent(true);
                     
                     // running method
                     try {
@@ -78,6 +79,7 @@ public class Login extends HttpServlet
                     user.setName(loginID);
                     user.setPassword(password);
                     user.setRole("Teacher");
+                    user.setStudent(false);
 
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session

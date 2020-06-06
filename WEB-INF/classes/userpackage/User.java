@@ -109,60 +109,58 @@ public class User
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         try{
-
         
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        System.out.println("Inside db method2");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-        System.out.println("Inside db method3");
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            System.out.println("Inside db method2");
+            Connection conn = ds.getConnection();
+            Statement stmt = conn.createStatement();
+            System.out.println("Inside db method3");
             // Selecting all data from the website_user table ** Note - only gives username/passwords
             String query = "SELECT * from website_users";
             ResultSet rs = stmt.executeQuery(query);
             PreparedStatement ps = null;
 
-                // Moving the curser over each tuple
-                while(rs.next()){
-                    String user = rs.getString("username");
-                    System.out.println(user);
-                    if(user.equalsIgnoreCase(username)){
-                        String userPass = rs.getString("password");
-                        System.out.println(userPass);
-                        if(userPass.equals(password)){
-                            System.out.println("im in lol");
-                            // Credentials correct now check what role they are
-                            query = "SELECT * from website_user_roles WHERE username = ?";
-                            System.out.println("2");
-                            ps = conn.prepareStatement(query);
-                            System.out.println("3");
-                            ps.setObject(1, user);
-                            System.out.println("4");
-                            rs = ps.executeQuery();
-                                // Checks what role the user has
-                                while(rs.next()){
-                                    System.out.println("kek");
-                                    System.out.println(rs.getString("role"));
+            // Moving the curser over each tuple
+            while(rs.next()){
+                String user = rs.getString("username");
+                System.out.println(user);
+                if(user.equalsIgnoreCase(username)){
+                    String userPass = rs.getString("password");
+                    System.out.println(userPass);
+                    if(userPass.equals(password)){
+                        System.out.println("im in lol");
+                        // Credentials correct now check what role they are
+                        query = "SELECT * from website_user_roles WHERE username = ?";
+                        System.out.println("2");
+                        ps = conn.prepareStatement(query);
+                        System.out.println("3");
+                        ps.setObject(1, user);
+                        System.out.println("4");
+                        rs = ps.executeQuery();
+                        // Checks what role the user has
+                        while(rs.next()){
+                            System.out.println("kek");
+                            System.out.println(rs.getString("role"));
 
-                                    // user is a student
-                                    if(rs.getString("role").equalsIgnoreCase("Student")){
-                                        rs.close();
-                                        conn.close();
-                                        return 1;
-                                    }
-                                    // user is a teacher
-                                    else{
-                                        rs.close();
-                                        conn.close();
-                                        return 2;
-                                    }
-                                }
+                            // user is a student
+                            if(rs.getString("role").equalsIgnoreCase("Student")){
+                                rs.close();
+                                conn.close();
+                                return 1;
+                            }
+                            // user is a teacher
+                            else{
+                                rs.close();
+                                conn.close();
+                                return 2;
+                            }
                         }
                     }
                 }
-    rs.close();
-    conn.close();
-    return 0;
-    
+            }
+            rs.close();
+            conn.close();
+            return 0;
         }
         catch (Exception e){
             e.printStackTrace();
@@ -179,28 +177,27 @@ public class User
         Statement stmt = conn.createStatement();
         PreparedStatement ps = null;
 		
-            String query = "SELECT * from initial_login WHERE username = ?";
-            ps = conn.prepareStatement(query);
-            ps.setObject(1, username);
-			ResultSet rs = stmt.executeQuery(query);
-			
-                while(rs.next()){
-                    int initialLogin = rs.getInt("LoginTimes");
-                    if(username.equalsIgnoreCase(username) && initialLogin == 0){
-                        //Students first login
-                        rs.close();
-                        conn.close();
-                        return true;       
-                    }
-                }
-    rs.close();
-    conn.close();
-    return false;
+        String query = "SELECT * from initial_login WHERE username = ?";
+        ps = conn.prepareStatement(query);
+        ps.setObject(1, username);
+        ResultSet rs = stmt.executeQuery(query);
+        
+        while(rs.next()){
+            int initialLogin = rs.getInt("LoginTimes");
+            if(username.equalsIgnoreCase(username) && initialLogin == 0){
+                //Students first login
+                rs.close();
+                conn.close();
+                return true;       
+            }
+        }
+        rs.close();
+        conn.close();
+        return false;
     }
 
     // Populates a List of usernames currently in the group passed in
     public static List<String> getUserList(String groupName) throws NamingException, SQLException {
-
 
         List<String> list = new ArrayList<String>();
         InitialContext ctx = new InitialContext();
@@ -218,18 +215,4 @@ public class User
 
         return list;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

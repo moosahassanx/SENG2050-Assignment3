@@ -34,7 +34,7 @@ public class JoinGroup extends HttpServlet {
 
             // running method
             try {
-                groupDetails(session, groupName);               // NEEDS DDB THING
+                DDB.groupDetails(session, groupName);               // NEEDS DDB THING
             }
             catch (SQLException | NamingException e) {
                 e.printStackTrace();
@@ -78,6 +78,7 @@ public class JoinGroup extends HttpServlet {
         }
     }
 
+    /*
     public void groupDetails(HttpSession session, String groupName) throws SQLException, NamingException {
         // connection
         InitialContext ctx = new InitialContext();
@@ -106,6 +107,7 @@ public class JoinGroup extends HttpServlet {
         session.setAttribute("groupMembers", groupMembers);
         conn.close();
     }
+    */
 
     /*
     public void joinGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {

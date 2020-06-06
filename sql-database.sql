@@ -140,6 +140,16 @@ CREATE TABLE appointments(
 	FOREIGN KEY(username) REFERENCES website_users(username),
 )
 
+CREATE table responsibilities(
+    username varchar(30) NOT NULL,
+    description VARCHAR(1000),
+    dateInsert varchar(30) NOT NULL,
+    dateDue varchar(30) NOT NULL,
+    userGroup varchar(30) NOT NULL,
+	completed boolean --BIT Field, 0 False / 1 True
+)
+
+
 SELECT * FROM files
 SELECT * FROM user_groups
 

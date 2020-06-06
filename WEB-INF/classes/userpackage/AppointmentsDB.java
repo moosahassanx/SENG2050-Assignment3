@@ -1,3 +1,11 @@
+/*
+    Assignment 3: AppointmentsDB.java
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: This file is used to handle writing and receiving appointments
+    from the database. It stores a username and session that it will access in order
+    to obtain any relevant data from the server. 
+*/
 package userpackage;
 
 import userpackage.User;
@@ -43,7 +51,8 @@ public class AppointmentsDB
         this.session = session;
     }
 
-    public void getAppointments() throws SQLException, NamingException
+    //This function will be used to return the appointments that are currently within the System as well as get the teachers that are within the system to book an appointment with. 
+    public void getAppointments() throws SQLException, NamingException 
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -75,8 +84,7 @@ public class AppointmentsDB
         session.setAttribute("appointmentTeacher", appointmentTeacher);
         session.setAttribute("appointmentDate", appointmentDate);
         session.setAttribute("appointmentTime", appointmentTime);
-        System.out.println("lol");
-        query = "SELECT * FROM website_user_roles WHERE role = ?";
+        query = "SELECT * FROM website_user_roles WHERE role = ?"; //Repeats the process above but instead grabs the teacher instead so it can allow students to book appointments with teachers
         ps = conn.prepareStatement(query);
         ps.setString(1, "teacher");
         rs = ps.executeQuery();
@@ -85,7 +93,6 @@ public class AppointmentsDB
 
         while(rs.next())
         {
-            System.out.println("xd");
             teacherNames.add(rs.getString("username"));
         }
 
@@ -93,6 +100,7 @@ public class AppointmentsDB
 
     }
 
+    //This function will be used to write new appointments to the Database. 
     public void writeAppointments(String desc, String teacher, User user, String date, String time) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
@@ -101,16 +109,15 @@ public class AppointmentsDB
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
-        //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
-        String query = "INSERT INTO appointments VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO appointments VALUES(?,?,?,?,?)"; //Prepares query to place all the data within
         PreparedStatement ps = null;
-        ps = conn.prepareStatement(query);
-        ps.setString(1, teacher);
+        ps = conn.prepareStatement(query); //prepares the statement
+        ps.setString(1, teacher); //Sets up all the strings to be placed within the DB
         ps.setString(2, user.getName());
         ps.setString(3,desc);
         ps.setString(4, time);
         ps.setString(5, date);
-        ps.executeUpdate();
+        ps.executeUpdate(); //Executes it and closes the connection. 
 
         conn.close();
 

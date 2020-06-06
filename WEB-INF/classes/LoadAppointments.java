@@ -1,3 +1,10 @@
+/*
+    Assignment 3: User.java
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: this will be the main bean of the server. It holds all the user's
+    information as well as connects to the DB. 
+*/
 //package WEB-INF.classes;
 
 import java.io.*;

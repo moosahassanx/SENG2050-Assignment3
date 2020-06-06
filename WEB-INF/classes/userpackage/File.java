@@ -1,3 +1,11 @@
+/*
+    Assignment 3: AddMilestones.jsp
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: This is the bean that will hold all the data relating to any files that are uploaded
+    to the server. 
+*/
+
 package userpackage;
 
 
@@ -72,6 +80,7 @@ public class File {
         this.fileData = fileData;
     }
 
+    //This function will place the file that has been 'uploaded' into the DB. 
     public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws NamingException, SQLException {
 
         InitialContext ctx = new InitialContext();
@@ -91,6 +100,7 @@ public class File {
         return true;
     }
 
+    //This function will return all the files currently stored within the DB
     public List<File> getAllFiles(String groupName){
 
         // Storing all the files in an arraylist from the database
@@ -120,7 +130,7 @@ public class File {
         return list;
     }
 
-
+    //This function will allow the user to download the file that they have selected on the files page. 
     public Blob downloadFile(String fileName) throws SQLException, NamingException {
         Blob data = null;
         InitialContext ctx = new InitialContext();

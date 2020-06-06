@@ -1,3 +1,9 @@
+/*
+    Assignment 3: responsibility.java
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: this file will hold all the information that relates to the responsibilities.
+*/
 package userpackage;
 
 import javax.swing.JSpinner.DateEditor;

@@ -31,7 +31,7 @@
                 </div>
                 <div id="bar-right">
                     <h2 id="bar-text">${user.getName()}</h2> <!--This is shown on all pages after the index, prints the user name --> <!--and checks to see if the user has a group, if so it will be displayed. -->
-                    <c:choose> 
+                    <c:choose>
                         <c:when test = "${user.hasGroup()}">
                             <h2 id="bar-text">${user.getGroup()}</h2>
                         </c:when>

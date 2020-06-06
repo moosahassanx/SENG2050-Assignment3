@@ -32,7 +32,7 @@ public class CreateMilestone extends HttpServlet
         String title = request.getParameter("milestoneTitle");
         String desc = request.getParameter("description");
         int id = (int)session.getAttribute("DIT");
-        User theUser = session.getAttribute("user"); 
+        User theUser = (User)session.getAttribute("user"); 
         String name = theUser.getName();
         String group = theUser.getGroup();
         try 

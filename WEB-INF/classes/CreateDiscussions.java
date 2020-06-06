@@ -28,10 +28,10 @@ import java.time.format.DateTimeFormatter;
 public class CreateDiscussions extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
-        HttpSession session = request.getSession(); //Grabs sessions and gets the data that is required. 
+        HttpSession session = request.getSession(); //Grabs sessions and gets the data that is required.
         String title = request.getParameter("title");
         String desc = request.getParameter("description");
-        User theUser = (session.getAttribute("user")); 
+        User theUser = ((User)session.getAttribute("user"));
         try 
         {
             DDB.createDiscussions(session, title, desc, theUser); //Runs the function to write it to the DB

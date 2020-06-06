@@ -195,10 +195,14 @@ public class DBAccess {
         Statement stmt = conn.createStatement();
 
         // get data from groups table in db
-        String query = "SELECT * FROM user_groups WHERE username=";
-        query += "'" + user.getName() + "'";
-        System.out.println("Querying: " + query);
-        ResultSet rs = stmt.executeQuery(query);
+        String query = "SELECT * FROM user_groups WHERE username = ?";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1, user.getName());
+        ResultSet rs = ps.executeQuery();
+        //query += "'" + user.getName() + "'";
+        System.out.println("Querying: " + query + " for " + user.getName());
+        //esultSet rs = stmt.executeQuery(query);
 
         // build list of group names
         if(rs.next()) {

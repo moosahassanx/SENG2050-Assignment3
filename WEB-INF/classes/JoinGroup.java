@@ -1,9 +1,9 @@
 /*
-    Assignment 3: User.java
+    Assignment 3: JoinGroup.java
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This servlet will be used to allow a user 
+    to join a group that they have chosen. 
 */
 //package WEB-INF.classes;
 
@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-//This is just a template login, we will still need to change this a bit and still need to make it better
 @WebServlet(urlPatterns = { "/joinGroup" })
 public class JoinGroup extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +31,7 @@ public class JoinGroup extends HttpServlet {
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
         String groupName = request.getParameter("groupName");
-        User theUser =((User)session.getAttribute("user"));
+        User theUser =(session.getAttribute("user")); 
 
         // the user is a teacher
         if(theUser.isStudent() == false){

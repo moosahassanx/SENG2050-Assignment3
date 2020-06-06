@@ -1,9 +1,9 @@
 /*
-    Assignment 3: User.java
+    Assignment 3: Discussions.java
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This is a servlet that is used to load up all the current discussions
+    in the database. 
 */
 //package WEB-INF.classes;
 
@@ -23,8 +23,6 @@ import java.util.ArrayList;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-//This is just a template login, we will still need to change this a bit and still need to make it better
-
 @WebServlet(urlPatterns = { "/discussions" })
 public class Discussions extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -32,43 +30,16 @@ public class Discussions extends HttpServlet {
         HttpSession session = request.getSession();
         try 
         {
-            DDB.getDiscussions(session);
+            DDB.getDiscussions(session); //Runs the function to grab all discussions from the DB
         } 
         catch (SQLException | NamingException e) 
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        RequestDispatcher rd = request.getRequestDispatcher("discussions.jsp");
-        rd.forward(request,response);
+        RequestDispatcher rd = request.getRequestDispatcher("discussions.jsp"); //Preparing the forwarding
+        rd.forward(request,response); //Forwards
         return;
-    }
-    public void getDiscussions(HttpSession session) throws SQLException, NamingException
-    {
-
-        // Move into DB bean as a static method 
-
-        InitialContext ctx = new InitialContext();
-        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-        // Selecting all data from the website_user table ** Note - only gives username/passwords
-        String query = "SELECT * from discussions";
-        ResultSet rs = stmt.executeQuery(query);
-        ArrayList<String> discussionTitles = new ArrayList<String>();
-        ArrayList<String> discussionID = new ArrayList<String>();
-
-        while(rs.next())
-        {
-            String discussID = rs.getString("discussionID");
-            String discussionTitle = rs.getString("title");
-            discussionTitles.add(discussionTitle);
-            discussionID.add(discussID);
-        }
-        session.setAttribute("discussionTitles", discussionTitles);
-        session.setAttribute("discussionID", discussionID);
-        conn.close();
     }
     private DBAccess DDB;
 }

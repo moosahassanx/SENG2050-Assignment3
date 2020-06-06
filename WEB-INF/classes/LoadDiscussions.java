@@ -1,9 +1,10 @@
 /*
-    Assignment 3: User.java
+    Assignment 3: LoadDiscussions
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This servlet will be used to get the discussions thread that 
+    you have currently clicked on.
+    
 */
 //package WEB-INF.classes;
 
@@ -22,8 +23,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-
-//This is just a template login, we will still need to change this a bit and still need to make it better
 
 @WebServlet(urlPatterns = { "/discussionsThread" })
 public class LoadDiscussions extends HttpServlet { //This will be used to return the discussions to the required JSP. 
@@ -44,46 +43,6 @@ public class LoadDiscussions extends HttpServlet { //This will be used to return
         RequestDispatcher rd = request.getRequestDispatcher("viewdiscussion.jsp"); //gets the data prepared to pass to the next page
         rd.forward(request,response); //Forwards to the next page
         return;
-    }
-    public void getDiscussionsThread(HttpSession session, int id) throws SQLException, NamingException
-    {
-        InitialContext ctx = new InitialContext();
-        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        // Selecting all data from the website_user table ** Note - only gives username/passwords
-        PreparedStatement ps = null;
-        String query = "SELECT * from discussions WHERE discussionID = ?";
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
-        rs.next();
-        String discussionTitle = rs.getString("title");
-        String discussionDesc = rs.getString("description");
-        String discussionUsername = rs.getString("username");
-
-        query = "Select * from discussionsThread WHERE discussionID = ?";
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, id);
-        rs = ps.executeQuery();
-        ArrayList<String> threadIDs = new ArrayList<String>();
-        ArrayList<String> threadUsernames = new ArrayList<String>();
-        ArrayList<String> threadDesc = new ArrayList<String>();
-
-        while(rs.next())
-        {
-            threadIDs.add(rs.getString("threadID"));
-            threadUsernames.add(rs.getString("username"));
-            threadDesc.add(rs.getString("description"));
-        }
-
-        session.setAttribute("discussionUsername", discussionUsername);
-        session.setAttribute("discussionTitle", discussionTitle);
-        session.setAttribute("discussionDesc", discussionDesc);
-        session.setAttribute("threadIDs", threadIDs);
-        session.setAttribute("threadUsernames", threadUsernames);
-        session.setAttribute("threadDesc",threadDesc);
-        conn.close();
     }
     private DBAccess DDB;
 }

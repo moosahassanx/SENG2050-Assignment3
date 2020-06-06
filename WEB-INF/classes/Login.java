@@ -1,9 +1,9 @@
 /*
-    Assignment 3: User.java
+    Assignment 3: Login.java
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This servlet is responsible for dealing with the login of a user or a teacher.
+    This will ensure the correct user is taken to the correct website. 
 */
 //package WEB-INF.classes;
 

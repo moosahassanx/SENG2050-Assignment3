@@ -279,4 +279,23 @@ public class DBAccess {
     }
 
 
+    public static void createMilestoneInDB(HttpSession session, String desc, String userName, int id) throws SQLException, NamingException
+    {
+        InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        // Selecting all data from the website_user table ** Note - only gives username/passwords
+        //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
+        String query = "INSERT INTO milestones VALUES(?,?,?)";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1,desc);
+        ps.setString(2,user.getName());
+        ps.setString(3,user.getGroup());
+        ps.executeUpdate();
+
+        conn.close(); 
+    }
 }

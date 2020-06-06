@@ -17,6 +17,28 @@
         function myFunction(){ //Javascript function to display registering a user
             document.getElementById("popUp").style.display="block";
         }
+        function validate() 
+        {
+                var name = document.getElementById("username"); //Grabs the user id from the form
+                var pass = document.getElementById("password");
+                var returnStatus = true;
+                var messageError = "Sorry but: \n ";
+                if (name === null || name.value === "")  
+                { 
+                    returnStatus = false; //Returns false so it doesn't submit
+                    messageError += "Your UserID had no input, please input something for the UserID. \n"; //Adds to String that will get returned. 
+                }
+                if (pass === null || pass.value === "")  
+                { 
+                    returnStatus = false; //Returns false so it doesn't submit
+                    messageError += "Please put in a password\n"; //Adds to String that will get returned. 
+                }
+                if (!returnStatus) 
+                {
+                    alert(messageError); //Returns the string in the alert
+                }
+                return returnStatus; //Returns the result Status. 
+            }
     </script>
 </head>
 
@@ -31,7 +53,7 @@
         </div>
 
         <div class = "teacher">
-            <form action = "login" method="POST">
+            <form action = "login" method="POST" onsubmit = "return validate()">
             <!--These will be passed into the Servlet so it can be queried in the DB-->
             <p><input type="text" placeholder="Username" id="username" name = "username" /></p>
             <p><input type="password" placeholder="Password" id="password" name = "password"></p>

@@ -16,6 +16,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bookappointment.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
+    <script>
+        function validate() 
+        {
+            var date = document.getElementById("date"); //Grabs the user id from the form
+            var time = document.getElementById("time");
+            var message = document.getElementById("description")
+            var returnStatus = true;
+            var messageError = "Sorry but: \n ";
+            if (date === null || date.value === "") 
+            { 
+                returnStatus = false; //Returns false so it doesn't submit
+                messageError += "Please input a date\n"; //Adds to String that will get returned. 
+            }
+            if (time === null || time.value === "") 
+            { 
+                returnStatus = false; //Returns false so it doesn't submit
+                messageError += "Please put in a time\n"; //Adds to String that will get returned. 
+            }
+            if (message === null || message.value === "") 
+            { 
+                returnStatus = false; //Returns false so it doesn't submit
+                messageError += "Please put in a description\n"; //Adds to String that will get returned. 
+            }
+            if (!returnStatus) 
+            {
+                alert(messageError); //Returns the string in the alert
+            }
+            return returnStatus; //Returns the result Status. 
+        }
+    </script>
 </head>
 
 <body>
@@ -45,20 +75,20 @@
         </div>
 
         <!-- CREATE Appointment FORM -->
-        <form action="CreateAppointment" method = "POST">
+        <form action="CreateAppointment" method = "POST" onsubmit = "return validate()">
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
             
             <p id="label">Date</p> <!--Users are able to select a date, time and leave a message in regards to the appointment that they want. -->
-            <p><input id="input-title" type="date" name = "date"></p>
+            <p><input id="input-title" type="date" id = "date" name = "date"></p>
 
             <p id="label">Time</p>
-            <p><input id="input-title" type="time" name = "time"></p>
+            <p><input id="input-title" type="time" id = "time" name = "time"></p>
 
             <p id="label">Message</p>
-            <p><input id="input-message" type="text" name = "description"></p>
+            <p><input id="input-message" type="text" id = "description" name = "description"></p>
 
             <p><input id="submit" type="submit" value="BOOK APPOINTMENT"></p>
         </div>

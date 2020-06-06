@@ -16,6 +16,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/creatediscussion.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
+        <script>
+        function validate() 
+        {
+            var title = document.getElementById("title"); //Grabs the user id from the form
+            var message = document.getElementById("message");
+            var returnStatus = true;
+            var messageError = "Sorry but: \n ";
+            if (title === null || title.value === "")  
+            { 
+                returnStatus = false; //Returns false so it doesn't submit
+                messageError += "You need a title for your discussion\n"; //Adds to String that will get returned. 
+            }
+            if (message === null || message.value === "")  
+            { 
+                returnStatus = false; //Returns false so it doesn't submit
+                messageError += "You need a description for your post\n"; //Adds to String that will get returned. 
+            }
+            if (!returnStatus) 
+            {
+                alert(messageError); //Returns the string in the alert
+            }
+            return returnStatus; //Returns the result Status. 
+        }
+    </script>
 </head>
 
 <body>
@@ -49,12 +73,12 @@
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-            <form action="createDiscussion" method = "POST"> <!--The discussion post will go to this servlet-->
+            <form action="createDiscussion" method = "POST" onsubmit = "return validate()"> <!--The discussion post will go to this servlet-->
                 <p id="label">Title</p> <!--Discussions consist of a title and a message-->
-                <p><input id="input-title" type="text" name = "title"></p>
+                <p><input id="input-title" type="text" id = "title" name = "title"></p>
 
                 <p id="label">Message</p>
-                <p><input id="input-message" type="text" name = "description"></p>
+                <p><input id="input-message" type="text" id = "message" name = "description"></p>
 
                 <p><input id="submit" type="submit" value="Create Discussion"></p>
             </form>

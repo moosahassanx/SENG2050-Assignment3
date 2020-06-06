@@ -1,6 +1,6 @@
 <!--
     Assignment 3: CreateDiscussions.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This is the page that relates to creating the new discussions on the server. 
     This is to ensure users can create new discussions when they are required to. 

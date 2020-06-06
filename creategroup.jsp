@@ -1,6 +1,6 @@
 <!--
     Assignment 3: CreateGroup.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This will be the page where a user will be able to create a new group. 
     They are able to create the group and also make it apart of a specific subject. 

@@ -1,6 +1,6 @@
 <!--
     Assignment 3: Hub.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This is the main hub page that will be used to access the other
     various pages of the site. It will be the page you see after you have logged in. 

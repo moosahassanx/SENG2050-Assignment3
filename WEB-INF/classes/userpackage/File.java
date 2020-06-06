@@ -1,6 +1,6 @@
 /*
     Assignment 3: AddMilestones.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This is the bean that will hold all the data relating to any files that are uploaded
     to the server. 
@@ -96,7 +96,7 @@ public class File {
     public String getVersion(){
         return version;
     }
-    
+
     //This function will place the file that has been 'uploaded' into the DB. 
     public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws NamingException, SQLException {
 
@@ -105,6 +105,7 @@ public class File {
         Connection conn = ds.getConnection();
         PreparedStatement ps = null;
 
+            // Inserts the file in the main files table
             String query = "INSERT into files VALUES (?,?,?,?,?)";
             ps = conn.prepareStatement(query);
             ps.setObject(1,bytes);
@@ -114,7 +115,15 @@ public class File {
             ps.setString(5, groupName);
             ps.executeUpdate();
 
-        return true;
+            // Inserts file as the first version in versionfile table
+            query = "INSERT INTO versionFiles VALUES (?,?,?,?)";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, fileName);
+            ps.setObject(2, bytes);
+            ps.setString(3, description);
+            ps.setString(4, uploadedName);
+            
+            return true;
     }
 
     //This function will return all the files currently stored within the DB

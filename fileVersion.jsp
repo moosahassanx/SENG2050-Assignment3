@@ -1,6 +1,6 @@
 <!--
     Assignment 3: Files.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This is where all the files will be stored. This is where students can
     upload various files and also download them. 
@@ -70,7 +70,7 @@
                     <td>${l.getVersion()}</td>
                     <td>${l.getFileName()}</td>
                     <td>${l.getDescription()}</td>
-                    <td>${l.getUserUploaded()}</td>
+                    <td>${l.getUserUploaded()}</td> <!-- Also need to add the option to delete their files and record who deleted e.x.t.-->
                     <td><a href="${pageContext.request.contextPath}/upload?id=${l.getFileName()}">Download me</a></td> <!-- Probs need to change this method to look in version control table-->
                 </tr>
             </c:forEach>

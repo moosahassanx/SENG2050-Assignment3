@@ -1,6 +1,6 @@
 /*
     Assignment 3: Discussions.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This is a servlet that is used to load up all the current discussions
     in the database. 

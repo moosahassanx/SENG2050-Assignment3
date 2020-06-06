@@ -1,6 +1,6 @@
 <!--
     Assignment 3: Discussions.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: The Discussions page is where everything relating to discussions will be held. Users will
     be able to view discussions, create new discussions and comment on certain discussions too. 

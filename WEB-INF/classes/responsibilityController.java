@@ -1,6 +1,6 @@
 /*
     Assignment 3: responsibilityController.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This servlet will be used to complete everything relating
     to the responsibilities on the server. 

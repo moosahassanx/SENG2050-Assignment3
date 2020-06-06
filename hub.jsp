@@ -46,6 +46,11 @@
 
             <!-- THE ACTUAL USER INTERACTION OF THE SITE (LEFT COLUMN) -->
             <div class="content-left">
+                <!-- LOGOUT BUTTON -->
+                <div class="back-div">
+                    <button id="back-btn" onclick="location.href='login';">Logout</button>
+                </div>
+
                 <h1 id="content-heading">Menu</h1>
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>
                 <p><a href="discussions" address="true">Discussions</a></p>

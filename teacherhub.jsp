@@ -1,6 +1,6 @@
 <!--
     Assignment 3: Hub.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This is the main hub page that will be used to access the other
     various pages of the site. It will be the page you see after you have logged in. 
@@ -37,6 +37,11 @@
 
             <!-- MENU COLUMN -->
             <div class="content-left">
+                <!-- LOGOUT BUTTON -->
+                <div class="back-div">
+                    <button id="back-btn" onclick="location.href='login';">Logout</button>
+                </div>
+
                 <h1 id="content-heading">Menu</h1>
                 <p><a href="groups" address="true">Groups</a></p> <!--Links to all the different pages so the user can access them. -->
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>

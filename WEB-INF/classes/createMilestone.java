@@ -1,6 +1,6 @@
 /*
     Assignment 3: CreateMilestone.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This Servlet will be used whenever a Milestone is created
     off of a JSP. 

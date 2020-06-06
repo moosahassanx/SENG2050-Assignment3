@@ -1,6 +1,6 @@
 <!--
     Assignment 3: Index.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This will be the main portal page that any user will use to login
     or register an account with. 

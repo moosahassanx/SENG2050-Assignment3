@@ -37,6 +37,11 @@
 
             <!-- MENU COLUMN -->
             <div class="content-left">
+                <!-- LOGOUT BUTTON -->
+                <div class="back-div">
+                    <button id="back-btn" onclick="location.href='login';">Logout</button>
+                </div>
+                
                 <h1 id="content-heading">Menu</h1>
                 <p><a href="groups" address="true">Groups</a></p> <!--Links to all the different pages so the user can access them. -->
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>

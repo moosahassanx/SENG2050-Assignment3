@@ -31,7 +31,7 @@
                     <h3 id="bar-text">Group Overview</h3>
                 </div>
                 <div id="bar-right">
-                    <h2 id="bar-text">${user.getName()}</h2> <!--This is shown on all pages after the index, prints the user name -->        
+                    <h2 id="bar-text">${user.getName()}</h2> <!--This is shown on all pages after the index, prints the user name -->
                 </div>
                 <hr>
             </div>
@@ -43,7 +43,7 @@
                     <button id="back-btn" onclick="location.href='teacherhub.jsp';">Back</button>
                 </div>
 
-                <h1 id="content-heading">[group name] Overview</h1>
+                <h1 id="content-heading">${groupName} Overview</h1>
                 
                 <table>
                     <tr>
@@ -51,21 +51,14 @@
                       <th>Name</th>
                       <th>E-mail</th>
                     </tr>
-                    <tr>
-                      <td>Humey</td>
-                      <td>Keeylan</td>
-                      <td>littledick@chef.com</td>
-                    </tr>
-                    <tr>
-                      <td>c3331532</td>
-                      <td>Moosa</td>
-                      <td>chefconsumer@yahoo.com</td>
-                    </tr>
-                    <tr>
-                      <td>c3324541</td>
-                      <td>Josh</td>
-                      <td>ratsmacker@rat.com</td>
-                    </tr>
+                    
+                    <c:forEach begin = "1" end = "${groupMembers.size()}" var = "i">
+                        <tr>
+                            <td>${groupMembers.get(i-1)}</td>
+                            <td>NAME OF GROUP MEMBER</td>
+                            <td>EMAIL OF GROUP MEMBER</td>
+                        </tr>
+                    </c:forEach>
                   </table>
             </div>
         </section>

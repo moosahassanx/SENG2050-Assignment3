@@ -20,6 +20,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.sql.*;
 
+import userpackage.AppointmentsDB;
+import userpackage.DBAccess;
 import userpackage.User;
 
 import javax.servlet.annotation.WebServlet;
@@ -90,6 +92,11 @@ public class Login extends HttpServlet
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
                     
+                    AppointmentsDB ADB = new AppointmentsDB();
+                    ADB.setUsername(loginID);
+                    ADB.setSession(request.getSession());
+                    ADB.getTeacherAppointments();
+
                     RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }
@@ -172,4 +179,5 @@ public class Login extends HttpServlet
             user.setGroup("");
         }
     }
+    private DBAccess DBA;
 }

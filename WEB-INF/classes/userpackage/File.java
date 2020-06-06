@@ -28,6 +28,7 @@ public class File {
     private String description;
     private byte[] fileData;
     private String groupName;
+    private String version;
 
     // Default constructor
     public File() {
@@ -39,6 +40,14 @@ public class File {
         this.fileName = fileName;
         this.description = description;
         this.fileData = fileData;
+    }
+
+    public File(String userUploaded, String fileName, String description, byte[] fileData, String version) {
+        this.userUploaded = userUploaded;
+        this.fileName = fileName;
+        this.description = description;
+        this.fileData = fileData;
+        this.version = version;
     }
 
     public String getGroupName(){
@@ -80,6 +89,14 @@ public class File {
         this.fileData = fileData;
     }
 
+    public void setVersion(String version){
+        this.version = version;
+    }
+
+    public String getVersion(){
+        return version;
+    }
+    
     //This function will place the file that has been 'uploaded' into the DB. 
     public boolean uploadFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws NamingException, SQLException {
 
@@ -144,6 +161,70 @@ public class File {
                 data = rs.getBlob("binary_file");
             }      
         return data;
+    }
+
+
+    public boolean checkDB(String fileName, byte[] bytes) throws SQLException, NamingException{
+
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("Select * from files where file_name = ? AND binary_file = ?");
+
+        ps.setString(1, fileName);
+        ps.setBytes(2, bytes);
+
+        ResultSet rs = ps.executeQuery();
+
+        // File exists already in the db & its the same fileName and bytes
+        if(rs.next()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public static void addVersionFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws SQLException, NamingException{
+        
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("INSERT into versionFiles VALUES (?,?,?,?)");
+
+        ps.setString(1, fileName);
+        ps.setBytes(2, bytes);
+        ps.setString(3, description);
+        ps.setString(4, uploadedName);
+        ps.executeUpdate();
+
+    }
+
+
+
+
+    public static List<File> getVersionFile(String fileName) throws SQLException, NamingException{
+
+        List<File> versionList = new ArrayList<File>();
+
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("Select * from versionfiles where file_name = ? ORDER BY file_version"); // might have to check by group as well
+        ps.setString(1, fileName);
+        ResultSet rs = ps.executeQuery();
+
+        while(rs.next()){
+            String userUploaded = rs.getString("uploadedName");
+            String description = rs.getString("file_desc");
+            byte[] fileData = rs.getBytes("binary_file");
+            String version = rs.getString("file_version");
+            File file = new File(userUploaded,fileName,description, fileData, version);
+
+            versionList.add(file);
+        }
+        return versionList;
     }
 
 }

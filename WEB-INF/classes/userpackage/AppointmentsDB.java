@@ -136,16 +136,19 @@ public class AppointmentsDB
         ps.setString(1, username);
         ResultSet rs = ps.executeQuery(); //Sets strings that are required and creates arraylists to hold the returned values
         ArrayList<String> appointmentDesc = new ArrayList<String>();
+        ArrayList<String> appointmentStudent = new ArrayList<String>();
         ArrayList<String> appointmentDate = new ArrayList<String>();
         ArrayList<String> appointmentTime = new ArrayList<String>();
 
         while(rs.next()) //Will run through and appoint all the rows into the array lists.
         {
+            appointmentStudent.add(rs.getString("username"));
             appointmentDesc.add(rs.getString("description"));
             appointmentTime.add(rs.getString("timeDue"));
             appointmentDate.add(rs.getString("dateDue"));
         }
 
+        session.setAttribute("appointmentStudent", appointmentStudent);
         session.setAttribute("appointmentDesc", appointmentDesc); //Sets all the attributes in session. 
         session.setAttribute("appointmentDate", appointmentDate);
         session.setAttribute("appointmentTime", appointmentTime);

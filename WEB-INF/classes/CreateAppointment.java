@@ -1,4 +1,10 @@
-
+/*
+    Assignment 3: User.java
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: this will be the main bean of the server. It holds all the user's
+    information as well as connects to the DB. 
+*/
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -7,12 +13,16 @@ import userpackage.User;
 import userpackage.AppointmentsDB;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import javax.servlet.annotation.WebServlet;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Date;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -37,12 +47,17 @@ public class CreateAppointment extends HttpServlet
         User user = (User)session.getAttribute("user");
         String desc = request.getParameter("description");
         String teachName = (String)session.getAttribute("teachName");
+        String dateBackwards = request.getParameter("date");
+        String[] dateSplit = dateBackwards.split("-");
+
+        String dateAt = dateSplit[2] + dateSplit[1] + dateSplit[0];
+        String timeAt = request.getParameter("time");
         AppointmentsDB APB = new AppointmentsDB();
         APB.setUsername(user.getName());
         APB.setSession(session);
         try
         {
-            APB.writeAppointments(desc, teachName, user);
+            APB.writeAppointments(desc, teachName, user, dateAt, timeAt);
         }
         catch (SQLException | NamingException e) 
         {

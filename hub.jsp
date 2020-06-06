@@ -46,11 +46,14 @@
 
             <div class="content-left">
                 <h1 id="content-heading">Menu</h1>
-                <p><a href="groups" address="true">Groups</a></p> <!--Links to all the different pages so the user can access them. -->
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>
-                <p><a href="${pageContext.request.contextPath}/responsibility?id=${user.getGroup()}" address="true">Planning</a></p>
-                <p><a href="files.jsp" address="true">Files</a></p>
                 <p><a href="discussions" address="true">Discussions</a></p>
+                <p><a href="groups" address="true">Groups</a></p> <!--Links to all the different pages so the user can access them. -->
+                <p><a href="files.jsp" address="true">Files</a></p>
+                <p><a href="addmilestone.jsp" address="true">Planning</a></p>
+                <p><a href="${pageContext.request.contextPath}/responsibility?id=${user.getGroup()}" address="true">Planning</a></p>
+                
+                
             </div>
 
             <div class="content-right"> <!--Displays the Milestones for the user, loops through each of the milestones that are featured within the DB-->

@@ -1,3 +1,10 @@
+/*
+    Assignment 3: User.java
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: this will be the main bean of the server. It holds all the user's
+    information as well as connects to the DB. 
+*/
 //package WEB-INF.classes;
 
 import java.io.*;
@@ -5,7 +12,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
-import userpackage.DiscussionsDB;
+import userpackage.DBAccess;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -63,5 +70,5 @@ public class Discussions extends HttpServlet {
         session.setAttribute("discussionID", discussionID);
         conn.close();
     }
-    private DiscussionsDB DDB;
+    private DBAccess DDB;
 }

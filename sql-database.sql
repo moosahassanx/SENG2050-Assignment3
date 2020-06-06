@@ -43,6 +43,8 @@ CREATE TABLE user_information	(
 	username VARCHAR(30) NOT NULL PRIMARY KEY,
 	studentId INT NOT NULL,
 	phoneNo	INT,
+	firstName varChar(30) not null,
+	lastName varChar(30) not null,
 )
 
 CREATE TABLE initial_login	(
@@ -124,7 +126,9 @@ CREATE TABLE milestones(
 	description VARCHAR(1000) NOT NULL,
 	username VARCHAR(30) NOT NULL,
 	groupName VARCHAR(30) NOT NULL, 
-	--dateDue date not null,  
+	dateDue varchar(30) not null,  
+	comments varChar(30),
+	mark int
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 	FOREIGN KEY(groupName) REFERENCES groups(group_name)
@@ -135,10 +139,22 @@ CREATE TABLE appointments(
 	teacher VARCHAR(30) not null,
 	username VARCHAR(30) not null,
 	description VARCHAR(1000) not null,
-	dateDue date not null, 
+	timeDue varchar(30) not null, 
+	dateDue Varchar(30) not null,
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 )
+drop table appointments
+
+CREATE table responsibilities(
+    username varchar(30) NOT NULL,
+    description VARCHAR(1000),
+    dateInsert varchar(30) NOT NULL,
+    dateDue varchar(30) NOT NULL,
+    userGroup varchar(30) NOT NULL,
+	completed boolean --BIT Field, 0 False / 1 True
+)
+
 
 SELECT * FROM files
 SELECT * FROM user_groups

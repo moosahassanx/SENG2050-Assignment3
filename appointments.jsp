@@ -61,7 +61,7 @@
             <h1 id="content-heading">Upcoming Appointments</h1> 
             <ul>
             <c:forEach begin = "1" end = "${appointmentDesc.size()}" var = "AD"> <!--Displays all the current appointments that are within the DB for that user-->
-                <li>${appointmentTeacher.get(AD-1)} at mm:hh dd/mm/yyy: ${appointmentDesc.get(AD-1)}</li>
+                <li>${appointmentTeacher.get(AD-1)} at ${appointmentTime.get(AD-1)} ${appointmentDate.get(AD-1)}: ${appointmentDesc.get(AD-1)}</li>
                 <!--<li>Teacher2 at mm:hh dd/mm/yyy: discuss rat seasoning options</li>
                 <li>Teacher1 at mm:hh dd/mm/yyy: show the chef you ate</li> -->
             </c:forEach>

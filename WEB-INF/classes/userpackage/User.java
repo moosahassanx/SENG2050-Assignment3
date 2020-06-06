@@ -1,3 +1,10 @@
+/*
+    Assignment 3: User.java
+    Josh R(c3324541), Moosa H (), Keeylan H ()
+    -----------------------------------------------------
+    Purpose: this will be the main bean of the server. It holds all the user's
+    information as well as connects to the DB. 
+*/
 package userpackage;
 
 import java.sql.*;
@@ -104,6 +111,7 @@ public class User
     // NOTE - Will need to comment this out until fixing the database connection or wont compile
     // Need to fix to be generic for either Student and a Teacher
 
+    //This function returns an int and checks if the user is a Student. 
     public int getStudentUser(String username, String password) throws NamingException, SQLException {        
 
         InitialContext ctx = new InitialContext();
@@ -111,10 +119,8 @@ public class User
         try{
         
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            System.out.println("Inside db method2");
             Connection conn = ds.getConnection();
             Statement stmt = conn.createStatement();
-            System.out.println("Inside db method3");
             // Selecting all data from the website_user table ** Note - only gives username/passwords
             String query = "SELECT * from website_users";
             ResultSet rs = stmt.executeQuery(query);
@@ -123,24 +129,16 @@ public class User
             // Moving the curser over each tuple
             while(rs.next()){
                 String user = rs.getString("username");
-                System.out.println(user);
                 if(user.equalsIgnoreCase(username)){
                     String userPass = rs.getString("password");
-                    System.out.println(userPass);
                     if(userPass.equals(password)){
-                        System.out.println("im in lol");
                         // Credentials correct now check what role they are
                         query = "SELECT * from website_user_roles WHERE username = ?";
-                        System.out.println("2");
                         ps = conn.prepareStatement(query);
-                        System.out.println("3");
                         ps.setObject(1, user);
-                        System.out.println("4");
                         rs = ps.executeQuery();
                         // Checks what role the user has
                         while(rs.next()){
-                            System.out.println("kek");
-                            System.out.println(rs.getString("role"));
 
                             // user is a student
                             if(rs.getString("role").equalsIgnoreCase("Student")){
@@ -168,6 +166,7 @@ public class User
         return 7;
     }
     
+    //This function will return whether it is the student's first time logging in or not.
     public boolean getStudentInitialLogin(String username) throws NamingException, SQLException {
 
         InitialContext ctx = new InitialContext();
@@ -211,10 +210,6 @@ public class User
          while(rs.next()){
             String username = rs.getString("username");
             list.add(username);
-        }
-
-        for(int i = 0; i < list.size(); i++){
-            System.out.println(list.get(i));
         }
 
         return list;

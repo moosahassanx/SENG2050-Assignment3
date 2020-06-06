@@ -135,11 +135,12 @@ CREATE TABLE appointments(
 	teacher VARCHAR(30) not null,
 	username VARCHAR(30) not null,
 	description VARCHAR(1000) not null,
-	dateDue date not null, 
+	timeDue varchar(30) not null, 
+	dateDue Varchar(30) not null,
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 )
-
+drop table appointments
 SELECT * FROM files
 SELECT * FROM user_groups
 

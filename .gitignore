@@ -27,3 +27,6 @@ WEB-INF/classes/Groups.class
 WEB-INF/classes/Discussions.class
 *.class
 *.class
+*.class
+*.class
+*.class

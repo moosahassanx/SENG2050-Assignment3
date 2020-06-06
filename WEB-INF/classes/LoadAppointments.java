@@ -28,7 +28,7 @@ public class LoadAppointments extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession(); //Gets the session and required data. 
-        User user = session.getAttribute("user");
+        User user = (User)session.getAttribute("user");
         AppointmentsDB APB = new AppointmentsDB(); //Creates a new AppointmentsDB and sets attributes for them. 
         APB.setUsername(user.getName());
         APB.setSession(session);

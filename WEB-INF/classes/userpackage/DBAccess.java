@@ -1,11 +1,16 @@
 
 package userpackage;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import userpackage.User;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -13,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.*;
 
 
-public class DiscussionsDB {
+public class DBAccess {
 
     //private String title;
     //private 
@@ -218,4 +223,50 @@ public class DiscussionsDB {
         // closing connection
         conn.close();
     }
+
+
+    public static void addResponsibility(String userName, String description, String dateInserted, String dateDue, String userGroup) throws SQLException, NamingException{
+
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO responsibilities VALUES (?,?,?,?,?)");
+        ps.setString(1, userName);
+        ps.setString(2, description);
+        ps.setString(3, dateInserted);
+        ps.setString(4, dateDue);
+        ps.setString(5, userGroup);
+
+        ps.executeUpdate();
+
+    }
+
+    // Populating the list of responsibilities in the DB to display in the JSP table
+    public static List<responsibility> responsibilityList(String groupName) throws SQLException, NamingException{
+
+        List<responsibility> responseList = new ArrayList<responsibility>();
+
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("Select * from responsibilities where userGroup = ?");
+        ps.setString(1, groupName);
+        ResultSet rs = ps.executeQuery();
+
+        while(rs.next()){
+            String responsible = rs.getString("username");
+            String description = rs.getString("description");
+            String dateInserted = rs.getString("dateInsert");
+            String dateDue = rs.getString("dateDue");
+
+            responsibility responsObj = new responsibility(responsible, description, dateInserted, dateDue);
+            responseList.add(responsObj);
+        }
+
+        return responseList;
+    }
+
+
 }

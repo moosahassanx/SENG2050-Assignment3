@@ -1,6 +1,6 @@
 /*
     Assignment 3: AppointmentsDB.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This file is used to handle writing and receiving appointments
     from the database. It stores a username and session that it will access in order

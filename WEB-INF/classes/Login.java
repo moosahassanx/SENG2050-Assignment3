@@ -1,6 +1,6 @@
 /*
     Assignment 3: Login.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This servlet is responsible for dealing with the login of a user or a teacher.
     This will ensure the correct user is taken to the correct website. 

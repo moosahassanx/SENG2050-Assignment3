@@ -43,33 +43,13 @@
                 </div>
                 <hr>
             </div>
-
-            <!-- LIST OF DISCUSSIONS -->
-       <!--     <form action="addResponsibility" method = "POST">
-                <div class="main-content">
-                    <div class="back-div">
-                        <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
-                    </div>
-
-                    <p id="label">Milestone Title</p>
-                    <p><input id="input-title" type="text" name = "milestoneTitle"></p>
-
-                    <p id="label">Summary</p>
-                    <p><input id="input-message" type="text" name = "description"></p>
-
-                    <p id="label">Date</p>
-                    <p><input id="input-title" type="date" name = "date"></p>
-
-                    <p><input id="submit" type="submit" VALUE="ADD MILESTONE"></p>
-                </div>
-            </form>
-        -->
-
+        </form>
         <!--Back button on the top left of page-->
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
         </div>
+        <div class = "formContainer">
             <div class="respons-list">
                 <form action="responsibility" method="POST">
                     <table border ="1" width="90%">
@@ -80,31 +60,60 @@
                         </tr>
                         <tr>
                             <th>
-                                <select id = "users"> <!--Change the width of box-->
+                                <select id = "users" name="userName"> <!--Change the width of box-->
                                     <c:forEach items="${groupList}" var="user">
-                                        <option value = ${user}>${user}</option>
+                                        <option value = ${user} id="userName">${user}</option>
                                     </c:forEach>
+                                    
                                 </select>
                             </th>
                             <th>
-                                <input type="text" name="description">
+                                <input type="text" name="description" id="description">
                             </th>
                             <th>
-                                <input id="input-title" type="date" name = "date">
+                                <input id="date" type="date" name = "date">
+                                
                             </th>
                         </tr>
-
+                    </table>
+            </div> 
+            <div class="table2">
+                    <table>
+                        <tr>
+                            <th>
+                                <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
+                                <input type="submit" id="submitRespo" name="add"/>
+                            </th>
+                        </tr>
                     </table>
                 </form>
-            
             </div>
+        </div>
 
+        <div class = "responsList">
 
+            <table border ="1" width="90%">
 
+                <tr>
+                    <th>Responsible</th>
+                    <th>Description</th>
+                    <th>Start date</th>
+                    <th>Date to be completed</th>
+                    <th>Completed</th>
+                </tr>
 
+                <c:forEach items="${responseList}" var="l">
+                <tr>
+                    <td>${l.getResponsible()}</td>
+                    <td>${l.getDescription()}</td>
+                    <td>${l.getDateStarted()}</td>
+                    <td>${l.getDateComplete()}</td>
+                    <td>Need to fix</td>
+                </tr>
+                </c:forEach>
+            </table>
 
-
-
+        </div>
 
 
         </section>

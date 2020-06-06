@@ -166,6 +166,53 @@
     margin-bottom: 40px;
 }
 
+.formContainer{
+    width: 100%;
+    margin-left:10%;
+    color: #fff;
+    padding:10px;
+    text-align: center;
+}
+
+.respons-list{
+    width:70%;
+    float: left;
+}
+
+.table2{
+    margin-left:-10%;
+}
+
+.responsList{
+
+    color: #fff;
+    text-align: center;
+    margin-left: 5%;
+}
+
+#submitRespo{
+
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 100px;
+    height: 35px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+    left: 100px;
+
+}
+
+
 #submit{
     margin-top: 10px;
     margin-bottom: 10px;

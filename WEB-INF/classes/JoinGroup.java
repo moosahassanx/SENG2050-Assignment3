@@ -5,7 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import userpackage.User;
-import userpackage.DiscussionsDB;
+import userpackage.DBAccess;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -121,5 +121,5 @@ public class JoinGroup extends HttpServlet {
     */
 
     // controller
-    private DiscussionsDB DDB;
+    private DBAccess DDB;
 }

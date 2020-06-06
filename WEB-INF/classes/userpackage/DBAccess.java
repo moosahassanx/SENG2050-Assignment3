@@ -308,7 +308,7 @@ public class DBAccess {
         conn.close();
     }
 
-    public static void createMilestoneInDB(HttpSession session, String desc, String userName, int id) throws SQLException, NamingException
+    public static void createMilestoneInDB(String desc, String userName, String groupName) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -321,8 +321,8 @@ public class DBAccess {
         PreparedStatement ps = null;
         ps = conn.prepareStatement(query);
         ps.setString(1,desc);
-        ps.setString(2,user.getName());
-        ps.setString(3,user.getGroup());
+        ps.setString(2,userName);
+        ps.setString(3,groupName);
         ps.executeUpdate();
     }
 }

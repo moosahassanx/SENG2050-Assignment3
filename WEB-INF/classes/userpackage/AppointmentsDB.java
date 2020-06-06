@@ -122,6 +122,36 @@ public class AppointmentsDB
         conn.close();
 
     }
+
+    public void getTeacherAppointments() throws SQLException, NamingException 
+    {
+        InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        
+        PreparedStatement ps = null;
+        String query = "SELECT * FROM appointments WHERE teacher = ?"; //getting the data from the ongoing appointments
+        ps = conn.prepareStatement(query);
+        ps.setString(1, username);
+        ResultSet rs = ps.executeQuery(); //Sets strings that are required and creates arraylists to hold the returned values
+        ArrayList<String> appointmentDesc = new ArrayList<String>();
+        ArrayList<String> appointmentDate = new ArrayList<String>();
+        ArrayList<String> appointmentTime = new ArrayList<String>();
+
+        while(rs.next()) //Will run through and appoint all the rows into the array lists.
+        {
+            appointmentDesc.add(rs.getString("description"));
+            appointmentTime.add(rs.getString("timeDue"));
+            appointmentDate.add(rs.getString("dateDue"));
+        }
+
+        session.setAttribute("appointmentDesc", appointmentDesc); //Sets all the attributes in session. 
+        session.setAttribute("appointmentDate", appointmentDate);
+        session.setAttribute("appointmentTime", appointmentTime);
+
+    }
+
     private String username;
     private HttpSession session;
 }

@@ -90,6 +90,7 @@ public class Login extends HttpServlet
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
                     
+                    DDB.
                     RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }

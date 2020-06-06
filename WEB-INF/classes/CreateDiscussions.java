@@ -31,7 +31,7 @@ public class CreateDiscussions extends HttpServlet {
         HttpSession session = request.getSession(); //Grabs sessions and gets the data that is required. 
         String title = request.getParameter("title");
         String desc = request.getParameter("description");
-        User theUser = ((User)session.getAttribute("user")); 
+        User theUser = (session.getAttribute("user")); 
         try 
         {
             DDB.createDiscussions(session, title, desc, theUser); //Runs the function to write it to the DB

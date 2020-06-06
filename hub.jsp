@@ -20,6 +20,7 @@
 
     <body>
         <section class="landing-page-main">
+            <!-- TOP BAR -->
             <div class="top-bar">
                 <div id="bar-left">
                     <img src="https://www.newcastle.edu.au/__data/assets/image/0011/246881/uon-logo-square.png" alt="" class="box-img">
@@ -39,11 +40,11 @@
                             <h2 id="bar-text">N/A</h2>
                         </c:otherwise>
                     </c:choose>
-                    
                 </div>
-                <hr>            
+                <hr>
             </div>
 
+            <!-- THE ACTUAL USER INTERACTION OF THE SITE (LEFT COLUMN) -->
             <div class="content-left">
                 <h1 id="content-heading">Menu</h1>
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>
@@ -52,10 +53,9 @@
                 <p><a href="files.jsp" address="true">Files</a></p>
                 <p><a href="addmilestone.jsp" address="true">Planning</a></p>
                 <p><a href="${pageContext.request.contextPath}/responsibility?id=${user.getGroup()}" address="true">Planning</a></p>
-                
-                
             </div>
 
+            <!-- THE ACTUAL USER INTERACTION OF THE SITE (RIGHT COLUMN) -->
             <div class="content-right"> <!--Displays the Milestones for the user, loops through each of the milestones that are featured within the DB-->
                 <h1 id="content-heading">Milestone List</h1>
                 <ul>
@@ -65,6 +65,5 @@
                 </ul>
             </div>
         </section>
-        
     </body>
 </html>

@@ -71,8 +71,7 @@
                                 <input type="text" name="description" id="description">
                             </th>
                             <th>
-                                <input id="date" type="date" name = "date">
-                                
+                                <input id="date" type="date" name = "date">                              
                             </th>
                         </tr>
                     </table>
@@ -91,7 +90,6 @@
         </div>
 
         <div class = "responsList">
-
             <table border ="1" width="90%">
                 <tr>
                     <th>Responsible</th>
@@ -106,7 +104,7 @@
                     <td>${l.getDescription()}</td>
                     <td>${l.getDateStarted()}</td>
                     <td>${l.getDateComplete()}</td>
-                    <td>Need to fix</td>
+                    <td>${l.getCompletion()}</td> <!-- Make it so you can click it and it completes / Maybe make a completedRespons table to add to records-->
                 </tr>
                 </c:forEach>
             </table>

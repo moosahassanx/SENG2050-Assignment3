@@ -6,8 +6,6 @@
 */
 package userpackage;
 
-import javax.swing.JSpinner.DateEditor;
-
 public class responsibility {
     
     private String responsible;
@@ -20,12 +18,12 @@ public class responsibility {
 
     }
 
-    public responsibility(String responsible, String description, String dateStarted, String dateComplete){
+    public responsibility(String responsible, String description, String dateStarted, String dateComplete, boolean completed){
         this.responsible = responsible;
         this.description = description;
         this.dateStarted = dateStarted;
         this.dateComplete = dateComplete;
-        this.completed = false;
+        this.completed = completed;
     }
 
     public String getResponsible(){
@@ -44,8 +42,13 @@ public class responsibility {
         return dateComplete;
     }
 
-
-
-
+    public String getCompletion(){
+        if(this.completed == true){
+            String completion = "Yes";
+            return completion;
+        }
+        String completion = "No";
+        return completion;
+    }
 
 }

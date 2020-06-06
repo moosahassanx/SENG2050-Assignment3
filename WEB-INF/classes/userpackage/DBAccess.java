@@ -246,12 +246,13 @@ public class DBAccess {
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
 
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO responsibilities VALUES (?,?,?,?,?)");
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO responsibilities VALUES (?,?,?,?,?,?)");
         ps.setString(1, userName);
         ps.setString(2, description);
         ps.setString(3, dateInserted);
         ps.setString(4, dateDue);
         ps.setString(5, userGroup);
+        ps.setString(6, "N");
 
         ps.executeUpdate();
 
@@ -275,8 +276,16 @@ public class DBAccess {
             String dateInserted = rs.getString("dateInsert");
             String dateDue = rs.getString("dateDue");
 
-            responsibility responsObj = new responsibility(responsible, description, dateInserted, dateDue);
-            responseList.add(responsObj);
+            if(rs.getString("completed").equals("Y")){
+                boolean completed = true;
+                responsibility responsObj = new responsibility(responsible, description, dateInserted, dateDue, completed);
+                responseList.add(responsObj);
+
+            }else{
+                boolean completed = false;
+                responsibility responsObj = new responsibility(responsible, description, dateInserted, dateDue, completed);
+                responseList.add(responsObj);
+            }
         }
 
         return responseList;

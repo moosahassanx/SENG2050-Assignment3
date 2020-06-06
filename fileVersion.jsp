@@ -70,7 +70,7 @@
                     <td>${l.getVersion()}</td>
                     <td>${l.getFileName()}</td>
                     <td>${l.getDescription()}</td>
-                    <td>${l.getUserUploaded()}</td>
+                    <td>${l.getUserUploaded()}</td> <!-- Also need to add the option to delete their files and record who deleted e.x.t.-->
                     <td><a href="${pageContext.request.contextPath}/upload?id=${l.getFileName()}">Download me</a></td> <!-- Probs need to change this method to look in version control table-->
                 </tr>
             </c:forEach>

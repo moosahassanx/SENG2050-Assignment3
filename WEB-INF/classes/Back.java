@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-//This is just a template login, we will still need to change this a bit and still need to make it better
-
 @WebServlet(urlPatterns = { "/back" })
 public class Back extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +29,7 @@ public class Back extends HttpServlet {
 
         // the user is a teacher
         if(theUser.isStudent() == false){
-            // redirect user
+            // redirect user to hub.jsp
             RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp");
             rd.forward(request,response);
             return;
@@ -39,7 +37,7 @@ public class Back extends HttpServlet {
 
         // the user is a student
         else{
-            // redirect user
+            // redirect user - teacherhub.jsp
             RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp");
             rd.forward(request,response);
             return;

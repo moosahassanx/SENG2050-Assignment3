@@ -33,9 +33,11 @@ public class CreateMilestone extends HttpServlet
         String desc = request.getParameter("description");
         int id = (int)session.getAttribute("DIT");
         User theUser = session.getAttribute("user"); 
+        String name = theUser.getName();
+        String group = theUser.getGroup();
         try 
         {
-            DBA.createMilestoneInDB(session, desc, theUser, id); //Runs the function in the DBAccess to write it to the DB
+            DBA.createMilestoneInDB(desc, name, group); //Runs the function in the DBAccess to write it to the DB
         } 
         catch (SQLException | NamingException e) 
         {

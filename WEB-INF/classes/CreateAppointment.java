@@ -1,6 +1,6 @@
 /*
     Assignment 3: CreateAppointment.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This servlet will call a function to create a new appointment and it will also get the correct teacher
     name when it comes to making an appointment. 

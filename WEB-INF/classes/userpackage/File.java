@@ -1,6 +1,6 @@
 /*
     Assignment 3: AddMilestones.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This is the bean that will hold all the data relating to any files that are uploaded
     to the server. 

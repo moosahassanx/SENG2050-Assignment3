@@ -1,6 +1,6 @@
 <!--
     Assignment 3: Groups.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This page will show all groups that are currently apart of the page. They will also allow
     users to join the group if they would like to. 

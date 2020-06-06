@@ -1,6 +1,6 @@
 /*
     Assignment 3: LoadAppointment.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This servlet will be used to load up the appointments. 
     This will get the appointments in the DB as well as the teachers. 

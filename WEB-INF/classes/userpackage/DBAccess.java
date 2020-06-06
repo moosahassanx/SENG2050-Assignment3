@@ -278,6 +278,35 @@ public class DBAccess {
         return responseList;
     }
 
+    public static void groupDetails(HttpSession session, String groupName) throws SQLException, NamingException {
+        // connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // get data from groups table in db
+        String query = "SELECT * FROM user_groups WHERE group_name = ";
+        query += "'" + groupName + "'";
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<String> groupMembers = new ArrayList<String>();
+
+        conn.close(); 
+        // build list of group members
+        while(rs.next()) {
+            String groupMember = rs.getString("username");
+            groupMembers.add(groupMember);
+        }
+
+        for(int i = 0; i < groupMembers.size(); i++){
+            System.out.println("Group member " + i + ": " + groupMembers.get(i));
+        }
+
+        // closing
+        session.setAttribute("groupName", groupName);
+        session.setAttribute("groupMembers", groupMembers);
+        conn.close();
+    }
 
     public static void createMilestoneInDB(HttpSession session, String desc, String userName, int id) throws SQLException, NamingException
     {
@@ -295,7 +324,5 @@ public class DBAccess {
         ps.setString(2,user.getName());
         ps.setString(3,user.getGroup());
         ps.executeUpdate();
-
-        conn.close(); 
     }
 }

@@ -18,3 +18,12 @@ WEB-INF/classes/Login.class
 WEB-INF/classes/userpackage/File.class
 WEB-INF/classes/userpackage/User.class
 *.class
+*.class
+*.class
+*.class
+*.class
+*.class
+WEB-INF/classes/Groups.class
+WEB-INF/classes/Discussions.class
+*.class
+*.class

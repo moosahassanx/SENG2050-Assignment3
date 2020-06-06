@@ -32,11 +32,10 @@ import java.time.format.DateTimeFormatter;
 
 // Need to hash password - & dont pull password from the DB, just check its correct with query
 @WebServlet(urlPatterns = { "/login"})
-public class Login extends HttpServlet 
+public class Login extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        
         String buttonClicked = request.getParameter("button");
         
         System.out.println(buttonClicked);
@@ -70,14 +69,14 @@ public class Login extends HttpServlet
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();
-                    }                    
+                    }
 
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
 
                     getMilestoneList(user, session);
 
-                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
+                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }
 
@@ -91,7 +90,7 @@ public class Login extends HttpServlet
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
                     
-                    RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Redirects to the next page. 
+                    RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }
                 else{
@@ -101,7 +100,7 @@ public class Login extends HttpServlet
                     out.println("alert('Password is incorrect');");
                     out.println("location='Login.jsp';");
                     out.println("</script>");
-                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //Redirects to the next page. 
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }
             }

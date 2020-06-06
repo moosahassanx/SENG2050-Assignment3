@@ -183,8 +183,8 @@ INSERT INTO discussions VALUES ('My group member is not responding and is callin
 INSERT INTO discussionsThread VALUES ('1', 'Moosa','How do I eat a rat bro?');
 INSERT INTO discussionsThread VALUES ('2', 'Humey','Moosa Hassan, this is not the language I want on these discussion forums. Never speak again. ');
 INSERT INTO appointments VALUES ('Mr Smooth','Humey','Get feedback on A3 and how to code a car');
-INSERT INTO appointments values ('Mr Roworth','Moosa','Just be bros together yknow');
-INSERT INTO appointments values ('Mrs Sooooooks','Humey','Hell yeah');
+INSERT INTO appointments VALUES ('Mr Roworth','Moosa','Just be bros together yknow');
+INSERT INTO appointments VALUES ('Mrs Sooooooks','Humey','Hell yeah');
 SELECT * FROM discussions;
 SELECT * FROM discussionsThread;
 INSERT INTO milestones VALUES ('Teach Moosa how to be competent','c3324541','FaZe Clan');

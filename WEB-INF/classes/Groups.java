@@ -1,9 +1,9 @@
 /*
-    Assignment 3: User.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Assignment 3: Groups.java
+    Josh R(c3324541), Moosa H (c3324541), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This servlet will be used to load up all the Groups
+    that are currently within the Database.
 */
 //package WEB-INF.classes;
 
@@ -23,11 +23,9 @@ import java.util.ArrayList;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-//This is just a template login, we will still need to change this a bit and still need to make it better
 @WebServlet(urlPatterns = { "/groups" })
 public class Groups extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // checking servlet initializing
         System.out.println("\n*****Groups Servlet Initialized.*****");
 
         // attempt to run method
@@ -44,37 +42,6 @@ public class Groups extends HttpServlet {
         rd.forward(request,response);
         return;
     }
-
-    /*
-    // method to get all the group names
-    public void getGroups(HttpSession session) throws SQLException, NamingException {
-        // connection
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-
-        // get data from groups table in db
-        String query = "SELECT * FROM groups";
-        ResultSet rs = stmt.executeQuery(query);
-        ArrayList<String> GroupNames = new ArrayList<String>();
-
-        // build list of group names
-        while(rs.next()) {
-            String GroupName = rs.getString("group_name");
-            GroupNames.add(GroupName);
-        }
-
-        // displaying group names in terminal
-        for(int i = 0; i < GroupNames.size(); i++){
-            System.out.println("Group Name " + i + ": " + GroupNames.get(i));
-        }
-
-        // closing
-        session.setAttribute("GroupNames", GroupNames);
-        conn.close();
-    }
-    */
     
     // controller
     private DBAccess DDB;

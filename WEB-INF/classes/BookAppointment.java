@@ -1,9 +1,10 @@
 /*
-    Assignment 3: User.java
+    Assignment 3:BookAppointment.java
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This Servlet is used to hold data from a link that was clicked on from Appointments to allow
+    Them to be taken to the correct booking page, and it holds the ID of the page to ensure the correct 
+    teacher ID is corrected. 
 */
 import java.io.*;
 import javax.servlet.*;
@@ -26,22 +27,13 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/BookAppointment" })
 public class BookAppointment extends HttpServlet 
 {
+    //Will get the correct ID from the link clicked then will go to the next page. 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession();
         User user = (User)request.getAttribute("user");
         int teachID = Integer.parseInt("teachID");
         session.setAttribute("teachID", teachID);
-        /*try 
-        {
-            APB.writeAppointments();
-        } 
-        catch (SQLException | NamingException e) 
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } */
-        //session = APB.getSession();
         RequestDispatcher rd = request.getRequestDispatcher("bookappointment.jsp");
         rd.forward(request,response);
         return;

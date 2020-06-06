@@ -1,9 +1,9 @@
 /*
-    Assignment 3: User.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Assignment 3: CreateGroup.java
+    Josh R(c3324541), Moosa H (c3324541), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This servlet will be called when a group is created. This will 
+    run the function in another file to write it to the DB. 
 */
 //package WEB-INF.classes;
 
@@ -36,6 +36,7 @@ public class CreateGroup extends HttpServlet {
         String subject = request.getParameter("subjectInput");
         User theUser =((User)session.getAttribute("user"));
 
+        // display group name and subject in terminal
         System.out.println("groupName: " + groupName);
         System.out.println("Subject: " + subject);
 
@@ -52,26 +53,6 @@ public class CreateGroup extends HttpServlet {
         rd.forward(request,response);
         return;
     }
-    
-    /*
-    public void newGroup(HttpSession session, String groupName, String subject, User user) throws SQLException, NamingException {
-        // setting up connection
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-
-        // database inserting
-        String query = "INSERT INTO groups VALUES(?)";
-        PreparedStatement ps = null;
-        ps = conn.prepareStatement(query);
-        ps.setString(1,groupName);
-        ps.executeUpdate();
-
-        // closing connection
-        conn.close();
-    }
-    */
 
     // controller
     private DBAccess DDB;

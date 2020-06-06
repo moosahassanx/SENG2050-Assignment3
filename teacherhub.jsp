@@ -46,8 +46,9 @@
             <div class="content-right"> <!--Displays the Milestones for the user, loops through each of the milestones that are featured within the DB-->
                 <h1 id="content-heading">Appointments</h1>
                 <ul>
-                    <li>[06/08/2020 08:23AM]: Humeey - How to get an erection when getting pegged</li>
-                    <li>[03/12/2020 01:55PM] Moosa - How to cope with a massive penis. Explain to him that he's packin and that i gotta hide my wife in the kitchen drawer cos of him</li>
+                    <c:forEach begin = "1" end = "${appointmentTime.size()}" var = "AT">
+                        <li>[${appointmentTime.get(AT-1)} ${appointmentDate.get(AT-1)}]: ${appointmentStudent.get(AT-1)} - ${appointmentDesc.get(AT-1)}</li>
+                    </c:forEach>
                 </ul>
             </div>
         </section>

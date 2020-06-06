@@ -195,10 +195,14 @@ public class DBAccess {
         Statement stmt = conn.createStatement();
 
         // get data from groups table in db
-        String query = "SELECT * FROM user_groups WHERE username=";
-        query += "'" + user.getName() + "'";
-        System.out.println("Querying: " + query);
-        ResultSet rs = stmt.executeQuery(query);
+        String query = "SELECT * FROM user_groups WHERE username = ?";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1, user.getName());
+        ResultSet rs = ps.executeQuery();
+        //query += "'" + user.getName() + "'";
+        System.out.println("Querying: " + query + " for " + user.getName());
+        //esultSet rs = stmt.executeQuery(query);
 
         // build list of group names
         if(rs.next()) {
@@ -291,6 +295,7 @@ public class DBAccess {
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<String> groupMembers = new ArrayList<String>();
 
+        conn.close(); 
         // build list of group members
         while(rs.next()) {
             String groupMember = rs.getString("username");
@@ -305,5 +310,23 @@ public class DBAccess {
         session.setAttribute("groupName", groupName);
         session.setAttribute("groupMembers", groupMembers);
         conn.close();
+    }
+
+    public static void createMilestoneInDB(String desc, String userName, String groupName) throws SQLException, NamingException
+    {
+        InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        // Selecting all data from the website_user table ** Note - only gives username/passwords
+        //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
+        String query = "INSERT INTO milestones VALUES(?,?,?)";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1,desc);
+        ps.setString(2,userName);
+        ps.setString(3,groupName);
+        ps.executeUpdate();
     }
 }

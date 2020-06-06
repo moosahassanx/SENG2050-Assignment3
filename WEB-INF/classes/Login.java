@@ -1,9 +1,9 @@
 /*
-    Assignment 3: User.java
+    Assignment 3: Login.java
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: This servlet is responsible for dealing with the login of a user or a teacher.
+    This will ensure the correct user is taken to the correct website. 
 */
 //package WEB-INF.classes;
 
@@ -20,6 +20,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.sql.*;
 
+import userpackage.AppointmentsDB;
+import userpackage.DBAccess;
 import userpackage.User;
 
 import javax.servlet.annotation.WebServlet;
@@ -32,11 +34,10 @@ import java.time.format.DateTimeFormatter;
 
 // Need to hash password - & dont pull password from the DB, just check its correct with query
 @WebServlet(urlPatterns = { "/login"})
-public class Login extends HttpServlet 
+public class Login extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        
         String buttonClicked = request.getParameter("button");
         
         System.out.println(buttonClicked);
@@ -70,14 +71,14 @@ public class Login extends HttpServlet
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();
-                    }                    
+                    }
 
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
 
                     getMilestoneList(user, session);
 
-                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page. 
+                    RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }
 
@@ -91,7 +92,12 @@ public class Login extends HttpServlet
                     HttpSession session = request.getSession(); //gets the session
                     session.setAttribute("user", user); //sets the bean into the session
                     
-                    RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Redirects to the next page. 
+                    AppointmentsDB ADB = new AppointmentsDB();
+                    ADB.setUsername(loginID);
+                    ADB.setSession(request.getSession());
+                    ADB.getTeacherAppointments();
+
+                    RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }
                 else{
@@ -101,7 +107,7 @@ public class Login extends HttpServlet
                     out.println("alert('Password is incorrect');");
                     out.println("location='Login.jsp';");
                     out.println("</script>");
-                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //Redirects to the next page. 
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
                 }
             }
@@ -173,4 +179,5 @@ public class Login extends HttpServlet
             user.setGroup("");
         }
     }
+    private DBAccess DBA;
 }

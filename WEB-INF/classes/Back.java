@@ -38,7 +38,7 @@ public class Back extends HttpServlet {
         // the user is a student
         else{
             // redirect user - teacherhub.jsp
-            RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("hub.jsp");
             rd.forward(request,response);
             return;
         }

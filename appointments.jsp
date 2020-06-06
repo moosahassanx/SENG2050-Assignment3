@@ -1,6 +1,6 @@
 <!--
     Assignment 3: Appointments.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: Shows all the current teachers that are available for appointments and shows
     all the current appointments that have been made. 

@@ -1,6 +1,6 @@
 /*
     Assignment 3: CreateDiscussions.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This servlet will be responsible for creating the discussions when 
     the call has been made. 

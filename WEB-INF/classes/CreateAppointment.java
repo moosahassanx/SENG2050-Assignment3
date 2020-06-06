@@ -1,6 +1,6 @@
 /*
     Assignment 3: CreateAppointment.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This servlet will call a function to create a new appointment and it will also get the correct teacher
     name when it comes to making an appointment. 
@@ -52,7 +52,7 @@ public class CreateAppointment extends HttpServlet
         String dateBackwards = request.getParameter("date"); //Gets the date
         String[] dateSplit = dateBackwards.split("-"); //Splits the date.
 
-        String dateAt = dateSplit[2] + dateSplit[1] + dateSplit[0]; //Flips it so it is in our format
+        String dateAt = dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0]; //Flips it so it is in our format
         String timeAt = request.getParameter("time");
         AppointmentsDB APB = new AppointmentsDB(); //New appointment is created. 
         APB.setUsername(user.getName()); //has the respective data set. 

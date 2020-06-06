@@ -102,7 +102,6 @@ CREATE TABLE versionFiles   (
 	uploadedName varchar(30) NOT NULL
 )
 
-
 CREATE TABLE group_folder_files	(
 	folder_name VARCHAR(30) NOT NULL,
 	fileID INT IDENTITY(1,1) NOT NULL,
@@ -164,9 +163,8 @@ CREATE table responsibilities(
 	completed boolean --BIT Field, 0 False / 1 True
 )
 
-
 SELECT * FROM files
-SELECT * FROM user_groups
+SELECT * FROM versionFiles
 
 --delete from files where fileID = 9
 

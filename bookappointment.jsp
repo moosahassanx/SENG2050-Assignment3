@@ -1,6 +1,6 @@
 <!--
     Assignment 3: BookAppointments.jsp
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
     Purpose: This JSP allows users to input information relating to Appointments.
     Users are able to select the date, time and reason as to why they want this appointment. 

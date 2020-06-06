@@ -1,9 +1,9 @@
 /*
-    Assignment 3: User.java
+    Assignment 3: Back.java
     Josh R(c3324541), Moosa H (), Keeylan H ()
     -----------------------------------------------------
-    Purpose: this will be the main bean of the server. It holds all the user's
-    information as well as connects to the DB. 
+    Purpose: When going back from pages, it will check if the user is a teacher or a 
+    student, to ensure that they are taken to the right page. 
 */
 //package WEB-INF.classes;
 

@@ -1,6 +1,6 @@
 /*
     Assignment 3: responsibility.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3324541), Keeylan H ()
     -----------------------------------------------------
     Purpose: this file will hold all the information that relates to the responsibilities.
 */

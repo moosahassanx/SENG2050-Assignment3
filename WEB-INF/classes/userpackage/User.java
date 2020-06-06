@@ -1,6 +1,6 @@
 /*
     Assignment 3: User.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3324541), Keeylan H ()
     -----------------------------------------------------
     Purpose: this will be the main bean of the server. It holds all the user's
     information as well as connects to the DB. 
@@ -78,7 +78,6 @@ public class User
         return student;
     }
 
-    // groups control - FOR MOOSA
     public boolean hasGroup()
     {
         if (group == "")

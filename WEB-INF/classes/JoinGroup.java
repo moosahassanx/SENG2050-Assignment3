@@ -1,9 +1,9 @@
 /*
     Assignment 3: JoinGroup.java
-    Josh R(c3324541), Moosa H (), Keeylan H ()
+    Josh R(c3324541), Moosa H (c3324541), Keeylan H ()
     -----------------------------------------------------
     Purpose: This servlet will be used to allow a user 
-    to join a group that they have chosen. 
+    to join a group that they have chosen.
 */
 //package WEB-INF.classes;
 
@@ -34,18 +34,18 @@ public class JoinGroup extends HttpServlet {
         User theUser =(session.getAttribute("user")); 
 
         // the user is a teacher
-        if(theUser.isStudent() == false){
-            // redirect user
+        if(theUser.isStudent() == false) {
             System.out.println("Group Name: " + groupName);
 
             // running method
             try {
-                DDB.groupDetails(session, groupName);               // NEEDS DDB THING
+                DDB.groupDetails(session, groupName);
             }
             catch (SQLException | NamingException e) {
                 e.printStackTrace();
             }
 
+            // redirect user
             RequestDispatcher rd = request.getRequestDispatcher("overviewgroup.jsp");
             rd.forward(request,response);
             return;
@@ -83,89 +83,6 @@ public class JoinGroup extends HttpServlet {
             return;
         }
     }
-
-    /*
-    public void groupDetails(HttpSession session, String groupName) throws SQLException, NamingException {
-        // connection
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-
-        // get data from groups table in db
-        String query = "SELECT * FROM user_groups WHERE group_name = ";
-        query += "'" + groupName + "'";
-        ResultSet rs = stmt.executeQuery(query);
-        ArrayList<String> groupMembers = new ArrayList<String>();
-
-        // build list of group members
-        while(rs.next()) {
-            String groupMember = rs.getString("username");
-            groupMembers.add(groupMember);
-        }
-
-        for(int i = 0; i < groupMembers.size(); i++){
-            System.out.println("Group member " + i + ": " + groupMembers.get(i));
-        }
-
-        // closing
-        session.setAttribute("groupName", groupName);
-        session.setAttribute("groupMembers", groupMembers);
-        conn.close();
-    }
-    */
-
-    /*
-    public void joinGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
-        // setting up connection
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-
-        // database inserting
-        String query = "INSERT INTO user_groups VALUES(?, ?)";
-        PreparedStatement ps = null;
-        ps = conn.prepareStatement(query);
-        ps.setString(1, user.getName());
-        ps.setString(2, groupName);
-        ps.executeUpdate();
-
-        user.setGroup(groupName);
-
-        System.out.println("User " + user.getName() + " has joined the group: " + user.getGroup());
-
-        // closing connection
-        conn.close();
-    }
-    */
-
-    /*
-    public void showJoinedGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
-        System.out.println("theUser.hasGroup() = true");
-
-        // setting up connection
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-
-        // get data from groups table in db
-        String query = "SELECT * FROM user_groups WHERE username=";
-        query += "'" + user.getName() + "'";
-        System.out.println("Querying: " + query);
-        ResultSet rs = stmt.executeQuery(query);
-
-        // build list of group names
-        if(rs.next()) {
-            String GroupName = rs.getString("group_name");
-            System.out.println("SQL VERSION:\t User " + user.getName() + " has already joined the group: " + GroupName);
-        }
-
-        // closing connection
-        conn.close();
-    }
-    */
 
     // controller
     private DBAccess DDB;

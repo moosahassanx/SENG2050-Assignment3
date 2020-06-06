@@ -94,6 +94,15 @@ CREATE TABLE files	(
 	FOREIGN KEY(uploaded_name) REFERENCES website_users(username)
 )
 
+CREATE TABLE versionFiles   (
+file_version int IDENTITY(1,1) NOT NULL,
+file_name VARCHAR(30) NOT NULL,
+binary_file VARBINARY(MAX) NOT NULL,
+file_desc VARCHAR(1000) NOT NULL,
+uploadedName varchar(30) NOT NULL
+)
+
+
 CREATE TABLE group_folder_files	(
 	folder_name VARCHAR(30) NOT NULL,
 	fileID INT IDENTITY(1,1) NOT NULL,

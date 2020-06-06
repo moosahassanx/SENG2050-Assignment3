@@ -26,7 +26,7 @@ public class UploadServlet extends HttpServlet {
         String userUploaded = request.getParameter("userUploaded");
         String groupName = request.getParameter("userGroup");
         String fileDescription = request.getParameter("description");
-
+        
             if(buttonPressed.equals("list")){
                 
                 // Redundant make a random file here to access the file methods - Could maybe use an interface instead?
@@ -35,9 +35,27 @@ public class UploadServlet extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("list",file);
-
+                
                 RequestDispatcher rd = request.getRequestDispatcher("files.jsp");
                 rd.forward(request,response);
+            }
+            else if(buttonPressed.equals("Versions")){
+
+                String fileName = request.getParameter("fileName");
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("fileName", fileName);
+
+                try{
+                    List<File> versionList = File.getVersionFile(fileName);
+                    session.setAttribute("versionList",versionList);
+
+                    RequestDispatcher rd = request.getRequestDispatcher("fileVersion.jsp");
+                    rd.forward(request,response);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
             }
             else{
                 
@@ -59,9 +77,20 @@ public class UploadServlet extends HttpServlet {
                 // Sending file to upload method
 
                 try{
+                    // Checking if file is already in the DB
+                    if(uploadFile.checkDB(fileName, bytes)){
+
+                        // File uploaded is already there - Add to the versionFile table instead for version
+                        File.addVersionFile(bytes, userUploaded, fileDescription, fileName, groupName);
+
+                        RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
+                        rd.forward(request, response);
+                    }
+                    else{
                     uploadFile.uploadFile(bytes,userUploaded, fileDescription, fileName, groupName);
                     RequestDispatcher rd = request.getRequestDispatcher("files.jsp"); 
                     rd.forward(request, response);
+                    }
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -74,26 +103,26 @@ public class UploadServlet extends HttpServlet {
         File downloadFile = new File();
         String fileName = request.getParameter("id");
 
-            try{
-                Blob fileData = downloadFile.downloadFile(fileName);
-                InputStream inputStream = fileData.getBinaryStream();
+        try{
+            Blob fileData = downloadFile.downloadFile(fileName);
+            InputStream inputStream = fileData.getBinaryStream();
 
-                response.setContentType("application/force-download");
-                response.setHeader("Content-Transfer-Encoding", "binary");
-                response.setHeader("Content-Disposition","attachment; filename=\"" + fileName + "\"");
+            response.setContentType("application/force-download");
+            response.setHeader("Content-Transfer-Encoding", "binary");
+            response.setHeader("Content-Disposition","attachment; filename=\"" + fileName + "\"");
 
-                OutputStream os = response.getOutputStream();
-                byte [] buffer = new byte[BUFFER_SIZE];
-                int bytesread = -1;
-                
-                // Outputs the bytes until inputstream sends back -1 indicating theres no more
-                while((bytesread = inputStream.read(buffer)) != -1){
-                    os.write(buffer, 0, bytesread);
-                }
-
+            OutputStream os = response.getOutputStream();
+            byte [] buffer = new byte[BUFFER_SIZE];
+            int bytesread = -1;
+            
+            // Outputs the bytes until inputstream sends back -1 indicating theres no more
+            while((bytesread = inputStream.read(buffer)) != -1){
+                os.write(buffer, 0, bytesread);
             }
-            catch(Exception e){
-                e.printStackTrace();
-            }
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

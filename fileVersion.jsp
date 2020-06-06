@@ -51,32 +51,27 @@
                 <p><button id="back-btn" onclick="location.href='hub.jsp';">Back</button></p>
             </div>
 
-            <h1 id="content-heading">Upload Files</h1>
-            <form action="upload" method="post" enctype="multipart/form-data">
-                <p id="label">Select a file: </p>
-                <p><input type="text" name="description"/></p>
-                <p><input type="file" name="myfile" class="custom-file-input"></p>
-                <input type="hidden" name="userUploaded" value="${user.getName()}"/>
-                <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
-                <p><input type="submit" id="submit" name="list"></p> <p><input type="submit" id="submit" name="list" value="list"></p>
+            <h1 id="content-heading">Version Control for ${fileName}</h1>
             
-        </div>
     
         <div class = "files-list">
         <table border ="1" width ="90%">
 
-            <tr>
+            <tr>   
+                <th>Version</th>
                 <th>File Name</th>
                 <th>File Description</th>
-                <th>Version Section</th>
+                <th>Last Uploaded</th>
+                <th>Download</th>
             </tr>
 
-            <c:forEach items="${list}" var="l">
+            <c:forEach items="${versionList}" var="l">
                 <tr>
+                    <td>${l.getVersion()}</td>
                     <td>${l.getFileName()}</td>
                     <td>${l.getDescription()}</td>
-                    <td><input type="submit" name="list" value="Versions">
-                        <input type="hidden" name="fileName" value="${l.getFileName()}"/></form></td>
+                    <td>${l.getUserUploaded()}</td>
+                    <td><a href="${pageContext.request.contextPath}/upload?id=${l.getFileName()}">Download me</a></td> <!-- Probs need to change this method to look in version control table-->
                 </tr>
             </c:forEach>
         </table>

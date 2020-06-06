@@ -93,7 +93,6 @@
         <div class = "responsList">
 
             <table border ="1" width="90%">
-
                 <tr>
                     <th>Responsible</th>
                     <th>Description</th>
@@ -101,7 +100,6 @@
                     <th>Date to be completed</th>
                     <th>Completed</th>
                 </tr>
-
                 <c:forEach items="${responseList}" var="l">
                 <tr>
                     <td>${l.getResponsible()}</td>
@@ -112,10 +110,7 @@
                 </tr>
                 </c:forEach>
             </table>
-
         </div>
-
-
-        </section>
+    </section>
 </body>
 </html>

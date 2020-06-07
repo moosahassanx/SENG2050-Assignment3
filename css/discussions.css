@@ -239,6 +239,14 @@
 	background: #ffffff;
 }
 
+#content-heading{
+	color: white;
+	text-transform: uppercase;
+    font-size: 35px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
 @media all and (max-width: 950px) {
     .box-img{
         border-radius: 50%;

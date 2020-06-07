@@ -50,6 +50,7 @@
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
+            <p id="content-heading">List of Groups</p>
             <form action="joinGroup">
             <c:forEach begin = "1" end = "${GroupNames.size()}" var = "i">
                 <p><button id="group-btn" onclick="location.href='joingroup';" value="${GroupNames.get(i-1)}" name="groupName">${GroupNames.get(i-1)}</button></p>

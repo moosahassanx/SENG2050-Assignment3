@@ -17,7 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/files.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -55,17 +54,21 @@
             <h1 id="content-heading">Upload Files</h1>
             <form action="upload" method="post" enctype="multipart/form-data">
                 <p id="label">Select a file: </p>
-                <p><input type="text" name="description" id="description"/></p>
-                <p><input type="file" name="myfile" id="file" class="custom-file-input"></p>
+                <p><input type="file" name="myfile" class="custom-file-input"></p>
+                <br>
+                <p id="label">Description: </p>
+                <p><input type="text" name="description"/></p>
+
                 <input type="hidden" name="userUploaded" value="${user.getName()}"/>
                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
-                <p><input type="submit" id="submit" name="list" onclick="fileValidation()"></p> <p><input type="submit" id="submit" name="list" value="list"></p>
-            
+
+                <p><input type="submit" id="submit" name="list" value="Upload"></p>
+                <br><hr>
+                <p><input type="submit" id="submit" name="list" value="list"></p>
         </div>
     
         <div class = "files-list">
         <table border ="1" width ="90%">
-
             <tr>
                 <th>File Name</th>
                 <th>File Description</th>

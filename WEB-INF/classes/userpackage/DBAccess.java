@@ -200,16 +200,11 @@ public class DBAccess {
         ps = conn.prepareStatement(query);
         ps.setString(1, user.getName());
         ResultSet rs = ps.executeQuery();
-        //query += "'" + user.getName() + "'";
-        System.out.println("Querying: " + query + " for " + user.getName());
-        //esultSet rs = stmt.executeQuery(query);
 
         // build list of group names
         if(rs.next()) {
             String GroupName = rs.getString("group_name");
-            System.out.println("SQL VERSION:\t User " + user.getName() + " has already joined the group: " + GroupName);
         }
-
         // closing connection
         conn.close();
     }
@@ -231,8 +226,6 @@ public class DBAccess {
         ps.executeUpdate();
 
         user.setGroup(groupName);
-
-        System.out.println("User " + user.getName() + " has joined the group: " + user.getGroup());
 
         // closing connection
         conn.close();

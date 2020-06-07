@@ -51,7 +51,7 @@
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
             <h3> Milestone List: Click to Submit </h3>
-            <p><button id = "submit" onclick = "location.href='submit?MID=${MD}';">Milestone 1</button></p>
+            <p><button id = "submit" onclick = "location.href='submission?MID=${MD}';">Milestone 1</button></p>
         </div>
     </section>
 </body>

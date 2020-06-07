@@ -161,8 +161,8 @@ CREATE TABLE submissions(
 	submissionID int IDENTITY(1,1) not null,
 	groupName varChar(30) not null,
 	milestoneID int not null,
-	subComment varChar(1000),
-	comments varChar(30),
+	subComment varChar(1000) not null,
+	comments varChar(1000),
 	mark int
 
 	FOREIGN KEY (groupName) references groups(group_name),

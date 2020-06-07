@@ -333,7 +333,7 @@ public class DBAccess {
         conn.close();
     }
 
-    public static void createMilestoneInDB(String desc, String userName, String groupName) throws SQLException, NamingException
+    public static void createMilestoneInDB(String desc, String userName, String dateDue) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -347,7 +347,7 @@ public class DBAccess {
         ps = conn.prepareStatement(query);
         ps.setString(1,desc);
         ps.setString(2,userName);
-        ps.setString(3,groupName);
+        ps.setString(3,dateDue);
         ps.executeUpdate();
 
         conn.close();
@@ -368,20 +368,20 @@ public class DBAccess {
             ResultSet rs = ps.executeQuery();
             ArrayList<String> milestoneStudentNames = new ArrayList<String>();
             ArrayList<String> milestoneDescriptions = new ArrayList<String>();
-            //ArrayList<Date> milestoneDates = new ArrayList<Date>();
+            ArrayList<Date> milestoneDates = new ArrayList<Date>();
 
             while(rs.next())
             {
                 String milestoneStudent = rs.getString("username");
                 String milestoneDescription = rs.getString("description");
-                //Date date = rs.getDate("date");
+                Date date = rs.getDate("dateDue");
                 milestoneStudentNames.add(milestoneStudent);
                 milestoneDescriptions.add(milestoneDescription);
-                //milestoneDates.add(date);
+                milestoneDates.add(date);
             }
             session.setAttribute("milestoneStudentNames", milestoneStudentNames);
             session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
-            //session.setAttribute("milestoneDates", milestoneDates); 
+            session.setAttribute("milestoneDates", milestoneDates); 
         }
         catch(Exception e)
         {

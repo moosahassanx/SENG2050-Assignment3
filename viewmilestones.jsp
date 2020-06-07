@@ -50,7 +50,8 @@
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
-            <h3> Milestone List: Click to Submit </h3>
+
+            <h1 id="title"> Milestone List: Click to Submit </h1>
             <c:forEach begin = "1" end = "${milestoneTitles.size()}" var = "MD">
                 <p><button id = "submit" onclick = "location.href='Submission?MID=${MD}';">${milestoneTitles.get(MD-1)}</button></p>
             </c:forEach>

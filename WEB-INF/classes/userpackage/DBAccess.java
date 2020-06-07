@@ -342,12 +342,63 @@ public class DBAccess {
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<String> groupMembers = new ArrayList<String>();
 
+        // getting student details
+        ArrayList<String> firstNames = new ArrayList<String>();
+        ArrayList<String> lastNames = new ArrayList<String>();
+        ArrayList<Integer> studentIDs = new ArrayList<Integer>();
+
         // build list of group members
         while(rs.next()) {
             String groupMember = rs.getString("username");
             groupMembers.add(groupMember);
         }
 
+        // displaying everyone in the group
+        for(int i = 0; i < groupMembers.size(); i++){
+            System.out.println("Member " + i + ": " + groupMembers.get(i));
+
+            // get data from submissions
+            query = "SELECT * FROM user_information WHERE username = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, groupMembers.get(i));
+            rs = ps.executeQuery();
+
+            while(rs.next()){
+                String firstName = rs.getString("firstName");
+                firstNames.add(firstName);
+                System.out.println("First name: " + firstName);
+
+                String lastName = rs.getString("lastName");
+                lastNames.add(lastName);
+                System.out.println("Last name:" + lastName);
+                
+                int studentID = rs.getInt("studentId");
+                studentIDs.add(studentID);
+                System.out.println("studentID: " + studentID + "\n");
+            }
+        }
+
+
+        /*
+        // get data from submissions
+        query = "SELECT * FROM user_information WHERE username = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, groupMember);
+        rs = ps.executeQuery();
+
+        while(rs.next()){
+            firstName.add(rs.getString("firstName"));
+            System.out.println("firstName: " + firstName);
+
+            lastName.add(rs.getString("lastName"));
+            System.out.println("lastName: " + lastName);
+            
+            studentID.add(rs.getInt("studentId"));
+            System.out.println("studentID: " + studentID);
+        }
+        */
+        
+        // get data from submissions
         query = "SELECT * FROM submissions WHERE groupName = ?";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, groupName);
@@ -364,6 +415,9 @@ public class DBAccess {
         }
 
         // closing
+        session.setAttribute("firstNames", firstNames);
+        session.setAttribute("lastNames", lastNames);
+        session.setAttribute("studentIDs", studentIDs);
         session.setAttribute("groupName", groupName);
         session.setAttribute("groupMembers", groupMembers);
         session.setAttribute("submissionIDs", submissionIDs);

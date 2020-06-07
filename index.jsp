@@ -45,7 +45,7 @@
         </div>
         
 		<footer id="main-footer">
-			<p id="main-footer-text">2020 &copy; University of Newcastle</p>
+			<p id="main-footer-text">2020 &copy; Group Portal</p>
 		</footer>
 	</section>
 	

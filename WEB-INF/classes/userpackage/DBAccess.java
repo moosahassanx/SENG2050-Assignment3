@@ -256,6 +256,8 @@ public class DBAccess {
 
         ps.executeUpdate();
 
+        conn.close();
+
     }
 
     // Populating the list of responsibilities in the DB to display in the JSP table
@@ -290,6 +292,7 @@ public class DBAccess {
                 responseList.add(responsObj);
             }
         }
+        conn.close();
         return responseList;
     }
 
@@ -303,6 +306,7 @@ public class DBAccess {
         ps.setString(2, responseID);
         ps.executeUpdate();
 
+        conn.close();
     }
 
     public static void groupDetails(HttpSession session, String groupName) throws SQLException, NamingException {
@@ -351,5 +355,7 @@ public class DBAccess {
         ps.setString(2,userName);
         ps.setString(3,groupName);
         ps.executeUpdate();
+
+        conn.close();
     }
 }

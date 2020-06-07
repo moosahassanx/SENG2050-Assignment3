@@ -28,3 +28,16 @@ WEB-INF/classes/Discussions.class
 *.class
 *.class
 *.class
+*.class
+WEB-INF/classes/CreateDiscussions.class
+WEB-INF/classes/CreateDiscussionThread.class
+WEB-INF/classes/CreateGroup.class
+WEB-INF/classes/CreateMilestone.class
+WEB-INF/classes/Discussions.class
+WEB-INF/classes/Groups.class
+WEB-INF/classes/JoinGroup.class
+WEB-INF/classes/LoadDiscussions.class
+WEB-INF/classes/Login.class
+WEB-INF/classes/UploadServlet.class
+WEB-INF/classes/userpackage/File.class
+*.class

@@ -80,7 +80,7 @@ public class Login extends HttpServlet
 
                     // running method
                     try {
-                        DBA.joinGroup(session, user.getGroup(), user);
+                        DBA.loginGroup(session, user.getGroup(), user);
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();

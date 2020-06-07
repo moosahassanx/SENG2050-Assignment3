@@ -225,6 +225,8 @@ INSERT INTO user_groups VALUES('Humey', 'Virginity Club');
 SELECT * FROM user_groups WHERE username='Humey';
 SELECT * FROM user_groups;
 
-SELECT * FROM user_groups where group_name = 'FaZe Clan';
+SELECT * FROM user_groups where username = 'FaZe Clan';
 
 SELECT * FROM Milestones
+
+DELETE FROM user_groups WHERE username='Humey';

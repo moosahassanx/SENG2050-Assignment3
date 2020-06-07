@@ -129,14 +129,16 @@ public class AppointmentsDB
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
-        for(int i = 0; i < dates.size(); i++)
-        {
-            if(dates.get(i).compareToIgnoreCase(date) == 0)
+        if (dates != null || times != null){
+            for(int i = 0; i < dates.size(); i++)
             {
-                if(times.get(i).compareToIgnoreCase(time) == 0)
+                if(dates.get(i).compareToIgnoreCase(date) == 0)
                 {
-                    System.out.println("Error. Cannot make booking at that time.");
-                    return 0;
+                    if(times.get(i).compareToIgnoreCase(time) == 0)
+                    {
+                        System.out.println("Error. Cannot make booking at that time.");
+                        return 0;
+                    }
                 }
             }
         }

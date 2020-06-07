@@ -50,8 +50,18 @@
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
-            <p>YOOOO IM THIS THE FEEDBACK PAGE LMAOOOOO</p>
+            <form action="SubmitFeedback" method="POST">
+                <p id="label">Submission Title</p>
+                <p><input id="input-title" type="text" id="groupName" name="groupNameInput" required></p>
 
+                <p id="label">Feedback</p>
+                <p><input id="input-message" type="text" id="groupName" name="groupNameInput" required></p>
+
+                <p id="label">Mark</p>
+                <p><input type="text" placeholder="Mark out of 100"></p>
+
+                <p><input id="submit" type="submit"></p>
+            </form>
         </div>
     </section>
 </body>

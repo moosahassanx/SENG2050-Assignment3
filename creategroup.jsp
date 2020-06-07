@@ -69,8 +69,8 @@
         </div>
 
         <!-- CREATE GROUP FORM -->
-        <!--BACK BUTTON-->
         <div class="main-content">
+            <!--BACK BUTTON-->
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='groups.jsp';">Back</button>
             </div>

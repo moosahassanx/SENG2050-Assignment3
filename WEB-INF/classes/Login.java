@@ -77,7 +77,6 @@ public class Login extends HttpServlet
                     // running method
                     try {
                         DBA.loginGroup(session, user.getGroup(), user);
-                        
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();
@@ -144,10 +143,10 @@ public class Login extends HttpServlet
             
             user.registerStudent(userName, password, fName, lName, phoneNo, studentId);
 
-            HttpSession session = request.getSession(); //gets the session
-            session.setAttribute("user", user); //sets the bean into the session
+            // HttpSession session = request.getSession(); //gets the session
+            // session.setAttribute("user", user); //sets the bean into the session
 
-            RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page.
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //Redirects to the next page.
             rd.forward(request, response);
 
             }catch(Exception e){

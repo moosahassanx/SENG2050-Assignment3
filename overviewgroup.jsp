@@ -56,8 +56,8 @@
                     <c:forEach begin = "1" end = "${groupMembers.size()}" var = "i">
                         <tr>
                             <td>${groupMembers.get(i-1)}</td>
-                            <td>NAME OF GROUP MEMBER</td>
-                            <td>EMAIL OF GROUP MEMBER</td>
+                            <td>${firstNames.get(i-1)} ${lastNames.get(i-1)}</td>
+                            <td>${studentIDs.get(i-1)}</td>
                         </tr>
                     </c:forEach>
                 </table>

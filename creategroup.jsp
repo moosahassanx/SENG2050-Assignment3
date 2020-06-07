@@ -16,30 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/creategroup.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
-    <script>
-        function validate() 
-        {
-            var groupName = document.getElementById("groupName"); //Grabs the user id from the form
-            var subject = document.getElementById("subject");
-            var returnStatus = true;
-            var messageError = "Sorry but: \n ";
-            if (groupName === null || groupName.value === "")  //Checks to see if there was actually a name in the input
-            { 
-                returnStatus = false; //Returns false so it doesn't submit
-                messageError += "Please input a group name\n"; //Adds to String that will get returned. 
-            }
-            if (subject === null || subject.value === "")  
-            { 
-                returnStatus = false; //Returns false so it doesn't submit
-                messageError += "Please put in a subject\n"; //Adds to String that will get returned. 
-            }
-            if (!returnStatus) 
-            {
-                alert(messageError); //Returns the string in the alert
-            }
-            return returnStatus; //Returns the result Status. 
-        }
-    </script>
+    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -75,7 +52,7 @@
                 <button id="back-btn" onclick="location.href='groups.jsp';">Back</button>
             </div>
 
-            <form action="createGroup" method="POST" onsubmit = "return validate()"> <!--Allows a group to consist of a name and a subject that it is apart of. -->
+            <form action="createGroup" method="POST" onsubmit = "return groupValidate()"> <!--Allows a group to consist of a name and a subject that it is apart of. -->
             <p id="label">Group Name</p>
             <p><input id="input-title" type="text" id = "groupName" name="groupNameInput" required></p>
 

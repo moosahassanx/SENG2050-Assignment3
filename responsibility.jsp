@@ -52,7 +52,7 @@
         </div>
         <div class = "formContainer">
             <div class="respons-list">
-                <form action="responsibility" method="POST">
+                <form action="responsibility" method="POST" onsubmit="return responseValidation()">
                     <table border ="1" width="90%">
                         <tr>
                             <th>User</th>
@@ -65,7 +65,6 @@
                                     <c:forEach items="${groupList}" var="user">
                                         <option value = ${user} id="userName">${user}</option>
                                     </c:forEach>
-                                    
                                 </select>
                             </th>
                             <th>
@@ -82,7 +81,7 @@
                         <tr>
                             <th>
                                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
-                                <input type="submit" id="submitRespo" name="add" onclick="return responseValidation()"/>
+                                <input type="submit" id="submitRespo" name="add"/>
                             </th>
                         </tr>
                     </table>

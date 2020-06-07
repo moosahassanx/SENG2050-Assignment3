@@ -217,13 +217,15 @@ public class DBAccess {
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
 
-        // database inserting
-        String query = "INSERT INTO user_groups VALUES(?, ?)";
-        PreparedStatement ps = null;
-        ps = conn.prepareStatement(query);
-        ps.setString(1, user.getName());
-        ps.setString(2, groupName);
-        ps.executeUpdate();
+        if(groupName != ""){
+            // database inserting
+            String query = "INSERT INTO user_groups VALUES(?, ?)";
+            PreparedStatement ps = null;
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user.getName());
+            ps.setString(2, groupName);
+            ps.executeUpdate();
+        }
 
         user.setGroup(groupName);
 

@@ -24,6 +24,7 @@ public class User
         phoneNumber = 0;
         role = "";
         password = "";
+        group = "";
     }
 
     public User(String name, int phoneNumber, String role, boolean student)
@@ -32,6 +33,7 @@ public class User
         this.phoneNumber = phoneNumber;
         this.role = role;
         this.student = student;
+        this.group = "";
     }
 
     public void setName(String name)

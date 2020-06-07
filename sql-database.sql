@@ -161,13 +161,15 @@ CREATE TABLE submissions(
 	submissionID int IDENTITY(1,1) not null,
 	groupName varChar(30) not null,
 	milestoneID int not null,
+	subComment varChar(1000),
 	comments varChar(30),
 	mark int
 
 	FOREIGN KEY (groupName) references groups(group_name),
-	FOREIGN KEY (milestoneID) references milestones(milestoneID)
+	FOREIGN KEY (milestoneID) references milestones(milestoneID),
 )
 
+drop table submissions
 SELECT * FROM files
 SELECT * FROM versionFiles
 
@@ -224,3 +226,5 @@ SELECT * FROM user_groups WHERE username='Humey';
 SELECT * FROM user_groups;
 
 SELECT * FROM user_groups where group_name = 'FaZe Clan';
+
+SELECT * FROM Milestones

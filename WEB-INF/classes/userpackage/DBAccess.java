@@ -364,17 +364,16 @@ public class DBAccess {
             PreparedStatement ps = null;
             String query = "SELECT * from milestones";
             ps = conn.prepareStatement(query);
-            ps.setString(1, user.getGroup());
             ResultSet rs = ps.executeQuery();
             ArrayList<String> milestoneTitles = new ArrayList<String>();
             ArrayList<String> milestoneDescriptions = new ArrayList<String>();
-            ArrayList<Date> milestoneDates = new ArrayList<Date>();
+            ArrayList<String> milestoneDates = new ArrayList<String>();
 
             while(rs.next())
             {
                 String milestoneTitle = rs.getString("milestoneTitle");
                 String milestoneDescription = rs.getString("description");
-                Date date = rs.getDate("dateDue");
+                String date = rs.getString("dateDue");
                 milestoneTitles.add(milestoneTitle);
                 milestoneDescriptions.add(milestoneDescription);
                 milestoneDates.add(date);
@@ -411,4 +410,23 @@ public class DBAccess {
             e.printStackTrace();
         }
     }
-}
+
+    public static void writeSubmission(String group, int MID) throws SQLException, NamingException
+    {
+        InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+        // Selecting all data from the website_user table ** Note - only gives username/passwords
+        //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
+        String query = "INSERT INTO submissions VALUES(?,?)";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1, group);
+        ps.setInt(2,MID);
+        ps.executeUpdate();
+
+        conn.close();
+    }
+} 

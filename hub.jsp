@@ -65,7 +65,7 @@
                 <h1 id="content-heading">Milestone List</h1>
                 <ul>
                 <c:forEach begin = "1" end = "${milestoneDescriptions.size()}" var = "MD">
-                    <li>${milestoneTItles.get(MD-1)} Due ${milestoneDates.get(MD-1)}: ${milestoneDescriptions.get(MD-1)}</li>
+                    <li>${milestoneTitles.get(MD-1)} Due ${milestoneDates.get(MD-1)}: ${milestoneDescriptions.get(MD-1)}</li>
                 </c:forEach>
                 </ul>
             </div>

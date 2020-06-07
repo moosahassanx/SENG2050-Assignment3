@@ -44,7 +44,7 @@ public class CreateMilestone extends HttpServlet
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        RequestDispatcher rd = request.getRequestDispatcher("login"); //prepares to forward
+        RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //prepares to forward
         rd.forward(request,response); //forwards
         return;
     }

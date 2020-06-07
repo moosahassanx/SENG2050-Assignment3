@@ -126,7 +126,37 @@ public class Login extends HttpServlet
             }
 
         }else{ // The user has filled out the registration form
-          System.out.println("In register doPost in login");
+            try{
+           
+
+            String userName = request.getParameter("username");
+            String password = request.getParameter("password");
+            String fName = request.getParameter("FirstName");
+            String lName = request.getParameter("LastName");
+            String phoneNoStr = request.getParameter("PhoneNo");
+            String studentIdStr = request.getParameter("studentID");
+
+            System.out.println(userName + password + fName + lName + phoneNoStr + studentIdStr);
+
+            // Converting phoneNostr and StudentIDSTR to integers
+            int phoneNo = Integer.parseInt(phoneNoStr);
+            int studentId = Integer.parseInt(studentIdStr);
+
+            // implementing Student User
+            String studentName = fName + lName;
+            User user = new User(studentName, phoneNo, studentId, "Student", true);
+            
+            user.registerStudent(userName, password, fName, lName, phoneNo, studentId);
+
+            HttpSession session = request.getSession(); //gets the session
+            session.setAttribute("user", user); //sets the bean into the session
+
+            RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page.
+            rd.forward(request, response);
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
 

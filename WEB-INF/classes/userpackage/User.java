@@ -18,6 +18,14 @@ import javax.sql.DataSource;
 
 public class User
 {
+    private String group;
+    protected String name;
+    protected int phoneNumber;
+    protected String role;
+    protected String password;
+    private boolean student;
+    private int studentId;
+
     public User()
     {
         name = "";
@@ -27,7 +35,7 @@ public class User
         group = "";
     }
 
-    public User(String name, int phoneNumber, String role, boolean student)
+    public User(String name, int phoneNumber, int studentId, String role, boolean student)
     {
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -36,6 +44,12 @@ public class User
         this.group = "";
     }
 
+    public void setStudentId(int studentId){
+        this.studentId = studentId;
+    }
+    public int getStudentId(){
+        return studentId;
+    }
     public void setName(String name)
     {
         this.name = name;
@@ -101,13 +115,7 @@ public class User
     {
         return group;
     }
-    
-    private String group;
-    protected String name;
-    protected int phoneNumber;
-    protected String role;
-    protected String password;
-    private boolean student;
+
 
     // NOTE - Will need to comment this out until fixing the database connection or wont compile
     // Need to fix to be generic for either Student and a Teacher
@@ -140,7 +148,6 @@ public class User
                         rs = ps.executeQuery();
                         // Checks what role the user has
                         while(rs.next()){
-
                             // user is a student
                             if(rs.getString("role").equalsIgnoreCase("Student")){
                                 rs.close();
@@ -164,7 +171,7 @@ public class User
         catch (Exception e){
             e.printStackTrace();
         }
-        return 7;
+        return -1;
     }
     
     //This function will return whether it is the student's first time logging in or not.
@@ -212,7 +219,36 @@ public class User
             String username = rs.getString("username");
             list.add(username);
         }
-
+        rs.close();
+        conn.close();
         return list;
+    }
+
+    public void registerStudent(String userName, String password, String fName, String lName, int phoneNo, int studentID) throws NamingException, SQLException {
+
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        // Inserting into user information table
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO user_information VALUES (?,?,?,?,?)");
+        PreparedStatement ps2 = conn.prepareStatement("INSERT INTO website_users VALUES (?,?)");
+        PreparedStatement ps3 = conn.prepareStatement("INSERT INTO website_user_roles VALUES (?,?)");
+        ps.setString(1, userName);
+        ps.setInt(2, studentID);
+        ps.setInt(3, phoneNo);
+        ps.setString(4, fName);
+        ps.setString(5, lName);
+        ps.executeUpdate();
+        // Inserting into website users
+        conn.prepareStatement("INSERT INTO website_users VALUES (?,?)");
+        ps2.setString(1, userName);
+        ps2.setString(2, password);
+        ps2.executeUpdate();
+        // Inserting into website user role 
+        conn.prepareStatement("INSERT INTO website_user_roles VALUES (?,?)");
+        ps3.setString(1, userName);
+        ps3.setString(2, "student");
+        ps3.executeUpdate();
+        conn.close();
     }
 }

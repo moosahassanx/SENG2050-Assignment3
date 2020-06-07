@@ -1,9 +1,9 @@
 /*
-    Assignment 3: CreateDiscussions.java
+    Assignment 3: GiveFeedback.java
     Josh R(c3324541), Moosa H (c3331532), Keeylan H ()
     -----------------------------------------------------
-    Purpose: This servlet will be responsible for creating the discussions when 
-    the call has been made. 
+    Purpose: This servlet will be used to relay the feedback for an assignment
+    to the DB. 
 */
 //package WEB-INF.classes;
 

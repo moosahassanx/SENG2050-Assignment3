@@ -105,7 +105,7 @@ public class Login extends HttpServlet
                     AppointmentsDB ADB = new AppointmentsDB();
                     ADB.setUsername(loginID);
                     ADB.setSession(request.getSession());
-                    ADB.getTeacherAppointments();
+                    ADB.getTeacherAppointments();   
 
                     RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);

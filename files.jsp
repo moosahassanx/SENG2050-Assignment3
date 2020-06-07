@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/files.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -54,15 +55,15 @@
             <h1 id="content-heading">Upload Files</h1>
             <form action="upload" method="post" enctype="multipart/form-data">
                 <p id="label">Select a file: </p>
-                <p><input type="file" name="myfile" class="custom-file-input"></p>
+                <p><input type="file" name="myfile" id="file" class="custom-file-input"></p>
                 <br>
                 <p id="label">Description: </p>
-                <p><input type="text" name="description"/></p>
+                <p><input type="text" id="description" name="description"/></p>
 
                 <input type="hidden" name="userUploaded" value="${user.getName()}"/>
                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
 
-                <p><input type="submit" id="submit" name="list" value="Upload"></p>
+                <p><input type="submit" id="submit" name="list" value="Upload" onclick="return fileValidation()"></p>
                 <br><hr>
                 <p><input type="submit" id="submit" name="list" value="list"></p>
         </div>
@@ -74,15 +75,19 @@
                 <th>File Description</th>
                 <th>Version Section</th>
             </tr>
-
+        
             <c:forEach items="${list}" var="l">
+            <form action ="upload" method="post">
                 <tr>
                     <td>${l.getFileName()}</td>
                     <td>${l.getDescription()}</td>
                     <td><input type="submit" name="list" value="Versions">
-                        <input type="hidden" name="fileName" value="${l.getFileName()}"/></form></td>
+                        <input type="hidden" name="fileName" value="${l.getFileName()}"/></td>
                 </tr>
+            </form>
             </c:forEach>
+        
+        
         </table>
         </div>
     

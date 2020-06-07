@@ -122,7 +122,8 @@ public class File {
             ps.setObject(2, bytes);
             ps.setString(3, description);
             ps.setString(4, uploadedName);
-            
+            ps.executeUpdate();
+            conn.close();
             return true;
     }
 
@@ -149,10 +150,11 @@ public class File {
                 File file = new File(userUploaded, fileName, description,fileData);
                 list.add(file);
                 }
-            
+            conn.close();
             }catch(Exception e){
                 e.printStackTrace();
             }
+            
         return list;
     }
 
@@ -169,6 +171,7 @@ public class File {
             while(rs.next()){
                 data = rs.getBlob("binary_file");
             }      
+            conn.close();
         return data;
     }
 
@@ -187,9 +190,11 @@ public class File {
 
         // File exists already in the db & its the same fileName and bytes
         if(rs.next()){
+            conn.close();
             return true;
         }
         else{
+            conn.close();
             return false;
         }
     }
@@ -207,6 +212,8 @@ public class File {
         ps.setString(3, description);
         ps.setString(4, uploadedName);
         ps.executeUpdate();
+
+        conn.close();
 
     }
 
@@ -232,7 +239,9 @@ public class File {
             File file = new File(userUploaded,fileName,description, fileData, version);
 
             versionList.add(file);
+            
         }
+        conn.close();
         return versionList;
     }
 

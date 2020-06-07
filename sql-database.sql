@@ -131,10 +131,10 @@ CREATE TABLE discussionsThread(
 
 CREATE TABLE milestones(
 	milestoneID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	milestoneTitle varChar(30) not null,
 	description VARCHAR(1000) NOT NULL,
 	dateDue varchar(30) not null,  
-	comments varChar(30),
-	mark int
+
 )
 
 CREATE TABLE appointments(
@@ -162,6 +162,8 @@ CREATE TABLE submissions(
 	submissionID int IDENTITY(1,1) not null,
 	groupName varChar(30) not null,
 	milestoneID int not null,
+	comments varChar(30),
+	mark int
 
 	FOREIGN KEY (groupName) references groups(group_name),
 	FOREIGN KEY (milestoneID) references milestones(milestoneID)

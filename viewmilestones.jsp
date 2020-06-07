@@ -55,6 +55,11 @@
             <c:forEach begin = "1" end = "${milestoneTitles.size()}" var = "MD">
                 <p><button id = "submit" onclick = "location.href='Submission?MID=${MD}';">${milestoneTitles.get(MD-1)}</button></p>
             </c:forEach>
+
+            <h1 id="title"> Milestone List: Click for feedback </h1>
+            <c:forEach begin = "1" end = "${subIDs.size()}" var = "MDID">
+                <p><button id = "submit" onclick = "location.href='ViewResults?MID=${mileIDs.get(MDID-1)}';">${milestoneTitles.get(MDID-1)}</button></p>
+            </c:forEach>
         </div>
     </section>
 </body>

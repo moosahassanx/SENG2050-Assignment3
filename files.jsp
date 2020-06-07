@@ -55,7 +55,7 @@
             <form action="upload" method="post" enctype="multipart/form-data">
                 <!-- AFTER REVIEWING A GROUP'S WORK, TEACHERS GIVE FEEDBACK THROUGH THIS FORM -->
                 <p id="label">Select a file: </p>
-                <p><input type="file" name="myfile" class="custom-file-input"></p>
+                <p><input type="file" name="myfile" id ="file" class="custom-file-input"></p>
                 <br>
                 <p id="label">Description: </p>
                 <p><input id="input-title" type="text" name="description"/></p>

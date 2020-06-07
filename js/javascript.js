@@ -1,6 +1,6 @@
 function fileValidation(){
 
-    var description = document.getElementById("description");
+    var description = document.getElementById("input-title");
     var file = document.getElementById("file");
         
     if(description.value === ""){

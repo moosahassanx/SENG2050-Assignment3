@@ -56,7 +56,7 @@
                 <p><a href="discussions" address="true">Discussions</a></p>
                 <p><a href="groups" address="true">Groups</a></p> <!--Links to all the different pages so the user can access them. -->
                 <p><a href="files.jsp" address="true">Files</a></p>
-                <p><a href="addmilestone.jsp" address="true">Planning</a></p>
+                <p><a href="viewmilestone.jsp" address="true">View Milestones</a></p>
                 <p><a href="${pageContext.request.contextPath}/responsibility?id=${user.getGroup()}" address="true">Planning</a></p>
             </div>
 

@@ -45,6 +45,8 @@
 
                 <h1 id="content-heading">${groupName} Overview</h1>
                 
+                <p><button id="feedback-btn" onclick="location.href='feedback.jsp';">Give Feedback</button></p>
+
                 <table>
                     <tr>
                       <th>Username</th>

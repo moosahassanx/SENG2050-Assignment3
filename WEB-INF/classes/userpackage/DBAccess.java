@@ -209,6 +209,38 @@ public class DBAccess {
         conn.close();
     }
 
+    // User logs in and the database checks if the user has already joined a group before.
+    public static void loginGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
+        // setting up connection
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        Statement stmt = conn.createStatement();
+
+        // get data from groups table in db
+        String query = "SELECT * FROM user_groups WHERE username = ?";
+        PreparedStatement ps = null;
+        ps = conn.prepareStatement(query);
+        ps.setString(1, user.getName());
+        ResultSet rs = ps.executeQuery();
+        System.out.println("Querying... " + query + " for: " + user.getName());
+
+        // db found a pre-existing group
+        if(rs.next()){
+            String GroupName = rs.getString("group_name");
+            System.out.println("Group name found: " + GroupName);
+            user.setGroup(GroupName);
+        }
+        // db could not find a pre-existing group
+        else{
+            System.out.println("Group name not found.");
+            user.setGroup("");
+        }
+
+        // closing connection
+        conn.close();
+    }
+
     //Function that will let a user join a group. 
     public static void joinGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
         // setting up connection
@@ -217,6 +249,7 @@ public class DBAccess {
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
 
+        // group name from session is not nothing
         if(groupName != ""){
             // database inserting
             String query = "INSERT INTO user_groups VALUES(?, ?)";
@@ -227,6 +260,7 @@ public class DBAccess {
             ps.executeUpdate();
         }
 
+        // set group in session
         user.setGroup(groupName);
 
         // closing connection

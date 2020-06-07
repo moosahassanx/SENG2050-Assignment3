@@ -387,8 +387,26 @@ public class DBAccess {
         }
     }
 
-    public static void giveFeedback(String comment, int mark)
+    public static void giveFeedback(int SID, int MID, String comment, int mark)
     {
-        
+        try{
+            InitialContext ctx = new InitialContext();
+            // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+            // Selecting all data from the website_user table ** Note - only gives username/passwords
+            PreparedStatement ps = null;
+            String query = "UPDATE submissions SET mark = ? AND feedback = ? WHERE submissionID = ? AND milestoneID = ?";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, mark);
+            ps.setString(2, comment);
+            ps.setInt(3, SID);
+            ps.setInt(4, MID);
+            ps.executeUpdate();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

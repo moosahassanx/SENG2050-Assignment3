@@ -134,7 +134,6 @@ CREATE TABLE milestones(
 	milestoneTitle varChar(30) not null,
 	description VARCHAR(1000) NOT NULL,
 	dateDue varchar(30) not null,  
-
 )
 
 CREATE TABLE appointments(

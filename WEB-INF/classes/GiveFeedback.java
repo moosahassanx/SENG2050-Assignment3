@@ -26,22 +26,36 @@ import java.time.format.DateTimeFormatter;
 
 @WebServlet(urlPatterns = { "/GiveFeedback" })
 public class GiveFeedback extends HttpServlet {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        int SID = Integer.parseInt(request.getParameter("SID"));
+        int MID = Integer.parseInt(request.getParameter("MID"));
+        HttpSession session = request.getSession();
+        session.setAttribute("SID", SID);
+        session.setAttribute("MID", MID);
+        RequestDispatcher rd = request.getRequestDispatcher("feedback.jsp"); //Prepares to forward
+        rd.forward(request,response); //Gets forwarded. 
+        return;
+
+    }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession(); //Grabs sessions and gets the data that is required.
         String comment = request.getParameter("comment");
         int mark = Integer.parseInt(request.getParameter("mark"));
+        int SID = (int)session.getAttribute("SID");
+        int MID = (int)session.getAttribute("MID");
         User theUser = ((User)session.getAttribute("user"));
         try 
         {
-            DDB.giveFeedback(comment, mark); //Runs the function to write it to the DB
+            DDB.giveFeedback(SID, MID, comment, mark); //Runs the function to write it to the DB
         } 
         catch (SQLException | NamingException e) 
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        RequestDispatcher rd = request.getRequestDispatcher("creatediscussion.jsp"); //Prepares to forward
+        RequestDispatcher rd = request.getRequestDispatcher("teacherhub.jsp"); //Prepares to forward
         rd.forward(request,response); //Gets forwarded. 
         return;
     }

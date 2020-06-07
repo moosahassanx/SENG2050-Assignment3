@@ -115,24 +115,50 @@ public class File {
             ps.setString(5, groupName);
             ps.executeUpdate();
 
-            // Inserts file as the first version in versionfile table
-            query = "INSERT INTO versionFiles VALUES (?,?,?,?)";
-            ps = conn.prepareStatement(query);
-            ps.setString(1, fileName);
-            ps.setObject(2, bytes);
-            ps.setString(3, description);
-            ps.setString(4, uploadedName);
-            ps.executeUpdate();
             conn.close();
+
+            File.uploadVersionFile(bytes, uploadedName, description, fileName, groupName);
+
+            // Inserts file as the first version in versionfile table
+
             return true;
     }
 
+    public static void uploadVersionFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName)throws NamingException, SQLException {
+
+        int versionID = 0;
+
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("Select * from versionFiles where file_name = ?");
+        PreparedStatement ps1 = conn.prepareStatement("INSERT INTO versionFiles VALUES (?,?,?,?,?)");
+        ps.setString(1, fileName);
+        ResultSet rs = ps.executeQuery();
+
+        // Setting the versionID for the selected file
+        while(rs.next()){
+            versionID++;
+        }
+        if(versionID == 0){
+            ps1.setInt(1, 1);
+        }
+        ps1.setInt(1, versionID);
+        ps1.setString(2, fileName);
+        ps1.setObject(3, bytes);
+        ps1.setString(4, description);
+        ps1.setString(5, uploadedName);
+        ps1.executeUpdate();
+
+        conn.close();
+
+    }
+
     //This function will return all the files currently stored within the DB
-    public List<File> getAllFiles(String groupName){
+    public static List<File> getAllFiles(String groupName){
 
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
-
             try{
                 InitialContext ctx = new InitialContext();
                 DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
@@ -147,7 +173,7 @@ public class File {
                 String userUploaded = rs.getString("uploaded_name");
                 String description = rs.getString("file_description");
                 byte[] fileData = rs.getBytes("binary_file");
-                File file = new File(userUploaded, fileName, description,fileData);
+                File file = new File(userUploaded, fileName, description, fileData);
                 list.add(file);
                 }
             conn.close();
@@ -201,17 +227,30 @@ public class File {
 
 
     public static void addVersionFile(byte[] bytes, String uploadedName, String description, String fileName, String groupName) throws SQLException, NamingException{
-        
+        int versionID = 0;
+
         InitialContext ctx = new InitialContext();
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
         Connection conn = ds.getConnection();
-        PreparedStatement ps = conn.prepareStatement("INSERT into versionFiles VALUES (?,?,?,?)");
-
+        PreparedStatement ps = conn.prepareStatement("Select * from versionFiles where file_name = ?");
+        PreparedStatement ps1 = conn.prepareStatement("INSERT into versionFiles VALUES (?,?,?,?,?)");
         ps.setString(1, fileName);
-        ps.setBytes(2, bytes);
-        ps.setString(3, description);
-        ps.setString(4, uploadedName);
-        ps.executeUpdate();
+        ResultSet rs = ps.executeQuery();
+
+        // Setting the versionID for the selected file
+        while(rs.next()){
+            versionID++;
+        }
+        if(versionID == 0){
+            ps1.setInt(1, 1);
+        }
+
+        ps1.setInt(1,versionID);
+        ps1.setString(2, fileName);
+        ps1.setBytes(3, bytes);
+        ps1.setString(4, description);
+        ps1.setString(5, uploadedName);
+        ps1.executeUpdate();
 
         conn.close();
 

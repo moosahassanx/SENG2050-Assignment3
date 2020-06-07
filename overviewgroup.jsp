@@ -100,12 +100,14 @@
                         </tr>
 
                         <c:forEach items="${list}" var="l">
-                            <tr>
-                                <td>${l.getFileName()}</td>
-                                <td>${l.getDescription()}</td>
-                                <td><input type="submit" name="list" value="Versions">
-                                    <input type="hidden" name="fileName" value="${l.getFileName()}"/></form></td>
-                            </tr>
+                            <form action ="upload" method="post">
+                                <tr>
+                                    <td>${l.getFileName()}</td>
+                                    <td>${l.getDescription()}</td>
+                                    <td><input type="submit" name="list" value="Versions">
+                                        <input type="hidden" name="fileName" value="${l.getFileName()}"/></td>
+                                </tr>
+                            </form>
                         </c:forEach>
                     </table>
                     </div>

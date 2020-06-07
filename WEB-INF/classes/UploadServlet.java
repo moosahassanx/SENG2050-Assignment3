@@ -30,8 +30,8 @@ public class UploadServlet extends HttpServlet {
             if(buttonPressed.equals("list")){
                 
                 // Redundant make a random file here to access the file methods - Could maybe use an interface instead?
-                File uploadFile = new File();
-                List<File> file = uploadFile.getAllFiles(groupName);
+               // File uploadFile = new File();
+                List<File> file = File.getAllFiles(groupName);
 
                 HttpSession session = request.getSession();
                 session.setAttribute("list",file);
@@ -42,7 +42,6 @@ public class UploadServlet extends HttpServlet {
             else if(buttonPressed.equals("Versions")){
 
                 String fileName = request.getParameter("fileName");
-                System.out.println(fileName);
                 HttpSession session = request.getSession();
                 session.setAttribute("fileName", fileName);
 

@@ -13,6 +13,7 @@ import javax.servlet.http.*;
 
 import userpackage.User;
 import userpackage.DBAccess;
+import userpackage.File;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -20,13 +21,13 @@ import javax.sql.DataSource;
 import javax.servlet.annotation.WebServlet;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 @WebServlet(urlPatterns = { "/joinGroup" })
 public class JoinGroup extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("\n*****Join Group Servlet Initialized.*****");
 
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
@@ -35,11 +36,12 @@ public class JoinGroup extends HttpServlet {
 
         // the user is a teacher
         if(theUser.isStudent() == false) {
-            System.out.println("Group Name: " + groupName);
 
             // running method
             try {
                 DDB.groupDetails(session, groupName);
+                List<File> list = File.getAllFiles(groupName);
+                session.setAttribute("list", list);
             }
             catch (SQLException | NamingException e) {
                 e.printStackTrace();
@@ -48,7 +50,6 @@ public class JoinGroup extends HttpServlet {
             // redirect user
             RequestDispatcher rd = request.getRequestDispatcher("overviewgroup.jsp");
             rd.forward(request,response);
-            return;
         }
         
         // the user is a student
@@ -62,8 +63,6 @@ public class JoinGroup extends HttpServlet {
                 catch (SQLException | NamingException e) {
                     e.printStackTrace();
                 }
-
-                System.out.println("User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
             }
             
             // case: user has not joined a group yet, assign to group

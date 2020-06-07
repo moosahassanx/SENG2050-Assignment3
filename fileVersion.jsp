@@ -47,7 +47,12 @@
         <!-- UPLOAD FILES -->
         <div class="content-right">
             <div class="back-div">
-                <p><button id="back-btn" onclick="location.href='files.jsp';">Back</button></p>
+                <c:if test="${user.isStudent() == true}">
+                    <p><button id="back-btn" onclick="location.href='files.jsp';">Back</button></p>
+                </c:if>
+                <c:if test = "${user.isStudent() == false}">
+                    <p><button id="back-btn" onclick="location.href='overviewgroup.jsp';">Back</button></p>
+                </c:if>
             </div>
 
             <h1 id="content-heading">Version Control for ${fileName}</h1>

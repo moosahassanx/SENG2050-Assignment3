@@ -51,6 +51,24 @@ public class AppointmentsDB
         this.session = session;
     }
 
+    public ArrayList<String> getDates() {
+        return this.dates;
+    }
+
+    public void setDates(ArrayList<String> dates) {
+        this.dates = dates;
+    }
+
+    public ArrayList<String> getTimes() {
+        return this.times;
+    }
+
+    public void setTimes(ArrayList<String> times) {
+        this.times = times;
+    }
+
+
+    
     //This function will be used to return the appointments that are currently within the System as well as get the teachers that are within the system to book an appointment with. 
     public void getAppointments() throws SQLException, NamingException 
     {
@@ -79,6 +97,8 @@ public class AppointmentsDB
             appointmentDate.add(rs.getString("dateDue"));
         }
 
+        dates = appointmentDate;
+        times = appointmentTime;
         session.setAttribute("appointmentIDs", appointmentIDs); //Sets them as attributes to be accessible in a JSP/other files
         session.setAttribute("appointmentDesc", appointmentDesc);
         session.setAttribute("appointmentTeacher", appointmentTeacher);
@@ -96,12 +116,13 @@ public class AppointmentsDB
             teacherNames.add(rs.getString("username"));
         }
 
+        conn.close();
         session.setAttribute("teacherNames", teacherNames);
 
     }
 
     //This function will be used to write new appointments to the Database. 
-    public void writeAppointments(String desc, String teacher, User user, String date, String time) throws SQLException, NamingException
+    public int writeAppointments(String desc, String teacher, User user, String date, String time) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -109,6 +130,19 @@ public class AppointmentsDB
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
+        if (dates != null || times != null){
+            for(int i = 0; i < dates.size(); i++)
+            {
+                if(dates.get(i).compareToIgnoreCase(date) == 0)
+                {
+                    if(times.get(i).compareToIgnoreCase(time) == 0)
+                    {
+                        System.out.println("Error. Cannot make booking at that time.");
+                        return 0;
+                    }
+                }
+            }
+        }
         String query = "INSERT INTO appointments VALUES(?,?,?,?,?)"; //Prepares query to place all the data within
         PreparedStatement ps = null;
         ps = conn.prepareStatement(query); //prepares the statement
@@ -120,6 +154,7 @@ public class AppointmentsDB
         ps.executeUpdate(); //Executes it and closes the connection. 
 
         conn.close();
+        return 1;
 
     }
 
@@ -147,7 +182,7 @@ public class AppointmentsDB
             appointmentTime.add(rs.getString("timeDue"));
             appointmentDate.add(rs.getString("dateDue"));
         }
-
+        conn.close();
         session.setAttribute("appointmentStudent", appointmentStudent);
         session.setAttribute("appointmentDesc", appointmentDesc); //Sets all the attributes in session. 
         session.setAttribute("appointmentDate", appointmentDate);
@@ -157,4 +192,8 @@ public class AppointmentsDB
 
     private String username;
     private HttpSession session;
+    private ArrayList<String> dates;
+    private ArrayList<String> times;
+
+
 }

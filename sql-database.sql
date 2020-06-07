@@ -5,6 +5,7 @@ DROP TABLE discussions;
 DROP TABLE group_folder_files;
 DROP TABLE files;
 DROP TABLE group_folders;
+DROP TABLE versionFiles;
 DROP TABLE user_groups;
 DROP TABLE groups;
 DROP TABLE website_user_roles;
@@ -25,7 +26,6 @@ CREATE USER seng2050Ass3
 FOR LOGIN seng2050Ass3;
 
 ALTER ROLE db_datareader ADD member seng2050Ass3;
-ALTER ROLE db_datawriter ADD member seng2050Ass3;
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 TO seng2050Ass3;
@@ -142,12 +142,11 @@ CREATE TABLE appointments(
 	teacher VARCHAR(30) not null,
 	username VARCHAR(30) not null,
 	description VARCHAR(1000) not null,
-	timeDue varchar(30) not null, 
+	timeDue varchar(30) not null,
 	dateDue Varchar(30) not null,
 
 	FOREIGN KEY(username) REFERENCES website_users(username),
 )
-drop table appointments
 
 CREATE table responsibilities(
 	responseID int IDENTITY(1,1) NOT NULL,

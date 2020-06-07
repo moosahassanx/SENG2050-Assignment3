@@ -200,16 +200,11 @@ public class DBAccess {
         ps = conn.prepareStatement(query);
         ps.setString(1, user.getName());
         ResultSet rs = ps.executeQuery();
-        //query += "'" + user.getName() + "'";
-        System.out.println("Querying: " + query + " for " + user.getName());
-        //esultSet rs = stmt.executeQuery(query);
 
         // build list of group names
         if(rs.next()) {
             String GroupName = rs.getString("group_name");
-            System.out.println("SQL VERSION:\t User " + user.getName() + " has already joined the group: " + GroupName);
         }
-
         // closing connection
         conn.close();
     }
@@ -232,8 +227,6 @@ public class DBAccess {
 
         user.setGroup(groupName);
 
-        System.out.println("User " + user.getName() + " has joined the group: " + user.getGroup());
-
         // closing connection
         conn.close();
     }
@@ -255,6 +248,8 @@ public class DBAccess {
         ps.setString(6, "N");
 
         ps.executeUpdate();
+
+        conn.close();
 
     }
 
@@ -290,6 +285,7 @@ public class DBAccess {
                 responseList.add(responsObj);
             }
         }
+        conn.close();
         return responseList;
     }
 
@@ -303,6 +299,7 @@ public class DBAccess {
         ps.setString(2, responseID);
         ps.executeUpdate();
 
+        conn.close();
     }
 
     public static void groupDetails(HttpSession session, String groupName) throws SQLException, NamingException {
@@ -318,7 +315,6 @@ public class DBAccess {
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<String> groupMembers = new ArrayList<String>();
 
-        conn.close(); 
         // build list of group members
         while(rs.next()) {
             String groupMember = rs.getString("username");
@@ -351,6 +347,8 @@ public class DBAccess {
         ps.setString(2,userName);
         ps.setString(3,groupName);
         ps.executeUpdate();
+
+        conn.close();
     }
 
     public static void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException

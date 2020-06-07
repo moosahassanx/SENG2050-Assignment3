@@ -116,6 +116,7 @@ public class AppointmentsDB
             teacherNames.add(rs.getString("username"));
         }
 
+        conn.close();
         session.setAttribute("teacherNames", teacherNames);
 
     }
@@ -179,7 +180,7 @@ public class AppointmentsDB
             appointmentTime.add(rs.getString("timeDue"));
             appointmentDate.add(rs.getString("dateDue"));
         }
-
+        conn.close();
         session.setAttribute("appointmentStudent", appointmentStudent);
         session.setAttribute("appointmentDesc", appointmentDesc); //Sets all the attributes in session. 
         session.setAttribute("appointmentDate", appointmentDate);

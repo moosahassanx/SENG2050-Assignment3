@@ -26,14 +26,10 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/back" })
 public class Back extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("\n*****Back Servlet Initialized.*****");
 
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
         User theUser =((User)session.getAttribute("user"));
-
-        // displaying details in terminal
-        System.out.println("User " + theUser.getName() + " is student: " + theUser.isStudent());
 
         // the user is a teacher
         if(theUser.isStudent() == false){

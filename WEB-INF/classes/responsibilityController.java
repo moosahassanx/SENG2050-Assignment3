@@ -64,8 +64,6 @@ public class responsibilityController extends HttpServlet {
         // GroupName is the group when originally going into responsibilities.jsp - After clicking the completion link it changes to either yes or no
         // Doing this to save making an extra servlet just for another doGet method
         String groupName = request.getParameter("id");
-        System.out.println(groupName);
-
         if(groupName != null && !"No".equals(groupName)){
             try{
                 List<String> list = User.getUserList(groupName);

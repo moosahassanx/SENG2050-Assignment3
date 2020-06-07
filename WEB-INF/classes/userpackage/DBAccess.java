@@ -174,11 +174,6 @@ public class DBAccess {
             GroupNames.add(GroupName);
         }
 
-        // displaying group names in terminal
-        for(int i = 0; i < GroupNames.size(); i++){
-            System.out.println("Group Name " + i + ": " + GroupNames.get(i));
-        }
-
         // closing
         session.setAttribute("GroupNames", GroupNames);
         conn.close();
@@ -186,7 +181,6 @@ public class DBAccess {
 
     //Function to show if a user has already joined a group. 
     public static void showJoinedGroup(HttpSession session, String groupName, User user) throws SQLException, NamingException {
-        System.out.println("theUser.hasGroup() = true");
 
         // setting up connection
         InitialContext ctx = new InitialContext();
@@ -223,17 +217,14 @@ public class DBAccess {
         ps = conn.prepareStatement(query);
         ps.setString(1, user.getName());
         ResultSet rs = ps.executeQuery();
-        System.out.println("Querying... " + query + " for: " + user.getName());
 
         // db found a pre-existing group
         if(rs.next()){
             String GroupName = rs.getString("group_name");
-            System.out.println("Group name found: " + GroupName);
             user.setGroup(GroupName);
         }
         // db could not find a pre-existing group
         else{
-            System.out.println("Group name not found.");
             user.setGroup("");
         }
 
@@ -370,11 +361,6 @@ public class DBAccess {
             submissionIDs.add(rs.getInt("submissionID"));
             submissionDescs.add(rs.getString("subComment"));
             milestoneIDs.add(rs.getInt("milestoneID"));
-        }
-
-
-        for(int i = 0; i < groupMembers.size(); i++){
-            System.out.println("Group member " + i + ": " + groupMembers.get(i));
         }
 
         // closing

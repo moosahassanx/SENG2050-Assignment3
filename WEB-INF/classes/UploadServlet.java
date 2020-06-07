@@ -42,7 +42,6 @@ public class UploadServlet extends HttpServlet {
             else if(buttonPressed.equals("Versions")){
 
                 String fileName = request.getParameter("fileName");
-                System.out.println(fileName);
                 HttpSession session = request.getSession();
                 session.setAttribute("fileName", fileName);
 

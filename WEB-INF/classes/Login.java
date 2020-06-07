@@ -126,11 +126,8 @@ public class Login extends HttpServlet
             }
 
         }else{ // The user has filled out the registration form
-            String loginID = request.getParameter("username2");
-            String password = request.getParameter("password2");
+          System.out.println("In register doPost in login");
         }
-
-        System.out.println("outside");
     }
 
     private DBAccess DBA;

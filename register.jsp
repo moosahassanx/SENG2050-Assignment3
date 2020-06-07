@@ -24,6 +24,7 @@
             <hr>
         </div>
 
+        <!-- REGISTERING A NEW STUDENT TO THE DATABASE -->
         <div class = "teacher">
             <form action = "login" method="POST" onsubmit = "return registerValidation()">
                 <p><input type="text" id="username" value="username" name="username"/><br></p>

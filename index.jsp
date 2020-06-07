@@ -25,21 +25,25 @@
             <p><button id="btn" value="register" onclick="location.href='register.jsp'">Register</button></p> <!--This allows users to register. -->
         </div>
 
+        <!-- CENTRE PLACED DIV FOR USERS TO  -->
         <div class = "teacher">
             <form action = "login" method="POST" onsubmit = "return loginValidation()">
             <!--These will be passed into the Servlet so it can be queried in the DB-->
             <p><input type="text" placeholder="Username" id="username" name = "username" /></p>
             <p><input type="password" placeholder="Password" id="password" name = "password"></p>
 
+            <!-- LOGIN IS ON THE LEFT -->
             <div class="left">
                 <p><input id="btn" type="submit" value = "Login" name="button"/></p>
             </div>
     
+            <!-- RESET FORM IS ON THE RIGHT -->
             <div class="right">
                 <p><input id="btn" type="reset" value ="Reset"/></p>
             </div>
             </form>
         </div>
+        
 		<footer id="main-footer">
 			<p id="main-footer-text">2020 &copy; University of Newcastle</p>
 		</footer>

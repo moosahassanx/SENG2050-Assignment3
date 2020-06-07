@@ -15,7 +15,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bookappointment.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
@@ -47,16 +46,18 @@
 
         <!-- CREATE Appointment FORM -->
         <div class="main-content">
+            <!-- BACK BUTTON -->
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
             <form action="CreateAppointment" method = "POST" onsubmit = "return appointmentValidate()"></form>
-            <p id="label">Date</p> <!--Users are able to select a date, time and leave a message in regards to the appointment that they want. -->
-            <p><input id="input-title" type="date" id = "date" name = "date"></p>
+            <!--Users are able to select a date, time and leave a message in regards to the appointment that they want. -->
+            <p id="label">Date</p> 
+            <p><input id="input-title" type="date" id = "date" name="date"></p>
 
             <p id="label">Time</p>
-            <p><input id="input-title" type="time" id = "time" name = "time"></p>
+            <p><input id="input-title" type="time" id = "time" name="time"></p>
 
             <p id="label">Message</p>
             <p><input id="input-message" type="text" id = "description" name = "description"></p>

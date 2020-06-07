@@ -14,7 +14,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/addmilestone.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     <script>
         function validate() 
         {
@@ -82,8 +81,9 @@
 
             <!-- MILESTONE FORM -->
             <form action="CreateMilestone" method = "POST" onsubmit = "return validate()">
+            <!--Milestones have a title, summary and a due date, this is what is featured below. -->
             <p id="label">Milestone Title</p>
-            <p><input id="input-title" type="text" id = "mTitle" name = "milestoneTitle"></p> <!--Milestones have a title, summary and a due date, this is what is featured below. -->
+            <p><input id="input-title" type="text" id = "mTitle" name = "milestoneTitle"></p>
 
             <p id="label">Summary</p>
             <p><input id="input-message" type="text" id = "summary" name = "description"></p>

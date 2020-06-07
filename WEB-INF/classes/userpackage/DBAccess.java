@@ -442,7 +442,6 @@ public class DBAccess {
             e.printStackTrace();
         }
 
-        conn.close();
     }
 
     public static void giveFeedback(int SID, int MID, String comment, int mark) throws SQLException, NamingException
@@ -469,7 +468,6 @@ public class DBAccess {
             e.printStackTrace();
         }
 
-        conn.close();
     }
 
     public static void writeSubmission(String group, int MID, String desc) throws SQLException, NamingException
@@ -512,7 +510,20 @@ public class DBAccess {
             subIDs.add(rs.getInt("submissionID"));
             mileIDs.add(rs.getInt("milestoneID"));
         }
+        ArrayList<String> mileTitles = new ArrayList<String>();
+        //Loop through the milestones to get the right names for the submissions. 
+        for (int i = 0; i < mileIDs.size(); i++)
+        {
+            query = "SELECT * from milestones where milestoneID = ?";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, mileIDs.get(i));
+            rs = ps.executeQuery();
+            rs.next();
+            mileTitles.add(rs.getString("milestoneTitle"));
+        }
+        
 
+        session.setAttribute("mileTitles", mileTitles);
         session.setAttribute("subIDs", subIDs);
         session.setAttribute("mileIDs", mileIDs); 
 

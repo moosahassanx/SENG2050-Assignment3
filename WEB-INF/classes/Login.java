@@ -58,8 +58,6 @@ public class Login extends HttpServlet
             String loginID = request.getParameter("username");
             String password = request.getParameter("password");
 
-            System.out.println("LoginID: " + loginID);
-            System.out.println("Password" + password);
             User user = new User();
             try{
             // Checking if credentials exist
@@ -67,8 +65,6 @@ public class Login extends HttpServlet
                 int test = user.getStudentUser(loginID, password);
                 // student login
                 if(test == 1){
-
-                    System.out.println("database = student");
 
                     user.setName(loginID);
                     user.setPassword(password);
@@ -137,8 +133,6 @@ public class Login extends HttpServlet
             String lName = request.getParameter("LastName");
             String phoneNoStr = request.getParameter("PhoneNo");
             String studentIdStr = request.getParameter("studentID");
-
-            System.out.println(userName + password + fName + lName + phoneNoStr + studentIdStr);
 
             // Converting phoneNostr and StudentIDSTR to integers
             int phoneNo = Integer.parseInt(phoneNoStr);

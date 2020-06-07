@@ -140,7 +140,6 @@ public class File {
         while(rs.next()){
             versionID++;
         }
-        System.out.println(versionID);
         if(versionID == 0){
             ps1.setInt(1, 1);
         }
@@ -160,7 +159,6 @@ public class File {
 
         // Storing all the files in an arraylist from the database
         List<File> list = new ArrayList<File>();
-        System.out.println("in List function");
             try{
                 InitialContext ctx = new InitialContext();
                 DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
@@ -243,7 +241,6 @@ public class File {
         while(rs.next()){
             versionID++;
         }
-        System.out.println(versionID);
         if(versionID == 0){
             ps1.setInt(1, 1);
         }

@@ -26,7 +26,6 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/groups" })
 public class Groups extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("\n*****Groups Servlet Initialized.*****");
 
         // attempt to run method
         HttpSession session = request.getSession();

@@ -28,7 +28,6 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/joinGroup" })
 public class JoinGroup extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("\n*****Join Group Servlet Initialized.*****");
 
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
@@ -37,18 +36,11 @@ public class JoinGroup extends HttpServlet {
 
         // the user is a teacher
         if(theUser.isStudent() == false) {
-            System.out.println("Group Name: " + groupName);
 
             // running method
             try {
-                System.out.println("before List function");
                 DDB.groupDetails(session, groupName);
                 List<File> list = File.getAllFiles(groupName);
-                System.out.println("AFter List function");
-
-                for(int i = 0; i< list.size(); i++){
-                    System.out.println(list.get(i).getFileName());
-                }
                 session.setAttribute("list", list);
             }
             catch (SQLException | NamingException e) {
@@ -71,8 +63,6 @@ public class JoinGroup extends HttpServlet {
                 catch (SQLException | NamingException e) {
                     e.printStackTrace();
                 }
-
-                System.out.println("User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
             }
             
             // case: user has not joined a group yet, assign to group

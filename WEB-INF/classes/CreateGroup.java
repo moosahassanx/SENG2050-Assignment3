@@ -28,17 +28,12 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/createGroup" })
 public class CreateGroup extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("*****Create Group Servlet Loaded.*****");
 
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
         String groupName = request.getParameter("groupNameInput");
         String subject = request.getParameter("subjectInput");
         User theUser =((User)session.getAttribute("user"));
-
-        // display group name and subject in terminal
-        System.out.println("groupName: " + groupName);
-        System.out.println("Subject: " + subject);
 
         // running method
         try {

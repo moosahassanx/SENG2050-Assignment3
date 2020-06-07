@@ -15,7 +15,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/creategroup.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
@@ -52,7 +51,8 @@
                 <button id="back-btn" onclick="location.href='groups.jsp';">Back</button>
             </div>
 
-            <form action="createGroup" method="POST" onsubmit = "return groupValidate()"> <!--Allows a group to consist of a name and a subject that it is apart of. -->
+            <!--Allows a group to consist of a name and a subject that it is apart of. -->
+            <form action="createGroup" method="POST" onsubmit = "return groupValidate()">
             <p id="label">Group Name</p>
             <p><input id="input-title" type="text" id = "groupName" name="groupNameInput" required></p>
 

@@ -15,7 +15,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/hubstyle.css">
-        <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -51,6 +50,7 @@
                     <button id="back-btn" onclick="location.href='login';">Logout</button>
                 </div>
 
+                <!-- DISPLAY MENU AND BUTTONS TO SITE CONTROL -->
                 <h1 id="content-heading">Menu</h1>
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>
                 <p><a href="discussions" address="true">Discussions</a></p>

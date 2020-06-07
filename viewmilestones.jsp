@@ -14,7 +14,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/addmilestone.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
@@ -58,7 +57,7 @@
 
             <h1 id="title"> Milestone List: Click for feedback </h1>
             <c:forEach begin = "1" end = "${subIDs.size()}" var = "MDID">
-                <p><button id = "submit" onclick = "location.href='ViewResults?MID=${mileIDs.get(MDID-1)}';">${milestoneTitles.get(MDID-1)}</button></p>
+                <p><button id = "submit" onclick = "location.href='ViewResults?MID=${mileIDs.get(MDID-1)}';">${mileTitles.get(MDID-1)}</button></p>
             </c:forEach>
         </div>
     </section>

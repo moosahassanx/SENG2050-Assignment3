@@ -15,7 +15,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/creatediscussion.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     <script type = "text/javascript" src="js/javascript.js"></script>
 </head>
 
@@ -50,8 +49,11 @@
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-            <form action="createDiscussion" method = "POST" onsubmit ="discussionsValidate()"> <!--The discussion post will go to this servlet-->
-                <p id="label">Title</p> <!--Discussions consist of a title and a message-->
+            
+            <!--The discussion post will go to this servlet-->
+            <form action="createDiscussion" method = "POST" onsubmit ="discussionsValidate()">
+                <!--Discussions consist of a title and a message-->
+                <p id="label">Title</p>
                 <p><input type="text" id = "title" name = "title"></p>
 
                 <p id="label">Message</p>

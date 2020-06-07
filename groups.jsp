@@ -15,7 +15,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/groups.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -50,6 +49,7 @@
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
+            <!-- DISPLAY A LIST OF GROUPS AS BUTTONS FOR USER TO CLICK -->
             <h1 id="content-heading">List of Groups</h1>
             <form action="joinGroup">
             <c:forEach begin = "1" end = "${GroupNames.size()}" var = "i">

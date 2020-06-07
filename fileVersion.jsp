@@ -16,7 +16,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/files.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -58,11 +57,10 @@
 
             <h1 id="content-heading">Version Control for ${fileName}</h1>
             
-    
+        <!-- DISPLAY FILE VERSIONS IN A TABLE -->
         <div class = "files-list">
         <table border ="1" width ="90%">
-
-            <tr>   
+            <tr>
                 <th>Version</th>
                 <th>File Name</th>
                 <th>File Description</th>

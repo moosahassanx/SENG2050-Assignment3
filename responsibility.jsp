@@ -99,12 +99,17 @@
                     <th>Completed</th>
                 </tr>
                 <c:forEach items="${responseList}" var="l">
-                <tr>
+                <tr>    
                     <td>${l.getResponsible()}</td>
                     <td>${l.getDescription()}</td>
                     <td>${l.getDateStarted()}</td>
                     <td>${l.getDateComplete()}</td>
-                    <td>${l.getCompletion()}</td> <!-- Make it so you can click it and it completes / Maybe make a completedRespons table to add to records-->
+                        <c:if test = "${l.getCompletion() == 'Yes'}">
+                            <td>${l.getCompletion()}</td>
+                        </c:if>
+                        <c:if test = "${l.getCompletion() == 'No'}">
+                            <td><a href="${pageContext.request.contextPath}/responsibility?id=${l.getCompletion()}&name=${user.getName()}&name2=${l.getResponseID()}&name3=${user.getGroup()}">${l.getCompletion()}</a></td>
+                        </c:if>                           
                 </tr>
                 </c:forEach>
             </table>

@@ -155,12 +155,13 @@ CREATE TABLE appointments(
 drop table appointments
 
 CREATE table responsibilities(
+	responseID int IDENTITY(1,1) NOT NULL,
     username varchar(30) NOT NULL,
     description VARCHAR(1000),
     dateInsert varchar(30) NOT NULL,
     dateDue varchar(30) NOT NULL,
     userGroup varchar(30) NOT NULL,
-	completed boolean --BIT Field, 0 False / 1 True
+    completed varchar(2) NOT NULL
 )
 
 SELECT * FROM files

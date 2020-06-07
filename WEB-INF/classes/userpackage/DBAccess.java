@@ -275,20 +275,34 @@ public class DBAccess {
             String description = rs.getString("description");
             String dateInserted = rs.getString("dateInsert");
             String dateDue = rs.getString("dateDue");
+            String responseID = rs.getString("responseID");
 
             if(rs.getString("completed").equals("Y")){
                 boolean completed = true;
                 responsibility responsObj = new responsibility(responsible, description, dateInserted, dateDue, completed);
+                responsObj.setResponseID(responseID);
                 responseList.add(responsObj);
 
             }else{
                 boolean completed = false;
                 responsibility responsObj = new responsibility(responsible, description, dateInserted, dateDue, completed);
+                responsObj.setResponseID(responseID);
                 responseList.add(responsObj);
             }
         }
-
         return responseList;
+    }
+
+    public static void setResponseCompletion(String responseID) throws SQLException, NamingException { // Need to add versionID when added
+
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        PreparedStatement ps = conn.prepareStatement("UPDATE responsibilities set completed = ? WHERE responseID = ?");
+        ps.setString(1, "Y");
+        ps.setString(2, responseID);
+        ps.executeUpdate();
+
     }
 
     public static void groupDetails(HttpSession session, String groupName) throws SQLException, NamingException {
@@ -300,7 +314,7 @@ public class DBAccess {
 
         // get data from groups table in db
         String query = "SELECT * FROM user_groups WHERE group_name = ";
-        query += "'" + groupName + "'";
+        query += "'" + groupName + "'";                                     // use ps.setString instead of forcing the query
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<String> groupMembers = new ArrayList<String>();
 

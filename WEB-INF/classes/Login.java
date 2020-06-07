@@ -36,11 +36,21 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(urlPatterns = { "/login"})
 public class Login extends HttpServlet
 {
+
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+        HttpSession session = request.getSession();
+        session.invalidate();
+
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        rd.forward(request, response);
+    }
+
+    
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String buttonClicked = request.getParameter("button");
-        
-        System.out.println(buttonClicked);
 
         if(buttonClicked.equals("Login")){
 

@@ -25,7 +25,6 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(urlPatterns = { "/responsibility"})
 public class responsibilityController extends HttpServlet {
 
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
         String userName = request.getParameter("userName"); 
@@ -59,9 +58,12 @@ public class responsibilityController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // GroupName is the group when originally going into responsibilities.jsp - After clicking the completion link it changes to either yes or no
+        // Doing this to save making an extra servlet just for another doGet method
         String groupName = request.getParameter("id");
+        System.out.println(groupName);
 
-        if(groupName != null){
+        if(groupName != null && !"No".equals(groupName)){
             try{
                 List<String> list = User.getUserList(groupName);
 
@@ -77,6 +79,32 @@ public class responsibilityController extends HttpServlet {
 
             }
             catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        else if(groupName.equals("No")){
+
+            try{
+                // User has clicked to mark they have finished a responsibility
+                String responsName = request.getParameter("name");
+                String responseID = request.getParameter("name2");
+                String group = request.getParameter("name3");
+
+                // Sets the responsibility to completed
+                DBAccess.setResponseCompletion(responseID);
+
+                // Removing old response list
+                HttpSession session = request.getSession();
+                session.removeAttribute("responseList");
+
+                // Re-populating the response list
+                List<responsibility> responsList = DBAccess.responsibilityList(group);
+                session.setAttribute("responseList", responsList);
+
+                RequestDispatcher rd = request.getRequestDispatcher("responsibility.jsp"); 
+                rd.forward(request, response); 
+            }
+            catch(Exception e){
                 e.printStackTrace();
             }
         }

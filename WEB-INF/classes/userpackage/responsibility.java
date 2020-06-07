@@ -12,6 +12,7 @@ public class responsibility {
     private String description;
     private String dateStarted;
     private String dateComplete;
+    private String responseID;
     private boolean completed;
 
     public responsibility(){
@@ -51,4 +52,11 @@ public class responsibility {
         return completion;
     }
 
+    public void setResponseID(String responseID){
+        this.responseID = responseID;
+    }
+
+    public String getResponseID(){
+        return responseID;
+    }
 }

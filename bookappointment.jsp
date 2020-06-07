@@ -51,7 +51,7 @@
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
-            <form action="CreateAppointment" method = "POST" onsubmit = "return appointmentValidate()"></form>
+            <form action="CreateAppointment" method = "POST" onsubmit = "return appointmentValidate()">
             <!--Users are able to select a date, time and leave a message in regards to the appointment that they want. -->
             <p id="label">Date</p> 
             <p><input id="input-title" type="date" id = "date" name="date"></p>

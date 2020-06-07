@@ -132,14 +132,9 @@ CREATE TABLE discussionsThread(
 CREATE TABLE milestones(
 	milestoneID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	description VARCHAR(1000) NOT NULL,
-	username VARCHAR(30) NOT NULL,
-	groupName VARCHAR(30) NOT NULL, 
 	dateDue varchar(30) not null,  
 	comments varChar(30),
 	mark int
-
-	FOREIGN KEY(username) REFERENCES website_users(username),
-	FOREIGN KEY(groupName) REFERENCES groups(group_name)
 )
 
 CREATE TABLE appointments(
@@ -162,6 +157,15 @@ CREATE table responsibilities(
     dateDue varchar(30) NOT NULL,
     userGroup varchar(30) NOT NULL,
     completed varchar(2) NOT NULL
+)
+
+CREATE TABLE submissions(
+	submissionID int IDENTITY(1,1) not null,
+	groupName varChar(30) not null,
+	milestoneID int not null,
+
+	FOREIGN KEY (groupName) references groups(group_name),
+	FOREIGN KEY (milestoneID) references milestones(milestoneID)
 )
 
 SELECT * FROM files

@@ -415,13 +415,13 @@ public class DBAccess {
             session.setAttribute("milestoneTitles", milestoneTitles);
             session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
             session.setAttribute("milestoneDates", milestoneDates); 
+            conn.close();
+
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-
-        conn.close();
     }
 
     public static void giveFeedback(int SID, int MID, String comment, int mark) throws SQLException, NamingException
@@ -440,13 +440,15 @@ public class DBAccess {
             ps.setInt(3, SID);
             ps.setInt(4, MID);
             ps.executeUpdate();
+            conn.close();
+
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
 
-        conn.close();
+        
     }
 
     public static void writeSubmission(String group, int MID, String desc) throws SQLException, NamingException

@@ -50,7 +50,7 @@
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
-            <form action="SubmitFeedback" method="POST">
+            <form action="GiveFeedback" method="POST">
                 <p id="label">Submission Title</p>
                 <p><input id="input-title" type="text" id="groupName" name="groupNameInput" required></p>
 
@@ -59,6 +59,12 @@
 
                 <p id="label">Mark</p>
                 <p><input type="text" placeholder="Mark out of 100"></p>
+
+                <input type="hidden" name="groupName" value="${groupName}">
+
+                <!-- TODO: fix submissionID and milestoneID -->
+                <input type="hidden" name="submissionID">
+                <input type="hidden" name="milestoneID">
 
                 <p><input id="submit" type="submit"></p>
             </form>

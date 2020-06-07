@@ -32,15 +32,15 @@ public class GiveFeedback extends HttpServlet {
         String comment = request.getParameter("comment");
         int mark = Integer.parseInt(request.getParameter("mark"));
         User theUser = ((User)session.getAttribute("user"));
-        try 
-        {
+
+        // running method
+        try {
             DDB.giveFeedback(comment, mark); //Runs the function to write it to the DB
-        } 
-        catch (SQLException | NamingException e) 
-        {
-            // TODO Auto-generated catch block
+        }
+        catch (SQLException | NamingException e) {
             e.printStackTrace();
         }
+
         RequestDispatcher rd = request.getRequestDispatcher("creatediscussion.jsp"); //Prepares to forward
         rd.forward(request,response); //Gets forwarded. 
         return;

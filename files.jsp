@@ -57,7 +57,7 @@
                 <p><input type="file" name="myfile" class="custom-file-input"></p>
                 <br>
                 <p id="label">Description: </p>
-                <p><input type="text" name="description"/></p>
+                <p><input id="input-title" type="text" name="description"/></p>
 
                 <input type="hidden" name="userUploaded" value="${user.getName()}"/>
                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>

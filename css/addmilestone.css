@@ -191,7 +191,6 @@
 }
 
 #submitRespo{
-
     margin-top: 10px;
     margin-bottom: 15px;
     border: 2px solid #FFF;
@@ -228,7 +227,6 @@
 .main-contentth, td {
     padding: 15px;
 }
-
 
 #submit{
     margin-top: 10px;
@@ -276,6 +274,14 @@
 #back-btn:hover{
     color: #000000;
 	background: #ffffff;
+}
+
+#title{
+    color: white;
+    text-transform: uppercase;
+    font-size: 35px;
+    text-align: center;
+    padding-bottom: 30px;
 }
 
 @media all and (max-width: 950px) {

@@ -62,6 +62,33 @@
                         </tr>
                     </c:forEach>
                   </table>
+
+                    <!-- UPLOAD FILES -->
+                    <div class="content-right">
+                        <br>
+                        <h1 id="content-heading">View Files</h1>
+                        <form action="upload" method="post" enctype="multipart/form-data">
+                    </div>
+                
+                    <div class = "files-list">
+                    <table border ="1" width ="90%">
+
+                        <tr>
+                            <th>File Name</th>
+                            <th>File Description</th>
+                            <th>Version Section</th>
+                        </tr>
+
+                        <c:forEach items="${list}" var="l">
+                            <tr>
+                                <td>${l.getFileName()}</td>
+                                <td>${l.getDescription()}</td>
+                                <td><input type="submit" name="list" value="Versions">
+                                    <input type="hidden" name="fileName" value="${l.getFileName()}"/></form></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    </div>
             </div>
         </section>
         

@@ -18,7 +18,7 @@
     <script>
         function validate() 
         {
-            var mTitle = document.getElementById("mTitle"); //Grabs the user id from the form
+            /*var mTitle = document.getElementById("mTitle"); //Grabs the user id from the form
             var description = document.getElementById("description");
             var date = document.getElementById("date");
             var returnStatus = true;
@@ -42,7 +42,7 @@
             {
                 alert(messageError); //Returns the string in the alert
             }
-            return returnStatus; //Returns the result Status. 
+            return returnStatus; //Returns the result Status. */
         }
     </script>
 </head>

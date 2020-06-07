@@ -22,22 +22,17 @@
             <h1>Newcastle Portal</h1> 
             <p>Group management system.</p>
             <hr>
-            <p><button id="btn" value="register" onclick="location.href='register.jsp'">Register</button></p> <!--This allows users to register. -->
         </div>
 
         <div class = "teacher">
-            <form action = "login" method="POST" onsubmit = "return loginValidation()">
-            <!--These will be passed into the Servlet so it can be queried in the DB-->
-            <p><input type="text" placeholder="Username" id="username" name = "username" /></p>
-            <p><input type="password" placeholder="Password" id="password" name = "password"></p>
-
-            <div class="left">
-                <p><input id="btn" type="submit" value = "Login" name="button"/></p>
-            </div>
-    
-            <div class="right">
-                <p><input id="btn" type="reset" value ="Reset"/></p>
-            </div>
+            <form action = "login" method="POST" onsubmit = "return registerValidation()">
+                <p><input type="text" id="username" value="username" name="username"/><br></p>
+                <p><input type="password" id="password" value="password" name="password"><br></p>
+                <p><input type="text" placeholder="First Name" id="FirstName" name="FirstName"/><br></p>
+                <p><input type="text" placeholder="Last Name" id="LastName" name="LastName"/><br></p>
+                <p><input type="text" placeholder="Phone Number" id="PhoneNo" name="PhoneNo"/><br></p>
+                <p><input type ="text" placeholder="Student ID" id="studentID" name="studentID"></p>
+                <p><input id="submit" type="submit" value="register" name="button"></p><p><input id="btn" type="reset" value ="Reset"/></p>
             </form>
         </div>
 		<footer id="main-footer">

@@ -333,7 +333,7 @@ public class DBAccess {
         conn.close();
     }
 
-    public static void createMilestoneInDB(String desc, String userName, String dateDue) throws SQLException, NamingException
+    public static void createMilestoneInDB(String desc, String title, String dateDue) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -345,8 +345,8 @@ public class DBAccess {
         String query = "INSERT INTO milestones VALUES(?,?,?)";
         PreparedStatement ps = null;
         ps = conn.prepareStatement(query);
-        ps.setString(1,desc);
-        ps.setString(2,userName);
+        ps.setString(1,title);
+        ps.setString(2,desc);
         ps.setString(3,dateDue);
         ps.executeUpdate();
 
@@ -362,24 +362,24 @@ public class DBAccess {
             Connection conn = ds.getConnection();
             // Selecting all data from the website_user table ** Note - only gives username/passwords
             PreparedStatement ps = null;
-            String query = "SELECT * from milestones WHERE groupName = ?";
+            String query = "SELECT * from milestones";
             ps = conn.prepareStatement(query);
             ps.setString(1, user.getGroup());
             ResultSet rs = ps.executeQuery();
-            ArrayList<String> milestoneStudentNames = new ArrayList<String>();
+            ArrayList<String> milestoneTitles = new ArrayList<String>();
             ArrayList<String> milestoneDescriptions = new ArrayList<String>();
             ArrayList<Date> milestoneDates = new ArrayList<Date>();
 
             while(rs.next())
             {
-                String milestoneStudent = rs.getString("username");
+                String milestoneTitle = rs.getString("milestoneTitle");
                 String milestoneDescription = rs.getString("description");
                 Date date = rs.getDate("dateDue");
-                milestoneStudentNames.add(milestoneStudent);
+                milestoneTitles.add(milestoneTitle);
                 milestoneDescriptions.add(milestoneDescription);
                 milestoneDates.add(date);
             }
-            session.setAttribute("milestoneStudentNames", milestoneStudentNames);
+            session.setAttribute("milestoneTitles", milestoneTitles);
             session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
             session.setAttribute("milestoneDates", milestoneDates); 
         }
@@ -389,7 +389,7 @@ public class DBAccess {
         }
     }
 
-    public static void giveFeedback(int SID, int MID, String comment, int mark)
+    public static void giveFeedback(int SID, int MID, String comment, int mark) throws SQLException, NamingException
     {
         try{
             InitialContext ctx = new InitialContext();

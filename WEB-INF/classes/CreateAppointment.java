@@ -59,7 +59,18 @@ public class CreateAppointment extends HttpServlet
         APB.setSession(session);
         try
         {
-            APB.writeAppointments(desc, teachName, user, dateAt, timeAt); //Will write the appointment to the database. 
+            int check = APB.writeAppointments(desc, teachName, user, dateAt, timeAt); //Will write the appointment to the database. 
+            if (check == 0)
+            {
+                PrintWriter out = response.getWriter();
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Time and Date is already taken, please choose another.');");
+                out.println("location='bookappointment.jsp';");
+                out.println("</script>");
+                RequestDispatcher rd = request.getRequestDispatcher("bookappointment.jsp"); //Goes forward to the next page. 
+                rd.forward(request,response);
+                return;
+            }
         }
         catch (SQLException | NamingException e) 
         {

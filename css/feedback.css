@@ -252,6 +252,61 @@
     padding-right: 40px;
 }
 
+#label{
+    color: white;
+	text-transform: uppercase;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+#input-title{
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: 30px;
+    margin-bottom: 50px;
+}
+
+#input-message{
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: 200px;
+    margin-bottom: 40px;
+}
+
+#submit{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 250px;
+    height: 40px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+}
+
+#submit:hover{
+    color: #000000;
+	background: #ffffff;
+}
+
 @media all and (max-width: 950px) {
     .box-img{
         border-radius: 50%;

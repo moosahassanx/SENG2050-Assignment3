@@ -57,7 +57,7 @@
             <div id="bar-middle">
                 <h1 id="newcastle-portal">Newcastle Portal</h1>
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">Add Milestone</h3>
+                <h3 id="bar-text">View Milestone</h3>
             </div>
             <div id="bar-right">
             <h2 id="bar-text">${user.getName()}</h2> 
@@ -80,19 +80,18 @@
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
-            <!-- MILESTONE FORM -->
-            <form action="CreateMilestone" method = "POST" onsubmit = "return validate()">
-            <p id="label">Milestone Title</p>
-            <p><input id="input-title" type="text" id = "mTitle" name = "milestoneTitle"></p> <!--Milestones have a title, summary and a due date, this is what is featured below. -->
-
-            <p id="label">Summary</p>
-            <p><input id="input-message" type="text" id = "summary" name = "description"></p>
-
-            <p id="label">Date</p>
-            <p><input id="input-title" type="date" id = "date" name = "date"></p>
-
-            <p><input id="submit" type="submit" VALUE="ADD MILESTONE"></p>
-            </form>
+            <table>
+                <tr>
+                    <th>Milestone Title</th>
+                    <th>Feedback</th>
+                    <th>Mark</th>
+                </tr>
+                <tr>
+                    <td>Submission 1</td>
+                    <td>bruh u didnt even know how to eat a rat like wth bruh like u even asked me how to season a rat and someone in the discussions even said to boil it. nice pictures tho</td>
+                    <td>20/50</td>
+                </tr>
+            </table>
         </div>
     </section>
 </body>

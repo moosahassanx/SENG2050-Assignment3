@@ -74,19 +74,19 @@ public class Login extends HttpServlet
                     user.setPassword(password);
                     user.setRole("Student");
                     user.setStudent(true);
-                    
+
+                    HttpSession session = request.getSession(); //gets the session
+                    session.setAttribute("user", user); //sets the bean into the session
+
                     // running method
                     try {
-                        joinGroup(user);
+                        DBA.joinGroup(session, user.getGroup(), user);
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();
                     }
 
-                    HttpSession session = request.getSession(); //gets the session
-                    session.setAttribute("user", user); //sets the bean into the session
-
-                    getMilestoneList(user, session);
+                    DBA.getMilestoneList(user, session);
 
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);
@@ -133,61 +133,5 @@ public class Login extends HttpServlet
         System.out.println("outside");
     }
 
-    public void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException
-    {
-        try{
-            InitialContext ctx = new InitialContext();
-            // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
-            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-            Connection conn = ds.getConnection();
-            // Selecting all data from the website_user table ** Note - only gives username/passwords
-            PreparedStatement ps = null;
-            String query = "SELECT * from milestones WHERE groupName = ?";
-            ps = conn.prepareStatement(query);
-            ps.setString(1, user.getGroup());
-            ResultSet rs = ps.executeQuery();
-            ArrayList<String> milestoneStudentNames = new ArrayList<String>();
-            ArrayList<String> milestoneDescriptions = new ArrayList<String>();
-            //ArrayList<Date> milestoneDates = new ArrayList<Date>();
-
-            while(rs.next())
-            {
-                String milestoneStudent = rs.getString("username");
-                String milestoneDescription = rs.getString("description");
-                //Date date = rs.getDate("date");
-                milestoneStudentNames.add(milestoneStudent);
-                milestoneDescriptions.add(milestoneDescription);
-                //milestoneDates.add(date);
-            }
-            session.setAttribute("milestoneStudentNames", milestoneStudentNames);
-            session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
-            //session.setAttribute("milestoneDates", milestoneDates); 
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
-    public void joinGroup(User user) throws SQLException, NamingException{
-        InitialContext ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        
-        // Selecting all data from the website_user table ** Note - only gives username/passwords
-        PreparedStatement ps = null;
-        String query = "SELECT * FROM user_groups WHERE username = ?";
-        ps = conn.prepareStatement(query);
-        ps.setString(1, user.getName());
-        ResultSet rs = ps.executeQuery();
-
-        if(rs.next()){
-            String groupName = rs.getString("group_name");
-            user.setGroup(groupName);
-        }
-        else{
-            user.setGroup("");
-        }
-    }
     private DBAccess DBA;
 }

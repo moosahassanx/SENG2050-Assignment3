@@ -217,13 +217,15 @@ public class DBAccess {
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
 
-        // database inserting
-        String query = "INSERT INTO user_groups VALUES(?, ?)";
-        PreparedStatement ps = null;
-        ps = conn.prepareStatement(query);
-        ps.setString(1, user.getName());
-        ps.setString(2, groupName);
-        ps.executeUpdate();
+        if(groupName != ""){
+            // database inserting
+            String query = "INSERT INTO user_groups VALUES(?, ?)";
+            PreparedStatement ps = null;
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user.getName());
+            ps.setString(2, groupName);
+            ps.executeUpdate();
+        }
 
         user.setGroup(groupName);
 
@@ -331,7 +333,7 @@ public class DBAccess {
         conn.close();
     }
 
-    public static void createMilestoneInDB(String desc, String userName, String groupName) throws SQLException, NamingException
+    public static void createMilestoneInDB(String desc, String userName, String dateDue) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -345,9 +347,68 @@ public class DBAccess {
         ps = conn.prepareStatement(query);
         ps.setString(1,desc);
         ps.setString(2,userName);
-        ps.setString(3,groupName);
+        ps.setString(3,dateDue);
         ps.executeUpdate();
 
         conn.close();
+    }
+
+    public static void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException
+    {
+        try{
+            InitialContext ctx = new InitialContext();
+            // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+            // Selecting all data from the website_user table ** Note - only gives username/passwords
+            PreparedStatement ps = null;
+            String query = "SELECT * from milestones WHERE groupName = ?";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user.getGroup());
+            ResultSet rs = ps.executeQuery();
+            ArrayList<String> milestoneStudentNames = new ArrayList<String>();
+            ArrayList<String> milestoneDescriptions = new ArrayList<String>();
+            ArrayList<Date> milestoneDates = new ArrayList<Date>();
+
+            while(rs.next())
+            {
+                String milestoneStudent = rs.getString("username");
+                String milestoneDescription = rs.getString("description");
+                Date date = rs.getDate("dateDue");
+                milestoneStudentNames.add(milestoneStudent);
+                milestoneDescriptions.add(milestoneDescription);
+                milestoneDates.add(date);
+            }
+            session.setAttribute("milestoneStudentNames", milestoneStudentNames);
+            session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
+            session.setAttribute("milestoneDates", milestoneDates); 
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static void giveFeedback(int SID, int MID, String comment, int mark)
+    {
+        try{
+            InitialContext ctx = new InitialContext();
+            // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+            // Selecting all data from the website_user table ** Note - only gives username/passwords
+            PreparedStatement ps = null;
+            String query = "UPDATE submissions SET mark = ? AND feedback = ? WHERE submissionID = ? AND milestoneID = ?";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, mark);
+            ps.setString(2, comment);
+            ps.setInt(3, SID);
+            ps.setInt(4, MID);
+            ps.executeUpdate();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

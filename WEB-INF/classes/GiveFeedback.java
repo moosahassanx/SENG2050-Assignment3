@@ -48,9 +48,9 @@ public class GiveFeedback extends HttpServlet {
         User theUser = ((User)session.getAttribute("user"));
         try 
         {
-            DDB.giveFeedback(SID, MID, comment, mark); //Runs the function to write it to the DB
-        } 
-        catch (SQLException | NamingException e) 
+            DBAccess.giveFeedback(SID, MID, comment, mark); // Runs the function to write it to the DB
+        }
+        catch(Exception e) 
         {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -26,11 +26,12 @@
 
         <div class = "teacher">
             <form action = "login" method="POST" onsubmit = "return registerValidation()">
-                <p><input type="text" id="username" value="username" name="username2"/><br></p>
-                <p><input type="password" id="password" value="password" name="password2"><br></p>
-                <p><input type="text" placeholder="First Name" id="FirstName"/><br></p>
-                <p><input type="text" placeholder="Last Name" id="LastName"/><br></p>
-                <p><input type="text" placeholder="Phone Number" id="PhoneNo"/><br></p>
+                <p><input type="text" id="username" value="username" name="username"/><br></p>
+                <p><input type="password" id="password" value="password" name="password"><br></p>
+                <p><input type="text" placeholder="First Name" id="FirstName" name="FirstName"/><br></p>
+                <p><input type="text" placeholder="Last Name" id="LastName" name="LastName"/><br></p>
+                <p><input type="text" placeholder="Phone Number" id="PhoneNo" name="PhoneNo"/><br></p>
+                <p><input type ="text" placeholder="Student ID" id="studentID" name="studentID"></p>
                 <p><input id="submit" type="submit" value="register" name="button"></p><p><input id="btn" type="reset" value ="Reset"/></p>
             </form>
         </div>

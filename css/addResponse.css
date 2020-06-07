@@ -21,7 +21,7 @@
 	height: 100vh;
 	background: #000;
 	position: relative;
-	overflow: hidden;
+	
 }
 .landing-page-main::after{
 	content: "";
@@ -31,8 +31,8 @@
 	width: 100%;
 	height: 100%;
 	background: url(https://images2.alphacoders.com/635/635934.jpg);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-repeat: repeat;
+	background-attachment: scroll;
 	background-size: cover;
 	opacity: 0.3;
 	animation: anim 200s linear infinite;
@@ -99,7 +99,7 @@
     padding-top: 60px;
 }
 
-.discussions-list{
+.main-content{
 	position: absolute;
 	top: 0%;
 	left: 0%;
@@ -112,43 +112,11 @@
     padding-right: 40px;
 }
 
-.discussions-list p{
+.main-content p{
     text-align: center;
 }
 
-.discussions-list a{
-	display: inline-block;
-	text-decoration: none;
-	color: #ffffff;
-	border: 2px solid #fff;
-	text-transform: uppercase;
-	padding: 10px 20px;
-	transform: 0.4s linear;
-    transition: 0.2s;
-    width: 500px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.discussions-list a:hover{
-	color: #000000;
-	background: #ffffff;
-}
-
-.create-discussion{
-    position: absolute;
-	bottom: 1%;
-	left: 0%;
-	z-index: 1;
-	width: 100%;
-	text-align: center;
-    box-sizing: border-box;
-    padding-top: 200px;
-    padding-left: 40px;
-    padding-right: 40px;
-}
-
-.create-discussion a{
+.main-content a{
 	display: inline-block;
 	text-decoration: none;
 	color: #ffffff;
@@ -162,32 +130,110 @@
     margin-bottom: 10px;
 }
 
-.create-discussion a:hover{
+.main-content a:hover{
 	color: #000000;
 	background: #ffffff;
 }
 
-#username{
+#label{
     color: white;
 	text-transform: uppercase;
     font-size: 20px;
+    padding-bottom: 10px;
 }
 
-#message{
-    color: white;
-    font-size: 20px;
-    padding-bottom: 30px;
-}
-
-.create-discussion input{
+#input-title{
     color: #FFF;
     text-align: left;
     padding-left: 10px;
     border: 0;
     outline: none;
     background-color:rgba(255, 255, 255, 0.2);
-    width: 400px;
-    height: 70px;
+    width: 500px;
+    height: 30px;
+    margin-bottom: 50px;
+}
+
+#input-message{
+    color: #FFF;
+    text-align: left;
+    padding-left: 10px;
+    border: 0;
+    outline: none;
+    background-color:rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: 200px;
+    margin-bottom: 40px;
+}
+
+.formContainer{
+    width: 100%;
+    margin-left:10%;
+    color: #fff;
+    padding:10px;
+    text-align: center;
+}
+
+.respons-list{
+    width:70%;
+    float: left;
+}
+
+.table2{
+    margin-left:-10%;
+}
+
+.responsList{
+
+    color: #fff;
+    text-align: center;
+    margin-left: 5%;
+}
+
+#submitRespo{
+
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 100px;
+    height: 35px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+    left: 100px;
+
+}
+
+#submit{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 250px;
+    height: 40px;
+    color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
+}
+
+#submit:hover{
+    color: #000000;
+	background: #ffffff;
 }
 
 #back-btn{
@@ -210,30 +256,6 @@
 }
 
 #back-btn:hover{
-    color: #000000;
-	background: #ffffff;
-}
-
-#submit{
-    margin-top: 30px;
-    border: 2px solid #FFF;
-    background-color: Transparent;
-    border: 1;
-    border-color: #fff;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    width: 200px;
-    height: 40px;
-    color: #FFF;
-    font-family: "montserrat", sans-serif;
-    text-transform: uppercase;
-    transition: 0.2s;
-    font-size: 17px;
-    text-align: center;
-}
-
-#submit:hover{
     color: #000000;
 	background: #ffffff;
 }

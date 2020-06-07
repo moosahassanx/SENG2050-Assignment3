@@ -16,36 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bookappointment.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
-    <script>
-        function validate() 
-        {
-            var date = document.getElementById("date"); //Grabs the user id from the form
-            var time = document.getElementById("time");
-            var message = document.getElementById("description")
-            var returnStatus = true;
-            var messageError = "Sorry but: \n ";
-            if (date === null || date.value === "") 
-            { 
-                returnStatus = false; //Returns false so it doesn't submit
-                messageError += "Please input a date\n"; //Adds to String that will get returned. 
-            }
-            if (time === null || time.value === "") 
-            { 
-                returnStatus = false; //Returns false so it doesn't submit
-                messageError += "Please put in a time\n"; //Adds to String that will get returned. 
-            }
-            if (message === null || message.value === "") 
-            { 
-                returnStatus = false; //Returns false so it doesn't submit
-                messageError += "Please put in a description\n"; //Adds to String that will get returned. 
-            }
-            if (!returnStatus) 
-            {
-                alert(messageError); //Returns the string in the alert
-            }
-            return returnStatus; //Returns the result Status. 
-        }
-    </script>
+    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -75,7 +46,7 @@
         </div>
 
         <!-- CREATE Appointment FORM -->
-        <form action="CreateAppointment" method = "POST" onsubmit = "return validate()">
+        <form action="CreateAppointment" method = "POST" onsubmit = "return appointmentValidate()">
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
@@ -94,29 +65,5 @@
         </div>
         </form>
     </section>
-
-
-    <!--
-    <h1>Newcastle Student</h1>
-    <h2>Group management system.</h2>
-    <h3>Appointments</h3>
-
-    <h4>Book Appointment with [Teacher Name]</h4>
-    <form action="hub.html">
-        <label for="">Date</label>
-        <input type="date">
-        <br>
-
-        <label for="">Time</label>
-        <input type="time">
-        <br>
-
-        <label for="">Message</label>
-        <input type="text">
-        <br>
-
-        <input type="submit">
-    </form>
-    -->
 </body>
 </html>

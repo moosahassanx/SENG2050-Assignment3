@@ -60,7 +60,6 @@ function registerValidation(){
     var phoneRegex = /^\d{10}$/; // Phone 10 digits
 
     var username = document.getElementById("username");
-    //console.log(username);
     var password = document.getElementById("password");
     var fName = document.getElementById("FirstName");
     var lName = document.getElementById("LastName");
@@ -89,3 +88,49 @@ function registerValidation(){
 return true;
 }
 
+
+function appointmentValidate(){
+
+    var date = document.getElementById("date");
+    var time = document.getElementById("time");
+    var message = document.getElementById("description");
+
+    if(date.value === ""){
+        alert("Must input a date");
+        date.focus();
+        return false;
+    }
+    if(time.value === ""){
+        alert("Must input a time");
+        time.focus();
+        return false;
+    }
+    if(message.value === ""){
+        alert("Must input a message");
+        message.focus();
+        return false;
+    }
+    return true;
+}
+
+function responseValidation(){
+
+    var date = document.getElementById("date");
+    var description = document.getElementById("description");
+
+    var varDate = new Date(date);
+    var todaysDate = new Date();
+    todaysDate.setHours(0,0,0,0);
+
+    if(varDate <= todaysDate){
+        alert("Date must be in the future, time travel is not a thing yet")
+        date.focus();
+        return false;
+    }
+    if(description.value === ""){
+        alert("Must input a description");
+        description.focus();
+        return false;
+    }
+    return true;
+}

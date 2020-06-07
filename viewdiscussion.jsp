@@ -47,26 +47,23 @@
 
         <!-- MESSAGES -->
         <div class="discussions-list">
-        <p id = "username">${discussionUsername}</p> <!--Shows the original discussion's username and their description-->
-        <p id = "message">${discussionDesc}</p>
-        <c:forEach begin = "1" end = "${threadIDs.size()}" var = "TID"> <!--Will loop through showing the various users and their replies to the thread.-->
-            <p id="username">${threadUsernames.get(TID-1)}</p>
-            <p id="message">${threadDesc.get(TID-1)}</p>
-        </c:forEach>
+            <div class="back-div">
+                <button id="back-btn" onclick="location.href='discussions.jsp';">Back</button>
+            </div>
+            
+            <p id = "username">${discussionUsername}</p> <!--Shows the original discussion's username and their description-->
+            <p id = "message">${discussionDesc}</p>
+            <c:forEach begin = "1" end = "${threadIDs.size()}" var = "TID"> <!--Will loop through showing the various users and their replies to the thread.-->
+                <p id="username">${threadUsernames.get(TID-1)}</p>
+                <p id="message">${threadDesc.get(TID-1)}</p>
+            </c:forEach>
         </div>
 
         <!-- REPLY -->
         <div class="create-discussion">
             <form action = "createDiscussionThread" method = "POST"> <!--Will go to its own servlet to pass data into the DB-->
-
-                <p id="label">Reply</p>
-                <p><input id="input-message" type="text" name = "description"></p> <!--The user writes their own reply to the discussions-->
-
-                <br>
-                
-                <p><input id="submit" type="submit" value="Create Discussion"></p> 
-            </form>
-
+                <p><input id="input-message" type="text" name = "description" required></p> <!--The user writes their own reply to the discussions-->
+                <p><input id="submit" type="submit" value="Reply  "></p> 
             </form>
         </div>
     </section>

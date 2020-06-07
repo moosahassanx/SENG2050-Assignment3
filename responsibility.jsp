@@ -13,7 +13,7 @@
 	<title>University of Newcastle - Add Milestone</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/addmilestone.css">
+    <link rel="stylesheet" type="text/css" href="css/addResponse.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
 </head>
@@ -29,7 +29,7 @@
                 <div id="bar-middle">
                     <h1 id="newcastle-portal">Newcastle Portal</h1>
                     <h2 id="bar-text">Group management system.</h2>
-                    <h3 id="bar-text">Add Milestone</h3>
+                    <h3 id="bar-text">Add Responsibility</h3>
                 </div>
                 <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>

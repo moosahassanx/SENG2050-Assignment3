@@ -63,7 +63,7 @@ public class JoinGroup extends HttpServlet {
                     e.printStackTrace();
                 }
 
-                System.out.println("JAVA VERSION:\t User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
+                System.out.println("User " + theUser.getName() + " has already joined the group: " + theUser.getGroup());
             }
             
             // case: user has not joined a group yet, assign to group

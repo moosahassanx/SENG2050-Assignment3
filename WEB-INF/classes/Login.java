@@ -81,12 +81,14 @@ public class Login extends HttpServlet
                     // running method
                     try {
                         DBA.loginGroup(session, user.getGroup(), user);
+                        
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();
                     }
 
                     DBA.getMilestoneList(user, session);
+                    DBA.getSubmissions(session, user.getGroup());
 
                     RequestDispatcher rd = request.getRequestDispatcher("hub.jsp"); //Redirects to the next page.
                     rd.forward(request, response);

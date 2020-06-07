@@ -65,11 +65,32 @@
                     <!-- UPLOAD FILES -->
                     <div class="content-right">
                         <br>
-                        <h1 id="content-heading">View Files</h1>
-                        <form action="upload" method="post" enctype="multipart/form-data">
+
                     </div>
                 
+                    
+                    <table border ="1" width ="90%">
+
+                        <tr>
+                            <th>Submission ID</th>
+                            <th>Milestone ID</th>
+                            <th>Submission Desc</th>
+                            <th>Give Feedback</th>
+                        </tr>
+
+                        <c:forEach begin = "1" end="${submissionIDs.size()}" var="NUM">
+                            <tr>
+                                <td>${submissionIDs.get(NUM-1)}</td>
+                                <td>${milestoneIDs.get(NUM-1)}</td>
+                                <td>${submissionDescs.get(NUM-1)}</td>
+                                <td><button id="feedback-btn" onclick="location.href='GiveFeedback?SID=${submissionIDs.get(NUM-1)}::${milestoneIDs.get(NUM-1)}';">Give Feedback</button></td>
+                            </tr>
+                        </c:forEach> -->
+
+                    
+                    </table>
                     <div class = "files-list">
+                    <h1 id="content-heading">View Files</h1>
                     <table border ="1" width ="90%">
 
                         <tr>

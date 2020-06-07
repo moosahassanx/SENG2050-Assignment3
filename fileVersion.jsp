@@ -47,7 +47,7 @@
         <!-- UPLOAD FILES -->
         <div class="content-right">
             <div class="back-div">
-                <p><button id="back-btn" onclick="location.href='hub.jsp';">Back</button></p>
+                <p><button id="back-btn" onclick="location.href='files.jsp';">Back</button></p>
             </div>
 
             <h1 id="content-heading">Version Control for ${fileName}</h1>

@@ -36,7 +36,7 @@ public class ViewResults extends HttpServlet {
         String group = theUser.getGroup();
 
         try {
-            DDB.getFeedback(session, group);
+            DDB.getFeedback(session, group, MID);
         } 
         catch (SQLException | NamingException e) {
             e.printStackTrace();

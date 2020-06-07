@@ -357,6 +357,22 @@ public class DBAccess {
             groupMembers.add(groupMember);
         }
 
+        query = "SELECT * FROM submissions WHERE groupName = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, groupName);
+        rs = ps.executeQuery();
+        ArrayList<Integer> submissionIDs = new ArrayList<Integer>();
+        ArrayList<String> submissionDescs = new ArrayList<String>();
+        ArrayList<Integer> milestoneIDs = new ArrayList<Integer>();
+
+        while(rs.next())
+        {
+            submissionIDs.add(rs.getInt("submissionID"));
+            submissionDescs.add(rs.getString("subComment"));
+            milestoneIDs.add(rs.getInt("milestoneID"));
+        }
+
+
         for(int i = 0; i < groupMembers.size(); i++){
             System.out.println("Group member " + i + ": " + groupMembers.get(i));
         }
@@ -364,6 +380,9 @@ public class DBAccess {
         // closing
         session.setAttribute("groupName", groupName);
         session.setAttribute("groupMembers", groupMembers);
+        session.setAttribute("submissionIDs", submissionIDs);
+        session.setAttribute("submissionDescs", submissionDescs);
+        session.setAttribute("milestoneIDs", milestoneIDs);
         conn.close();
     }
 
@@ -422,6 +441,8 @@ public class DBAccess {
         {
             e.printStackTrace();
         }
+
+        conn.close();
     }
 
     public static void giveFeedback(int SID, int MID, String comment, int mark) throws SQLException, NamingException
@@ -433,7 +454,7 @@ public class DBAccess {
             Connection conn = ds.getConnection();
             // Selecting all data from the website_user table ** Note - only gives username/passwords
             PreparedStatement ps = null;
-            String query = "UPDATE submissions SET mark = ? AND feedback = ? WHERE submissionID = ? AND milestoneID = ?";
+            String query = "UPDATE submissions SET mark = ?, comments = ? WHERE submissionID = ? AND milestoneID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, mark);
             ps.setString(2, comment);
@@ -448,7 +469,7 @@ public class DBAccess {
             e.printStackTrace();
         }
 
-        
+        conn.close();
     }
 
     public static void writeSubmission(String group, int MID, String desc) throws SQLException, NamingException
@@ -471,7 +492,7 @@ public class DBAccess {
         conn.close();
     }
 
-    public static void getFeedback(HttpSession session, String groupName) throws SQLException, NamingException
+    public static void getSubmissions(HttpSession session, String groupName) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -479,17 +500,44 @@ public class DBAccess {
         Connection conn = ds.getConnection();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
         PreparedStatement ps = null;
-        String query = "SELECT * from submission WHERE groupName = ?";
+        String query = "SELECT * from submissions WHERE groupName = ?";
         ps = conn.prepareStatement(query);
         ps.setString(1, groupName);
         ResultSet rs = ps.executeQuery();
+        ArrayList<Integer> subIDs = new ArrayList<Integer>();
+        ArrayList<Integer> mileIDs = new ArrayList<Integer>();
+
+        while(rs.next())
+        {
+            subIDs.add(rs.getInt("submissionID"));
+            mileIDs.add(rs.getInt("milestoneID"));
+        }
+
+        session.setAttribute("subIDs", subIDs);
+        session.setAttribute("mileIDs", mileIDs); 
+
+        conn.close();
+    }
+
+    public static void getFeedback(HttpSession session, String groupName, int MID) throws SQLException, NamingException
+    {
+        InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        // Selecting all data from the website_user table ** Note - only gives username/passwords
+        PreparedStatement ps = null;
+        String query = "SELECT * from submissions WHERE groupName = ? AND milestoneID = ?";
+        ps = conn.prepareStatement(query);
+        ps.setString(1, groupName);
+        ps.setInt(2, MID);
+        ResultSet rs = ps.executeQuery();
         rs.next();
-        int milestoneID = rs.getInt("milestoneID");
         String subComments = rs.getString("comments");
         int subMark = rs.getInt("mark");
         query = "SELECT * from milestones where milestoneID = ?";
         ps = conn.prepareStatement(query);
-        ps.setInt(1, milestoneID);
+        ps.setInt(1, MID);
         rs = ps.executeQuery();
         rs.next();
         String subTitle = rs.getString("milestoneTitle");
@@ -498,5 +546,6 @@ public class DBAccess {
         session.setAttribute("subComments", subComments); 
         session.setAttribute("subMark", subMark); 
 
+        conn.close();
     }
 } 

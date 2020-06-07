@@ -12,7 +12,7 @@
 <html>
 
 <head>
-    <title>University of Newcastle - Discussions</title> 
+    <title>University of Newcastle - Discussions</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/viewdiscussion.css"> <!--Links to an external stylesheet to control the looks of the page-->
@@ -49,8 +49,8 @@
         <div class="discussions-list">
         <p id = "username">${discussionUsername}</p> <!--Shows the original discussion's username and their description-->
         <p id = "message">${discussionDesc}</p>
-        <c:forEach begin = "1" end = "${threadIDs.size()}" var = "TID"><!--Will loop through showing the various users and their replies to the thread.-->
-            <p id="username">${threadUsernames.get(TID-1)}</p> 
+        <c:forEach begin = "1" end = "${threadIDs.size()}" var = "TID"> <!--Will loop through showing the various users and their replies to the thread.-->
+            <p id="username">${threadUsernames.get(TID-1)}</p>
             <p id="message">${threadDesc.get(TID-1)}</p>
         </c:forEach>
         </div>

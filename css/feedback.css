@@ -99,7 +99,7 @@
     padding-top: 60px;
 }
 
-.main-content{
+.discussions-list{
 	position: absolute;
 	top: 0%;
 	left: 0%;
@@ -112,11 +112,43 @@
     padding-right: 40px;
 }
 
-.main-content p{
+.discussions-list p{
     text-align: center;
 }
 
-.main-content a{
+.discussions-list a{
+	display: inline-block;
+	text-decoration: none;
+	color: #ffffff;
+	border: 2px solid #fff;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	transform: 0.4s linear;
+    transition: 0.2s;
+    width: 700px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.discussions-list a:hover{
+	color: #000000;
+	background: #ffffff;
+}
+
+.create-discussion{
+    position: absolute;
+	bottom: 1%;
+	left: 0%;
+	z-index: 1;
+	width: 100%;
+	text-align: center;
+    box-sizing: border-box;
+    padding-top: 200px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.create-discussion a{
 	display: inline-block;
 	text-decoration: none;
 	color: #ffffff;
@@ -130,69 +162,33 @@
     margin-bottom: 10px;
 }
 
-.main-content a:hover {
+.create-discussion a:hover{
 	color: #000000;
 	background: #ffffff;
 }
 
-.main-content ul, li {
+/* INPUT BUTTONS */
+#group-btn{
+    margin-top: 10px;
+    border: 2px solid #FFF;
+    background-color: Transparent;
+    border: 1;
+    border-color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 700px;
+    height: 40px;
     color: #FFF;
+    font-family: "montserrat", sans-serif;
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-size: 17px;
 }
 
-.main-content table, td, th {  
-    border: 1px solid #ddd;
-    text-align: left;
-    color: #FFF;
-}
-  
-.main-content table {
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
-    width: 50%;
-}
-  
-.main-contentth, td {
-    padding: 15px;
-}
-
-#content-heading {
-	color: white;
-	text-transform: uppercase;
-    font-size: 35px;
-    text-align: center;
-    padding-bottom: 30px;
-}
-
-#label{
-    color: white;
-	text-transform: uppercase;
-    font-size: 20px;
-    padding-bottom: 10px;
-}
-
-#input-title{
-    color: #FFF;
-    text-align: left;
-    padding-left: 10px;
-    border: 0;
-    outline: none;
-    background-color:rgba(255, 255, 255, 0.2);
-    width: 500px;
-    height: 30px;
-    margin-bottom: 50px;
-}
-
-#input-message{
-    color: #FFF;
-    text-align: left;
-    padding-left: 10px;
-    border: 0;
-    outline: none;
-    background-color:rgba(255, 255, 255, 0.2);
-    width: 500px;
-    height: 200px;
-    margin-bottom: 40px;
+#group-btn:hover{
+    color: #000000;
+	background: #ffffff;
 }
 
 #newgroup-btn{
@@ -243,76 +239,17 @@
 	background: #ffffff;
 }
 
-#main-content button{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #FFF;
-    background-color: Transparent;
-    border: 1;
-    border-color: #fff;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    width: 150px;
-    height: 40px;
-    color: #FFF;
-    font-family: "montserrat", sans-serif;
-    text-transform: uppercase;
-    transition: 0.2s;
-    font-size: 17px;
-}
-
-#main-content button:hover{
-    color: #000000;
-	background: #ffffff;
-}
-
-#feedback-btn{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #FFF;
-    background-color: Transparent;
-    border: 1;
-    border-color: #fff;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    width: 150px;
-    height: 40px;
-    color: #FFF;
-    font-family: "montserrat", sans-serif;
-    text-transform: uppercase;
-    transition: 0.2s;
-    font-size: 17px;
-}
-
-#feedback-btn:hover{
-    color: #000000;
-	background: #ffffff;
-}
-
-#submit{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #FFF;
-    background-color: Transparent;
-    border: 1;
-    border-color: #fff;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    width: 300px;
-    height: 40px;
-    color: #FFF;
-    font-family: "montserrat", sans-serif;
-    text-transform: uppercase;
-    transition: 0.2s;
-    font-size: 17px;
-}
-
-#submit:hover{
-    color: #000000;
-	background: #ffffff;
+.files-list{
+    position: relative;
+    color: #fff;
+	top: 0;
+	left: 20%;
+	z-index: 1;
+	width: 65%;
+	text-align: center;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-right: 40px;
 }
 
 @media all and (max-width: 950px) {

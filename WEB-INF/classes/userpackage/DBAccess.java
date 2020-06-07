@@ -322,7 +322,6 @@ public class DBAccess {
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<String> groupMembers = new ArrayList<String>();
 
-        conn.close(); 
         // build list of group members
         while(rs.next()) {
             String groupMember = rs.getString("username");

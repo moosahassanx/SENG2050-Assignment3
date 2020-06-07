@@ -45,6 +45,7 @@
                 <h1 id="content-heading">Menu</h1>
                 <p><a href="groups" address="true">Groups</a></p> <!--Links to all the different pages so the user can access them. -->
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>
+                <p><a href="addmilestone.jsp" address="true">Add Milestone</a></p>
             </div>
 
             <!-- APPOINTMENTS COLUMN -->

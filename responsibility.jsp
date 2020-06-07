@@ -88,7 +88,6 @@
                 </form>
             </div>
         </div>
-
         <div class = "responsList">
             <table border ="1" width="90%">
                 <tr>
@@ -115,5 +114,12 @@
             </table>
         </div>
     </section>
+
+    <!-- BACKGROUND -->
+    <c:forEach items="${responseList}" var="1">
+        <c:if test="${var / 5 == 0}">
+            <section class="landing-page-main"></section>
+        </c:if>
+    </c:forEach>
 </body>
 </html>

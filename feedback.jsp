@@ -14,7 +14,7 @@
 	<title>University of Newcastle - Files</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/groups.css">
+    <link rel="stylesheet" type="text/css" href="css/feedback.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
 </head>
 
@@ -32,14 +32,6 @@
             </div>
             <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>
-                <c:choose>
-                    <c:when test = "${user.hasGroup()}">
-                        <h2 id="bar-text">${user.getGroup()}</h2>
-                    </c:when>
-                    <c:otherwise>
-                        <h2 id="bar-text">N/A</h2>
-                    </c:otherwise>
-                </c:choose>
             </div>
             <hr>
         </div>
@@ -58,7 +50,7 @@
                 <p><input id="input-message" type="text" id="groupName" name="groupNameFeedback" required></p>
 
                 <p id="label">Mark</p>
-                <p><input type="text" placeholder="Mark out of 100"></p>
+                <p><input id="input-title" type="text" placeholder="Mark out of 100"></p>
 
                 <input type="hidden" name="groupName" value="${groupName}">
 

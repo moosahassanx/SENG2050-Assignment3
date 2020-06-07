@@ -29,7 +29,7 @@
             <div id="bar-middle">
                 <h1 id="newcastle-portal">Newcastle Portal</h1>
                 <h2 id="bar-text">Group management system.</h2>
-                <h3 id="bar-text">Send Appointment to ${teachName}</h3> 
+                <h3 id="bar-text">Send Appointment to ${teachName}</h3>
             </div>
             <div id="bar-right">
                 <h2 id="bar-text">${user.getName()}</h2>
@@ -46,12 +46,12 @@
         </div>
 
         <!-- CREATE Appointment FORM -->
-        <form action="CreateAppointment" method = "POST" onsubmit = "return appointmentValidate()">
         <div class="main-content">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-            
+
+            <form action="CreateAppointment" method = "POST" onsubmit = "return appointmentValidate()"></form>
             <p id="label">Date</p> <!--Users are able to select a date, time and leave a message in regards to the appointment that they want. -->
             <p><input id="input-title" type="date" id = "date" name = "date"></p>
 
@@ -62,8 +62,8 @@
             <p><input id="input-message" type="text" id = "description" name = "description"></p>
 
             <p><input id="submit" type="submit" value="BOOK APPOINTMENT"></p>
+            </form>
         </div>
-        </form>
     </section>
 </body>
 </html>

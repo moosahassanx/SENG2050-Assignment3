@@ -29,12 +29,15 @@ public class responsibilityController extends HttpServlet {
     
         String userName = request.getParameter("userName"); 
         String description = request.getParameter("description");
-        String dateComplete = request.getParameter("date");
         String userGroup = request.getParameter("userGroup");
 
+        String dateBackwards = request.getParameter("date"); //Gets the date
+        String[] dateSplit = dateBackwards.split("-"); //Splits the date.
+        String dateComplete = dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0]; //Flips it so it is in our format
+        
         // Setting the insert date
         Date date = new Date();
-        DateFormat df = new SimpleDateFormat("YYYY-dd-MM");
+        DateFormat df = new SimpleDateFormat("dd-MM-YYYY");
         String insertDate = df.format(date);
 
             try{

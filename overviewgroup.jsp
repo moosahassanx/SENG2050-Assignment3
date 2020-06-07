@@ -61,7 +61,7 @@
                             <td>EMAIL OF GROUP MEMBER</td>
                         </tr>
                     </c:forEach>
-                  </table>
+                </table>
 
                     <!-- UPLOAD FILES -->
                     <div class="content-right">

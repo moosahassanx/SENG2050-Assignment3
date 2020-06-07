@@ -228,5 +228,8 @@ SELECT * FROM user_groups;
 SELECT * FROM user_groups where username = 'FaZe Clan';
 
 SELECT * FROM Milestones
+select * from submissions
+
+UPDATE submissions SET mark = 67, feedback = 'ayyy' WHERE submissionID = ? AND milestoneID = ?
 
 DELETE FROM user_groups WHERE username='Humey';

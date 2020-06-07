@@ -357,6 +357,22 @@ public class DBAccess {
             groupMembers.add(groupMember);
         }
 
+        query = "SELECT * FROM submissions WHERE groupName = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, groupName);
+        rs = ps.executeQuery();
+        ArrayList<Integer> submissionIDs = new ArrayList<Integer>();
+        ArrayList<String> submissionDescs = new ArrayList<String>();
+        ArrayList<Integer> milestoneIDs = new ArrayList<Integer>();
+
+        while(rs.next())
+        {
+            submissionIDs.add(rs.getInt("submissionID"));
+            submissionDescs.add(rs.getString("subComment"));
+            milestoneIDs.add(rs.getInt("milestoneID"));
+        }
+
+
         for(int i = 0; i < groupMembers.size(); i++){
             System.out.println("Group member " + i + ": " + groupMembers.get(i));
         }
@@ -364,6 +380,9 @@ public class DBAccess {
         // closing
         session.setAttribute("groupName", groupName);
         session.setAttribute("groupMembers", groupMembers);
+        session.setAttribute("submissionIDs", submissionIDs);
+        session.setAttribute("submissionDescs", submissionDescs);
+        session.setAttribute("milestoneIDs", milestoneIDs);
         conn.close();
     }
 
@@ -433,7 +452,7 @@ public class DBAccess {
             Connection conn = ds.getConnection();
             // Selecting all data from the website_user table ** Note - only gives username/passwords
             PreparedStatement ps = null;
-            String query = "UPDATE submissions SET mark = ? AND feedback = ? WHERE submissionID = ? AND milestoneID = ?";
+            String query = "UPDATE submissions SET mark = ?, comments = ? WHERE submissionID = ? AND milestoneID = ?";
             ps = conn.prepareStatement(query);
             ps.setInt(1, mark);
             ps.setString(2, comment);

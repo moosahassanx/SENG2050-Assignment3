@@ -28,8 +28,10 @@ import java.time.format.DateTimeFormatter;
 public class GiveFeedback extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        int SID = Integer.parseInt(request.getParameter("SID"));
-        int MID = Integer.parseInt(request.getParameter("MID"));
+        String split = request.getParameter("SID");
+        String[] splitter = split.split("::");
+        int SID = Integer.parseInt(splitter[0]);
+        int MID = Integer.parseInt(splitter[1]);
         HttpSession session = request.getSession();
         session.setAttribute("SID", SID);
         session.setAttribute("MID", MID);
@@ -41,11 +43,10 @@ public class GiveFeedback extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession(); //Grabs sessions and gets the data that is required.
-        String comment = request.getParameter("comment");
+        String comment = request.getParameter("subComment");
         int mark = Integer.parseInt(request.getParameter("mark"));
         int SID = (int)session.getAttribute("SID");
         int MID = (int)session.getAttribute("MID");
-        User theUser = ((User)session.getAttribute("user"));
         try 
         {
             DBAccess.giveFeedback(SID, MID, comment, mark); // Runs the function to write it to the DB

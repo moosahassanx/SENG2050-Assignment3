@@ -31,13 +31,13 @@ public class CreateMilestone extends HttpServlet
         HttpSession session = request.getSession(); //Grabs session, and other required data
         String title = request.getParameter("milestoneTitle");
         String desc = request.getParameter("description");
-        int id = (int)session.getAttribute("DIT");
-        User theUser = (User)session.getAttribute("user"); 
-        String name = theUser.getName();
-        String group = theUser.getGroup();
+        String dateBackwards = request.getParameter("date"); //Gets the date
+        String[] dateSplit = dateBackwards.split("-"); //Splits the date.
+
+        String dateAt = dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0]; 
         try 
         {
-            DBA.createMilestoneInDB(desc, name, group); //Runs the function in the DBAccess to write it to the DB
+            DBA.createMilestoneInDB(desc, title, dateAt); //Runs the function in the DBAccess to write it to the DB
         } 
         catch (SQLException | NamingException e) 
         {

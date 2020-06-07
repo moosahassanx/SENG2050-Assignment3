@@ -92,12 +92,14 @@ return true;
 function appointmentValidate(){
 
     var date = document.getElementById("date");
+    var varDate = new Date(date);
+    var todaysDate = new Date();
+
     var time = document.getElementById("time");
     var message = document.getElementById("description");
 
-    if(date.value === ""){
-        alert("Must input a date");
-        date.focus();
+    if(date.value === "" || varDate < todaysDate){
+        alert("Date must be in the future, time travel is not a thing yet");
         return false;
     }
     if(time.value === ""){
@@ -115,16 +117,14 @@ function appointmentValidate(){
 
 function responseValidation(){
 
-    var date = document.getElementById("date");
+    var date = document.getElementById("date").value;
     var description = document.getElementById("description");
 
     var varDate = new Date(date);
     var todaysDate = new Date();
-    todaysDate.setHours(0,0,0,0);
 
-    if(varDate <= todaysDate){
+    if(varDate < todaysDate || date === "dd/mm/yyyy"){
         alert("Date must be in the future, time travel is not a thing yet")
-        date.focus();
         return false;
     }
     if(description.value === ""){
@@ -132,5 +132,49 @@ function responseValidation(){
         description.focus();
         return false;
     }
+    return true;
+}
+
+function groupValidation(){
+    var groupName = document.getElementById("groupName");
+    var subject = document.getElementById("subject");
+
+    if(groupName.value === ""){
+        alert("Must enter a group name")
+        groupName.focus();
+        return false;
+    }
+    if(subject.value === ""){
+        alert("Must enter a subject");
+        subject.focus();
+        return false;
+    }
+    return true;
+}
+
+function milestoneValidation(){
+
+    var title = document.getElementById("mTitle");
+    var description = document.getElementById("description");
+    var date = document.getElementById("date");
+
+    var varDate = new Date(date);
+    var todaysDate = new Date();
+
+    if(title.value === ""){
+        alert("Must enter a title");
+        title.focus();
+        return false;
+    }
+    if(description.value === ""){
+        alert("Must enter a description");
+        description.focus();
+        return false;
+    }
+    if(varDate < todaysDate){
+        alert("Date must be in the future, time travel is not a thing yet");
+        return false;
+    }
+
     return true;
 }

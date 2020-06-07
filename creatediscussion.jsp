@@ -51,7 +51,7 @@
             </div>
             
             <!--The discussion post will go to this servlet-->
-            <form action="createDiscussion" method = "POST" onsubmit ="discussionsValidate()">
+            <form action="createDiscussion" method = "POST" onsubmit ="return discussionsValidate()">
                 <!--Discussions consist of a title and a message-->
                 <p id="label">Title</p>
                 <p><input type="text" id = "title" name = "title"></p>

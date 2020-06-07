@@ -74,17 +74,17 @@ public class Login extends HttpServlet
                     user.setPassword(password);
                     user.setRole("Student");
                     user.setStudent(true);
-                    
+
+                    HttpSession session = request.getSession(); //gets the session
+                    session.setAttribute("user", user); //sets the bean into the session
+
                     // running method
                     try {
-                        joinGroup(user);
+                        DBA.joinGroup(session, user.getGroup(), user);
                     }
                     catch (SQLException | NamingException e) {
                         e.printStackTrace();
                     }
-
-                    HttpSession session = request.getSession(); //gets the session
-                    session.setAttribute("user", user); //sets the bean into the session
 
                     DBA.getMilestoneList(user, session);
 

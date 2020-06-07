@@ -350,4 +350,45 @@ public class DBAccess {
 
         conn.close();
     }
+
+    public static void getMilestoneList(User user, HttpSession session) throws SQLException, NamingException
+    {
+        try{
+            InitialContext ctx = new InitialContext();
+            // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+            DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+            Connection conn = ds.getConnection();
+            // Selecting all data from the website_user table ** Note - only gives username/passwords
+            PreparedStatement ps = null;
+            String query = "SELECT * from milestones WHERE groupName = ?";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user.getGroup());
+            ResultSet rs = ps.executeQuery();
+            ArrayList<String> milestoneStudentNames = new ArrayList<String>();
+            ArrayList<String> milestoneDescriptions = new ArrayList<String>();
+            //ArrayList<Date> milestoneDates = new ArrayList<Date>();
+
+            while(rs.next())
+            {
+                String milestoneStudent = rs.getString("username");
+                String milestoneDescription = rs.getString("description");
+                //Date date = rs.getDate("date");
+                milestoneStudentNames.add(milestoneStudent);
+                milestoneDescriptions.add(milestoneDescription);
+                //milestoneDates.add(date);
+            }
+            session.setAttribute("milestoneStudentNames", milestoneStudentNames);
+            session.setAttribute("milestoneDescriptions", milestoneDescriptions); 
+            //session.setAttribute("milestoneDates", milestoneDates); 
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static void giveFeedback(String comment, int mark)
+    {
+        
+    }
 }

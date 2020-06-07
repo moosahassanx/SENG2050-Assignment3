@@ -55,7 +55,7 @@
                 <p><input id="input-title" type="text" id="groupName" name="groupNameInput" required></p>
 
                 <p id="label">Feedback</p>
-                <p><input id="input-message" type="text" id="groupName" name="groupNameInput" required></p>
+                <p><input id="input-message" type="text" id="groupName" name="groupNameFeedback" required></p>
 
                 <p id="label">Mark</p>
                 <p><input type="text" placeholder="Mark out of 100"></p>

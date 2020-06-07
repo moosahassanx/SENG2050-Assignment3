@@ -50,7 +50,7 @@
                     <tr>
                       <th>Username</th>
                       <th>Name</th>
-                      <th>E-mail</th>
+                      <th>Student ID</th>
                     </tr>
                     
                     <c:forEach begin = "1" end = "${groupMembers.size()}" var = "i">

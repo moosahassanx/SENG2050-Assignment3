@@ -32,7 +32,7 @@ public class JoinGroup extends HttpServlet {
         // retrieving data from previous jsp user inputs
         HttpSession session = request.getSession();
         String groupName = request.getParameter("groupName");
-        User theUser =((User)session.getAttribute("user")); 
+        User theUser =((User)session.getAttribute("user"));
 
         // the user is a teacher
         if(theUser.isStudent() == false) {

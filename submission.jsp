@@ -56,10 +56,7 @@
                 <p><input type="text" id = "SubmissionTitle" name = "title"></p>
 
                 <p id="label">Submission Work</p>
-                <p><input type="text" id = "subComment" name = "description"></p>
-
-                <p id="label">Submission File</p>
-                <p><input type="text" id = "subComment" name = "description"></p>
+                <p><input type="text" id = "subComment" name = "subComment"></p>
 
                 <p><input id="submit" type="submit" value="Create Discussion"></p>
             </form>

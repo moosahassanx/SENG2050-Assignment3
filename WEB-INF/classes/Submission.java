@@ -26,15 +26,26 @@ import java.time.format.DateTimeFormatter;
 
 @WebServlet(urlPatterns = { "/Submission" })
 public class Submission extends HttpServlet {
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        HttpSession session = request.getSession();
+        int MID = Integer.parseInt(request.getParameter("MID"));
+        session.setAttribute("MID", MID);
+        RequestDispatcher rd = request.getRequestDispatcher("submission.jsp"); //Prepares to forward to the next page.
+        rd.forward(request,response); //Forwards to the next page. 
+        return;
+    }    
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
         HttpSession session = request.getSession(); //Grabs the Session and necessary data from session/request.
-        String desc = request.getParameter("description");
-        int id = (int)session.getAttribute("DIT");
+        String desc = request.getParameter("subComment");
+        int id = (int)session.getAttribute("MID");
         User theUser =((User)session.getAttribute("user"));
+        String group = theUser.getGroup();
         try 
         {
-            DDB.createDiscussionsThread(session, desc, theUser, id); //Calls the function to create the reply to the discussion. 
+            DDB.writeSubmission(group, id, desc); //Calls the function to create the reply to the discussion. 
         } 
         catch (SQLException | NamingException e) 
         {

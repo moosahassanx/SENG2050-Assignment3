@@ -386,6 +386,8 @@ public class DBAccess {
         {
             e.printStackTrace();
         }
+
+        conn.close();
     }
 
     public static void giveFeedback(int SID, int MID, String comment, int mark) throws SQLException, NamingException
@@ -409,9 +411,11 @@ public class DBAccess {
         {
             e.printStackTrace();
         }
+
+        conn.close();
     }
 
-    public static void writeSubmission(String group, int MID) throws SQLException, NamingException
+    public static void writeSubmission(String group, int MID, String desc) throws SQLException, NamingException
     {
         InitialContext ctx = new InitialContext();
         // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
@@ -420,13 +424,43 @@ public class DBAccess {
         Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
         //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
-        String query = "INSERT INTO submissions VALUES(?,?)";
+        String query = "INSERT INTO submissions VALUES(?,?,?)";
         PreparedStatement ps = null;
         ps = conn.prepareStatement(query);
         ps.setString(1, group);
         ps.setInt(2,MID);
+        ps.setString(3, desc);
         ps.executeUpdate();
 
         conn.close();
+    }
+
+    public static void getFeedback(HttpSession session, String groupName) throws SQLException, NamingException
+    {
+        InitialContext ctx = new InitialContext();
+        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
+        Connection conn = ds.getConnection();
+        // Selecting all data from the website_user table ** Note - only gives username/passwords
+        PreparedStatement ps = null;
+        String query = "SELECT * from submission WHERE groupName = ?";
+        ps = conn.prepareStatement(query);
+        ps.setString(1, groupName);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int milestoneID = rs.getInt("milestoneID");
+        String subComments = rs.getString("comments");
+        int subMark = rs.getInt("mark");
+        query = "SELECT * from milestones where milestoneID = ?";
+        ps = conn.prepareStatement(query);
+        ps.setInt(1, milestoneID);
+        rs = ps.executeQuery();
+        rs.next();
+        String subTitle = rs.getString("milestoneTitle");
+
+        session.setAttribute("subTitle", subTitle);
+        session.setAttribute("subComments", subComments); 
+        session.setAttribute("subMark", subMark); 
+
     }
 } 

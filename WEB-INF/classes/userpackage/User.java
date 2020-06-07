@@ -116,21 +116,14 @@ public class User
         return group;
     }
 
-
-    // NOTE - Will need to comment this out until fixing the database connection or wont compile
-    // Need to fix to be generic for either Student and a Teacher
-
-    //This function returns an int and checks if the user is a Student. 
     public int getStudentUser(String username, String password) throws NamingException, SQLException {        
 
         InitialContext ctx = new InitialContext();
-        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
         try{
-        
             DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
             Connection conn = ds.getConnection();
             Statement stmt = conn.createStatement();
-            // Selecting all data from the website_user table ** Note - only gives username/passwords
+            // Selecting all data from the website_user table
             String query = "SELECT * from website_users";
             ResultSet rs = stmt.executeQuery(query);
             PreparedStatement ps = null;
@@ -172,35 +165,6 @@ public class User
             e.printStackTrace();
         }
         return -1;
-    }
-    
-    //This function will return whether it is the student's first time logging in or not.
-    public boolean getStudentInitialLogin(String username) throws NamingException, SQLException {
-
-        InitialContext ctx = new InitialContext();
-        // Path to the datasource, SENG_Assignment3 is the main folder, collabDB is the DB name
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/SENG2050-Assignment3/collabDB");
-        Connection conn = ds.getConnection();
-        Statement stmt = conn.createStatement();
-        PreparedStatement ps = null;
-		
-        String query = "SELECT * from initial_login WHERE username = ?";
-        ps = conn.prepareStatement(query);
-        ps.setObject(1, username);
-        ResultSet rs = stmt.executeQuery(query);
-        
-        while(rs.next()){
-            int initialLogin = rs.getInt("LoginTimes");
-            if(username.equalsIgnoreCase(username) && initialLogin == 0){
-                //Students first login
-                rs.close();
-                conn.close();
-                return true;       
-            }
-        }
-        rs.close();
-        conn.close();
-        return false;
     }
 
     // Populates a List of usernames currently in the group passed in

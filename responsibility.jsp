@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/addmilestone.css">
     <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -71,7 +72,7 @@
                                 <input type="text" name="description" id="description">
                             </th>
                             <th>
-                                <input id="date" type="date" name = "date">                              
+                                <input id="date" type="date" id="date" name ="date">                              
                             </th>
                         </tr>
                     </table>
@@ -81,7 +82,7 @@
                         <tr>
                             <th>
                                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
-                                <input type="submit" id="submitRespo" name="add"/>
+                                <input type="submit" id="submitRespo" name="add" onclick="return responseValidation()"/>
                             </th>
                         </tr>
                     </table>

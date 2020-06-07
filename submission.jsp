@@ -51,20 +51,15 @@
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='hub.jsp';">Back</button>
             </div>
-            <form action="createSubmission" method = "POST" onsubmit ="discussionsValidate()"> <!--The discussion post will go to this servlet-->
+            <form action="Submission" method = "POST" onsubmit ="discussionsValidate()"> <!--The discussion post will go to this servlet-->
                 <p id="label">Submission Title</p> <!--Discussions consist of a title and a message-->
                 <p><input type="text" id = "SubmissionTitle" name = "title"></p>
 
                 <p id="label">Submission Work</p>
                 <p><input type="text" id = "subComment" name = "subComment"></p>
 
-                <p><input id="submit" type="submit" value="Create Discussion"></p>
+                <p><input id="submit" type="submit" value="Submit Submission"></p>
             </form>
-        </div>
-        
-        <!-- CREATE DISCUSSION BUTTON -->
-        <div class="create-discussion">
-            <p><button id="create-btn" onclick="location.href='creatediscussion.jsp';">Create Discussion</button></p>
         </div>
     </section>
 </body>

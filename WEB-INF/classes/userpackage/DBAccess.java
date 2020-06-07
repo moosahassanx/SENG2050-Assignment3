@@ -460,7 +460,7 @@ public class DBAccess {
         Statement stmt = conn.createStatement();
         // Selecting all data from the website_user table ** Note - only gives username/passwords
         //Grab from the Database first and check it to see if something with that name ALREADY exists FROM that user!!
-        String query = "INSERT INTO submissions VALUES(?,?,?)";
+        String query = "INSERT INTO submissions (groupName, milestoneID, subComment) VALUES(?,?,?)";
         PreparedStatement ps = null;
         ps = conn.prepareStatement(query);
         ps.setString(1, group);

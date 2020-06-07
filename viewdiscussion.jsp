@@ -45,7 +45,7 @@
             <hr>
         </div>
 
-        <!-- MESSAGES -->
+        <!-- DISCUSSIONS LIST -->
         <div class="discussions-list">
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='discussions.jsp';">Back</button>
@@ -62,11 +62,15 @@
         <!-- REPLY -->
         <div class="create-discussion">
             <form action = "createDiscussionThread" method = "POST"> <!--Will go to its own servlet to pass data into the DB-->
+                <!--
+                <p><textarea id="input-message" name="description" required></textarea></p>
+                -->
                 <p><input id="input-message" type="text" name = "description" required></p> <!--The user writes their own reply to the discussions-->
                 <p><input id="submit" type="submit" value="Reply  "></p> 
             </form>
         </div>
     </section>
+    <section class="landing-page-main"></section>
 </body>
 
 </html>

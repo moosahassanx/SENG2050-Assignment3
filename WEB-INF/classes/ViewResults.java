@@ -34,6 +34,14 @@ public class ViewResults extends HttpServlet {
         session.setAttribute("MID", MID);
         User theUser = (User)session.getAttribute("user");
         String group = theUser.getGroup();
+
+        try {
+            DDB.getFeedback(session, group);
+        } 
+        catch (SQLException | NamingException e) {
+            e.printStackTrace();
+        }
+        
         RequestDispatcher rd = request.getRequestDispatcher("viewsubmission.jsp"); //Prepares to forward to the next page.
         rd.forward(request,response); //Forwards to the next page. 
         return;

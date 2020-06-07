@@ -54,9 +54,9 @@
                 <h1 id="content-heading">Menu</h1>
                 <p><a href="LoadAppointments" address="true">Appointments</a></p>
                 <p><a href="discussions" address="true">Discussions</a></p>
-                <p><a href="groups" address="true">Groups</a></p> <!--Links to all the different pages so the user can access them. -->
+                <p><a href="groups" address="true">Join Group</a></p> <!--Links to all the different pages so the user can access them. -->
                 <p><a href="files.jsp" address="true">Files</a></p>
-                <p><a href="viewmilestone.jsp" address="true">View Milestones</a></p>
+                <p><a href="viewmilestones.jsp" address="true">View Milestones</a></p>
                 <p><a href="${pageContext.request.contextPath}/responsibility?id=${user.getGroup()}" address="true">Planning</a></p>
             </div>
 
@@ -65,7 +65,7 @@
                 <h1 id="content-heading">Milestone List</h1>
                 <ul>
                 <c:forEach begin = "1" end = "${milestoneDescriptions.size()}" var = "MD">
-                    <li>${milestoneTItles.get(MD-1)} Due ${milestoneDates.get(MD-1)}: ${milestoneDescriptions.get(MD-1)}</li>
+                    <li>${milestoneTitles.get(MD-1)} Due ${milestoneDates.get(MD-1)}: ${milestoneDescriptions.get(MD-1)}</li>
                 </c:forEach>
                 </ul>
             </div>

@@ -15,8 +15,6 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/appointments.css">
-    <script src="https://kit.fontawesome.com/a913ebebd3.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
@@ -47,10 +45,12 @@
 
         <!-- BOOK APPOINTMENTS -->
         <div class="content-left">
+            <!-- BACK BUTTON -->
             <div class="back-div">
                 <button id="back-btn" onclick="location.href='back';">Back</button>
             </div>
 
+            <!-- DISPLAYS APPOINTMENTS AS BUTTONS FOR USER TO CLICK-->
             <h1 id="content-heading">Book Appointment</h1>
             <c:forEach begin = "1" end = "${teacherNames.size()}" var = "TN"> <!--Displays all of the teachers you can book appointments with. -->
                 <p><button id="book-btn" onclick="location.href='CreateAppointment?teachID=${TN}';">${teacherNames.get(TN-1)}</button></p>

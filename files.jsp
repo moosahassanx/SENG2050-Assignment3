@@ -54,17 +54,21 @@
             <h1 id="content-heading">Upload Files</h1>
             <form action="upload" method="post" enctype="multipart/form-data">
                 <p id="label">Select a file: </p>
-                <p><input type="text" name="description"/></p>
                 <p><input type="file" name="myfile" class="custom-file-input"></p>
+                <br>
+                <p id="label">Description: </p>
+                <p><input type="text" name="description"/></p>
+
                 <input type="hidden" name="userUploaded" value="${user.getName()}"/>
                 <input type="hidden" name="userGroup" value="${user.getGroup()}"/>
-                <p><input type="submit" id="submit" name="list"></p> <p><input type="submit" id="submit" name="list" value="list"></p>
-            
+
+                <p><input type="submit" id="submit" name="list" value="Upload"></p>
+                <br><hr>
+                <p><input type="submit" id="submit" name="list" value="list"></p>
         </div>
     
         <div class = "files-list">
         <table border ="1" width ="90%">
-
             <tr>
                 <th>File Name</th>
                 <th>File Description</th>

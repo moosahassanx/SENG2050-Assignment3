@@ -13,6 +13,7 @@ import javax.servlet.http.*;
 
 import userpackage.User;
 import userpackage.DBAccess;
+import userpackage.File;
 import java.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -20,6 +21,7 @@ import javax.sql.DataSource;
 import javax.servlet.annotation.WebServlet;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -39,7 +41,15 @@ public class JoinGroup extends HttpServlet {
 
             // running method
             try {
+                System.out.println("before List function");
                 DDB.groupDetails(session, groupName);
+                List<File> list = File.getAllFiles(groupName);
+                System.out.println("AFter List function");
+
+                for(int i = 0; i< list.size(); i++){
+                    System.out.println(list.get(i).getFileName());
+                }
+                session.setAttribute("list", list);
             }
             catch (SQLException | NamingException e) {
                 e.printStackTrace();
@@ -48,7 +58,6 @@ public class JoinGroup extends HttpServlet {
             // redirect user
             RequestDispatcher rd = request.getRequestDispatcher("overviewgroup.jsp");
             rd.forward(request,response);
-            return;
         }
         
         // the user is a student

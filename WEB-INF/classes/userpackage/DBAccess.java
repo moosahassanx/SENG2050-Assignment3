@@ -441,8 +441,6 @@ public class DBAccess {
         {
             e.printStackTrace();
         }
-
-        conn.close();
     }
 
     public static void giveFeedback(int SID, int MID, String comment, int mark) throws SQLException, NamingException
@@ -468,8 +466,6 @@ public class DBAccess {
         {
             e.printStackTrace();
         }
-
-        conn.close();
     }
 
     public static void writeSubmission(String group, int MID, String desc) throws SQLException, NamingException

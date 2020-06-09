@@ -49,6 +49,8 @@ CREATE TABLE user_information	(
 	lastName varChar(30) not null,
 )
 
+SELECT * FROM user_information WHERE username='bitchboi3';
+
 CREATE TABLE initial_login	(
 	username VARCHAR(30) NOT NULL PRIMARY KEY,
 	loginTimes INT,
